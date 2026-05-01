@@ -1,0 +1,55 @@
+<div class="mb-8 flex justify-between items-center">
+  <div>
+    <h1 class="font-headline-lg text-headline-lg text-white uppercase italic">Manage_News</h1>
+    <p class="text-slate-400 mt-1"><%= total %> articles in archive.</p>
+  </div>
+  <a href="/admin/news/create" class="bg-[#CCFF00] text-black px-6 py-2.5 font-['Space_Grotesk'] uppercase tracking-wider text-sm font-bold no-underline shadow-[0_0_10px_rgba(204,255,0,0.3)] hover:shadow-[0_0_20px_rgba(204,255,0,0.5)] transition-all">
+    <span class="material-symbols-outlined align-middle text-sm">add</span> New Article
+  </a>
+</div>
+
+<div class="glass-card p-4 mb-6">
+  <form method="GET" action="/admin/news" class="flex items-center space-x-3">
+    <input type="text" name="search" value="<%= currentSearch %>" placeholder="Search articles..." class="py-2 px-4 w-56 text-sm"/>
+    <button type="submit" class="bg-[#CCFF00] text-black px-4 py-2 font-['Space_Grotesk'] uppercase tracking-wider text-xs font-bold">Search</button>
+  </form>
+</div>
+
+<% if (articles.length > 0) { %>
+<div class="glass-card overflow-x-auto">
+  <table class="w-full text-sm">
+    <thead>
+      <tr class="border-b border-white/10 text-left">
+        <th class="p-3 font-['Space_Grotesk'] uppercase tracking-wider text-xs text-slate-400">Title</th>
+        <th class="p-3 font-['Space_Grotesk'] uppercase tracking-wider text-xs text-slate-400">Status</th>
+        <th class="p-3 font-['Space_Grotesk'] uppercase tracking-wider text-xs text-slate-400">Views</th>
+        <th class="p-3 font-['Space_Grotesk'] uppercase tracking-wider text-xs text-slate-400">Date</th>
+        <th class="p-3 font-['Space_Grotesk'] uppercase tracking-wider text-xs text-slate-400">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% articles.forEach(function(a) { %>
+      <tr class="border-b border-white/5 hover:bg-white/5">
+        <td class="p-3 text-white font-['Space_Grotesk'] font-bold"><%= a.title %></td>
+        <td class="p-3">
+          <span class="text-xs font-['Space_Grotesk'] uppercase tracking-wider px-2 py-0.5 <%= a.status === 'published' ? 'bg-[#CCFF00]/20 text-[#CCFF00]' : 'bg-yellow-500/20 text-yellow-400' %>"><%= a.status %></span>
+        </td>
+        <td class="p-3 text-slate-400"><%= a.views_count || 0 %></td>
+        <td class="p-3 text-slate-400 text-xs"><%= new Date(a.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) %></td>
+        <td class="p-3">
+          <div class="flex items-center space-x-2">
+            <a href="/admin/news/<%= a.id %>/edit" class="text-[#CCFF00] hover:underline text-xs font-['Space_Grotesk'] uppercase tracking-wider no-underline">Edit</a>
+            <form method="POST" action="/admin/news/<%= a.id %>/delete" class="inline" onsubmit="return confirm('Delete this article?')">
+              <button type="submit" class="text-red-400 hover:text-red-300 text-xs font-['Space_Grotesk'] uppercase tracking-wider">Delete</button>
+            </form>
+          </div>
+        </td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>
+<%- include('../../partials/pagination', { page: page, pages: pages, query: { search: currentSearch } }) %>
+<% } else { %>
+<div class="glass-card p-12 text-center"><p class="text-slate-400">No articles found.</p></div>
+<% } %>

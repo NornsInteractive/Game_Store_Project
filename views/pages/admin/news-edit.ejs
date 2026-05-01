@@ -1,0 +1,42 @@
+<div class="mb-8">
+  <h1 class="font-headline-lg text-headline-lg text-white uppercase italic"><%= articleData ? 'Edit: ' + articleData.title : 'Create_Article' %></h1>
+</div>
+
+<div class="max-w-3xl">
+  <form method="POST" action="<%= articleData ? '/admin/news/' + articleData.id + '/edit' : '/admin/news/create' %>" enctype="multipart/form-data" class="glass-card p-8 space-y-6">
+    <div class="space-y-2">
+      <label class="font-['Space_Grotesk'] text-xs uppercase tracking-wider text-slate-400">Title *</label>
+      <input type="text" name="title" value="<%= articleData ? articleData.title : '' %>" class="w-full py-3 bg-surface-container-low border-b border-outline-variant focus:border-[#CCFF00] text-on-surface transition-all input-glow" required/>
+    </div>
+    <div class="space-y-2">
+      <label class="font-['Space_Grotesk'] text-xs uppercase tracking-wider text-slate-400">Excerpt</label>
+      <input type="text" name="excerpt" maxlength="300" value="<%= articleData ? articleData.excerpt : '' %>" class="w-full py-3 bg-surface-container-low border-b border-outline-variant focus:border-[#CCFF00] text-on-surface transition-all input-glow"/>
+    </div>
+    <div class="space-y-2">
+      <label class="font-['Space_Grotesk'] text-xs uppercase tracking-wider text-slate-400">Content</label>
+      <textarea name="content" rows="12" class="w-full py-3 bg-surface-container-low border-b border-outline-variant focus:border-[#CCFF00] text-on-surface transition-all input-glow"><%= articleData ? articleData.content : '' %></textarea>
+    </div>
+    <div class="flex items-center space-x-2">
+      <label class="font-['Space_Grotesk'] text-xs uppercase tracking-wider text-slate-400">Status</label>
+      <select name="status" class="py-2 px-3 text-sm ml-4">
+        <option value="draft" <%= articleData && articleData.status === 'draft' ? 'selected' : '' %>>Draft</option>
+        <option value="published" <%= articleData && articleData.status === 'published' ? 'selected' : '' %>>Published</option>
+      </select>
+    </div>
+    <div class="flex items-center space-x-2">
+      <input type="checkbox" name="isFeatured" value="1" id="isFeatured" <%= articleData && articleData.is_featured ? 'checked' : '' %> class="w-4 h-4"/>
+      <label for="isFeatured" class="font-['Space_Grotesk'] text-xs uppercase tracking-wider text-slate-400">Featured Article</label>
+    </div>
+    <div class="space-y-2">
+      <label class="font-['Space_Grotesk'] text-xs uppercase tracking-wider text-slate-400">Thumbnail</label>
+      <% if (articleData && articleData.thumbnail) { %><p class="text-slate-500 text-xs mb-1">Current: <%= articleData.thumbnail %></p><% } %>
+      <input type="file" name="thumbnail" accept="image/*" class="w-full text-slate-400 file:bg-surface-container-high file:text-white file:border-0 file:px-4 file:py-2 file:font-['Space_Grotesk'] file:uppercase file:tracking-wider file:text-xs file:cursor-pointer"/>
+    </div>
+    <div class="flex space-x-3">
+      <button type="submit" class="bg-[#CCFF00] text-black font-['Space_Grotesk'] uppercase tracking-widest font-bold px-8 py-3 shadow-[0_0_10px_rgba(204,255,0,0.3)] hover:shadow-[0_0_20px_rgba(204,255,0,0.5)] transition-all">
+        <%= articleData ? 'Update Article' : 'Create Article' %>
+      </button>
+      <a href="/admin/news" class="glass-card px-6 py-3 text-slate-400 hover:text-white font-['Space_Grotesk'] uppercase tracking-wider text-sm font-bold no-underline transition-all">Cancel</a>
+    </div>
+  </form>
+</div>

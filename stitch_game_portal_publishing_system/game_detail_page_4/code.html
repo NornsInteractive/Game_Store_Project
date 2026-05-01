@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;900&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-lowest": "#0c0e16",
+                        "on-background": "#e1e1ed",
+                        "on-primary-fixed-variant": "#3c4d00",
+                        "on-tertiary-container": "#606470",
+                        "on-tertiary-fixed": "#181b25",
+                        "tertiary-fixed-dim": "#c3c6d3",
+                        "inverse-primary": "#506600",
+                        "on-primary-fixed": "#161e00",
+                        "tertiary": "#ffffff",
+                        "surface-container-high": "#282a32",
+                        "on-tertiary": "#2c303a",
+                        "surface-dim": "#11131b",
+                        "inverse-surface": "#e1e1ed",
+                        "primary": "#ffffff",
+                        "surface-container": "#1d1f28",
+                        "on-secondary-fixed": "#310048",
+                        "on-secondary-fixed-variant": "#7200a3",
+                        "primary-fixed-dim": "#abd600",
+                        "outline": "#8e9379",
+                        "surface": "#11131b",
+                        "on-tertiary-fixed-variant": "#434751",
+                        "on-error-container": "#ffdad6",
+                        "primary-fixed": "#c3f400",
+                        "secondary": "#e9b3ff",
+                        "on-primary": "#283500",
+                        "primary-container": "#c3f400",
+                        "on-surface": "#e1e1ed",
+                        "surface-container-low": "#191b23",
+                        "on-secondary-container": "#e5a9ff",
+                        "error": "#ffb4ab",
+                        "secondary-fixed-dim": "#e9b3ff",
+                        "error-container": "#93000a",
+                        "background": "#11131b",
+                        "on-primary-container": "#556d00",
+                        "surface-bright": "#373942",
+                        "tertiary-container": "#dfe2ef",
+                        "tertiary-fixed": "#dfe2ef",
+                        "secondary-fixed": "#f6d9ff",
+                        "outline-variant": "#444933",
+                        "secondary-container": "#7d01b1",
+                        "surface-tint": "#abd600",
+                        "surface-container-highest": "#33343d",
+                        "surface-variant": "#33343d",
+                        "inverse-on-surface": "#2e3039",
+                        "on-error": "#690005",
+                        "on-secondary": "#510074",
+                        "on-surface-variant": "#c4c9ac"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "unit": "4px",
+                        "gutter": "24px",
+                        "margin": "32px"
+                    },
+                    "fontFamily": {
+                        "display-xl": ["Space Grotesk"],
+                        "headline-lg": ["Space Grotesk"],
+                        "label-caps": ["Space Grotesk"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Space Grotesk"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-xl": ["72px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "label-caps": ["14px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(12, 14, 22, 0.6);
+            backdrop-filter: blur(40px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-left: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .neon-glow {
+            box-shadow: 0 0 15px rgba(204, 255, 0, 0.4);
+        }
+        .neon-glow:hover {
+            box-shadow: 0 0 30px rgba(204, 255, 0, 0.8);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}[type='text'],input:where(:not([type])),[type='email'],[type='url'],[type='password'],[type='number'],[type='date'],[type='datetime-local'],[type='month'],[type='search'],[type='tel'],[type='time'],[type='week'],[multiple],textarea,select{-webkit-appearance:none;appearance:none;background-color:#fff;border-color:#6b7280;border-width:1px;border-radius:0px;padding-top:0.5rem;padding-right:0.75rem;padding-bottom:0.5rem;padding-left:0.75rem;font-size:1rem;line-height:1.5rem;--tw-shadow:0 0 #0000;}[type='text']:focus, input:where(:not([type])):focus, [type='email']:focus, [type='url']:focus, [type='password']:focus, [type='number']:focus, [type='date']:focus, [type='datetime-local']:focus, [type='month']:focus, [type='search']:focus, [type='tel']:focus, [type='time']:focus, [type='week']:focus, [multiple]:focus, textarea:focus, select:focus{outline:2px solid transparent;outline-offset:2px;--tw-ring-inset:var(--tw-empty,/*!*/ /*!*/);--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:#2563eb;--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);border-color:#2563eb}input::placeholder,textarea::placeholder{color:#6b7280;opacity:1}::-webkit-datetime-edit-fields-wrapper{padding:0}::-webkit-date-and-time-value{min-height:1.5em;text-align:inherit}::-webkit-datetime-edit{display:inline-flex}::-webkit-datetime-edit,::-webkit-datetime-edit-year-field,::-webkit-datetime-edit-month-field,::-webkit-datetime-edit-day-field,::-webkit-datetime-edit-hour-field,::-webkit-datetime-edit-minute-field,::-webkit-datetime-edit-second-field,::-webkit-datetime-edit-millisecond-field,::-webkit-datetime-edit-meridiem-field{padding-top:0;padding-bottom:0}select{background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");background-position:right 0.5rem center;background-repeat:no-repeat;background-size:1.5em 1.5em;padding-right:2.5rem;print-color-adjust:exact}[multiple],[size]:where(select:not([size="1"])){background-image:initial;background-position:initial;background-repeat:unset;background-size:initial;padding-right:0.75rem;print-color-adjust:unset}[type='checkbox'],[type='radio']{-webkit-appearance:none;appearance:none;padding:0;print-color-adjust:exact;display:inline-block;vertical-align:middle;background-origin:border-box;-webkit-user-select:none;user-select:none;flex-shrink:0;height:1rem;width:1rem;color:#2563eb;background-color:#fff;border-color:#6b7280;border-width:1px;--tw-shadow:0 0 #0000}[type='checkbox']{border-radius:0px}[type='radio']{border-radius:100%}[type='checkbox']:focus,[type='radio']:focus{outline:2px solid transparent;outline-offset:2px;--tw-ring-inset:var(--tw-empty,/*!*/ /*!*/);--tw-ring-offset-width:2px;--tw-ring-offset-color:#fff;--tw-ring-color:#2563eb;--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)}[type='checkbox']:checked,[type='radio']:checked{border-color:transparent;background-color:currentColor;background-size:100% 100%;background-position:center;background-repeat:no-repeat}[type='checkbox']:checked{background-image:url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");}@media (forced-colors: active) {[type='checkbox']:checked{-webkit-appearance:auto;appearance:auto}}[type='radio']:checked{background-image:url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='8' cy='8' r='3'/%3e%3c/svg%3e");}@media (forced-colors: active) {[type='radio']:checked{-webkit-appearance:auto;appearance:auto}}[type='checkbox']:checked:hover,[type='checkbox']:checked:focus,[type='radio']:checked:hover,[type='radio']:checked:focus{border-color:transparent;background-color:currentColor}[type='checkbox']:indeterminate{background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 16 16'%3e%3cpath stroke='white' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4 8h8'/%3e%3c/svg%3e");border-color:transparent;background-color:currentColor;background-size:100% 100%;background-position:center;background-repeat:no-repeat;}@media (forced-colors: active) {[type='checkbox']:indeterminate{-webkit-appearance:auto;appearance:auto}}[type='checkbox']:indeterminate:hover,[type='checkbox']:indeterminate:focus{border-color:transparent;background-color:currentColor}[type='file']{background:unset;border-color:inherit;border-width:0;border-radius:0;padding:0;font-size:unset;line-height:inherit}[type='file']:focus{outline:1px solid ButtonText;outline:1px auto -webkit-focus-ring-color}.absolute{position:absolute}.relative{position:relative}.sticky{position:sticky}.inset-0{inset:0px}.-right-20{right:-5rem}.-top-20{top:-5rem}.top-0{top:0px}.z-0{z-index:0}.z-10{z-index:10}.z-50{z-index:50}.col-span-12{grid-column:span 12 / span 12}.mx-auto{margin-left:auto;margin-right:auto}.mb-12{margin-bottom:3rem}.mb-2{margin-bottom:0.5rem}.mb-4{margin-bottom:1rem}.inline-block{display:inline-block}.flex{display:flex}.grid{display:grid}.hidden{display:none}.h-10{height:2.5rem}.h-12{height:3rem}.h-64{height:16rem}.h-\[716px\]{height:716px}.h-full{height:100%}.min-h-\[100px\]{min-height:100px}.w-10{width:2.5rem}.w-12{width:3rem}.w-2{width:0.5rem}.w-20{width:5rem}.w-64{width:16rem}.w-full{width:100%}.max-w-7xl{max-width:80rem}.flex-1{flex:1 1 0%}.flex-shrink-0{flex-shrink:0}.cursor-pointer{cursor:pointer}.grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}.grid-cols-12{grid-template-columns:repeat(12, minmax(0, 1fr))}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-start{align-items:flex-start}.items-center{align-items:center}.justify-end{justify-content:flex-end}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-1{gap:0.25rem}.gap-12{gap:3rem}.gap-2{gap:0.5rem}.gap-4{gap:1rem}.gap-6{gap:1.5rem}.gap-8{gap:2rem}.space-y-16 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(4rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(4rem * var(--tw-space-y-reverse))}.space-y-3 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.75rem * var(--tw-space-y-reverse))}.space-y-4 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}.space-y-6 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.5rem * var(--tw-space-y-reverse))}.space-y-8 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(2rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(2rem * var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.whitespace-nowrap{white-space:nowrap}.rounded-full{border-radius:9999px}.rounded-none{border-radius:0px}.border{border-width:1px}.border-b{border-bottom-width:1px}.border-b-2{border-bottom-width:2px}.border-l-2{border-left-width:2px}.border-t{border-top-width:1px}.border-none{border-style:none}.border-\[\#CCFF00\]{--tw-border-opacity:1;border-color:rgb(204 255 0 / var(--tw-border-opacity, 1))}.border-\[\#CCFF00\]\/30{border-color:rgb(204 255 0 / 0.3)}.border-secondary\/30{border-color:rgb(233 179 255 / 0.3)}.border-white\/10{border-color:rgb(255 255 255 / 0.1)}.border-white\/20{border-color:rgb(255 255 255 / 0.2)}.border-white\/5{border-color:rgb(255 255 255 / 0.05)}.border-b-\[\#CCFF00\]{--tw-border-opacity:1;border-bottom-color:rgb(204 255 0 / var(--tw-border-opacity, 1))}.border-l-\[\#CCFF00\]{--tw-border-opacity:1;border-left-color:rgb(204 255 0 / var(--tw-border-opacity, 1))}.bg-\[\#CCFF00\]{--tw-bg-opacity:1;background-color:rgb(204 255 0 / var(--tw-bg-opacity, 1))}.bg-\[\#CCFF00\]\/10{background-color:rgb(204 255 0 / 0.1)}.bg-background{--tw-bg-opacity:1;background-color:rgb(17 19 27 / var(--tw-bg-opacity, 1))}.bg-slate-800{--tw-bg-opacity:1;background-color:rgb(30 41 59 / var(--tw-bg-opacity, 1))}.bg-slate-900\/50{background-color:rgb(15 23 42 / 0.5)}.bg-slate-950{--tw-bg-opacity:1;background-color:rgb(2 6 23 / var(--tw-bg-opacity, 1))}.bg-slate-950\/60{background-color:rgb(2 6 23 / 0.6)}.bg-gradient-to-t{background-image:linear-gradient(to top, var(--tw-gradient-stops))}.from-background{--tw-gradient-from:#11131b var(--tw-gradient-from-position);--tw-gradient-to:rgb(17 19 27 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.via-transparent{--tw-gradient-to:rgb(0 0 0 / 0)  var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), transparent var(--tw-gradient-via-position), var(--tw-gradient-to)}.to-transparent{--tw-gradient-to:transparent var(--tw-gradient-to-position)}.object-cover{object-fit:cover}.p-6{padding:1.5rem}.p-8{padding:2rem}.px-1{padding-left:0.25rem;padding-right:0.25rem}.px-12{padding-left:3rem;padding-right:3rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.px-8{padding-left:2rem;padding-right:2rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-12{padding-top:3rem;padding-bottom:3rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.py-20{padding-top:5rem;padding-bottom:5rem}.py-4{padding-top:1rem;padding-bottom:1rem}.py-5{padding-top:1.25rem;padding-bottom:1.25rem}.pb-1{padding-bottom:0.25rem}.pb-16{padding-bottom:4rem}.pb-2{padding-bottom:0.5rem}.pb-32{padding-bottom:8rem}.pl-14{padding-left:3.5rem}.pt-8{padding-top:2rem}.font-\[\'Space_Grotesk\'\]{font-family:'Space Grotesk'}.font-body-lg{font-family:Inter}.font-body-md{font-family:Inter}.font-display-xl{font-family:Space Grotesk}.font-headline-lg{font-family:Space Grotesk}.font-headline-md{font-family:Space Grotesk}.font-label-caps{font-family:Space Grotesk}.text-2xl{font-size:1.5rem;line-height:2rem}.text-4xl{font-size:2.25rem;line-height:2.5rem}.text-\[10px\]{font-size:10px}.text-body-lg{font-size:18px;line-height:1.6;font-weight:400}.text-body-md{font-size:16px;line-height:1.6;font-weight:400}.text-display-xl{font-size:72px;line-height:1.1;letter-spacing:-0.02em;font-weight:700}.text-headline-lg{font-size:48px;line-height:1.2;letter-spacing:-0.01em;font-weight:700}.text-headline-md{font-size:32px;line-height:1.3;font-weight:600}.text-label-caps{font-size:14px;line-height:1.0;letter-spacing:0.1em;font-weight:700}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-black{font-weight:900}.font-bold{font-weight:700}.uppercase{text-transform:uppercase}.italic{font-style:italic}.leading-none{line-height:1}.leading-relaxed{line-height:1.625}.tracking-tight{letter-spacing:-0.025em}.tracking-tighter{letter-spacing:-0.05em}.tracking-widest{letter-spacing:0.1em}.text-\[\#CCFF00\]{--tw-text-opacity:1;color:rgb(204 255 0 / var(--tw-text-opacity, 1))}.text-black{--tw-text-opacity:1;color:rgb(0 0 0 / var(--tw-text-opacity, 1))}.text-on-background{--tw-text-opacity:1;color:rgb(225 225 237 / var(--tw-text-opacity, 1))}.text-on-surface{--tw-text-opacity:1;color:rgb(225 225 237 / var(--tw-text-opacity, 1))}.text-on-surface-variant{--tw-text-opacity:1;color:rgb(196 201 172 / var(--tw-text-opacity, 1))}.text-secondary{--tw-text-opacity:1;color:rgb(233 179 255 / var(--tw-text-opacity, 1))}.text-slate-400{--tw-text-opacity:1;color:rgb(148 163 184 / var(--tw-text-opacity, 1))}.text-slate-500{--tw-text-opacity:1;color:rgb(100 116 139 / var(--tw-text-opacity, 1))}.text-slate-600{--tw-text-opacity:1;color:rgb(71 85 105 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.line-through{-webkit-text-decoration-line:line-through;text-decoration-line:line-through}.opacity-60{opacity:0.6}.opacity-80{opacity:0.8}.shadow-\[0_0_20px_rgba\(204\2c 255\2c 0\2c 0\.1\)\]{--tw-shadow:0 0 20px rgba(204,255,0,0.1);--tw-shadow-colored:0 0 20px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-\[0_4px_30px_rgba\(0\2c 0\2c 0\2c 0\.5\)\]{--tw-shadow:0 4px 30px rgba(0,0,0,0.5);--tw-shadow-colored:0 4px 30px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.blur-3xl{--tw-blur:blur(64px);filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.backdrop-blur-2xl{--tw-backdrop-blur:blur(40px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-colors{transition-property:color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-transform{transition-property:transform;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.duration-300{transition-duration:300ms}.duration-700{transition-duration:700ms}.ease-out{transition-timing-function:cubic-bezier(0, 0, 0.2, 1)}.selection\:bg-primary-fixed *::selection{--tw-bg-opacity:1;background-color:rgb(195 244 0 / var(--tw-bg-opacity, 1))}.selection\:text-on-primary-fixed *::selection{--tw-text-opacity:1;color:rgb(22 30 0 / var(--tw-text-opacity, 1))}.selection\:bg-primary-fixed::selection{--tw-bg-opacity:1;background-color:rgb(195 244 0 / var(--tw-bg-opacity, 1))}.selection\:text-on-primary-fixed::selection{--tw-text-opacity:1;color:rgb(22 30 0 / var(--tw-text-opacity, 1))}.placeholder\:text-slate-600::placeholder{--tw-text-opacity:1;color:rgb(71 85 105 / var(--tw-text-opacity, 1))}.hover\:scale-105:hover{--tw-scale-x:1.05;--tw-scale-y:1.05;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.hover\:border-\[\#CCFF00\]:hover{--tw-border-opacity:1;border-color:rgb(204 255 0 / var(--tw-border-opacity, 1))}.hover\:text-\[\#CCFF00\]:hover{--tw-text-opacity:1;color:rgb(204 255 0 / var(--tw-text-opacity, 1))}.hover\:text-error:hover{--tw-text-opacity:1;color:rgb(255 180 171 / var(--tw-text-opacity, 1))}.hover\:text-white:hover{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.hover\:underline:hover{-webkit-text-decoration-line:underline;text-decoration-line:underline}.hover\:opacity-100:hover{opacity:1}.hover\:drop-shadow-\[0_0_12px_\#CCFF00\]:hover{--tw-drop-shadow:drop-shadow(0 0 12px #CCFF00);filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.hover\:drop-shadow-\[0_0_8px_\#CCFF00\]:hover{--tw-drop-shadow:drop-shadow(0 0 8px #CCFF00);filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.focus\:border-\[\#CCFF00\]:focus{--tw-border-opacity:1;border-color:rgb(204 255 0 / var(--tw-border-opacity, 1))}.focus\:ring-0:focus{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(0px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)}.active\:scale-95:active{--tw-scale-x:.95;--tw-scale-y:.95;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.group:hover .group-hover\:bg-\[\#CCFF00\]\/20{background-color:rgb(204 255 0 / 0.2)}@media (min-width: 640px){.sm\:flex-row{flex-direction:row}.sm\:items-end{align-items:flex-end}.sm\:gap-8{gap:2rem}}@media (min-width: 768px){.md\:flex{display:flex}.md\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.md\:flex-row{flex-direction:row}.md\:items-start{align-items:flex-start}.md\:justify-end{justify-content:flex-end}.md\:space-y-0 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0px * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0px * var(--tw-space-y-reverse))}.md\:p-10{padding:2.5rem}}@media (min-width: 1024px){.lg\:col-span-4{grid-column:span 4 / span 4}.lg\:col-span-8{grid-column:span 8 / span 8}.lg\:gap-12{gap:3rem}}</style></head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary-fixed selection:text-on-primary-fixed" data-mode="connect">
+<!-- TopNavBar -->
+<nav class="docked full-width top-0 sticky z-50 bg-slate-950/60 backdrop-blur-2xl border-b border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.5)] transition-all duration-300 ease-out flex justify-between items-center w-full px-8 py-4">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-black text-[#CCFF00] italic tracking-tighter">NEON_PUBLISH</span>
+<div class="hidden md:flex items-center gap-6">
+<a class="font-['Space_Grotesk'] uppercase tracking-widest text-sm font-bold text-[#CCFF00] border-b-2 border-[#CCFF00] pb-1" href="#">Store</a>
+<a class="font-['Space_Grotesk'] uppercase tracking-widest text-sm font-bold text-slate-400 hover:text-white transition-colors hover:text-[#CCFF00] hover:drop-shadow-[0_0_8px_#CCFF00]" href="#">News</a>
+<a class="font-['Space_Grotesk'] uppercase tracking-widest text-sm font-bold text-slate-400 hover:text-white transition-colors hover:text-[#CCFF00] hover:drop-shadow-[0_0_8px_#CCFF00]" href="#">Community</a>
+<a class="font-['Space_Grotesk'] uppercase tracking-widest text-sm font-bold text-slate-400 hover:text-white transition-colors hover:text-[#CCFF00] hover:drop-shadow-[0_0_8px_#CCFF00]" href="#">Support</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="font-['Space_Grotesk'] uppercase tracking-widest text-sm font-bold text-slate-400 hover:text-[#CCFF00] transition-all duration-300 ease-out active:scale-95">Login</button>
+<button class="bg-[#CCFF00] text-black font-['Space_Grotesk'] uppercase tracking-widest text-sm font-bold px-6 py-2 rounded-none transition-all duration-300 ease-out active:scale-95 hover:drop-shadow-[0_0_12px_#CCFF00]">Register</button>
+</div>
+</nav>
+<!-- Hero Section / Gallery -->
+<header class="relative w-full h-[716px] overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover opacity-60" data-alt="A cinematic wide shot of a futuristic cyberpunk cityscape at night, featuring towering skyscrapers with vibrant neon holographic advertisements in Cyber Lime and magenta. The atmosphere is dense with a digital haze, and flying vehicles leave streaks of light across the dark charcoal sky. The overall aesthetic is high-contrast, technical, and atmospheric, perfectly capturing the nocturnal energy of a premium sci-fi gaming world." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgFS4Ud7EwrXTMha8nx1HTeAo1aHCTB-ppaguNyDwfAIXVsjeYJ8opu1G4mZocNTcgtuFkoNcTnvku7sOYKSEaKs2QAgQeZmCBbaFlsQ-U-N1tzbT_nTCSNNui4rd5TGdmzAMhoXMnaOPALoR1uGlq6hTjGYmnADEqUaxFgSeewgOLBSar2cAFW_8lTNEErQiEIHpnsh43IsmA5zNYpdMdHz8kqE4QeBQ9XaqnCZjYwbCId_XwVUYEmLbS490H8QJsHH9nvhpINusY"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+</div>
+<div class="relative z-10 h-full flex flex-col justify-end px-12 pb-16 max-w-7xl mx-auto w-full">
+<div class="inline-block px-3 py-1 mb-4 border border-[#CCFF00] text-[#CCFF00] font-label-caps text-label-caps uppercase tracking-widest bg-[#CCFF00]/10">
+                LATEST_RELEASE
+            </div>
+<h1 class="font-display-xl text-display-xl text-white mb-4 uppercase italic">SHADOW_PROTOCOL: ZERO</h1>
+<div class="flex gap-4 items-center">
+<button class="flex items-center gap-2 px-8 py-4 bg-[#CCFF00] text-black font-headline-md text-body-md font-black uppercase tracking-tighter neon-glow active:scale-95 transition-all">
+<span class="material-symbols-outlined" data-icon="play_arrow">play_arrow</span>
+                    WATCH TRAILER
+                </button>
+<div class="flex gap-2">
+<div class="w-20 h-12 border border-white/20 glass-panel cursor-pointer hover:border-[#CCFF00] transition-colors">
+<img class="w-full h-full object-cover" data-alt="A close-up shot of a high-tech tactical helmet glowing with internal Cyber Lime interface displays. The surface is matte charcoal with sharp geometric lines and slight mechanical weathering, suggesting intense combat use in a futuristic setting. The lighting is low-key with intense neon accents highlighting the technical precision." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6tgM2gzjgIzF6cz6oKyIXVtmbctZ20VcmAfQOok8vjyoNnPW9a2HIgjpOMXjfCrJ3sxhxfMglczOe675NvLtuaZWMSVBN819rWM7tHIeBQCkhnfXucJvqLRwE0qAZJ8B-au_WZAd7iZQcXwAePgkpd59jrIrHaV_9zr6VXBHZXZwHJTnKwStphAnYQuuiHu0bmOVDuAUZL_YRqA5FnhPn9kcEFUVpWp5hU6Z-AIewBVVEXxiQlxs0DkVzMTM1FOYuXloN2n6F7JLF"/>
+</div>
+<div class="w-20 h-12 border border-white/20 glass-panel cursor-pointer hover:border-[#CCFF00] transition-colors">
+<img class="w-full h-full object-cover" data-alt="A wide-angle perspective of a glowing server room filled with rows of advanced computer hardware emitting a soft blue and lime green pulse. The floor is reflective black glass, creating deep mirrored depths. The scene conveys a sense of immense digital power and technical mastery within a high-octane cyber environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBFs2DtmOYESCfTqoR6LI8YPKS6c4rNMcwowrzNxXVVVt9lbdySsduZ2w_iQL6BYHqpmFXl_0-DzUCK3WRIbweQU-Gmgr8bz8nRI082pio4RI0iG8S5Y9lt2NdKWFABLL9QfRqWXLWhR53hiL3Aejc744zYdpvH_PTwUDyO5js_IRAin48UzAIfTR8SSmweDLarkY7IYvuQmyNhXVoUJx-wz0ryO2VgK6vtlvuQlWSG_VmgEmNfAzCO5AUBP-W1svZ9p-andA9DO25"/>
+</div>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-12 py-20 grid grid-cols-12 gap-12">
+<!-- Left Column: Main Content -->
+<div class="col-span-12 lg:col-span-8 space-y-16">
+<!-- Description -->
+<section class="space-y-6">
+<h2 class="font-headline-lg text-headline-lg text-white flex items-center gap-4">
+<span class="w-2 h-10 bg-[#CCFF00]"></span>
+                    THE MISSION
+                </h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+                    Step into the digital shadows as a tier-one operative in <span class="text-[#CCFF00] font-bold">SHADOW_PROTOCOL: ZERO</span>. Navigate through hyper-dense urban sprawls, infiltrating high-security data hubs and executing precise tactical strikes. The world is a grid of information, and you are the ultimate ghost in the machine. Experience the evolution of competitive stealth-action with real-time reactive environments and high-fidelity ray-traced visuals.
+                </p>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+                    Your every choice ripples through the city's network. Sabotage rival factions, build your custom arsenal of experimental tech, and dominate the global leaderboards in our high-stakes multiplayer arena.
+                </p>
+</section>
+<!-- CTA Section -->
+<section class="glass-panel border border-white/10 relative overflow-hidden group p-6 md:p-10">
+<div class="absolute -right-20 -top-20 w-64 h-64 bg-[#CCFF00]/10 rounded-full blur-3xl group-hover:bg-[#CCFF00]/20 transition-all duration-700"></div>
+<div class="relative z-10 flex flex-col md:flex-row justify-between items-center gap-8 flex-wrap"><div>
+<h3 class="font-headline-md text-headline-md text-white mb-2">SYSTEM_ENTRY_PERMIT</h3>
+<p class="text-slate-400 font-label-caps">FULL ACCESS // SEASON ONE INCLUDED</p>
+</div>
+<div class="flex flex-col sm:flex-row items-center gap-6 flex-wrap justify-center md:justify-end sm:gap-8 lg:gap-12">
+<div class="flex flex-col items-center sm:items-end">
+<span class="text-slate-500 line-through text-sm font-label-caps">$69.99</span>
+<span class="text-white font-headline-lg text-headline-lg leading-none">$54.99</span>
+</div>
+<button class="bg-[#CCFF00] text-black px-12 py-5 font-headline-md text-body-md font-black uppercase tracking-tight neon-glow transition-all active:scale-95 whitespace-nowrap absolute bottom-6 right-6 md:bottom-10 md:right-10">
+                            PURCHASE_NOW
+                        </button>
+</div></div>
+</section>
+<!-- System Requirements -->
+<section class="space-y-8">
+<h2 class="font-headline-lg text-headline-lg text-white">TECH_SPECS</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="glass-panel p-6 border-l-2 border-l-[#CCFF00]">
+<h4 class="font-label-caps text-white mb-4">MINIMUM_LINK</h4>
+<ul class="space-y-3 text-slate-400 text-sm">
+<li class="flex justify-between border-b border-white/5 pb-2"><span>OS:</span> <span class="text-white">Windows 10 64-bit</span></li>
+<li class="flex justify-between border-b border-white/5 pb-2"><span>CPU:</span> <span class="text-white">Intel i5-8400 / Ryzen 5 2600</span></li>
+<li class="flex justify-between border-b border-white/5 pb-2"><span>RAM:</span> <span class="text-white">12 GB</span></li>
+<li class="flex justify-between"><span>GPU:</span> <span class="text-white">GTX 1060 / RX 580</span></li>
+</ul>
+</div>
+<div class="glass-panel p-6 border-l-2 border-l-[#CCFF00] shadow-[0_0_20px_rgba(204,255,0,0.1)]">
+<h4 class="font-label-caps text-[#CCFF00] mb-4">RECOMMENDED_LINK</h4>
+<ul class="space-y-3 text-slate-400 text-sm">
+<li class="flex justify-between border-b border-white/5 pb-2"><span>OS:</span> <span class="text-white">Windows 11 64-bit</span></li>
+<li class="flex justify-between border-b border-white/5 pb-2"><span>CPU:</span> <span class="text-white">Intel i7-12700K / Ryzen 7 5800X</span></li>
+<li class="flex justify-between border-b border-white/5 pb-2"><span>RAM:</span> <span class="text-white">32 GB</span></li>
+<li class="flex justify-between"><span>GPU:</span> <span class="text-white">RTX 3080 / RX 6800 XT</span></li>
+</ul>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Sidebar Stats -->
+<aside class="col-span-12 lg:col-span-4 space-y-8">
+<div class="glass-panel p-8 border border-white/10 space-y-8">
+<div class="space-y-4">
+<h3 class="font-label-caps text-slate-500 uppercase">RELEASE_DATE</h3>
+<p class="text-white font-headline-md text-headline-md">OCT 24, 2024</p>
+</div>
+<div class="space-y-4">
+<h3 class="font-label-caps text-slate-500 uppercase">GENRE_CLASSIFICATION</h3>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 border border-white/20 text-xs font-label-caps text-white">STEALTH</span>
+<span class="px-3 py-1 border border-white/20 text-xs font-label-caps text-white">TACTICAL</span>
+<span class="px-3 py-1 border border-white/20 text-xs font-label-caps text-white">CYBERPUNK</span>
+</div>
+</div>
+<div class="space-y-4">
+<h3 class="font-label-caps text-slate-500 uppercase">RATING_ANALYSIS</h3>
+<div class="flex items-center gap-4">
+<div class="text-4xl font-black text-[#CCFF00]">9.4</div>
+<div class="flex flex-col">
+<div class="flex text-[#CCFF00]">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0.5;">star_half</span>
+</div>
+<span class="text-xs text-slate-500">FROM 12,400 AGENTS</span>
+</div>
+</div>
+</div>
+<div class="space-y-4 pt-8 border-t border-white/5">
+<div class="flex justify-between items-center">
+<span class="text-slate-500 font-label-caps">DEVELOPER</span>
+<span class="text-white font-bold">NEON_LABS</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-slate-500 font-label-caps">PUBLISHER</span>
+<span class="text-white font-bold">NEON_PUBLISH</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-slate-500 font-label-caps">PLATFORMS</span>
+<div class="flex gap-2">
+<span class="material-symbols-outlined text-white text-sm" data-icon="desktop_windows">desktop_windows</span>
+<span class="material-symbols-outlined text-white text-sm" data-icon="videogame_asset">videogame_asset</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Social/Share -->
+<div class="flex gap-4">
+<button class="flex-1 py-4 border border-white/10 glass-panel hover:border-[#CCFF00] hover:text-[#CCFF00] transition-all flex justify-center items-center">
+<span class="material-symbols-outlined" data-icon="share">share</span>
+</button>
+<button class="flex-1 py-4 border border-white/10 glass-panel hover:border-[#CCFF00] hover:text-[#CCFF00] transition-all flex justify-center items-center">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+</button>
+</div>
+</aside>
+</main>
+<!-- High-Engagement Comment Area -->
+<section class="max-w-7xl mx-auto px-12 pb-32">
+<div class="flex items-center justify-between mb-12">
+<h2 class="font-headline-lg text-headline-lg text-white">COMM_LOGS</h2>
+<div class="flex items-center gap-4 text-slate-500 font-label-caps">
+<span>SORT BY:</span>
+<button class="text-[#CCFF00]">TOP_PRIORITY</button>
+<button class="hover:text-white">RECENT_UPLOADS</button>
+</div>
+</div>
+<div class="space-y-8">
+<!-- Comment Input -->
+<div class="glass-panel p-6 border-b-2 border-b-[#CCFF00]">
+<div class="flex gap-6">
+<div class="w-12 h-12 bg-slate-800 rounded-none border border-white/20 flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="A profile portrait of a modern user with digital glowing light reflected on their face, set against a dark, minimalist backdrop. The aesthetic is clean and high-tech, using cool tones and sharp focus to suggest a professional gaming identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXcG8XLJEuoPdL7GB31Ba699N96hKvf_rXnL6ACxMkzvTm_4L0rzLQAZ5nPJTeapp-2BHCjk1TpHoYK7wh7ps-zgNp_Cc_-9r0WuQWFprYN9wSDNOoS7M3ATG3ousQo9IKy7COF2aBtKrvwi6jyTtQlCyTwwjsR3h_oc6fHsLzoV0EXtpRPeQ2aPL7MoVxfUouSF98mSzLQtyBFKvX6R2jNbJHHrKBvD4DJ1kWNcMopigQtmGhwiyJZ-npvguLz608kJXpvGvZVRaw"/>
+</div>
+<div class="flex-1 space-y-4">
+<textarea class="w-full bg-slate-900/50 border-none border-b border-white/10 focus:ring-0 focus:border-[#CCFF00] text-on-surface placeholder:text-slate-600 font-body-md min-h-[100px]" placeholder="INPUT DATA..."></textarea>
+<div class="flex justify-end">
+<button class="bg-[#CCFF00] text-black px-6 py-2 font-label-caps text-xs hover:scale-105 transition-transform">TRANSMIT_COMMENT</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Comment Threads -->
+<div class="space-y-6">
+<!-- Comment 1 -->
+<div class="glass-panel p-6 border border-white/5 space-y-4">
+<div class="flex justify-between items-start">
+<div class="flex gap-4">
+<div class="w-10 h-10 bg-slate-800 border border-white/10">
+<img class="w-full h-full object-cover" data-alt="A portrait of a male gamer with intense focus, illuminated by Cyber Lime and deep violet neon lights from his screen. He wears high-end gaming headphones and the overall style is moody and high-contrast, fitting for a competitive digital environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcLdom0deIV0lkeiPYWj5tXKBPkk-ErIUDVmQ6v_alM1EGwyzzrw1KrvTzM39kZb3Dup6tDluHdzRdAIPYK2_Od2kWcKQwsVPl8MkI04oQOZnhNESL_XweabfKFxj4YujoaSN0e-FBglfaXayC3clieJo-fk39tJQEv82BEieXOkmPwLd8L21mM0BYoMYV0XhjydHeBNDcJ74iMcmzNrCji8VPyS6M2FVwgAeoTSVYJXzY3Ng-8TVqS65VarrH47zQgQyNGkiqDQRC"/>
+</div>
+<div>
+<h5 class="text-white font-bold flex items-center gap-2">
+                                    V0ID_WALKER <span class="text-[#CCFF00] text-[10px] px-1 border border-[#CCFF00]/30 font-label-caps">VETERAN</span>
+</h5>
+<p class="text-slate-500 text-xs">2 HOURS AGO</p>
+</div>
+</div>
+<div class="flex gap-4 text-slate-500">
+<button class="hover:text-[#CCFF00] flex items-center gap-1"><span class="material-symbols-outlined text-sm" data-icon="thumb_up">thumb_up</span> 1.2k</button>
+<button class="hover:text-error flex items-center gap-1"><span class="material-symbols-outlined text-sm" data-icon="thumb_down">thumb_down</span> 12</button>
+</div>
+</div>
+<p class="text-on-surface-variant font-body-md pl-14">
+                        The ray-tracing on the rainy neon puddles is absolutely insane. Best stealth implementation since the original infiltration games. Can't wait for the competitive season to drop!
+                    </p>
+<div class="pl-14">
+<button class="text-[#CCFF00] font-label-caps text-[10px] flex items-center gap-2 hover:underline">
+<span class="material-symbols-outlined text-xs" data-icon="reply">reply</span> REPLY_SECURELY
+                        </button>
+</div>
+</div>
+<!-- Comment 2 -->
+<div class="glass-panel p-6 border border-white/5 space-y-4">
+<div class="flex justify-between items-start">
+<div class="flex gap-4">
+<div class="w-10 h-10 bg-slate-800 border border-white/10">
+<img class="w-full h-full object-cover" data-alt="A profile portrait of a female digital strategist with a minimalist aesthetic. She is bathed in a soft glow of white and Cyber Lime light, creating a professional yet technologically advanced look against a charcoal background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLp8IIArbBbfDJZfEkPIP0vjlb4sTY3BNkEDA6_YbnS7HwRxyntFtphJLiX_ul6HUsakJGIf5mFElelYkCoj3fj1IPcLP2ZxdcfK7ROkzX3bP2BWNeFkWBVCvT65jIT17HBEUxz_F4eceNVYRSb_zDoMvUe5ke76a_piz8Ti-5EHoyX_kkws7czPSNKIxQ3ClUZ9puAvADsgyjn5rx1-mLpQGUabec_FBfzuj6k7Odc5FxlVCqUP47jXtSXn3PCJqekmQqAcBXX7h6"/>
+</div>
+<div>
+<h5 class="text-white font-bold flex items-center gap-2">
+                                    NEON_QUEEN <span class="text-secondary text-[10px] px-1 border border-secondary/30 font-label-caps">PRO</span>
+</h5>
+<p class="text-slate-500 text-xs">5 HOURS AGO</p>
+</div>
+</div>
+<div class="flex gap-4 text-slate-500">
+<button class="hover:text-[#CCFF00] flex items-center gap-1"><span class="material-symbols-outlined text-sm" data-icon="thumb_up">thumb_up</span> 840</button>
+<button class="hover:text-error flex items-center gap-1"><span class="material-symbols-outlined text-sm" data-icon="thumb_down">thumb_down</span> 3</button>
+</div>
+</div>
+<p class="text-on-surface-variant font-body-md pl-14">
+                        Are we getting a collectors edition physical release? The art book would be incredible based on the concept art we've seen so far.
+                    </p>
+<div class="pl-14">
+<button class="text-[#CCFF00] font-label-caps text-[10px] flex items-center gap-2 hover:underline">
+<span class="material-symbols-outlined text-xs" data-icon="reply">reply</span> REPLY_SECURELY
+                        </button>
+</div>
+</div>
+</div>
+<div class="flex justify-center pt-8">
+<button class="font-label-caps text-slate-400 hover:text-white transition-colors flex items-center gap-2 border-b border-white/10 pb-1">
+                    LOAD_MORE_LOGS <span class="material-symbols-outlined text-xs" data-icon="expand_more">expand_more</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-slate-950 w-full py-12 border-t border-white/5 opacity-80 hover:opacity-100 transition-all">
+<div class="flex flex-col md:flex-row justify-between items-center px-12 max-w-7xl mx-auto space-y-8 md:space-y-0">
+<div class="flex flex-col items-center md:items-start gap-4">
+<span class="text-[#CCFF00] font-bold text-lg font-['Space_Grotesk']">NEON_PUBLISH</span>
+<p class="font-['Space_Grotesk'] text-[10px] tracking-widest text-slate-500 uppercase">© 2024 NEON_PUBLISH. SYSTEM_READY.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="font-['Space_Grotesk'] text-[10px] tracking-widest text-slate-600 hover:text-[#CCFF00] transition-colors uppercase" href="#">Terms of Service</a>
+<a class="font-['Space_Grotesk'] text-[10px] tracking-widest text-slate-600 hover:text-[#CCFF00] transition-colors uppercase" href="#">Privacy Protocol</a>
+<a class="font-['Space_Grotesk'] text-[10px] tracking-widest text-slate-600 hover:text-[#CCFF00] transition-colors uppercase" href="#">Developer API</a>
+<a class="font-['Space_Grotesk'] text-[10px] tracking-widest text-slate-600 hover:text-[#CCFF00] transition-colors uppercase" href="#">Contact Console</a>
+</div>
+</div>
+</footer>
+</body></html>

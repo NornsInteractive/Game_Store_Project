@@ -1,0 +1,49 @@
+<div class="mb-8">
+  <h1 class="font-headline-lg text-headline-lg text-white uppercase italic">Comment_Moderation</h1>
+  <p class="text-slate-400 mt-1"><%= total %> flagged comments pending review.</p>
+</div>
+
+<% if (comments && comments.length > 0) { %>
+<div class="space-y-4">
+  <% comments.forEach(function(c) { %>
+  <div class="glass-card p-5 border-l-2 <%= c.flag_severity === 'critical' ? 'border-l-red-500' : c.flag_severity === 'high' ? 'border-l-orange-500' : 'border-l-yellow-500' %>">
+    <div class="flex items-start justify-between mb-3">
+      <div class="flex items-center space-x-3">
+        <div class="w-8 h-8 rounded-full bg-surface-container-high overflow-hidden">
+          <% if (c.avatar) { %><img src="<%= c.avatar %>" alt="" class="w-full h-full object-cover"/><% } %>
+        </div>
+        <div>
+          <span class="text-white font-['Space_Grotesk'] font-bold text-sm"><%= c.username %></span>
+          <span class="text-slate-500 text-xs ml-2"><%= new Date(c.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) %></span>
+        </div>
+      </div>
+      <div class="flex items-center space-x-2">
+        <span class="text-xs font-['Space_Grotesk'] uppercase tracking-wider px-2 py-0.5 bg-red-500/20 text-red-400"><%= c.flag_severity %></span>
+        <span class="text-xs font-['Space_Grotesk'] uppercase tracking-wider px-2 py-0.5 bg-surface-container-high text-slate-400"><%= c.target_type %>: <%= c.target_title %></span>
+      </div>
+    </div>
+    <p class="text-on-surface-variant text-sm font-['Inter'] mb-2"><%= c.content %></p>
+    <% if (c.flag_reason) { %>
+    <p class="text-slate-500 text-xs italic mb-3">Reason: <%= c.flag_reason %></p>
+    <% } %>
+    <div class="flex items-center space-x-3 pt-2 border-t border-white/5">
+      <form method="POST" action="/admin/comments/<%= c.id %>/hide" class="inline">
+        <button type="submit" class="text-yellow-400 hover:text-yellow-300 text-xs font-['Space_Grotesk'] uppercase tracking-wider">Hide</button>
+      </form>
+      <form method="POST" action="/admin/comments/<%= c.id %>/unflag" class="inline">
+        <button type="submit" class="text-[#CCFF00] hover:text-white text-xs font-['Space_Grotesk'] uppercase tracking-wider">Clear Flag</button>
+      </form>
+      <form method="POST" action="/admin/comments/<%= c.id %>/remove" class="inline" onsubmit="return confirm('Permanently delete this comment?')">
+        <button type="submit" class="text-red-400 hover:text-red-300 text-xs font-['Space_Grotesk'] uppercase tracking-wider">Remove</button>
+      </form>
+    </div>
+  </div>
+  <% }) %>
+</div>
+<%- include('../../partials/pagination', { page: page, pages: pages, query: {} }) %>
+<% } else { %>
+<div class="glass-card p-12 text-center">
+  <span class="material-symbols-outlined text-6xl text-slate-600 mb-4">check_circle</span>
+  <p class="text-slate-400 font-body-lg">All clear. No flagged comments.</p>
+</div>
+<% } %>

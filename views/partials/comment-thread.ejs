@@ -1,0 +1,41 @@
+<% function renderComment(c) { %>
+<div class="<%= c.parent_id ? 'ml-6 pl-4 border-l border-white/10' : '' %> mb-4">
+  <div class="glass-card p-4">
+    <div class="flex items-start space-x-3">
+      <div class="w-8 h-8 rounded-full bg-surface-container-high overflow-hidden flex-shrink-0">
+        <% if (c.avatar) { %><img src="<%= c.avatar %>" alt="" class="w-full h-full object-cover"/><% } %>
+      </div>
+      <div class="flex-1 min-w-0">
+        <div class="flex items-center space-x-2 mb-1">
+          <span class="text-white font-['Space_Grotesk'] font-bold text-sm"><%= c.username %></span>
+          <% if (c.role === 'admin') { %><span class="text-[10px] bg-[#e9b3ff]/20 text-[#e9b3ff] px-1.5 py-0.5 font-['Space_Grotesk'] uppercase tracking-wider">Admin</span><% } %>
+          <span class="text-slate-500 text-xs"><%= new Date(c.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) %></span>
+        </div>
+        <p class="text-on-surface-variant text-sm font-['Inter'] leading-relaxed"><%= c.content %></p>
+        <div class="flex items-center space-x-4 mt-3">
+          <button class="comment-vote flex items-center space-x-1 text-xs font-['Space_Grotesk'] uppercase tracking-wider font-bold transition-colors <%= (userVotes && userVotes[c.id] === 1) ? 'text-[#CCFF00]' : 'text-slate-500 hover:text-[#CCFF00]' %>" data-comment-id="<%= c.id %>" data-vote="1">
+            <span class="material-symbols-outlined text-sm">arrow_upward</span>
+            <span class="upvote-count"><%= c.upvotes || 0 %></span>
+          </button>
+          <button class="comment-vote flex items-center space-x-1 text-xs font-['Space_Grotesk'] uppercase tracking-wider font-bold transition-colors <%= (userVotes && userVotes[c.id] === -1) ? 'text-[#ffb4ab]' : 'text-slate-500 hover:text-[#ffb4ab]' %>" data-comment-id="<%= c.id %>" data-vote="-1">
+            <span class="material-symbols-outlined text-sm">arrow_downward</span>
+            <span class="downvote-count"><%= c.downvotes || 0 %></span>
+          </button>
+          <button class="comment-reply text-slate-500 hover:text-white text-xs font-['Space_Grotesk'] uppercase tracking-wider font-bold transition-colors" data-comment-id="<%= c.id %>">
+            <span class="material-symbols-outlined text-sm">reply</span> Reply
+          </button>
+          <button class="comment-flag text-slate-600 hover:text-[#e9b3ff] text-xs font-['Space_Grotesk'] uppercase tracking-wider font-bold transition-colors" data-comment-id="<%= c.id %>">
+            <span class="material-symbols-outlined text-sm">flag</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% if (c.replies && c.replies.length > 0) { c.replies.forEach(r => renderComment(r)); } %>
+</div>
+<% } %>
+<% if (comments && comments.length > 0) { %>
+  <% comments.forEach(c => renderComment(c)); %>
+<% } else { %>
+  <p class="text-slate-500 text-sm font-['Inter'] italic">No comments yet. Be the first to engage.</p>
+<% } %>

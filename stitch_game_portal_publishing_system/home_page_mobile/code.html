@@ -1,0 +1,292 @@
+<html class="dark"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(29, 31, 40, 0.4);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-left: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .neon-glow {
+            box-shadow: 0 0 15px rgba(204, 255, 0, 0.3);
+        }
+        .neon-glow-hover:hover {
+            box-shadow: 0 0 25px rgba(204, 255, 0, 0.6);
+        }
+        .rim-light {
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-tint": "#abd600",
+                        "inverse-surface": "#e1e1ed",
+                        "outline-variant": "#444933",
+                        "surface-container": "#1d1f28",
+                        "primary-container": "#c3f400",
+                        "surface-container-low": "#191b23",
+                        "primary-fixed": "#c3f400",
+                        "on-primary": "#283500",
+                        "inverse-on-surface": "#2e3039",
+                        "surface-container-high": "#282a32",
+                        "on-tertiary-container": "#606470",
+                        "on-background": "#e1e1ed",
+                        "on-primary-fixed": "#161e00",
+                        "tertiary": "#ffffff",
+                        "on-surface": "#e1e1ed",
+                        "on-primary-fixed-variant": "#3c4d00",
+                        "on-tertiary": "#2c303a",
+                        "surface": "#11131b",
+                        "background": "#11131b",
+                        "surface-container-highest": "#33343d",
+                        "secondary-fixed": "#f6d9ff",
+                        "on-secondary": "#510074",
+                        "tertiary-fixed": "#dfe2ef",
+                        "surface-container-lowest": "#0c0e16",
+                        "secondary": "#e9b3ff",
+                        "tertiary-fixed-dim": "#c3c6d3",
+                        "inverse-primary": "#506600",
+                        "error": "#ffb4ab",
+                        "on-tertiary-fixed": "#181b25",
+                        "surface-dim": "#11131b",
+                        "primary-fixed-dim": "#abd600",
+                        "error-container": "#93000a",
+                        "on-error": "#690005",
+                        "on-error-container": "#ffdad6",
+                        "on-surface-variant": "#c4c9ac",
+                        "on-secondary-fixed-variant": "#7200a3",
+                        "on-secondary-container": "#e5a9ff",
+                        "tertiary-container": "#dfe2ef",
+                        "on-secondary-fixed": "#310048",
+                        "surface-bright": "#373942",
+                        "on-primary-container": "#556d00",
+                        "secondary-container": "#7d01b1",
+                        "secondary-fixed-dim": "#e9b3ff",
+                        "on-tertiary-fixed-variant": "#434751",
+                        "surface-variant": "#33343d",
+                        "primary": "#ffffff",
+                        "outline": "#8e9379"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["Space Grotesk"],
+                        "headline-md": ["Space Grotesk"],
+                        "headline-lg": ["Space Grotesk"],
+                        "body-lg": ["Inter"],
+                        "display-xl": ["Space Grotesk"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["14px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                        "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "headline-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "display-xl": ["72px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md selection:bg-surface-tint selection:text-black">
+<!-- Mobile Top Navigation Shell -->
+<nav class="fixed top-0 w-full z-50 bg-slate-950/60 backdrop-blur-2xl border-b border-white/10 flex justify-between items-center px-6 py-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary-fixed" style="font-variation-settings: 'FILL' 1;">menu</span>
+<span class="text-xl font-black italic tracking-tighter text-[#CCFF00] drop-shadow-[0_0_8px_rgba(204,255,0,0.5)] font-headline-md">CYBER_VELOCITY</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-slate-400">search</span>
+<span class="material-symbols-outlined text-slate-400">account_circle</span>
+</div>
+</nav>
+<main class="pt-20 pb-12 px-4 flex flex-col gap-8">
+<!-- Hero Banner Section -->
+<section class="w-full relative rounded-lg overflow-hidden glass-card aspect-[16/9] flex flex-col justify-end p-6 border border-white/10 group">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A high-intensity cinematic gaming scene featuring a futuristic racing car drifting through a rain-slicked neon metropolis. The atmosphere is charged with electric blues and vibrant cyber lime light trails. Deep charcoal and navy shadows provide high contrast, with rain droplets reflecting the glowing city lights. The shot is low-angle, emphasizing speed and digital mastery in a modern cyber aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXd5Xy7hOYRcm2HGn2I8rIFUPce4v3A1ZR4fDPzQHdUGfaC7ewACqVO_NlfhIeCzauMF5L5gIc2uf8HKomPZ0l5ULLoc-yIi30ZOH4631YTsfqYWxiLzv-vDbxyyt_qMteO6pTa_r_0qbVv2E-lWwXxb3k06HdBluif7rNdZgdMS65f8Avsp3w2hU_LU-2J16r4Yv1FCGh7GuWObayq9Ln_v-oUIYM4tbxJlNHrzMmciMRw4YQWlVZFT5oUSE-5UHxZCd1CUi3y9_e"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent"></div>
+</div>
+<div class="relative z-10 flex flex-col gap-3">
+<div class="flex gap-2">
+<span class="bg-[#CCFF00] text-black px-2 py-1 font-label-caps text-[10px] rounded-sm neon-glow">NEW SEASON</span>
+</div>
+<h1 class="font-headline-lg text-3xl text-white tracking-tight uppercase">VELOCITY_ZERO: OVERDRIVE</h1>
+<p class="font-body-md text-slate-300 text-sm line-clamp-2 max-w-xs">Join the squad in the ultimate high-octane cyber race through the neon wastes.</p>
+<button class="bg-[#CCFF00] text-black py-3 px-6 rounded-sm font-label-caps text-center mt-2 neon-glow-hover transition-all active:scale-95 uppercase">JOIN_SQUAD</button>
+</div>
+</section>
+<!-- Search & Filter Bar (Mobile Optimized) -->
+<div class="flex flex-col gap-4">
+<div class="relative">
+<input class="w-full bg-surface-container-low border-b border-white/10 py-3 px-4 focus:border-[#CCFF00] focus:ring-0 outline-none transition-all font-label-caps text-sm" placeholder="SEARCH PROTOCOLS..." type="text"/>
+<span class="material-symbols-outlined absolute right-4 top-3 text-slate-500">search</span>
+</div>
+<div class="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
+<span class="bg-primary-fixed text-black px-4 py-1.5 font-label-caps text-xs rounded-sm whitespace-nowrap">ALL_GAMES</span>
+<span class="border border-white/10 text-slate-400 px-4 py-1.5 font-label-caps text-xs rounded-sm whitespace-nowrap">INDIE</span>
+<span class="border border-white/10 text-slate-400 px-4 py-1.5 font-label-caps text-xs rounded-sm whitespace-nowrap">ESPORTS</span>
+<span class="border border-white/10 text-slate-400 px-4 py-1.5 font-label-caps text-xs rounded-sm whitespace-nowrap">VR_SIM</span>
+</div>
+</div>
+<!-- Vertical Game Stack -->
+<div class="flex flex-col gap-6">
+<h2 class="font-headline-md text-xl text-white tracking-widest border-l-2 border-[#CCFF00] pl-3 uppercase">TRENDING_OPERATIONS</h2>
+<!-- Game Card 1 -->
+<div class="glass-card rounded-lg overflow-hidden flex flex-col border border-white/5">
+<div class="h-48 w-full relative">
+<img class="w-full h-full object-cover" data-alt="Close-up of a high-tech tactical visor reflecting a digital HUD in a dark, gritty environment. The lighting is dominated by sharp crimson and neon green accents. The visual style is blueprint-inspired with technical precision. The mood is tense and immersive, suggesting a high-stakes competitive esports setting with deep shadows and metallic textures." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAniz1ZRugLrjeDQrYvu1-2-o86QVBIfwwfVrfjGvZSlLtLSbcBAsevgzV7bA-FDgFY06HyZTxP8ghkWKY8Emd-4_1nt6fJTc-rlGku6eBWUq-QSvPoEy4D-InmclfvbIRJKZhZFwogyQIB8JFye7z-Y8wgaZGDQ5NsSZo6KR3FyjFWoPJKMP8zBR6aq2jbYDcJLjFBZPuN_DXMD2wZYxoZo1i9IkCS40vlYOKjSEM_WTAl6TuVDIRgd42ojHdP07QrPtdetkckYd9e"/>
+<div class="absolute top-4 right-4 bg-slate-900/80 backdrop-blur-md px-3 py-1 rounded-sm border border-white/10">
+<span class="text-[#CCFF00] font-label-caps text-xs">PRO_TIER</span>
+</div>
+</div>
+<div class="p-5 flex flex-col gap-3">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-headline-md text-lg text-white uppercase tracking-tight">KINETIC_STRIKE</h3>
+<p class="font-label-caps text-[10px] text-slate-500">ACTION // MULTIPLAYER</p>
+</div>
+<span class="material-symbols-outlined text-[#CCFF00]">bolt</span>
+</div>
+<div class="flex items-center gap-4 pt-2 border-t border-white/5">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-slate-400">group</span>
+<span class="font-label-caps text-[10px] text-slate-400">14.2K LIVE</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-slate-400">star</span>
+<span class="font-label-caps text-[10px] text-slate-400">4.9 RATING</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Game Card 2 -->
+<div class="glass-card rounded-lg overflow-hidden flex flex-col border border-white/5">
+<div class="h-48 w-full relative">
+<img class="w-full h-full object-cover" data-alt="Isometric view of a complex digital circuit board glowing with pulsating violet and cyan energy. The aesthetic is clean and futuristic, evoking high-end gaming hardware and digital construction. Soft bloom effects emanate from the power tracks. The mood is sophisticated and technical, utilizing a palette of deep blacks and electric neon tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOsD1r6RL6ATKCCyROklwnrNBEikyBSrZSjMCCNx20DFYuz2-O4XtulSmqG7DXR5VoALa_D0DaWKIyUIWIasXQhdaXICkyZSmrpRXPzo9B06YYm10iDt-J8Gb2tiKcxmAjFpmtvJJ-AChNHZa9A7jPks124uwIiWosr3IQZppSpSTXntWRKEJPfghSsewHFXoYL2rBzB9PA33-MipmAMEmhi3KkSyBe6tIh9FqTRubiqsPA60jf5ZoXbbdA1ZzuRKnI84m5cyRZH9K"/>
+<div class="absolute top-4 right-4 bg-[#CCFF00] px-3 py-1 rounded-sm">
+<span class="text-black font-label-caps text-xs">NEW</span>
+</div>
+</div>
+<div class="p-5 flex flex-col gap-3">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-headline-md text-lg text-white uppercase tracking-tight">SILICON_DREAMS</h3>
+<p class="font-label-caps text-[10px] text-slate-500">RPG // INDIE</p>
+</div>
+<span class="material-symbols-outlined text-[#CCFF00]">memory</span>
+</div>
+<div class="flex items-center gap-4 pt-2 border-t border-white/5">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-slate-400">group</span>
+<span class="font-label-caps text-[10px] text-slate-400">3.8K LIVE</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-slate-400">star</span>
+<span class="font-label-caps text-[10px] text-slate-400">4.7 RATING</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Game Card 3 -->
+<div class="glass-card rounded-lg overflow-hidden flex flex-col border border-white/5">
+<div class="h-48 w-full relative">
+<img class="w-full h-full object-cover" data-alt="A first-person perspective inside a futuristic VR flight simulator cockpit. The displays are vibrant with cyber lime telemetry and radar data. Outside the canopy, a dark starlit nebula with purple clouds is visible. The lighting within the cockpit is dim with sharp rim lighting on the controls. The mood is immersive, high-tech, and nocturnal." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzng23F1EnfZpoULIN9pqJ8rp1j43djHPCGFhoUz5Cq9SKFiNTV9znNX59MYD5fGUQtucAMyFPFJFINn_CzDDe7zgKGmrMsSiO-UzBBgBPgV0sd7jCinX6jIweAIJnypPTPlRYrkF50YTOGs-vrLIkA6lFJH4APIR6RRfcSN8Qddx5h6--0YTNdEZihZUnz0ZhrNG3su4ceU5C6JrEkaUGL10eWW6y6cU9Sk4hFcl0A_NL3XqyRVzpTbPW8oetDL1AXsPzcNMpIAeB"/>
+</div>
+<div class="p-5 flex flex-col gap-3">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-headline-md text-lg text-white uppercase tracking-tight">VOID_RUNNER_VR</h3>
+<p class="font-label-caps text-[10px] text-slate-500">VR // SIMULATION</p>
+</div>
+<span class="material-symbols-outlined text-[#CCFF00]">videogame_asset</span>
+</div>
+<div class="flex items-center gap-4 pt-2 border-t border-white/5">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-slate-400">group</span>
+<span class="font-label-caps text-[10px] text-slate-400">8.1K LIVE</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-slate-400">star</span>
+<span class="font-label-caps text-[10px] text-slate-400">4.5 RATING</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Featured Hardware Mini-Section -->
+<section class="mt-8 flex flex-col gap-4">
+<h2 class="font-headline-md text-xl text-white tracking-widest uppercase">GEAR_UP</h2>
+<div class="glass-card p-4 rounded-lg flex items-center gap-4 border border-white/5">
+<div class="w-20 h-20 bg-slate-900 rounded-sm flex items-center justify-center border border-[#CCFF00]/20">
+<span class="material-symbols-outlined text-[#CCFF00] text-3xl">headphones</span>
+</div>
+<div class="flex-1">
+<h4 class="font-label-caps text-sm text-white">VELOCITY_AUDIO_V1</h4>
+<p class="text-xs text-slate-500 font-body-md mt-1">Haptic feedback &amp; Spatial Audio Protocol.</p>
+<div class="mt-2 flex justify-between items-center">
+<span class="text-[#CCFF00] font-headline-md">$299.99</span>
+<span class="material-symbols-outlined text-[#CCFF00] text-sm">arrow_forward</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer Shell -->
+<footer class="bg-slate-950 border-t border-white/10 py-12 px-12 flex flex-col items-center gap-8 text-center">
+<span class="text-lg font-bold text-[#CCFF00] font-headline-md">CYBER_VELOCITY</span>
+<div class="flex flex-wrap justify-center gap-6">
+<a class="font-label-caps text-xs text-slate-500 hover:text-white transition-colors" href="#">Privacy</a>
+<a class="font-label-caps text-xs text-slate-500 hover:text-white transition-colors" href="#">Terms</a>
+<a class="font-label-caps text-xs text-slate-500 hover:text-white transition-colors" href="#">Support</a>
+<a class="font-label-caps text-xs text-slate-500 hover:text-white transition-colors" href="#">Careers</a>
+</div>
+<div class="text-slate-500 font-['Space_Grotesk'] text-[10px] tracking-tight uppercase">
+            © 2024 CYBER_VELOCITY // PROTOCOL_V1.0.4
+        </div>
+</footer>
+<!-- Bottom Navigation (Mobile Only) -->
+<div class="fixed bottom-0 w-full bg-slate-950/80 backdrop-blur-xl border-t border-white/5 flex justify-around items-center py-3 px-6 z-50">
+<div class="flex flex-col items-center gap-1 text-[#CCFF00]">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-caps text-[10px]">HOME</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-slate-500">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-label-caps text-[10px]">EXPLORE</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-slate-500">
+<span class="material-symbols-outlined">sports_esports</span>
+<span class="font-label-caps text-[10px]">SQUAD</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-slate-500">
+<span class="material-symbols-outlined">notifications</span>
+<span class="font-label-caps text-[10px]">ALERTS</span>
+</div>
+</div>
+<!-- Padding for bottom nav -->
+<div class="h-16"></div>
+</body></html>

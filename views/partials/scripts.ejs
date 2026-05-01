@@ -1,0 +1,36 @@
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.comment-vote').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const commentId = btn.dataset.commentId;
+      const vote = btn.dataset.vote;
+      try {
+        const res = await fetch(`/api/comments/${commentId}/vote`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ vote: parseInt(vote) })
+        });
+        const data = await res.json();
+        if (data.action === 'added' || data.action === 'changed' || data.action === 'removed') {
+          location.reload();
+        }
+      } catch (e) { console.error(e); }
+    });
+  });
+  document.querySelectorAll('.comment-flag').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const commentId = btn.dataset.commentId;
+      const reason = prompt('Flag reason (optional):');
+      if (reason === null) return;
+      try {
+        await fetch(`/api/comments/${commentId}/flag`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ reason: reason || '' })
+        });
+        alert('Comment flagged for review.');
+      } catch (e) { console.error(e); }
+    });
+  });
+});
+</script>

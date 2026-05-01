@@ -1,0 +1,22 @@
+<a href="/news/<%= article.slug %>" class="group glass-card block no-underline overflow-hidden transition-all duration-300 hover:border-[#CCFF00]/30">
+  <div class="relative aspect-[16/9] overflow-hidden">
+    <img src="<%= article.thumbnail || '/uploads/thumbnails/default.png' %>" alt="<%= article.title %>" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
+    <div class="absolute inset-0 bg-gradient-to-t from-surface-dim via-transparent to-transparent"></div>
+    <span class="absolute top-3 left-3 cyber-tag"><%= article.category_name || 'News' %></span>
+  </div>
+  <div class="p-5">
+    <h3 class="text-white font-['Space_Grotesk'] font-bold text-lg mb-2 line-clamp-2"><%= article.title %></h3>
+    <p class="text-slate-400 text-sm font-['Inter'] line-clamp-2 mb-3"><%= article.excerpt %></p>
+    <div class="flex items-center justify-between">
+      <div class="flex items-center space-x-2">
+        <div class="w-6 h-6 rounded-full bg-surface-container-high overflow-hidden flex-shrink-0">
+          <% if (article.author_avatar) { %>
+            <img src="<%= article.author_avatar %>" alt="" class="w-full h-full object-cover"/>
+          <% } %>
+        </div>
+        <span class="text-slate-500 text-xs font-['Inter']"><%= article.author_name %></span>
+      </div>
+      <span class="text-slate-600 text-xs"><%= new Date(article.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) %></span>
+    </div>
+  </div>
+</a>

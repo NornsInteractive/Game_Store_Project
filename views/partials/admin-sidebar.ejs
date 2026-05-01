@@ -1,0 +1,38 @@
+<aside class="fixed top-0 left-0 h-screen w-64 bg-surface-container-lowest border-r border-white/10 flex flex-col z-40">
+  <div class="p-6 border-b border-white/10">
+    <a href="/admin" class="text-xl font-black text-[#CCFF00] italic tracking-tighter no-underline">CYBERPULSE</a>
+    <span class="block text-xs text-slate-500 font-['Space_Grotesk'] uppercase tracking-widest mt-1">Admin Command</span>
+  </div>
+  <nav class="flex-1 p-4 space-y-1">
+    <a href="/admin" class="flex items-center space-x-3 px-3 py-2.5 rounded text-sm font-['Space_Grotesk'] uppercase tracking-wider font-bold no-underline transition-all <%= path === '/admin' ? 'bg-[#CCFF00]/10 text-[#CCFF00]' : 'text-slate-400 hover:text-white' %>">
+      <span class="material-symbols-outlined text-lg">dashboard</span>
+      <span>Overview</span>
+    </a>
+    <a href="/admin/games" class="flex items-center space-x-3 px-3 py-2.5 rounded text-sm font-['Space_Grotesk'] uppercase tracking-wider font-bold no-underline transition-all <%= path && path.startsWith('/admin/games') ? 'bg-[#CCFF00]/10 text-[#CCFF00]' : 'text-slate-400 hover:text-white' %>">
+      <span class="material-symbols-outlined text-lg">sports_esports</span>
+      <span>Games</span>
+    </a>
+    <a href="/admin/news" class="flex items-center space-x-3 px-3 py-2.5 rounded text-sm font-['Space_Grotesk'] uppercase tracking-wider font-bold no-underline transition-all <%= path === '/admin/news' ? 'bg-[#CCFF00]/10 text-[#CCFF00]' : 'text-slate-400 hover:text-white' %>">
+      <span class="material-symbols-outlined text-lg">article</span>
+      <span>News</span>
+    </a>
+    <a href="/admin/comments" class="flex items-center space-x-3 px-3 py-2.5 rounded text-sm font-['Space_Grotesk'] uppercase tracking-wider font-bold no-underline transition-all <%= path === '/admin/comments' ? 'bg-[#CCFF00]/10 text-[#CCFF00]' : 'text-slate-400 hover:text-white' %>">
+      <span class="material-symbols-outlined text-lg">flag</span>
+      <span>Moderation</span>
+    </a>
+    <a href="/admin/users" class="flex items-center space-x-3 px-3 py-2.5 rounded text-sm font-['Space_Grotesk'] uppercase tracking-wider font-bold no-underline transition-all <%= path === '/admin/users' ? 'bg-[#CCFF00]/10 text-[#CCFF00]' : 'text-slate-400 hover:text-white' %>">
+      <span class="material-symbols-outlined text-lg">group</span>
+      <span>Users</span>
+    </a>
+    <a href="/admin/submissions" class="flex items-center space-x-3 px-3 py-2.5 rounded text-sm font-['Space_Grotesk'] uppercase tracking-wider font-bold no-underline transition-all <%= path === '/admin/submissions' ? 'bg-[#CCFF00]/10 text-[#CCFF00]' : 'text-slate-400 hover:text-white' %>">
+      <span class="material-symbols-outlined text-lg">inbox</span>
+      <span>Submissions</span>
+    </a>
+  </nav>
+  <div class="p-4 border-t border-white/10">
+    <a href="/" class="flex items-center space-x-2 text-slate-500 hover:text-white text-xs font-['Space_Grotesk'] uppercase tracking-wider no-underline transition-colors">
+      <span class="material-symbols-outlined text-sm">arrow_back</span>
+      <span>Back to Site</span>
+    </a>
+  </div>
+</aside>

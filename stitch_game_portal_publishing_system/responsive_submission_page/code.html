@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Submit Content - CYBERPULSE</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#e9b3ff",
+                        "on-tertiary": "#2c303a",
+                        "surface": "#11131b",
+                        "tertiary-container": "#dfe2ef",
+                        "on-surface": "#e1e1ed",
+                        "on-secondary-fixed": "#310048",
+                        "surface-container-lowest": "#0c0e16",
+                        "primary-fixed": "#c3f400",
+                        "secondary": "#e9b3ff",
+                        "inverse-on-surface": "#2e3039",
+                        "tertiary-fixed": "#dfe2ef",
+                        "primary-fixed-dim": "#abd600",
+                        "on-secondary": "#510074",
+                        "on-primary-fixed-variant": "#3c4d00",
+                        "inverse-surface": "#e1e1ed",
+                        "on-error": "#690005",
+                        "surface-dim": "#11131b",
+                        "outline": "#8e9379",
+                        "surface-container-low": "#191b23",
+                        "background": "#11131b",
+                        "outline-variant": "#444933",
+                        "primary-container": "#c3f400",
+                        "inverse-primary": "#506600",
+                        "surface-variant": "#33343d",
+                        "surface-container": "#1d1f28",
+                        "surface-bright": "#373942",
+                        "tertiary-fixed-dim": "#c3c6d3",
+                        "surface-container-high": "#282a32",
+                        "secondary-container": "#7d01b1",
+                        "on-secondary-container": "#e5a9ff",
+                        "surface-tint": "#abd600",
+                        "tertiary": "#ffffff",
+                        "secondary-fixed": "#f6d9ff",
+                        "on-primary-container": "#556d00",
+                        "on-tertiary-fixed-variant": "#434751",
+                        "on-error-container": "#ffdad6",
+                        "error": "#ffb4ab",
+                        "primary": "#ffffff",
+                        "on-tertiary-fixed": "#181b25",
+                        "on-tertiary-container": "#606470",
+                        "on-primary-fixed": "#161e00",
+                        "error-container": "#93000a",
+                        "surface-container-highest": "#33343d",
+                        "on-secondary-fixed-variant": "#7200a3",
+                        "on-background": "#e1e1ed",
+                        "on-surface-variant": "#c4c9ac",
+                        "on-primary": "#283500"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "margin": "32px",
+                        "gutter": "24px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Space Grotesk"],
+                        "body-lg": ["Inter"],
+                        "display-xl": ["Space Grotesk"],
+                        "label-caps": ["Space Grotesk"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Space Grotesk"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["32px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "display-xl": ["72px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-caps": ["14px", { "lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-lg": ["48px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-image: radial-gradient(circle at 50% 0%, #1d1f28 0%, #11131b 70%);
+            background-attachment: fixed;
+        }
+        
+        /* Glassmorphism utility */
+        .glass-panel {
+            background-color: rgba(29, 31, 40, 0.6);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-left: 1px solid rgba(255, 255, 255, 0.05);
+            border-right: 1px solid rgba(0, 0, 0, 0.2);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+        }
+
+        /* Glowing button utility */
+        .btn-glow {
+            box-shadow: 0 0 15px rgba(195, 244, 0, 0.4);
+            transition: all 0.3s ease;
+        }
+        .btn-glow:hover {
+            box-shadow: 0 0 25px rgba(195, 244, 0, 0.8);
+            transform: translateY(-2px);
+        }
+
+        /* Input styling */
+        .cyber-input {
+            background-color: #191b23;
+            border: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: #e1e1ed;
+            transition: all 0.3s ease;
+        }
+        .cyber-input:focus {
+            outline: none;
+            border-bottom-color: #c3f400;
+            box-shadow: 0 2px 10px rgba(195, 244, 0, 0.2);
+        }
+        
+        /* Custom file upload */
+        .file-upload-zone {
+            border: 2px dashed rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        .file-upload-zone:hover {
+            border-color: #c3f400;
+            background-color: rgba(195, 244, 0, 0.05);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md overflow-x-hidden">
+<!-- TopNavBar (Shared Component) -->
+<nav class="flex justify-between items-center w-full px-6 py-4 bg-slate-950/80 backdrop-blur-2xl docked full-width top-0 z-50 shadow-[0_4px_30px_rgba(0,0,0,0.5)]">
+<div class="flex items-center gap-8">
+<div class="text-2xl font-black italic tracking-tighter text-[#CCFF00] drop-shadow-[0_0_8px_rgba(204,255,0,0.6)]">
+                CYBERPULSE
+            </div>
+<div class="hidden md:flex gap-6">
+<a class="font-['Space_Grotesk'] uppercase tracking-widest text-sm font-bold text-slate-400 hover:text-white transition-colors hover:bg-white/5 transition-all duration-300 px-2 py-1" href="#">Games</a>
+<a class="font-['Space_Grotesk'] uppercase tracking-widest text-sm font-bold text-slate-400 hover:text-white transition-colors hover:bg-white/5 transition-all duration-300 px-2 py-1" href="#">Tournaments</a>
+<a class="font-['Space_Grotesk'] uppercase tracking-widest text-sm font-bold text-slate-400 hover:text-white transition-colors hover:bg-white/5 transition-all duration-300 px-2 py-1" href="#">Marketplace</a>
+<a class="font-['Space_Grotesk'] uppercase tracking-widest text-sm font-bold text-slate-400 hover:text-white transition-colors hover:bg-white/5 transition-all duration-300 px-2 py-1" href="#">Live</a>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<button class="font-['Space_Grotesk'] uppercase tracking-widest text-sm font-bold text-black bg-[#CCFF00] px-4 py-2 rounded-sm btn-glow active:scale-95 transition-transform">
+                GO PRO
+            </button>
+<div class="flex gap-4 text-white">
+<span class="material-symbols-outlined cursor-pointer hover:text-[#CCFF00] transition-colors" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-[#CCFF00] transition-colors" data-icon="person">person</span>
+</div>
+</div>
+</nav>
+<div class="flex flex-1">
+<!-- SideNavBar (Shared Component) - Suppressed due to Transactional/Form Intent -->
+<!-- The user is in a focused submission flow. Navigation shell hidden to prioritize canvas. -->
+<!-- Main Content Area -->
+<main class="flex-1 max-w-container-max mx-auto w-full px-6 py-20 flex flex-col items-center">
+<!-- Page Header -->
+<div class="w-full max-w-3xl mb-12 text-center">
+<h1 class="font-headline-lg text-headline-lg text-primary mb-4 tracking-tighter uppercase drop-shadow-[0_0_12px_rgba(255,255,255,0.2)]">Submit Content Data</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">Initialize new asset deployment into the mainframe. Ensure all parameters meet protocol standards before initialization.</p>
+</div>
+<!-- Progress Indicator -->
+<div class="w-full max-w-3xl mb-12">
+<div class="flex justify-between items-center mb-4 px-2">
+<div class="flex flex-col items-center gap-2">
+<div class="w-10 h-10 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-label-caps text-label-caps shadow-[0_0_15px_rgba(195,244,0,0.3)]">1</div>
+<span class="font-label-caps text-label-caps text-primary-container">BASICS</span>
+</div>
+<div class="flex-1 h-0.5 bg-surface-variant mx-4 relative overflow-hidden">
+<div class="absolute top-0 left-0 h-full w-full bg-gradient-to-r from-primary-container to-surface-variant origin-left scale-x-50"></div>
+</div>
+<div class="flex flex-col items-center gap-2 opacity-50">
+<div class="w-10 h-10 rounded-full bg-surface-container-high text-on-surface flex items-center justify-center font-label-caps text-label-caps border border-surface-variant">2</div>
+<span class="font-label-caps text-label-caps text-on-surface">MEDIA</span>
+</div>
+<div class="flex-1 h-0.5 bg-surface-variant mx-4"></div>
+<div class="flex flex-col items-center gap-2 opacity-50">
+<div class="w-10 h-10 rounded-full bg-surface-container-high text-on-surface flex items-center justify-center font-label-caps text-label-caps border border-surface-variant">3</div>
+<span class="font-label-caps text-label-caps text-on-surface">DETAILS</span>
+</div>
+<div class="flex-1 h-0.5 bg-surface-variant mx-4"></div>
+<div class="flex flex-col items-center gap-2 opacity-50">
+<div class="w-10 h-10 rounded-full bg-surface-container-high text-on-surface flex items-center justify-center font-label-caps text-label-caps border border-surface-variant">4</div>
+<span class="font-label-caps text-label-caps text-on-surface">REVIEW</span>
+</div>
+</div>
+</div>
+<!-- Form Container -->
+<div class="w-full max-w-3xl glass-panel rounded-xl p-8 md:p-12 relative overflow-hidden">
+<!-- Decorative element -->
+<div class="absolute top-0 right-0 w-64 h-64 bg-secondary-container rounded-full mix-blend-screen filter blur-[100px] opacity-20 pointer-events-none"></div>
+<form class="relative z-10 flex flex-col gap-8">
+<!-- Form Section Title -->
+<div class="border-b border-surface-variant pb-4 mb-2 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary-container" data-icon="terminal">terminal</span>
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Core Parameters</h2>
+</div>
+<!-- Type Selection -->
+<div class="flex flex-col gap-3">
+<label class="font-label-caps text-label-caps text-on-surface-variant flex items-center gap-2">
+                            Asset Type <span class="text-error">*</span>
+</label>
+<div class="grid grid-cols-2 gap-4">
+<label class="cursor-pointer">
+<input checked="" class="peer sr-only" name="asset_type" type="radio" value="game"/>
+<div class="p-4 rounded-lg border border-primary-container bg-surface-container-lowest text-primary-container peer-checked:bg-primary-container/10 peer-checked:shadow-[inset_0_0_15px_rgba(195,244,0,0.2)] transition-all flex flex-col items-center gap-2">
+<span class="material-symbols-outlined text-3xl" data-icon="sports_esports">sports_esports</span>
+<span class="font-label-caps text-label-caps">Game Entry</span>
+</div>
+</label>
+<label class="cursor-pointer">
+<input class="peer sr-only" name="asset_type" type="radio" value="article"/>
+<div class="p-4 rounded-lg border border-surface-variant bg-surface-container text-on-surface-variant hover:border-outline peer-checked:border-primary-container peer-checked:text-primary-container peer-checked:bg-primary-container/10 transition-all flex flex-col items-center gap-2">
+<span class="material-symbols-outlined text-3xl" data-icon="article">article</span>
+<span class="font-label-caps text-label-caps">Intel / Article</span>
+</div>
+</label>
+</div>
+</div>
+<!-- Input Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="flex flex-col gap-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant" for="title">Designation (Title) <span class="text-error">*</span></label>
+<input class="cyber-input w-full p-3 font-body-lg text-body-lg rounded-t-sm" id="title" placeholder="e.g. Neon Horizon 2077" type="text"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant" for="category">Classification</label>
+<div class="relative">
+<select class="cyber-input w-full p-3 font-body-lg text-body-lg rounded-t-sm appearance-none cursor-pointer" id="category">
+<option disabled="" selected="" value="">Select Class...</option>
+<option value="rpg">RPG / Narrative</option>
+<option value="fps">FPS / Tactical</option>
+<option value="strategy">Strategy / RTS</option>
+<option value="sim">Simulation</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-3 pointer-events-none text-on-surface-variant" data-icon="arrow_drop_down">arrow_drop_down</span>
+</div>
+</div>
+</div>
+<!-- Textarea -->
+<div class="flex flex-col gap-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant" for="description">Primary Directive (Description) <span class="text-error">*</span></label>
+<textarea class="cyber-input w-full p-3 font-body-lg text-body-lg rounded-t-sm resize-none" id="description" placeholder="Provide operational summary..." rows="4"></textarea>
+</div>
+<!-- Tags / Chips -->
+<div class="flex flex-col gap-3">
+<label class="font-label-caps text-label-caps text-on-surface-variant">System Tags</label>
+<div class="flex flex-wrap gap-2">
+<div class="px-3 py-1 rounded-sm border border-secondary text-secondary font-label-caps text-[12px] bg-secondary/5 flex items-center gap-1 cursor-pointer hover:bg-secondary/20 transition-colors">
+                                MULTIPLAYER <span class="material-symbols-outlined text-[14px]" data-icon="close">close</span>
+</div>
+<div class="px-3 py-1 rounded-sm border border-secondary text-secondary font-label-caps text-[12px] bg-secondary/5 flex items-center gap-1 cursor-pointer hover:bg-secondary/20 transition-colors">
+                                CYBERPUNK <span class="material-symbols-outlined text-[14px]" data-icon="close">close</span>
+</div>
+<div class="px-3 py-1 rounded-sm border border-surface-variant text-on-surface-variant font-label-caps text-[12px] bg-surface-container-high hover:border-outline transition-colors cursor-pointer flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="add">add</span> ADD TAG
+                            </div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="mt-8 pt-6 border-t border-surface-variant flex justify-between items-center">
+<button class="px-6 py-3 font-label-caps text-label-caps text-on-surface hover:text-white transition-colors" type="button">
+                            CANCEL INIT
+                        </button>
+<button class="px-8 py-3 bg-primary-container text-on-primary-container font-label-caps text-label-caps rounded-sm btn-glow flex items-center gap-2" type="button">
+                            PROCEED TO MEDIA <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</form>
+</div>
+<!-- Secondary Information Block -->
+<div class="w-full max-w-3xl mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="bg-surface-container-low p-6 rounded-lg border border-surface-variant">
+<div class="flex items-center gap-2 mb-3 text-secondary-fixed-dim">
+<span class="material-symbols-outlined" data-icon="info">info</span>
+<h3 class="font-headline-md text-[18px] font-bold">Protocol Guidelines</h3>
+</div>
+<p class="font-body-md text-on-surface-variant text-sm">All submissions are subject to automated neural scanning before public deployment. Ensure data integrity is 100%.</p>
+</div>
+<div class="bg-surface-container-low p-6 rounded-lg border border-surface-variant">
+<div class="flex items-center gap-2 mb-3 text-error">
+<span class="material-symbols-outlined" data-icon="warning">warning</span>
+<h3 class="font-headline-md text-[18px] font-bold">Restricted Data</h3>
+</div>
+<p class="font-body-md text-on-surface-variant text-sm">Do not upload classified corporate assets or malware. Violators will be permanently disconnected from the grid.</p>
+</div>
+</div>
+</main>
+</div>
+<!-- Footer (Shared Component) -->
+<footer class="w-full py-12 px-8 bg-black border-t border-[#CCFF00]/20 flex flex-col md:flex-row justify-between items-center gap-6 mt-auto">
+<div class="text-[#CCFF00] font-bold font-['Space_Grotesk'] uppercase text-[10px] tracking-widest">
+            © 2024 CYBERPULSE ARCHIVE. ALL RIGHTS RESERVED.
+        </div>
+<div class="flex gap-6">
+<a class="font-['Space_Grotesk'] uppercase text-[10px] tracking-widest text-slate-500 hover:text-[#CCFF00] underline-offset-4 hover:underline transition-all duration-500" href="#">Privacy Protocol</a>
+<a class="font-['Space_Grotesk'] uppercase text-[10px] tracking-widest text-slate-500 hover:text-[#CCFF00] underline-offset-4 hover:underline transition-all duration-500" href="#">Terms of Engagement</a>
+<a class="font-['Space_Grotesk'] uppercase text-[10px] tracking-widest text-slate-500 hover:text-[#CCFF00] underline-offset-4 hover:underline transition-all duration-500" href="#">Sponsorships</a>
+</div>
+</footer>
+</body></html>

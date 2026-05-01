@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>COMMAND_CENTER | NEON_PUBLISH</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;900&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-lowest": "#0c0e16",
+                    "on-background": "#e1e1ed",
+                    "on-primary-fixed-variant": "#3c4d00",
+                    "on-tertiary-container": "#606470",
+                    "on-tertiary-fixed": "#181b25",
+                    "tertiary-fixed-dim": "#c3c6d3",
+                    "inverse-primary": "#506600",
+                    "on-primary-fixed": "#161e00",
+                    "tertiary": "#ffffff",
+                    "surface-container-high": "#282a32",
+                    "on-tertiary": "#2c303a",
+                    "surface-dim": "#11131b",
+                    "inverse-surface": "#e1e1ed",
+                    "primary": "#ffffff",
+                    "surface-container": "#1d1f28",
+                    "on-secondary-fixed": "#310048",
+                    "on-secondary-fixed-variant": "#7200a3",
+                    "primary-fixed-dim": "#abd600",
+                    "outline": "#8e9379",
+                    "surface": "#11131b",
+                    "on-tertiary-fixed-variant": "#434751",
+                    "on-error-container": "#ffdad6",
+                    "primary-fixed": "#c3f400",
+                    "secondary": "#e9b3ff",
+                    "on-primary": "#283500",
+                    "primary-container": "#c3f400",
+                    "on-surface": "#e1e1ed",
+                    "surface-container-low": "#191b23",
+                    "on-secondary-container": "#e5a9ff",
+                    "error": "#ffb4ab",
+                    "secondary-fixed-dim": "#e9b3ff",
+                    "error-container": "#93000a",
+                    "background": "#11131b",
+                    "on-primary-container": "#556d00",
+                    "surface-bright": "#373942",
+                    "tertiary-container": "#dfe2ef",
+                    "tertiary-fixed": "#dfe2ef",
+                    "secondary-fixed": "#f6d9ff",
+                    "outline-variant": "#444933",
+                    "secondary-container": "#7d01b1",
+                    "surface-tint": "#abd600",
+                    "surface-container-highest": "#33343d",
+                    "surface-variant": "#33343d",
+                    "inverse-on-surface": "#2e3039",
+                    "on-error": "#690005",
+                    "on-secondary": "#510074",
+                    "on-surface-variant": "#c4c9ac"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-max": "1280px",
+                    "unit": "4px",
+                    "gutter": "24px",
+                    "margin": "32px"
+            },
+            "fontFamily": {
+                    "display-xl": ["Space Grotesk"],
+                    "headline-lg": ["Space Grotesk"],
+                    "label-caps": ["Space Grotesk"],
+                    "body-md": ["Inter"],
+                    "headline-md": ["Space Grotesk"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "display-xl": ["72px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "label-caps": ["14px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #11131b;
+            color: #e1e1ed;
+        }
+        .glass-panel {
+            background: rgba(17, 19, 27, 0.6);
+            backdrop-filter: blur(40px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-left: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .neon-glow {
+            box-shadow: 0 0 10px rgba(204, 255, 0, 0.4);
+        }
+        .neon-glow:hover {
+            box-shadow: 0 0 20px rgba(204, 255, 0, 0.6);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="font-body-md overflow-x-hidden">
+<!-- Sidebar Navigation -->
+<aside class="bg-slate-950/80 backdrop-blur-3xl fixed left-0 top-0 h-full w-64 border-r border-white/10 flex flex-col h-full p-4 space-y-4 z-50">
+<div class="mb-8 px-2">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-[#CCFF00] flex items-center justify-center">
+<span class="material-symbols-outlined text-black font-bold">terminal</span>
+</div>
+<div>
+<h1 class="text-[#CCFF00] font-black tracking-tighter text-lg font-display-xl uppercase">COMMAND_CENTER</h1>
+<p class="text-slate-500 font-label-caps text-[10px] tracking-widest uppercase">ADMIN_ACCESS</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:bg-white/5 hover:text-[#CCFF00] duration-200 ease-in-out transform font-label-caps text-xs" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 bg-[#CCFF00] text-black shadow-[0_0_20px_rgba(204,255,0,0.4)] rounded-none font-black font-label-caps text-xs" href="#">
+<span class="material-symbols-outlined" data-icon="upload_file">upload_file</span>
+                Submissions
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:bg-white/5 hover:text-[#CCFF00] duration-200 ease-in-out transform font-label-caps text-xs" href="#">
+<span class="material-symbols-outlined" data-icon="sports_esports">sports_esports</span>
+                Library
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:bg-white/5 hover:text-[#CCFF00] duration-200 ease-in-out transform font-label-caps text-xs" href="#">
+<span class="material-symbols-outlined" data-icon="monitoring">monitoring</span>
+                Analytics
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:bg-white/5 hover:text-[#CCFF00] duration-200 ease-in-out transform font-label-caps text-xs" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+                Users
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:bg-white/5 hover:text-[#CCFF00] duration-200 ease-in-out transform font-label-caps text-xs" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+                Settings
+            </a>
+</nav>
+<div class="pt-4 border-t border-white/5">
+<button class="w-full bg-[#CCFF00] text-black py-3 font-label-caps text-xs font-black neon-glow transition-all active:scale-95 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">add_box</span>
+                Submit New Game
+            </button>
+<a class="flex items-center gap-3 px-4 py-3 mt-4 text-slate-600 hover:text-[#CCFF00] transition-colors font-label-caps text-[10px]" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+                Logout
+            </a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-64 min-h-screen p-12 bg-surface">
+<!-- Header Controls -->
+<header class="flex justify-between items-end mb-12">
+<div>
+<h2 class="font-display-xl text-headline-lg uppercase text-primary leading-none mb-2">Content Matrix</h2>
+<p class="text-on-surface-variant font-body-md max-w-xl opacity-70">
+                    Manage and synchronize the global distribution of digital assets, articles, and interactive experiences across the NEON_PUBLISH ecosystem.
+                </p>
+</div>
+<div class="flex gap-4">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-500">search</span>
+<input class="bg-surface-container-low border-b border-outline-variant focus:border-primary-fixed text-primary px-12 py-3 outline-none w-64 transition-all font-label-caps text-xs" placeholder="QUERY_SYSTEM..." type="text"/>
+</div>
+<button class="bg-[#CCFF00] text-black px-6 py-3 font-label-caps text-sm font-black neon-glow transition-all active:scale-95 flex items-center gap-2">
+<span class="material-symbols-outlined">rocket_launch</span>
+                    Deploy New Content
+                </button>
+</div>
+</header>
+<!-- Stats Overview Cards -->
+<div class="grid grid-cols-4 gap-gutter mb-12">
+<div class="glass-panel p-6 border-r border-white/5">
+<p class="text-slate-500 font-label-caps text-[10px] mb-1">TOTAL_RECORDS</p>
+<h3 class="font-display-xl text-headline-md text-primary">1,284</h3>
+<div class="h-1 w-full bg-slate-800 mt-4 overflow-hidden">
+<div class="h-full bg-[#CCFF00] w-[75%]"></div>
+</div>
+</div>
+<div class="glass-panel p-6 border-r border-white/5">
+<p class="text-slate-500 font-label-caps text-[10px] mb-1">ACTIVE_DEPLOYMENTS</p>
+<h3 class="font-display-xl text-headline-md text-secondary">42</h3>
+<div class="h-1 w-full bg-slate-800 mt-4 overflow-hidden">
+<div class="h-full bg-secondary w-[42%]"></div>
+</div>
+</div>
+<div class="glass-panel p-6 border-r border-white/5">
+<p class="text-slate-500 font-label-caps text-[10px] mb-1">PENDING_REVIEW</p>
+<h3 class="font-display-xl text-headline-md text-[#CCFF00]">18</h3>
+<div class="h-1 w-full bg-slate-800 mt-4 overflow-hidden">
+<div class="h-full bg-[#CCFF00] w-[18%]"></div>
+</div>
+</div>
+<div class="glass-panel p-6 border-r border-white/5">
+<p class="text-slate-500 font-label-caps text-[10px] mb-1">SYSTEM_UPTIME</p>
+<h3 class="font-display-xl text-headline-md text-primary">99.9%</h3>
+<div class="h-1 w-full bg-slate-800 mt-4 overflow-hidden">
+<div class="h-full bg-primary w-[99%]"></div>
+</div>
+</div>
+</div>
+<!-- Bulk Actions Bar -->
+<div class="flex items-center justify-between mb-4 px-4">
+<div class="flex items-center gap-6">
+<label class="flex items-center gap-2 cursor-pointer group">
+<div class="w-4 h-4 border border-outline-variant flex items-center justify-center group-hover:border-[#CCFF00]">
+<div class="w-2 h-2 bg-[#CCFF00] opacity-0 group-active:opacity-100"></div>
+</div>
+<span class="text-slate-400 font-label-caps text-[10px]">SELECT_ALL</span>
+</label>
+<div class="h-4 w-[1px] bg-white/10"></div>
+<div class="flex gap-4">
+<button class="text-slate-500 hover:text-white flex items-center gap-1 font-label-caps text-[10px] transition-colors">
+<span class="material-symbols-outlined text-sm">archive</span> ARCHIVE
+                    </button>
+<button class="text-slate-500 hover:text-error flex items-center gap-1 font-label-caps text-[10px] transition-colors">
+<span class="material-symbols-outlined text-sm">delete</span> DELETE
+                    </button>
+<button class="text-slate-500 hover:text-[#CCFF00] flex items-center gap-1 font-label-caps text-[10px] transition-colors">
+<span class="material-symbols-outlined text-sm">verified</span> APPROVE
+                    </button>
+</div>
+</div>
+<div class="text-slate-600 font-label-caps text-[10px]">
+                FILTER: <span class="text-primary">ALL_CONTENT</span>
+</div>
+</div>
+<!-- Main Content Table -->
+<div class="glass-panel overflow-hidden border border-white/5">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-white/10 bg-white/5">
+<th class="p-4 font-label-caps text-[11px] text-slate-400 uppercase tracking-widest">
+<div class="w-4 h-4 border border-outline-variant"></div>
+</th>
+<th class="p-4 font-label-caps text-[11px] text-slate-400 uppercase tracking-widest">Identification</th>
+<th class="p-4 font-label-caps text-[11px] text-slate-400 uppercase tracking-widest">Type</th>
+<th class="p-4 font-label-caps text-[11px] text-slate-400 uppercase tracking-widest">Status</th>
+<th class="p-4 font-label-caps text-[11px] text-slate-400 uppercase tracking-widest">Author</th>
+<th class="p-4 font-label-caps text-[11px] text-slate-400 uppercase tracking-widest">Sync Date</th>
+<th class="p-4 font-label-caps text-[11px] text-slate-400 uppercase tracking-widest text-right">Operations</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-white/5">
+<!-- Row 1 -->
+<tr class="hover:bg-white/5 transition-colors group">
+<td class="p-4"><div class="w-4 h-4 border border-outline-variant"></div></td>
+<td class="p-4">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 bg-slate-900 overflow-hidden border border-white/10">
+<img class="w-full h-full object-cover" data-alt="A high-contrast cinematic shot of a futuristic neon city street at night, with rain reflecting vibrant cyan and magenta lights. The composition is sleek and digital, echoing a high-end cyberpunk gaming aesthetic with deep shadows and sharp glowing highlights. The mood is intense and immersive." src="https://lh3.googleusercontent.com/aida-public/AB6AXuArb5p_koWW-AyYytUaIoDv6YZsROIlIYjXFMHjnZVsm55gUF388bNYhBpaLIHjL0dalL08aROQx1m_h2w3bMfQH_FIwCwWWTBtNjFQfXWyDl6L9HAxsRMY817OqDUp9phyA9aLthr52PvVsKah758if0vXFKzZXPhSc9BJMKT1cLEbzO4CmUav4pslfrgv-x6EjdIS9g_IpCmAAIEcJKPs0hmHxLpKD_kgzfVbhnz5Gprf-Wqd_0ecnt98b5UpkCYRQNodsRWwLEBd"/>
+</div>
+<div>
+<div class="text-primary font-headline-md text-sm font-bold">Cyber_Protocol_VII</div>
+<div class="text-slate-500 text-[10px] font-label-caps">ID: CP-90122</div>
+</div>
+</div>
+</td>
+<td class="p-4">
+<span class="border border-secondary/30 text-secondary px-2 py-0.5 text-[9px] font-label-caps">GAME_CORE</span>
+</td>
+<td class="p-4">
+<div class="flex items-center gap-2">
+<div class="w-1.5 h-1.5 rounded-full bg-[#CCFF00] shadow-[0_0_8px_#CCFF00]"></div>
+<span class="text-[#CCFF00] font-label-caps text-[11px] font-bold">PUBLISHED</span>
+</div>
+</td>
+<td class="p-4 text-slate-300 font-body-md text-sm">V. Kaelen</td>
+<td class="p-4 text-slate-500 font-label-caps text-[11px]">24_OCT_2024</td>
+<td class="p-4">
+<div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="w-8 h-8 flex items-center justify-center hover:bg-white/10 text-slate-400 hover:text-white"><span class="material-symbols-outlined text-lg">edit</span></button>
+<button class="w-8 h-8 flex items-center justify-center hover:bg-white/10 text-slate-400 hover:text-[#CCFF00]"><span class="material-symbols-outlined text-lg">star</span></button>
+<button class="w-8 h-8 flex items-center justify-center hover:bg-white/10 text-slate-400 hover:text-error"><span class="material-symbols-outlined text-lg">delete</span></button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-white/5 transition-colors group">
+<td class="p-4"><div class="w-4 h-4 border border-outline-variant"></div></td>
+<td class="p-4">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 bg-slate-900 overflow-hidden border border-white/10">
+<img class="w-full h-full object-cover" data-alt="Abstract digital render of streaming data lines and binary structures in a deep void, illuminated by intense lime green and deep purple light sources. The visual style is technical and precise, mimicking a motherboard or circuit pattern with a glass-like finish. The atmosphere is energetic and digitally superior." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCrcquIyoY2yCq8torpHk_uhwvBCa4TR4t8MYCatGmPJRb7r1GOW0Z7my583D1ptRn4gi_gXlbSwcOszf0M-i6lDIZdUDRGBo4z07E5kGhh1o88Atus-P9jufGHZuJ9yuaU3RqF1hv92iK7jOO6gYNO-8O5ABvouDLPw-Kub2s5QSR65wxkwiVhi_9mMDBESDwjUisfvzRNvNfNTcYlgrNdC_LzXJpb9XQ8rY_euoQdjRlVmLhl4CcI1Az-Kh5dOWBECFJOJ07OB-oa"/>
+</div>
+<div>
+<div class="text-primary font-headline-md text-sm font-bold">Neural_Net_Optimization</div>
+<div class="text-slate-500 text-[10px] font-label-caps">ID: ART-44021</div>
+</div>
+</div>
+</td>
+<td class="p-4">
+<span class="border border-slate-700 text-slate-400 px-2 py-0.5 text-[9px] font-label-caps">ARTICLE</span>
+</td>
+<td class="p-4">
+<div class="flex items-center gap-2">
+<div class="w-1.5 h-1.5 rounded-full bg-amber-500"></div>
+<span class="text-amber-500 font-label-caps text-[11px] font-bold">PENDING</span>
+</div>
+</td>
+<td class="p-4 text-slate-300 font-body-md text-sm">X. Aris</td>
+<td class="p-4 text-slate-500 font-label-caps text-[11px]">23_OCT_2024</td>
+<td class="p-4">
+<div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="w-8 h-8 flex items-center justify-center hover:bg-white/10 text-slate-400 hover:text-white"><span class="material-symbols-outlined text-lg">edit</span></button>
+<button class="w-8 h-8 flex items-center justify-center hover:bg-white/10 text-slate-400 hover:text-[#CCFF00]"><span class="material-symbols-outlined text-lg">star</span></button>
+<button class="w-8 h-8 flex items-center justify-center hover:bg-white/10 text-slate-400 hover:text-error"><span class="material-symbols-outlined text-lg">delete</span></button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-white/5 transition-colors group">
+<td class="p-4"><div class="w-4 h-4 border border-outline-variant"></div></td>
+<td class="p-4">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 bg-slate-900 overflow-hidden border border-white/10">
+<img class="w-full h-full object-cover" data-alt="A collection of vintage gaming components and futuristic hardware modules arranged in a technical bento-grid layout. The lighting is low and dramatic, with a focus on metallic textures and glowing LED strips. The aesthetic is clean and surgical, representing a hardware manufacturing lab in a futuristic sci-fi setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5oupwgos_6YMcl8TFDpriL-BUZPD4otmCnOwwxZalGL2TgZ_OF4amib11QOMi7kpl1lVO7pfvtTek8bxfCLusPvVXzUxI0UtBc2w3YUBo-id3xizrsMx01dw1cPp30jP1a5HceOX_9PnRKjXUXnoV-RS3RYec5zt3varofk3mDv6vD_t4dtLt9f-J0qIVq8ndaTiPmj9GFAh9YWwBcF50Ivs_EdHXzzKOtBrSURZkpoLeU_TQB9dXQcpWHOj61DlsuJRAaUrda-lK"/>
+</div>
+<div>
+<div class="text-primary font-headline-md text-sm font-bold">Ghost_Engine_Legacy</div>
+<div class="text-slate-500 text-[10px] font-label-caps">ID: CP-11883</div>
+</div>
+</div>
+</td>
+<td class="p-4">
+<span class="border border-secondary/30 text-secondary px-2 py-0.5 text-[9px] font-label-caps">GAME_CORE</span>
+</td>
+<td class="p-4">
+<div class="flex items-center gap-2">
+<div class="w-1.5 h-1.5 rounded-full bg-slate-600"></div>
+<span class="text-slate-600 font-label-caps text-[11px] font-bold">DRAFT</span>
+</div>
+</td>
+<td class="p-4 text-slate-300 font-body-md text-sm">M. Drago</td>
+<td class="p-4 text-slate-500 font-label-caps text-[11px]">20_OCT_2024</td>
+<td class="p-4">
+<div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="w-8 h-8 flex items-center justify-center hover:bg-white/10 text-slate-400 hover:text-white"><span class="material-symbols-outlined text-lg">edit</span></button>
+<button class="w-8 h-8 flex items-center justify-center hover:bg-white/10 text-slate-400 hover:text-[#CCFF00]"><span class="material-symbols-outlined text-lg">star</span></button>
+<button class="w-8 h-8 flex items-center justify-center hover:bg-white/10 text-slate-400 hover:text-error"><span class="material-symbols-outlined text-lg">delete</span></button>
+</div>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-white/5 transition-colors group">
+<td class="p-4"><div class="w-4 h-4 border border-outline-variant"></div></td>
+<td class="p-4">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 bg-slate-900 overflow-hidden border border-white/10">
+<img class="w-full h-full object-cover" data-alt="A macro shot of a sleek obsidian-colored motherboard with glowing neon green liquid cooling tubes snaking across it. The lighting is cinematic and dark, emphasizing the contrast between the matte black surfaces and the intense fluorescent glow. The visual style is high-performance, futuristic, and technically aggressive." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDVTESRAOtHKBjTlKcRXLZnGYUElcBcFHVRZlswUBM_UVTPxvbb27bxFhLFOzPhdUfB0KerzA_5QSLkL3nVT5Cn5CDfvEy9mlpVVhz5T3g6wA2PMF-4hpVMXIwaJ5RnYpTOqtqHZkeKFgTkJsrvaCCasmdwQo7n4LECopX_29DIpceJO3NZCwwuRZX7KftukY1UD37zJ8jyq6sSxvKFOL37RDNiGw--OpE_q5oQ-Z-YqX5st8nAZXn10Ue3nRSNGYz9N2eTQYKgB-d"/>
+</div>
+<div>
+<div class="text-primary font-headline-md text-sm font-bold">Quantum_Flux_Manual</div>
+<div class="text-slate-500 text-[10px] font-label-caps">ID: DOC-77212</div>
+</div>
+</div>
+</td>
+<td class="p-4">
+<span class="border border-slate-700 text-slate-400 px-2 py-0.5 text-[9px] font-label-caps">ARTICLE</span>
+</td>
+<td class="p-4">
+<div class="flex items-center gap-2">
+<div class="w-1.5 h-1.5 rounded-full bg-[#CCFF00] shadow-[0_0_8px_#CCFF00]"></div>
+<span class="text-[#CCFF00] font-label-caps text-[11px] font-bold">PUBLISHED</span>
+</div>
+</td>
+<td class="p-4 text-slate-300 font-body-md text-sm">S. Jinx</td>
+<td class="p-4 text-slate-500 font-label-caps text-[11px]">18_OCT_2024</td>
+<td class="p-4">
+<div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="w-8 h-8 flex items-center justify-center hover:bg-white/10 text-slate-400 hover:text-white"><span class="material-symbols-outlined text-lg">edit</span></button>
+<button class="w-8 h-8 flex items-center justify-center hover:bg-white/10 text-slate-400 hover:text-[#CCFF00]"><span class="material-symbols-outlined text-lg">star</span></button>
+<button class="w-8 h-8 flex items-center justify-center hover:bg-white/10 text-slate-400 hover:text-error"><span class="material-symbols-outlined text-lg">delete</span></button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<!-- Table Footer/Pagination -->
+<div class="p-4 bg-white/5 border-t border-white/10 flex justify-between items-center">
+<div class="text-slate-500 font-label-caps text-[10px]">
+                    SHOWING 1-10 OF 1,284 RESULTS
+                </div>
+<div class="flex gap-2">
+<button class="w-8 h-8 border border-white/10 flex items-center justify-center text-slate-500 hover:text-[#CCFF00] hover:border-[#CCFF00] transition-all">
+<span class="material-symbols-outlined text-sm">chevron_left</span>
+</button>
+<button class="w-8 h-8 border border-[#CCFF00] flex items-center justify-center text-[#CCFF00] bg-[#CCFF00]/10 font-bold text-xs">1</button>
+<button class="w-8 h-8 border border-white/10 flex items-center justify-center text-slate-500 hover:text-[#CCFF00] transition-all text-xs">2</button>
+<button class="w-8 h-8 border border-white/10 flex items-center justify-center text-slate-500 hover:text-[#CCFF00] transition-all text-xs">3</button>
+<button class="w-8 h-8 border border-white/10 flex items-center justify-center text-slate-500 hover:text-[#CCFF00] hover:border-[#CCFF00] transition-all">
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- System Status Footer -->
+<footer class="mt-24 w-full py-12 border-t border-white/5">
+<div class="flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto">
+<div class="flex items-center gap-6 mb-4 md:mb-0">
+<span class="text-[#CCFF00] font-bold font-display-xl text-lg uppercase tracking-widest">NEON_PUBLISH</span>
+<p class="font-['Space_Grotesk'] text-[10px] tracking-widest text-slate-500 uppercase">© 2024 NEON_PUBLISH. SYSTEM_READY.</p>
+</div>
+<div class="flex gap-8">
+<a class="font-['Space_Grotesk'] text-[10px] tracking-widest text-slate-600 hover:text-[#CCFF00] transition-colors uppercase" href="#">Terms of Service</a>
+<a class="font-['Space_Grotesk'] text-[10px] tracking-widest text-slate-600 hover:text-[#CCFF00] transition-colors uppercase" href="#">Privacy Protocol</a>
+<a class="font-['Space_Grotesk'] text-[10px] tracking-widest text-slate-600 hover:text-[#CCFF00] transition-colors uppercase" href="#">Developer API</a>
+<a class="font-['Space_Grotesk'] text-[10px] tracking-widest text-slate-600 hover:text-[#CCFF00] transition-colors uppercase" href="#">Contact Console</a>
+</div>
+</div>
+</footer>
+</main>
+</body></html>

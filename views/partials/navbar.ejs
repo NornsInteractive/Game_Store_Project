@@ -1,0 +1,21 @@
+<nav class="bg-slate-950/60 backdrop-blur-2xl sticky top-0 z-50 border-b border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.5)]">
+  <div class="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
+    <a href="/" class="text-2xl font-black text-[#CCFF00] italic tracking-tighter no-underline">CYBERPULSE</a>
+    <div class="hidden md:flex items-center space-x-8 font-['Space_Grotesk'] uppercase tracking-widest text-sm font-bold">
+      <a href="/games" class="text-slate-400 hover:text-[#CCFF00] hover:drop-shadow-[0_0_8px_#CCFF00] transition-all duration-300 no-underline <%= path && path.startsWith('/games') ? 'text-[#CCFF00] border-b-2 border-[#CCFF00] pb-1' : '' %>">Store</a>
+      <a href="/news" class="text-slate-400 hover:text-[#CCFF00] hover:drop-shadow-[0_0_8px_#CCFF00] transition-all duration-300 no-underline <%= path && path.startsWith('/news') ? 'text-[#CCFF00] border-b-2 border-[#CCFF00] pb-1' : '' %>">News</a>
+    </div>
+    <div class="flex items-center space-x-4">
+      <% if (currentUser) { %>
+        <a href="/dashboard" class="text-slate-400 hover:text-[#CCFF00] transition-all duration-300 font-['Space_Grotesk'] uppercase tracking-widest text-sm font-bold no-underline">Dashboard</a>
+        <% if (isAdmin) { %>
+          <a href="/admin" class="text-[#e9b3ff] hover:drop-shadow-[0_0_8px_#e9b3ff] transition-all duration-300 font-['Space_Grotesk'] uppercase tracking-widest text-sm font-bold no-underline">Admin</a>
+        <% } %>
+        <a href="/logout" class="text-slate-400 hover:text-white transition-all duration-300 font-['Space_Grotesk'] uppercase tracking-widest text-sm font-bold no-underline">Logout</a>
+      <% } else { %>
+        <a href="/login" class="text-slate-400 hover:text-[#CCFF00] transition-all duration-300 font-['Space_Grotesk'] uppercase tracking-widest text-sm font-bold no-underline">Login</a>
+        <a href="/register" class="bg-[#CCFF00] text-black px-6 py-2 font-['Space_Grotesk'] uppercase tracking-widest text-sm font-black shadow-[0_0_15px_rgba(204,255,0,0.4)] hover:shadow-[0_0_25px_#CCFF00] transition-all duration-300 no-underline">Register</a>
+      <% } %>
+    </div>
+  </div>
+</nav>

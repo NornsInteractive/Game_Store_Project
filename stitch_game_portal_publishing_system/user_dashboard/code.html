@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;900&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-lowest": "#0c0e16",
+                        "on-background": "#e1e1ed",
+                        "on-primary-fixed-variant": "#3c4d00",
+                        "on-tertiary-container": "#606470",
+                        "on-tertiary-fixed": "#181b25",
+                        "tertiary-fixed-dim": "#c3c6d3",
+                        "inverse-primary": "#506600",
+                        "on-primary-fixed": "#161e00",
+                        "tertiary": "#ffffff",
+                        "surface-container-high": "#282a32",
+                        "on-tertiary": "#2c303a",
+                        "surface-dim": "#11131b",
+                        "inverse-surface": "#e1e1ed",
+                        "primary": "#ffffff",
+                        "surface-container": "#1d1f28",
+                        "on-secondary-fixed": "#310048",
+                        "on-secondary-fixed-variant": "#7200a3",
+                        "primary-fixed-dim": "#abd600",
+                        "outline": "#8e9379",
+                        "surface": "#11131b",
+                        "on-tertiary-fixed-variant": "#434751",
+                        "on-error-container": "#ffdad6",
+                        "primary-fixed": "#c3f400",
+                        "secondary": "#e9b3ff",
+                        "on-primary": "#283500",
+                        "primary-container": "#c3f400",
+                        "on-surface": "#e1e1ed",
+                        "surface-container-low": "#191b23",
+                        "on-secondary-container": "#e5a9ff",
+                        "error": "#ffb4ab",
+                        "secondary-fixed-dim": "#e9b3ff",
+                        "error-container": "#93000a",
+                        "background": "#11131b",
+                        "on-primary-container": "#556d00",
+                        "surface-bright": "#373942",
+                        "tertiary-container": "#dfe2ef",
+                        "tertiary-fixed": "#dfe2ef",
+                        "secondary-fixed": "#f6d9ff",
+                        "outline-variant": "#444933",
+                        "secondary-container": "#7d01b1",
+                        "surface-tint": "#abd600",
+                        "surface-container-highest": "#33343d",
+                        "surface-variant": "#33343d",
+                        "inverse-on-surface": "#2e3039",
+                        "on-error": "#690005",
+                        "on-secondary": "#510074",
+                        "on-surface-variant": "#c4c9ac"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "display-xl": ["Space Grotesk"],
+                        "headline-lg": ["Space Grotesk"],
+                        "label-caps": ["Space Grotesk"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Space Grotesk"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-xl": ["72px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "label-caps": ["14px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(29, 31, 40, 0.4);
+            backdrop-filter: blur(40px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-left: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .neon-glow {
+            box-shadow: 0 0 15px rgba(204, 255, 0, 0.3);
+        }
+        .neon-glow:hover {
+            box-shadow: 0 0 30px rgba(204, 255, 0, 0.6);
+        }
+        .rim-light {
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md overflow-x-hidden">
+<div class="flex min-h-screen">
+<!-- SideNavBar -->
+<aside class="bg-slate-950/80 backdrop-blur-3xl fixed left-0 top-0 h-full w-64 border-r border-white/10 flex flex-col h-full p-4 space-y-4 z-50">
+<div class="mb-8 px-2">
+<div class="text-[#CCFF00] font-black tracking-tighter text-lg uppercase font-display-xl">COMMAND_CENTER</div>
+<div class="text-slate-500 font-['Space_Grotesk'] uppercase text-[10px] font-bold tracking-tight">ADMIN_ACCESS</div>
+</div>
+<nav class="flex-grow space-y-1">
+<a class="bg-[#CCFF00] text-black shadow-[0_0_20px_rgba(204,255,0,0.4)] rounded-none font-black flex items-center px-4 py-3 duration-200 ease-in-out transform" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="dashboard">dashboard</span>
+<span class="font-label-caps text-xs">Dashboard</span>
+</a>
+<a class="text-slate-500 hover:bg-white/5 hover:text-[#CCFF00] flex items-center px-4 py-3 duration-200 ease-in-out transform hover:border-l-4 hover:border-[#CCFF00]" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="upload_file">upload_file</span>
+<span class="font-label-caps text-xs">Submissions</span>
+</a>
+<a class="text-slate-500 hover:bg-white/5 hover:text-[#CCFF00] flex items-center px-4 py-3 duration-200 ease-in-out transform hover:border-l-4 hover:border-[#CCFF00]" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="sports_esports">sports_esports</span>
+<span class="font-label-caps text-xs">Library</span>
+</a>
+<a class="text-slate-500 hover:bg-white/5 hover:text-[#CCFF00] flex items-center px-4 py-3 duration-200 ease-in-out transform hover:border-l-4 hover:border-[#CCFF00]" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="monitoring">monitoring</span>
+<span class="font-label-caps text-xs">Analytics</span>
+</a>
+<a class="text-slate-500 hover:bg-white/5 hover:text-[#CCFF00] flex items-center px-4 py-3 duration-200 ease-in-out transform hover:border-l-4 hover:border-[#CCFF00]" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="group">group</span>
+<span class="font-label-caps text-xs">Users</span>
+</a>
+<a class="text-slate-500 hover:bg-white/5 hover:text-[#CCFF00] flex items-center px-4 py-3 duration-200 ease-in-out transform hover:border-l-4 hover:border-[#CCFF00]" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="settings">settings</span>
+<span class="font-label-caps text-xs">Settings</span>
+</a>
+</nav>
+<div class="pt-4 border-t border-white/5">
+<button class="w-full bg-[#CCFF00] text-black font-black font-label-caps text-xs py-4 neon-glow transition-all duration-300 ease-out active:scale-95 mb-4">
+                    Submit New Game
+                </button>
+<a class="text-slate-500 hover:bg-white/5 hover:text-[#CCFF00] flex items-center px-4 py-3 duration-200 ease-in-out transform" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="logout">logout</span>
+<span class="font-label-caps text-xs">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="ml-64 w-full p-12 bg-[#0c0e16]">
+<!-- Header Section -->
+<header class="flex justify-between items-end mb-16">
+<div>
+<h1 class="font-display-xl text-headline-lg text-[#CCFF00] uppercase italic tracking-tighter">OPERATOR_DASHBOARD</h1>
+<p class="font-body-lg text-on-surface-variant opacity-70">Welcome back, Commander. System status: Optimal.</p>
+</div>
+<div class="flex items-center space-x-6">
+<div class="text-right">
+<div class="font-label-caps text-xs text-white">XENO_SLAYER_99</div>
+<div class="font-label-caps text-[10px] text-[#CCFF00]">RANK: ELITE PRO</div>
+</div>
+<div class="w-14 h-14 border-2 border-[#CCFF00] p-1">
+<img alt="User Profile Avatar" class="w-full h-full object-cover grayscale" data-alt="A high-contrast profile portrait of a futuristic gamer wearing advanced LED-integrated headgear. The lighting is dominated by sharp Cyber Lime neon accents against a deep charcoal background. The aesthetic is gritty and technical, mirroring a cyberpunk or advanced military simulation interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHSrfroLF3gZkgldCsr2zUQ_5sGdqG5FC8sWBhSKGEMAS99m4kDnfRY9BFr81linfyCtxaaApAythV46ObbOdDWBwnTWGe284n9dfWhDc42cWiEhjeL_FDTSxwWyM42Rw3UL85GKJ7Jdna5_eY-q8TbZ9AcljrlVSFUZadn_NRcKv4E2ncbcMAb0w_XzgkIk0lb2bmCZn9M0HmYV3nNVynWOI-pWeXYWapV-dFMlN-gcHnaL6QRtu2mav9AMl1Opso17h6adfhCLZg"/>
+</div>
+</div>
+</header>
+<!-- Top Grid Layout -->
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Quick Access / Submit Game (Bento Style) -->
+<div class="col-span-12 lg:col-span-4 h-full">
+<div class="glass-card p-8 h-full flex flex-col justify-between border-l-4 border-l-[#CCFF00]">
+<div>
+<span class="inline-block px-2 py-1 bg-[#CCFF00] text-black font-label-caps text-[10px] mb-4">NEW_PROTOCOL</span>
+<h2 class="font-headline-md text-white mb-4 uppercase">Launch Project</h2>
+<p class="text-on-surface-variant text-sm mb-8 leading-relaxed">Ready to deploy a new simulation? Our publishing engine is primed for high-octane performance and global distribution.</p>
+</div>
+<button class="w-full bg-transparent border border-[#CCFF00] text-[#CCFF00] font-label-caps text-xs py-4 hover:bg-[#CCFF00] hover:text-black transition-all duration-300">
+                            INITIALIZE SUBMISSION
+                        </button>
+</div>
+</div>
+<!-- Recent Activity Feed -->
+<div class="col-span-12 lg:col-span-8">
+<div class="glass-card p-8 h-full">
+<div class="flex justify-between items-center mb-8">
+<h2 class="font-headline-md text-white uppercase text-xl">Recent_Activity</h2>
+<span class="material-symbols-outlined text-[#CCFF00]" data-icon="bolt">bolt</span>
+</div>
+<div class="space-y-6">
+<!-- Activity Item 1 -->
+<div class="flex items-center justify-between border-b border-white/5 pb-4">
+<div class="flex items-center space-x-4">
+<div class="w-10 h-10 bg-[#CCFF00]/10 flex items-center justify-center border border-[#CCFF00]/30">
+<span class="material-symbols-outlined text-[#CCFF00] text-xl" data-icon="military_tech">military_tech</span>
+</div>
+<div>
+<div class="text-sm font-bold text-white uppercase tracking-wider">Achievement Unlocked: 'No Scope King'</div>
+<div class="text-xs text-slate-500">Global Rank improved by +24 slots</div>
+</div>
+</div>
+<span class="text-[10px] font-label-caps text-slate-500">2M AGO</span>
+</div>
+<!-- Activity Item 2 -->
+<div class="flex items-center justify-between border-b border-white/5 pb-4">
+<div class="flex items-center space-x-4">
+<div class="w-10 h-10 bg-secondary/10 flex items-center justify-center border border-secondary/30">
+<span class="material-symbols-outlined text-secondary text-xl" data-icon="person_add">person_add</span>
+</div>
+<div>
+<div class="text-sm font-bold text-white uppercase tracking-wider">Friend Update: Ghost_Protocol</div>
+<div class="text-xs text-slate-500">Started playing 'Cyber Siege 2077'</div>
+</div>
+</div>
+<span class="text-[10px] font-label-caps text-slate-500">1H AGO</span>
+</div>
+<!-- Activity Item 3 -->
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-4">
+<div class="w-10 h-10 bg-white/5 flex items-center justify-center border border-white/10">
+<span class="material-symbols-outlined text-white/50 text-xl" data-icon="update">update</span>
+</div>
+<div>
+<div class="text-sm font-bold text-white uppercase tracking-wider">System Update: 0.9.4.2</div>
+<div class="text-xs text-slate-500">Engine optimizations and security patch applied.</div>
+</div>
+</div>
+<span class="text-[10px] font-label-caps text-slate-500">4H AGO</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- My Games Library Section -->
+<section class="mt-20">
+<div class="flex items-center justify-between mb-8">
+<div class="flex items-center space-x-4">
+<h2 class="font-headline-md text-white uppercase">My_Library</h2>
+<span class="h-px w-24 bg-[#CCFF00]"></span>
+</div>
+<div class="flex space-x-2">
+<button class="p-2 border border-white/10 text-slate-500 hover:text-[#CCFF00] transition-colors"><span class="material-symbols-outlined" data-icon="grid_view">grid_view</span></button>
+<button class="p-2 border border-white/10 text-slate-500 hover:text-[#CCFF00] transition-colors"><span class="material-symbols-outlined" data-icon="list">list</span></button>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
+<!-- Game Card 1 -->
+<div class="group relative overflow-hidden glass-card rim-light cursor-pointer">
+<div class="aspect-[3/4] overflow-hidden bg-slate-900">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-500" data-alt="A detailed cinematic shot of a futuristic urban combat environment with neon reflections in the puddles. The scene is dominated by deep blues and vibrant Cyber Lime accents. Digital UI overlays and HUD elements are visible in the corners of the frame, creating an immersive gaming aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC__PM1zx4h-m5uEYtf6HypsD3Bx-sEqmu2T65fYo7RRwv0Bz0VwWsKnDoRsgOPfaPmOc6fJIyrWxjlMOhzQpUfrWQa7t5UtMNs1Ac8JtJud3CvTRMubIAlBkc8Ylc8nGQley6qEBQxyZHq3MVi-5iXmvJz1KV8d4KYjjLzM0iuIAsC13xBa1GnuCCP62NOjR5nSBOeul4o754llywkpTVnKytP2PMicS-jWU_j6U5zG8Km1nHvc3A2yB3Tk3aaOhy9AME3V11OUHWH"/>
+</div>
+<div class="p-4 absolute bottom-0 left-0 w-full bg-slate-950/90 backdrop-blur-md translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+<div class="font-label-caps text-[10px] text-[#CCFF00] mb-1">ACTION / RPG</div>
+<div class="font-bold text-xs uppercase text-white truncate">Vortex Breach</div>
+</div>
+</div>
+<!-- Game Card 2 -->
+<div class="group relative overflow-hidden glass-card rim-light cursor-pointer">
+<div class="aspect-[3/4] overflow-hidden bg-slate-900">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-500" data-alt="Intense high-speed racing scene involving sleek aerodynamic spacecraft flying through a neon-lit futuristic canyon. The lighting features long streaks of primary lime and secondary purple light trails. The atmosphere is explosive and dynamic, emphasizing a sense of technical precision and speed." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA02GkRaQdjmVQEW52GE-BVSYMOVkfVezgZ9WaPnxNVo4MWYNyMMd2ykdwiuZ9f-3xjYtir9Oa1LzauLqNjH7ee0lCLFLOTZM_1M3FIVoL9lukyfGhNAS5tySlAFzxUaespkdO-tODTvCdl4jUR2S4H1nDhPHvW84pDhazMZraQXLHOze-SYRG52_542DohaNInvH_Ks79Jv4WUHINnotenXR4IA1kPv0M_1deulCQcw03Cea3cqdPeqvhLKxm_GliuNLFXVo-YDeEf"/>
+</div>
+<div class="p-4 absolute bottom-0 left-0 w-full bg-slate-950/90 backdrop-blur-md translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+<div class="font-label-caps text-[10px] text-[#CCFF00] mb-1">RACING</div>
+<div class="font-bold text-xs uppercase text-white truncate">Neon Velocity</div>
+</div>
+</div>
+<!-- Game Card 3 -->
+<div class="group relative overflow-hidden glass-card rim-light cursor-pointer">
+<div class="aspect-[3/4] overflow-hidden bg-slate-900">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-500" data-alt="A dark, atmospheric scene of a high-tech hacker den with multiple monitors displaying glowing green code and biometric data. The room is filled with cables and futuristic hardware. The mood is secretive and intense, lit by the cold glow of screens and small neon accent lights." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKmuOhJaNwbxWuG3QfE7H8UfebAZwQv87ipR7BSILHkp6asUX99A_mXmaMqBmB8jv7Q-fK_YGnR6sMoeXuz476mktM_0U-TjmASg1o5kp2i_ccaoYUAKRtalyQfq66M9kaI0bIbjiHn_DZl4dLfbF85VXtUopzC1pYqAMyIduypjNNHYWMw6icE_41mSYqOc6jQIynmHvyRJ8MGqTtJfw4f2AIukR8C9vkJNRCoPANk9NJ1Ij0jUL5MYV505Hs-nmjJJEfA9WKu5wq"/>
+</div>
+<div class="p-4 absolute bottom-0 left-0 w-full bg-slate-950/90 backdrop-blur-md translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+<div class="font-label-caps text-[10px] text-[#CCFF00] mb-1">STRATEGY</div>
+<div class="font-bold text-xs uppercase text-white truncate">Ghost Code</div>
+</div>
+</div>
+<!-- Game Card 4 -->
+<div class="group relative overflow-hidden glass-card rim-light cursor-pointer">
+<div class="aspect-[3/4] overflow-hidden bg-slate-900">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-500" data-alt="A sprawling futuristic industrial complex under a dark night sky with giant glowing exhaust vents and technical piping. The color palette is dark charcoal and navy, with sharp Cyber Lime highlights indicating energy flows. The style is massive, editorial, and technologically overwhelming." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUjg5nxG2Y2b5XaUssg_QvBWbESKfT6msmZdQq-BwQt2x1kcUZFDZFWhrBeWTVEtGUU_1BRhlFhFhSoLAs6Gj6gSufmUSkdom2lpJ6wbBM-D_oXIRaSQLlEdkokyAWzdhuUjDtdkc2yTVqSSafsvAzCfGSM7MFu8Kuqff5qLZpPkwcsHnV2F7mgy7uSjXLSQ-3rOqb-3-D39kJmIqTsqBRe3OwhGngx0pj6tgoNRU0zXmb3MvvKkAoErmsOHysJ97dgN2b3JgD1tgE"/>
+</div>
+<div class="p-4 absolute bottom-0 left-0 w-full bg-slate-950/90 backdrop-blur-md translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+<div class="font-label-caps text-[10px] text-[#CCFF00] mb-1">SIMULATION</div>
+<div class="font-bold text-xs uppercase text-white truncate">Titan Foundry</div>
+</div>
+</div>
+<!-- Game Card 5 (Empty/Add) -->
+<div class="group relative overflow-hidden glass-card border-dashed border-2 border-white/10 flex items-center justify-center cursor-pointer hover:border-[#CCFF00]/50 transition-colors">
+<div class="text-center">
+<span class="material-symbols-outlined text-4xl text-white/20 group-hover:text-[#CCFF00] transition-colors mb-2" data-icon="add_box">add_box</span>
+<div class="font-label-caps text-[10px] text-white/40">ADD_GAME</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Stats Bar -->
+<section class="mt-20 grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="glass-card p-6 flex items-center justify-between">
+<div>
+<div class="text-[10px] font-label-caps text-slate-500">PLAY_TIME</div>
+<div class="text-2xl font-display-xl text-white">1,240 <span class="text-xs text-[#CCFF00] font-body-md uppercase">HRS</span></div>
+</div>
+<span class="material-symbols-outlined text-[#CCFF00]/30 text-4xl" data-icon="schedule">schedule</span>
+</div>
+<div class="glass-card p-6 flex items-center justify-between">
+<div>
+<div class="text-[10px] font-label-caps text-slate-500">ACHIEVEMENTS</div>
+<div class="text-2xl font-display-xl text-white">82%</div>
+</div>
+<div class="w-24 h-1 bg-white/10 relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-r from-secondary to-[#CCFF00] w-[82%]"></div>
+<div class="absolute top-0 right-[18%] h-full w-1 bg-white shadow-[0_0_8px_white]"></div>
+</div>
+</div>
+<div class="glass-card p-6 flex items-center justify-between">
+<div>
+<div class="text-[10px] font-label-caps text-slate-500">NETWORK_LATENCY</div>
+<div class="text-2xl font-display-xl text-[#CCFF00]">12 <span class="text-xs text-white/50 font-body-md uppercase">MS</span></div>
+</div>
+<span class="material-symbols-outlined text-[#CCFF00]/30 text-4xl" data-icon="cell_tower">cell_tower</span>
+</div>
+</section>
+</main>
+</div>
+<!-- Footer -->
+<footer class="bg-slate-950 border-t border-white/5 py-12 ml-64">
+<div class="flex flex-col md:flex-row justify-between items-center px-12 max-w-7xl mx-auto space-y-6 md:space-y-0">
+<div class="text-[#CCFF00] font-bold font-['Space_Grotesk'] text-[10px] tracking-widest uppercase">
+                NEON_PUBLISH. SYSTEM_READY.
+            </div>
+<div class="flex space-x-8">
+<a class="font-['Space_Grotesk'] text-[10px] tracking-widest text-slate-600 hover:text-[#CCFF00] transition-colors" href="#">Terms of Service</a>
+<a class="font-['Space_Grotesk'] text-[10px] tracking-widest text-slate-600 hover:text-[#CCFF00] transition-colors" href="#">Privacy Protocol</a>
+<a class="font-['Space_Grotesk'] text-[10px] tracking-widest text-slate-600 hover:text-[#CCFF00] transition-colors" href="#">Developer API</a>
+<a class="font-['Space_Grotesk'] text-[10px] tracking-widest text-slate-600 hover:text-[#CCFF00] transition-colors" href="#">Contact Console</a>
+</div>
+<div class="font-['Space_Grotesk'] text-[10px] tracking-widest text-slate-500">
+                © 2024 NEON_PUBLISH.
+            </div>
+</div>
+</footer>
+</body></html>

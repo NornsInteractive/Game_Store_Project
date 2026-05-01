@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NEON_PUBLISH | SECURE_ACCESS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;900&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-lowest": "#0c0e16",
+                        "on-background": "#e1e1ed",
+                        "on-primary-fixed-variant": "#3c4d00",
+                        "on-tertiary-container": "#606470",
+                        "on-tertiary-fixed": "#181b25",
+                        "tertiary-fixed-dim": "#c3c6d3",
+                        "inverse-primary": "#506600",
+                        "on-primary-fixed": "#161e00",
+                        "tertiary": "#ffffff",
+                        "surface-container-high": "#282a32",
+                        "on-tertiary": "#2c303a",
+                        "surface-dim": "#11131b",
+                        "inverse-surface": "#e1e1ed",
+                        "primary": "#ffffff",
+                        "surface-container": "#1d1f28",
+                        "on-secondary-fixed": "#310048",
+                        "on-secondary-fixed-variant": "#7200a3",
+                        "primary-fixed-dim": "#abd600",
+                        "outline": "#8e9379",
+                        "surface": "#11131b",
+                        "on-tertiary-fixed-variant": "#434751",
+                        "on-error-container": "#ffdad6",
+                        "primary-fixed": "#c3f400",
+                        "secondary": "#e9b3ff",
+                        "on-primary": "#283500",
+                        "primary-container": "#c3f400",
+                        "on-surface": "#e1e1ed",
+                        "surface-container-low": "#191b23",
+                        "on-secondary-container": "#e5a9ff",
+                        "error": "#ffb4ab",
+                        "secondary-fixed-dim": "#e9b3ff",
+                        "error-container": "#93000a",
+                        "background": "#11131b",
+                        "on-primary-container": "#556d00",
+                        "surface-bright": "#373942",
+                        "tertiary-container": "#dfe2ef",
+                        "tertiary-fixed": "#dfe2ef",
+                        "secondary-fixed": "#f6d9ff",
+                        "outline-variant": "#444933",
+                        "secondary-container": "#7d01b1",
+                        "surface-tint": "#abd600",
+                        "surface-container-highest": "#33343d",
+                        "surface-variant": "#33343d",
+                        "inverse-on-surface": "#2e3039",
+                        "on-error": "#690005",
+                        "on-secondary": "#510074",
+                        "on-surface-variant": "#c4c9ac"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "unit": "4px",
+                        "gutter": "24px",
+                        "margin": "32px"
+                    },
+                    "fontFamily": {
+                        "display-xl": ["Space Grotesk"],
+                        "headline-lg": ["Space Grotesk"],
+                        "label-caps": ["Space Grotesk"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Space Grotesk"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-xl": ["72px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg": ["48px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "label-caps": ["14px", { "lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-md": ["32px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .neon-glow-primary {
+            box-shadow: 0 0 10px rgba(171, 214, 0, 0.4), 0 0 20px rgba(171, 214, 0, 0.2);
+        }
+        .neon-glow-primary:hover {
+            box-shadow: 0 0 15px rgba(171, 214, 0, 0.6), 0 0 30px rgba(171, 214, 0, 0.3);
+        }
+        .glass-panel {
+            background: rgba(17, 19, 27, 0.6);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            border-left: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .input-glow:focus {
+            box-shadow: 0 4px 12px -2px rgba(171, 214, 0, 0.15);
+        }
+    </style>
+</head>
+<body class="bg-surface-container-lowest text-on-background font-body-md overflow-hidden min-h-screen flex flex-col">
+<!-- Auth Shell Container -->
+<main class="flex-grow flex items-stretch min-h-screen">
+<!-- Left Side: Visual Experience (Hidden on Mobile) -->
+<section class="hidden lg:flex w-1/2 relative overflow-hidden bg-slate-950 items-center justify-center">
+<div class="absolute inset-0 z-0">
+<img alt="Gaming Atmosphere" class="w-full h-full object-cover opacity-60 mix-blend-luminosity scale-105" data-alt="A high-octane gaming environment featuring a futuristic pilot inside a cockpit with neon lime and electric purple displays. The aesthetic is cinematic and technical, with visible HUD elements and digital noise textures. Deep charcoal shadows contrast with vibrant light sources reflecting off polished metal surfaces, creating an immersive cyber-industrial mood." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD03V298qDpFifEnMUNvfl0Leogcc5-yjl8Y7U8jhX3LMyamHPegdJ-oQlyvhKK-UEevbBtd3IHGleJZhgvc6xZvz-MEwn0IimMVYPKH68cBDPiziA0Bcrpmi3t_iDWRyO8TWZ-VhBO3DAmRJZ7fWvmpdHgx-6d6ZpZ1NhimyJ0DwA2Akzdd3VLWKMURsJkWhq9yv9fIUdYDHRLpcIALL8uixaFG5N5stKEEBhn5Ijc_n6K9M6wfHNP4vBD600zfvVTFPQvgGdhrR6P"/>
+<div class="absolute inset-0 bg-gradient-to-tr from-surface-container-lowest via-transparent to-primary-fixed-dim/20"></div>
+<div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-transparent to-surface-container-lowest"></div>
+</div>
+<div class="relative z-10 p-12 max-w-xl">
+<div class="inline-block px-4 py-1 border border-primary-fixed-dim mb-8">
+<span class="font-label-caps text-label-caps text-primary-fixed-dim">SYSTEM_BOOT_SEQUENCE</span>
+</div>
+<h1 class="font-display-xl text-display-xl text-primary leading-tight mb-6">
+                    DOMINATE THE <br/><span class="text-primary-fixed-dim">VIRTUAL REALM</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-md">
+                    Connect to the NEON_PUBLISH ecosystem. Access your global library, real-time analytics, and the elite developer community.
+                </p>
+<div class="mt-12 flex gap-8">
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-primary-fixed-dim mb-1">SERVERS</span>
+<span class="font-display-xl text-[24px] text-primary">ONLINE</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-primary-fixed-dim mb-1">LATENCY</span>
+<span class="font-display-xl text-[24px] text-primary">12ms</span>
+</div>
+</div>
+</div>
+<!-- Decorative Blueprint Lines -->
+<div class="absolute bottom-0 left-0 w-full h-32 border-t border-primary-fixed-dim/10 pointer-events-none"></div>
+<div class="absolute top-0 right-0 h-full w-32 border-l border-primary-fixed-dim/10 pointer-events-none"></div>
+</section>
+<!-- Right Side: Interaction Shell -->
+<section class="w-full lg:w-1/2 flex flex-col items-center justify-center p-8 md:p-12 relative">
+<div class="absolute top-8 left-8 lg:left-12">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-fixed-dim text-3xl" style="font-variation-settings: 'FILL' 1;">terminal</span>
+<span class="text-2xl font-black text-primary italic tracking-tighter">NEON_PUBLISH</span>
+</div>
+</div>
+<div class="w-full max-w-md">
+<!-- Tab Switcher -->
+<div class="flex gap-8 mb-12 border-b border-outline-variant/30">
+<button class="pb-4 font-label-caps text-label-caps text-primary-fixed-dim border-b-2 border-primary-fixed-dim transition-all">SIGN_IN</button>
+<button class="pb-4 font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-all">CREATE_ACCOUNT</button>
+</div>
+<div class="space-y-8">
+<header>
+<h2 class="font-headline-lg text-headline-lg text-primary mb-2">WELCOME_BACK</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Initialize secure session credentials to proceed.</p>
+</header>
+<!-- Social Logins -->
+<div class="grid grid-cols-3 gap-4">
+<button class="glass-panel flex items-center justify-center py-3 hover:bg-surface-container-high transition-all duration-300">
+<img alt="Discord" class="w-6 h-6 grayscale hover:grayscale-0 transition-all" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBa8MURYPNBXpM2DPvoiRhpLAjmhqcfcL0PxgaljDnltznpLgFDtel7CvVMS56VGz7j3HKzyuDybI913Vq_w0aZpuQ_yGCJ893nr3GDM-9V-m86EqnPa0KRPu9ntBBmTYGUgn_8-p0NPJWL1gnfg_cw-VTx9mYlpeYL8W8aqu1w95vpR5V03QnZuCPmrwKRKK3dTJ9waVL1j4H8dKqaz1kFiImeAmLIndRU2ZISW5sqsgw4hZHai7RTxkI7A2Z8QEHVFcZ7OTgUDBJn"/>
+</button>
+<button class="glass-panel flex items-center justify-center py-3 hover:bg-surface-container-high transition-all duration-300">
+<img alt="Steam" class="w-6 h-6 grayscale hover:grayscale-0 transition-all" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmKn2tG6gI0-NSxOHA4U1bPFEhMUG3kQ7NFEcZ3pA2ajxRyRVQax8JsPcE3IKLGCETMnMCvXfqXwHKyJTahQ46aONLIfANOrV83hfi9xUSblQxpbikgoBYkH9DcTCM4vKOM3cQjX9VnAXyGekYnh6SAuM0YjUt-V-LpDzV5p9klkuri4HVYMKFJMpnWVW8QIeDtTr2asiJBu0ngDrMmyZQ6RfFqPmbQH8zl1lP72a0k_1uSBhRb-68ASjQYcwPnFIbiNtHS70I2ndg"/>
+</button>
+<button class="glass-panel flex items-center justify-center py-3 hover:bg-surface-container-high transition-all duration-300">
+<img alt="Google" class="w-6 h-6 grayscale hover:grayscale-0 transition-all" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWEKTTCdRG5yUQWmeSJHo31GsqKGA4o76kUlBWx3x84m-LTqOUgMCT56Re-D5NSH96krRy3dSIX-T5k6wwwwJM-ZasCZlBhNX7iSWxGzzz7NpU23AIT0CtCbMJ9D2hbvjTnLNITOc951yBAlZ3SajN9w3Poc7v_DZWj9P0AIQvboUz-cv9Z6mPeArHRr2f1VGsNuVZRjml-vNeFO1sEVi3bV2vURJB_Rmp5vClniLI4vIuYcQvI7N6xCp3qYQ8JWSY8IBI8A52ANRk"/>
+</button>
+</div>
+<div class="relative flex items-center py-4">
+<div class="flex-grow border-t border-outline-variant/20"></div>
+<span class="flex-shrink mx-4 font-label-caps text-[10px] text-on-tertiary-fixed-variant">OR_USE_EMAIL</span>
+<div class="flex-grow border-t border-outline-variant/20"></div>
+</div>
+<!-- Main Form -->
+<form class="space-y-6">
+<div class="space-y-2 group">
+<label class="font-label-caps text-[12px] text-on-surface-variant group-focus-within:text-primary-fixed-dim transition-colors">ACCESS_ID</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-0 top-1/2 -translate-y-1/2 text-on-tertiary-fixed-variant text-xl">alternate_email</span>
+<input class="w-full bg-transparent border-0 border-b border-outline-variant/50 focus:border-primary-fixed-dim focus:ring-0 text-primary font-display-xl text-[16px] pl-8 pb-3 transition-all input-glow" placeholder="USER@NEON_NETWORK.SYS" type="email"/>
+</div>
+</div>
+<div class="space-y-2 group">
+<div class="flex justify-between items-center">
+<label class="font-label-caps text-[12px] text-on-surface-variant group-focus-within:text-primary-fixed-dim transition-colors">ENCRYPTION_KEY</label>
+<a class="font-label-caps text-[10px] text-on-tertiary-fixed-variant hover:text-primary-fixed-dim transition-colors" href="#">FORGOT_KEY?</a>
+</div>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-0 top-1/2 -translate-y-1/2 text-on-tertiary-fixed-variant text-xl">lock</span>
+<input class="w-full bg-transparent border-0 border-b border-outline-variant/50 focus:border-primary-fixed-dim focus:ring-0 text-primary font-display-xl text-[16px] pl-8 pb-3 transition-all input-glow" placeholder="••••••••••••" type="password"/>
+<button class="absolute right-0 top-1/2 -translate-y-1/2 text-on-tertiary-fixed-variant hover:text-primary transition-colors" type="button">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</div>
+</div>
+<div class="flex items-center gap-3 pt-2">
+<input class="w-4 h-4 bg-transparent border-outline-variant text-primary-fixed-dim focus:ring-offset-surface focus:ring-primary-fixed-dim rounded-none" id="remember" type="checkbox"/>
+<label class="font-label-caps text-[11px] text-on-surface-variant" for="remember">PERSIST_SESSION_ON_THIS_TERMINAL</label>
+</div>
+<button class="w-full bg-primary-fixed-dim text-on-primary-fixed font-label-caps py-4 tracking-widest text-center flex items-center justify-center gap-3 neon-glow-primary transition-all active:scale-[0.98] mt-8" type="submit">
+<span class="material-symbols-outlined text-lg">login</span>
+                            INITIALIZE_ACCESS
+                        </button>
+</form>
+</div>
+<!-- Footer Info -->
+<footer class="mt-16 text-center space-y-4">
+<p class="font-label-caps text-[10px] text-on-tertiary-fixed-variant">
+                        © 2024 NEON_PUBLISH. ENCRYPTION_ACTIVE. <br/>
+<span class="text-primary-fixed-dim/40 uppercase">v2.4.0-STABLE</span>
+</p>
+<div class="flex justify-center gap-6">
+<a class="font-label-caps text-[10px] text-on-tertiary-fixed-variant hover:text-primary transition-colors" href="#">LEGAL_PROTOCOL</a>
+<a class="font-label-caps text-[10px] text-on-tertiary-fixed-variant hover:text-primary transition-colors" href="#">PRIVACY_SHIELD</a>
+</div>
+</footer>
+</div>
+<!-- Contextual Graphics -->
+<div class="absolute bottom-12 right-12 opacity-10 pointer-events-none hidden xl:block">
+<svg fill="none" height="200" viewbox="0 0 200 200" width="200" xmlns="http://www.w3.org/2000/svg">
+<circle cx="100" cy="100" r="99" stroke="white" stroke-dasharray="8 8"></circle>
+<path d="M100 10V190" stroke="white" stroke-width="0.5"></path>
+<path d="M10 100H190" stroke="white" stroke-width="0.5"></path>
+<rect height="60" stroke="white" stroke-width="2" width="60" x="70" y="70"></rect>
+</svg>
+</div>
+</section>
+</main>
+<!-- Overlay Grid Pattern -->
+<div class="fixed inset-0 pointer-events-none opacity-[0.03] bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+</body></html>

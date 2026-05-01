@@ -1,0 +1,110 @@
+<section class="relative h-[600px] w-full flex items-center overflow-hidden">
+  <div class="absolute inset-0 z-0">
+    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVbryYNn-nX4HDByi5qWa8PFBFFIR3vJuPr91XIcl213p7wfFxT3neR4Ak82ZGJvxNKZ3npGZuP3spkPVYVA_H6pXfzfuWJZYhEghp414iR602Qcjb5Nzm_jrPqUgoDLQbOgKvG9wwNrXTkSClpL1CLgPcYAlanrRB9bm5V-N22j3QnEj11wJoAWNmC70skBfPAGVKwAWyUckyLXKhfIOprZKW7q6Lt7PZqLLmN2ltYp1kVd81RhWzaPfKG8x21GAY3cotaBKEjibA" class="w-full h-full object-cover" alt="Hero"/>
+    <div class="absolute inset-0 bg-gradient-to-t from-surface-dim via-surface-dim/40 to-transparent"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-surface-dim via-transparent to-transparent"></div>
+  </div>
+  <div class="container mx-auto px-8 relative z-10">
+    <div class="max-w-2xl space-y-6">
+      <div class="flex items-center space-x-2">
+        <span class="bg-[#CCFF00] text-black text-[10px] font-black px-2 py-1 tracking-[0.2em] uppercase">Featured</span>
+        <span class="border border-white/20 text-white text-[10px] font-bold px-2 py-1 tracking-[0.2em] uppercase backdrop-blur-md">New Release</span>
+      </div>
+      <h1 class="font-display-xl text-display-xl text-white uppercase italic">CYBERPULSE GAMING</h1>
+      <p class="font-body-lg text-body-lg text-on-surface-variant max-w-lg">
+        The definitive digital storefront for next-gen titles. Master the grid, hack the mainframe, and survive the digital onslaught.
+      </p>
+      <div class="flex items-center space-x-6 pt-4">
+        <a href="/games" class="bg-[#CCFF00] text-black px-10 py-4 font-['Space_Grotesk'] uppercase tracking-widest text-lg font-black shadow-[0_0_20px_#CCFF00] transition-all duration-300 hover:scale-105 active:scale-95 no-underline inline-block">Browse Games</a>
+        <a href="/news" class="glass-card text-white px-10 py-4 font-['Space_Grotesk'] uppercase tracking-widest text-lg font-bold border border-white/10 hover:bg-white/10 transition-all duration-300 active:scale-95 no-underline">Latest News</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-20 container mx-auto px-8">
+  <div class="flex justify-between items-end mb-12">
+    <div>
+      <h2 class="font-headline-lg text-headline-lg text-white uppercase italic">Trending_Now</h2>
+      <div class="h-1 w-24 bg-[#CCFF00] mt-2"></div>
+    </div>
+    <a href="/games?order=rating" class="font-label-caps text-label-caps text-slate-400 hover:text-[#CCFF00] flex items-center space-x-2 transition-colors no-underline">
+      <span>View All</span>
+      <span class="material-symbols-outlined text-sm">arrow_forward</span>
+    </a>
+  </div>
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <% trendingGames.forEach(function(g) { %>
+      <%- include('../partials/game-card', { game: g }) %>
+    <% }) %>
+  </div>
+</section>
+
+<section class="py-20 bg-surface-container-low">
+  <div class="container mx-auto px-8">
+    <div class="flex justify-between items-end mb-12">
+      <div>
+        <h2 class="font-headline-lg text-headline-lg text-white uppercase italic">Featured_Games</h2>
+        <div class="h-1 w-24 bg-[#CCFF00] mt-2"></div>
+      </div>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <% featuredGames.forEach(function(g) { %>
+        <%- include('../partials/game-card', { game: g }) %>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<section class="py-20 container mx-auto px-8">
+  <div class="flex justify-between items-end mb-12">
+    <div>
+      <h2 class="font-headline-lg text-headline-lg text-white uppercase italic">Latest_Updates</h2>
+      <div class="h-1 w-24 bg-[#CCFF00] mt-2"></div>
+    </div>
+    <a href="/news" class="font-label-caps text-label-caps text-slate-400 hover:text-[#CCFF00] flex items-center space-x-2 transition-colors no-underline">
+      <span>All News</span>
+      <span class="material-symbols-outlined text-sm">arrow_forward</span>
+    </a>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <% featuredArticles.forEach(function(a) { %>
+      <%- include('../partials/news-card', { article: a }) %>
+    <% }) %>
+  </div>
+</section>
+
+<% if (categories && categories.length > 0) { %>
+<section class="py-20 bg-surface-container-low">
+  <div class="container mx-auto px-8">
+    <div class="flex justify-between items-end mb-12">
+      <div>
+        <h2 class="font-headline-lg text-headline-lg text-white uppercase italic">Genres</h2>
+        <div class="h-1 w-24 bg-[#CCFF00] mt-2"></div>
+      </div>
+    </div>
+    <div class="flex flex-wrap gap-3">
+      <% categories.forEach(function(c) { %>
+        <a href="/games?category=<%= c.id %>" class="glass-card px-5 py-3 text-slate-400 hover:text-[#CCFF00] font-['Space_Grotesk'] uppercase tracking-wider text-xs font-bold no-underline transition-all hover:border-[#CCFF00]/30">
+          <%= c.name %> <span class="text-slate-600 ml-1">(<%= c.game_count %>)</span>
+        </a>
+      <% }) %>
+    </div>
+  </div>
+</section>
+<% } %>
+
+<% if (recentActivity && recentActivity.length > 0) { %>
+<section class="py-20 container mx-auto px-8">
+  <h2 class="font-headline-md text-headline-md text-white mb-8 uppercase">Community_Feed</h2>
+  <div class="space-y-3 max-w-3xl">
+    <% recentActivity.forEach(function(a) { %>
+      <div class="glass-card p-4 flex items-center space-x-3">
+        <span class="text-[#CCFF00] text-xs font-['Space_Grotesk'] uppercase tracking-wider w-24 flex-shrink-0"><%= a.username || 'System' %></span>
+        <span class="text-slate-400 text-sm font-['Inter']"><%= a.action %></span>
+        <span class="text-slate-600 text-xs ml-auto"><%= new Date(a.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) %></span>
+      </div>
+    <% }) %>
+  </div>
+</section>
+<% } %>

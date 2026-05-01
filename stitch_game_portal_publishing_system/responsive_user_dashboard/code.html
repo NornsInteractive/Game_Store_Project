@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>User Dashboard - CYBERPULSE</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#e9b3ff",
+                        "on-tertiary": "#2c303a",
+                        "surface": "#11131b",
+                        "tertiary-container": "#dfe2ef",
+                        "on-surface": "#e1e1ed",
+                        "on-secondary-fixed": "#310048",
+                        "surface-container-lowest": "#0c0e16",
+                        "primary-fixed": "#c3f400",
+                        "secondary": "#e9b3ff",
+                        "inverse-on-surface": "#2e3039",
+                        "tertiary-fixed": "#dfe2ef",
+                        "primary-fixed-dim": "#abd600",
+                        "on-secondary": "#510074",
+                        "on-primary-fixed-variant": "#3c4d00",
+                        "inverse-surface": "#e1e1ed",
+                        "on-error": "#690005",
+                        "surface-dim": "#11131b",
+                        "outline": "#8e9379",
+                        "surface-container-low": "#191b23",
+                        "background": "#11131b",
+                        "outline-variant": "#444933",
+                        "primary-container": "#c3f400",
+                        "inverse-primary": "#506600",
+                        "surface-variant": "#33343d",
+                        "surface-container": "#1d1f28",
+                        "surface-bright": "#373942",
+                        "tertiary-fixed-dim": "#c3c6d3",
+                        "surface-container-high": "#282a32",
+                        "secondary-container": "#7d01b1",
+                        "on-secondary-container": "#e5a9ff",
+                        "surface-tint": "#abd600",
+                        "tertiary": "#ffffff",
+                        "secondary-fixed": "#f6d9ff",
+                        "on-primary-container": "#556d00",
+                        "on-tertiary-fixed-variant": "#434751",
+                        "on-error-container": "#ffdad6",
+                        "error": "#ffb4ab",
+                        "primary": "#ffffff",
+                        "on-tertiary-fixed": "#181b25",
+                        "on-tertiary-container": "#606470",
+                        "on-primary-fixed": "#161e00",
+                        "error-container": "#93000a",
+                        "surface-container-highest": "#33343d",
+                        "on-secondary-fixed-variant": "#7200a3",
+                        "on-background": "#e1e1ed",
+                        "on-surface-variant": "#c4c9ac",
+                        "on-primary": "#283500"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "margin": "32px",
+                        "gutter": "24px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Space Grotesk"],
+                        "body-lg": ["Inter"],
+                        "display-xl": ["Space Grotesk"],
+                        "label-caps": ["Space Grotesk"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Space Grotesk"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["32px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "display-xl": ["72px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-caps": ["14px", { "lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-lg": ["48px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(29, 31, 40, 0.5);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-left: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            border-right: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .neon-glow {
+            box-shadow: 0 0 10px var(--tw-colors-primary-container), 0 0 20px rgba(195, 244, 0, 0.2);
+        }
+        .neon-glow:hover {
+            box-shadow: 0 0 20px var(--tw-colors-primary-container), 0 0 40px rgba(195, 244, 0, 0.4);
+        }
+        .text-glow {
+            text-shadow: 0 0 8px rgba(195, 244, 0, 0.6);
+        }
+        .bg-cyber-gradient {
+            background: linear-gradient(135deg, var(--tw-colors-surface-container-lowest) 0%, var(--tw-colors-surface-container) 100%);
+        }
+        .progress-bar-fill {
+            background: linear-gradient(90deg, var(--tw-colors-secondary) 0%, var(--tw-colors-primary-container) 100%);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col md:flex-row bg-cyber-gradient selection:bg-primary-container selection:text-on-primary-container">
+<!-- Mobile TopNav (Replacement for SideNav on mobile) -->
+<nav class="md:hidden flex justify-between items-center w-full px-6 py-4 bg-slate-950/80 backdrop-blur-2xl docked full-width top-0 z-50 border-b border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.5)] sticky">
+<div class="text-2xl font-black italic tracking-tighter text-[#CCFF00] drop-shadow-[0_0_8px_rgba(204,255,0,0.6)] font-headline-lg">
+            CYBERPULSE
+        </div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-[#CCFF00] font-[400]">notifications</span>
+<span class="material-symbols-outlined text-[#CCFF00] font-[400]">person</span>
+<span class="material-symbols-outlined text-[#CCFF00] font-[400]">menu</span>
+</div>
+</nav>
+<!-- Desktop SideNavBar -->
+<aside class="h-screen w-64 border-r border-white/10 hidden md:flex flex-col bg-slate-950/40 backdrop-blur-xl inset-shadow-sm flex flex-col gap-2 p-4 h-full sticky top-0 shrink-0">
+<!-- User Profile Header -->
+<div class="mb-8 mt-4 px-4 flex flex-col items-center">
+<div class="w-20 h-20 rounded-full border-2 border-primary-container p-1 mb-3 relative group cursor-pointer">
+<img alt="User Profile Avatar" class="w-full h-full rounded-full object-cover" data-alt="A striking portrait of a male gamer in a dark, high-contrast environment. The lighting is dominated by a strong, neon cyber-lime green light illuminating his face from the side, creating deep shadows on the opposite side. The aesthetic is heavily inspired by high-end gaming hardware and futuristic cyber styles. The mood is intense, focused, and professional. The image quality is extremely high, resembling a promotional e-sports photograph." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKvYeLjutYaHtLv9c19PUVz8NO6sSDiwO5rIWI4E79pLKbd3Z0CxrXV1VB3hrnfnqmq7USfEy6xgXdrr0jBrEogOSlL1rxdODECZJ7WyixtQPbkLTIdWCoMgszdYAPfttevYxCBqlHLT2WEt9bb_XYnO-p9OTAkCwFnV0Mhcq3_mZ2WSK8IKEpm0lrxUYRdisCjTRUf60hc8Ey-ywn1uYgNvK-Kv16EqXVujafiz7uUwjjt8twFxnNBAuEQewxO6-qg9UfSaNQZktH"/>
+<div class="absolute -bottom-1 -right-1 w-6 h-6 bg-primary-container rounded-full border-2 border-background flex items-center justify-center">
+<span class="material-symbols-outlined text-[12px] text-on-primary-container font-bold">verified</span>
+</div>
+</div>
+<h2 class="font-headline-md text-primary font-bold text-center">NeonRider_99</h2>
+<p class="font-label-caps text-primary-container text-glow mt-1 text-[10px]">Elite Rank</p>
+</div>
+<!-- Navigation Tabs -->
+<nav class="flex-1 flex flex-col gap-1">
+<a class="bg-[#CCFF00] text-black rounded-sm font-black shadow-[0_0_15px_rgba(204,255,0,0.4)] px-4 py-3 flex items-center gap-3 font-['Space_Grotesk'] font-medium uppercase text-xs hover:glow-lg" href="#">
+<span class="material-symbols-outlined font-[300]" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+                Dashboard
+            </a>
+<a class="text-slate-400 hover:text-[#CCFF00] hover:bg-white/5 px-4 py-3 rounded-sm transition-all flex items-center gap-3 font-['Space_Grotesk'] font-medium uppercase text-xs hover:translate-x-1 transition-transform" href="#">
+<span class="material-symbols-outlined font-[300]">group</span>
+                My Squad
+            </a>
+<a class="text-slate-400 hover:text-[#CCFF00] hover:bg-white/5 px-4 py-3 rounded-sm transition-all flex items-center gap-3 font-['Space_Grotesk'] font-medium uppercase text-xs hover:translate-x-1 transition-transform" href="#">
+<span class="material-symbols-outlined font-[300]">emoji_events</span>
+                Leaderboards
+            </a>
+<a class="text-slate-400 hover:text-[#CCFF00] hover:bg-white/5 px-4 py-3 rounded-sm transition-all flex items-center gap-3 font-['Space_Grotesk'] font-medium uppercase text-xs hover:translate-x-1 transition-transform" href="#">
+<span class="material-symbols-outlined font-[300]">military_tech</span>
+                Missions
+            </a>
+<a class="text-slate-400 hover:text-[#CCFF00] hover:bg-white/5 px-4 py-3 rounded-sm transition-all flex items-center gap-3 font-['Space_Grotesk'] font-medium uppercase text-xs hover:translate-x-1 transition-transform" href="#">
+<span class="material-symbols-outlined font-[300]">settings</span>
+                Settings
+            </a>
+</nav>
+<!-- CTA & Footer -->
+<div class="mt-auto flex flex-col gap-4">
+<button class="w-full bg-primary-container text-on-primary-container font-label-caps py-3 rounded-sm neon-glow transition-all duration-300 font-bold hover:-translate-y-1">
+                UPGRADE GEAR
+            </button>
+<div class="flex flex-col gap-1 border-t border-white/5 pt-4">
+<a class="text-slate-500 hover:text-[#CCFF00] px-4 py-2 flex items-center gap-3 font-label-caps text-[10px] transition-all" href="#">
+<span class="material-symbols-outlined text-[16px]">help</span>
+                    Support
+                </a>
+<a class="text-slate-500 hover:text-[#CCFF00] px-4 py-2 flex items-center gap-3 font-label-caps text-[10px] transition-all" href="#">
+<span class="material-symbols-outlined text-[16px]">logout</span>
+                    Logout
+                </a>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 flex flex-col w-full">
+<div class="p-6 md:p-12 max-w-container-max mx-auto w-full flex-1 flex flex-col gap-12">
+<!-- Welcome Header -->
+<header class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 border-b border-surface-variant pb-8">
+<div>
+<p class="font-label-caps text-secondary uppercase tracking-widest mb-2 flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+                        System Online
+                    </p>
+<h1 class="font-display-xl text-primary font-bold">Welcome Back, <span class="text-primary-container">Neon.</span></h1>
+<p class="font-body-lg text-on-surface-variant mt-4 max-w-2xl">Your rig is running at optimal performance. You have 3 active missions and a tournament starting in T-minus 2 hours.</p>
+</div>
+<div class="flex gap-4">
+<button class="bg-surface-container-high hover:bg-surface-bright text-primary border border-outline-variant px-6 py-3 rounded-sm font-label-caps transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">sync</span>
+                        SYNC DATA
+                    </button>
+<button class="bg-primary-container text-on-primary-container px-6 py-3 rounded-sm font-label-caps neon-glow font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">play_arrow</span>
+                        LAUNCH HUB
+                    </button>
+</div>
+</header>
+<!-- Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Left Column: Activity Feed (Bento Style) -->
+<div class="lg:col-span-4 flex flex-col gap-6">
+<h3 class="font-headline-md text-primary border-l-4 border-primary-container pl-4">Telemetry</h3>
+<!-- Stats Card -->
+<div class="glass-card rounded-lg p-6 flex flex-col gap-4">
+<div class="flex justify-between items-center">
+<span class="font-label-caps text-on-surface-variant">Global Rank</span>
+<span class="material-symbols-outlined text-secondary">trending_up</span>
+</div>
+<div class="font-headline-lg text-primary">#4,092</div>
+<div class="w-full h-1 bg-surface-container-highest rounded-full overflow-hidden mt-2">
+<div class="h-full progress-bar-fill relative" style="width: 78%;">
+<div class="absolute right-0 top-0 bottom-0 w-[2px] bg-white shadow-[0_0_5px_#fff]"></div>
+</div>
+</div>
+<p class="font-body-md text-on-surface-variant text-sm mt-1">Top 2% of players worldwide.</p>
+</div>
+<!-- Recent Activity -->
+<div class="glass-card rounded-lg p-6 flex flex-col gap-6 flex-1">
+<div class="flex justify-between items-center mb-2">
+<span class="font-label-caps text-primary">Activity Stream</span>
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]">history</span>
+</div>
+<div class="flex gap-4 items-start group">
+<div class="w-10 h-10 rounded-full bg-surface-container-high border border-outline-variant flex items-center justify-center shrink-0 group-hover:border-primary-container transition-colors">
+<span class="material-symbols-outlined text-primary-container text-[18px]">emoji_events</span>
+</div>
+<div>
+<p class="font-body-md text-primary font-medium">Tournament Victory</p>
+<p class="font-body-md text-on-surface-variant text-sm">Neon Circuit Qualifier #4</p>
+<p class="font-label-caps text-secondary text-[10px] mt-1">2 HOURS AGO</p>
+</div>
+</div>
+<div class="flex gap-4 items-start group">
+<div class="w-10 h-10 rounded-full bg-surface-container-high border border-outline-variant flex items-center justify-center shrink-0 group-hover:border-secondary transition-colors">
+<span class="material-symbols-outlined text-secondary text-[18px]">add_shopping_cart</span>
+</div>
+<div>
+<p class="font-body-md text-primary font-medium">Marketplace Purchase</p>
+<p class="font-body-md text-on-surface-variant text-sm">Quantum GPU Accelerator Mod</p>
+<p class="font-label-caps text-secondary text-[10px] mt-1">5 HOURS AGO</p>
+</div>
+</div>
+<div class="flex gap-4 items-start group opacity-70">
+<div class="w-10 h-10 rounded-full bg-surface-container-high border border-outline-variant flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]">videogame_asset</span>
+</div>
+<div>
+<p class="font-body-md text-primary font-medium">Session Ended</p>
+<p class="font-body-md text-on-surface-variant text-sm">CyberPulse Arena - 4hrs 12mins</p>
+<p class="font-label-caps text-secondary text-[10px] mt-1">1 DAY AGO</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: My Library Grid -->
+<div class="lg:col-span-8 flex flex-col gap-6">
+<div class="flex justify-between items-center">
+<h3 class="font-headline-md text-primary border-l-4 border-secondary pl-4">My Library</h3>
+<div class="flex gap-2">
+<button class="w-8 h-8 rounded-sm bg-surface-container flex items-center justify-center text-primary hover:bg-surface-bright transition-colors">
+<span class="material-symbols-outlined text-[18px]">grid_view</span>
+</button>
+<button class="w-8 h-8 rounded-sm bg-surface-container-low flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">view_list</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+<!-- Library Card 1 -->
+<div class="glass-card rounded-lg overflow-hidden group cursor-pointer relative h-[320px] flex flex-col justify-end">
+<div class="absolute inset-0 w-full h-full">
+<img alt="Game Cover Art" class="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500 group-hover:scale-105 transform" data-alt="A highly detailed, cinematic digital rendering of a futuristic racing game environment. Sleek, neon-lit vehicles speed through a dark, rain-slicked cyber-city at night. The scene is illuminated by aggressive, high-contrast cyan and magenta neon signs reflecting off metallic surfaces. The mood is fast-paced, high-octane, and immersive, perfectly matching a premium e-sports UI aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCntwxWns4BYOC8DkA0Y4mXXspVigMWD4PSRGzZWPx7x_c0xkDUlI4H5BFJwWgx85Hi6aK8DopcbSYsrcQgJeVwZDpk3MFyhY3Ofkv3b8HEdwpXu2AELAgnfbnS75wjIJhgQNoggAHr1nOlVm1fvg3EtADBHZpq4Ptas60gm5G61Ix69bza8QdvbjoBqYHnaSzNBTokh6gOM4I27Ih-MII-1cjXbAVYyzt9DpZ2vAeLOy_3jdHQ4ZLr14D0PQZb-TBx3EqZvDguJBbp"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-surface-container-lowest/80 to-transparent"></div>
+</div>
+<div class="absolute top-4 right-4 bg-surface-container/80 backdrop-blur-md border border-secondary px-3 py-1 rounded-sm">
+<span class="font-label-caps text-secondary text-[10px]">INSTALLED</span>
+</div>
+<div class="relative z-10 p-6 flex flex-col gap-2">
+<h4 class="font-headline-md text-primary text-xl font-bold group-hover:text-primary-container transition-colors">Neon Overdrive</h4>
+<p class="font-body-md text-on-surface-variant text-sm line-clamp-2">High-speed tactical racing in the sprawling metropolis of Neo-Tokyo. Compete in underground circuits.</p>
+<div class="flex justify-between items-center mt-4 pt-4 border-t border-white/10">
+<span class="font-label-caps text-on-surface-variant text-[10px]">142 HRS PLAYED</span>
+<button class="bg-white/10 hover:bg-primary-container text-primary hover:text-on-primary-container rounded-sm w-10 h-10 flex items-center justify-center transition-all backdrop-blur-sm border border-white/20 hover:border-primary-container">
+<span class="material-symbols-outlined">play_arrow</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Library Card 2 -->
+<div class="glass-card rounded-lg overflow-hidden group cursor-pointer relative h-[320px] flex flex-col justify-end border-primary-container/30 border">
+<div class="absolute inset-0 w-full h-full">
+<img alt="Game Cover Art" class="w-full h-full object-cover opacity-40 group-hover:opacity-60 transition-opacity duration-500 group-hover:scale-105 transform" data-alt="A dark, atmospheric digital artwork depicting a complex, glowing geometric structure resembling a highly advanced quantum computer core or alien artifact. The dominant colors are deep slate blacks punctuated by intense, sharp cyber-lime green light emissions and floating energy particles. The visual style is abstract, highly technical, and slightly ominous, fitting a futuristic cyber aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRGn1FUL5nkrmc1kYyYJ2plEJVqFNZk-GYkLj2Op0syr3HXTHxG_lhxYQguA4Jnceh-3bhZdW8GFjkV99TUyQVcXI68519lq3bs9fsZk_4ljtE3oYZX1Y3dawXsassY8f7eFiEJ3zcse9x7S0LXfvlhrv-wYof_rg4K0blR6RIr3HS11oNGyMFWtuDsiPRnDlIm-NDLgjH_3zymeYfdwmQXoDQZj82JEA0cEx4jLEq36mH-1EIKECoMF0WS50y5VQxBRSX0Iobaok-"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-surface-container-lowest/80 to-transparent"></div>
+</div>
+<div class="absolute top-4 right-4 bg-primary-container/20 backdrop-blur-md border border-primary-container px-3 py-1 rounded-sm flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container animate-pulse"></span>
+<span class="font-label-caps text-primary-container text-[10px]">UPDATE REQ.</span>
+</div>
+<div class="relative z-10 p-6 flex flex-col gap-2">
+<h4 class="font-headline-md text-primary text-xl font-bold group-hover:text-primary-container transition-colors">Quantum Fracture</h4>
+<p class="font-body-md text-on-surface-variant text-sm line-clamp-2">First-person tactical puzzle shooter. Manipulate gravity and time to solve complex combat arenas.</p>
+<div class="flex justify-between items-center mt-4 pt-4 border-t border-white/10">
+<span class="font-label-caps text-on-surface-variant text-[10px]">12 HRS PLAYED</span>
+<button class="bg-surface-container hover:bg-surface-bright text-primary border border-outline-variant px-4 py-2 rounded-sm font-label-caps text-xs transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-[14px]">download</span>
+                                        2.4 GB
+                                    </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<footer class="w-full py-12 px-8 border-t border-[#CCFF00]/20 bg-black border-t border-white/5 none flex flex-col md:flex-row justify-between items-center gap-6 mt-auto">
+<div class="text-[#CCFF00] font-bold font-['Space_Grotesk'] uppercase tracking-widest text-[14px]">
+                CYBERPULSE
+            </div>
+<div class="flex flex-wrap justify-center gap-6">
+<a class="font-['Space_Grotesk'] uppercase text-[10px] tracking-widest text-slate-500 hover:text-[#CCFF00] underline-offset-4 hover:underline transition-all duration-500" href="#">Privacy Protocol</a>
+<a class="font-['Space_Grotesk'] uppercase text-[10px] tracking-widest text-slate-500 hover:text-[#CCFF00] underline-offset-4 hover:underline transition-all duration-500" href="#">Terms of Engagement</a>
+<a class="font-['Space_Grotesk'] uppercase text-[10px] tracking-widest text-slate-500 hover:text-[#CCFF00] underline-offset-4 hover:underline transition-all duration-500" href="#">Sponsorships</a>
+</div>
+<div class="font-['Space_Grotesk'] uppercase text-[10px] tracking-widest text-slate-500 text-center md:text-right">
+                © 2024 CYBERPULSE ARCHIVE. ALL RIGHTS RESERVED.
+            </div>
+</footer>
+</main>
+</body></html>

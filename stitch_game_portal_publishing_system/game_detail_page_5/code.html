@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;900&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-lowest": "#0c0e16",
+                        "on-background": "#e1e1ed",
+                        "on-primary-fixed-variant": "#3c4d00",
+                        "on-tertiary-container": "#606470",
+                        "on-tertiary-fixed": "#181b25",
+                        "tertiary-fixed-dim": "#c3c6d3",
+                        "inverse-primary": "#506600",
+                        "on-primary-fixed": "#161e00",
+                        "tertiary": "#ffffff",
+                        "surface-container-high": "#282a32",
+                        "on-tertiary": "#2c303a",
+                        "surface-dim": "#11131b",
+                        "inverse-surface": "#e1e1ed",
+                        "primary": "#ffffff",
+                        "surface-container": "#1d1f28",
+                        "on-secondary-fixed": "#310048",
+                        "on-secondary-fixed-variant": "#7200a3",
+                        "primary-fixed-dim": "#abd600",
+                        "outline": "#8e9379",
+                        "surface": "#11131b",
+                        "on-tertiary-fixed-variant": "#434751",
+                        "on-error-container": "#ffdad6",
+                        "primary-fixed": "#c3f400",
+                        "secondary": "#e9b3ff",
+                        "on-primary": "#283500",
+                        "primary-container": "#c3f400",
+                        "on-surface": "#e1e1ed",
+                        "surface-container-low": "#191b23",
+                        "on-secondary-container": "#e5a9ff",
+                        "error": "#ffb4ab",
+                        "secondary-fixed-dim": "#e9b3ff",
+                        "error-container": "#93000a",
+                        "background": "#11131b",
+                        "on-primary-container": "#556d00",
+                        "surface-bright": "#373942",
+                        "tertiary-container": "#dfe2ef",
+                        "tertiary-fixed": "#dfe2ef",
+                        "secondary-fixed": "#f6d9ff",
+                        "outline-variant": "#444933",
+                        "secondary-container": "#7d01b1",
+                        "surface-tint": "#abd600",
+                        "surface-container-highest": "#33343d",
+                        "surface-variant": "#33343d",
+                        "inverse-on-surface": "#2e3039",
+                        "on-error": "#690005",
+                        "on-secondary": "#510074",
+                        "on-surface-variant": "#c4c9ac"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "unit": "4px",
+                        "gutter": "24px",
+                        "margin": "32px"
+                    },
+                    "fontFamily": {
+                        "display-xl": ["Space Grotesk"],
+                        "headline-lg": ["Space Grotesk"],
+                        "label-caps": ["Space Grotesk"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Space Grotesk"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-xl": ["clamp(2.5rem, 8vw, 4.5rem)", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg": ["clamp(1.75rem, 5vw, 3rem)", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "label-caps": ["14px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-md": ["clamp(1.5rem, 4vw, 2rem)", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(12, 14, 22, 0.6);
+            backdrop-filter: blur(40px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-left: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .neon-glow {
+            box-shadow: 0 0 15px rgba(204, 255, 0, 0.4);
+        }
+        .neon-glow:hover {
+            box-shadow: 0 0 30px rgba(204, 255, 0, 0.8);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TopNavBar -->
+<nav class="docked full-width top-0 sticky z-50 bg-slate-950/60 backdrop-blur-2xl border-b border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.5)] transition-all duration-300 ease-out flex justify-between items-center w-full px-4 md:px-8 py-4">
+<div class="flex items-center gap-4 md:gap-8">
+<span class="text-xl md:text-2xl font-black text-[#CCFF00] italic tracking-tighter">NEON_PUBLISH</span>
+<div class="hidden lg:flex items-center gap-6">
+<a class="font-['Space_Grotesk'] uppercase tracking-widest text-sm font-bold text-[#CCFF00] border-b-2 border-[#CCFF00] pb-1" href="#">Store</a>
+<a class="font-['Space_Grotesk'] uppercase tracking-widest text-sm font-bold text-slate-400 hover:text-white transition-colors hover:text-[#CCFF00] hover:drop-shadow-[0_0_8px_#CCFF00]" href="#">News</a>
+<a class="font-['Space_Grotesk'] uppercase tracking-widest text-sm font-bold text-slate-400 hover:text-white transition-colors hover:text-[#CCFF00] hover:drop-shadow-[0_0_8px_#CCFF00]" href="#">Community</a>
+<a class="font-['Space_Grotesk'] uppercase tracking-widest text-sm font-bold text-slate-400 hover:text-white transition-colors hover:text-[#CCFF00] hover:drop-shadow-[0_0_8px_#CCFF00]" href="#">Support</a>
+</div>
+</div>
+<div class="flex items-center gap-3 md:gap-4">
+<button class="font-['Space_Grotesk'] uppercase tracking-widest text-xs md:text-sm font-bold text-slate-400 hover:text-[#CCFF00] transition-all duration-300 ease-out active:scale-95">Login</button>
+<button class="bg-[#CCFF00] text-black font-['Space_Grotesk'] uppercase tracking-widest text-xs md:text-sm font-bold px-4 md:px-6 py-2 rounded-none transition-all duration-300 ease-out active:scale-95 hover:drop-shadow-[0_0_12px_#CCFF00]">Register</button>
+</div>
+</nav>
+<!-- Hero Section / Gallery -->
+<header class="relative w-full h-[500px] md:h-[716px] overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover opacity-60" data-alt="A cinematic wide shot of a futuristic cyberpunk cityscape at night" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgFS4Ud7EwrXTMha8nx1HTeAo1aHCTB-ppaguNyDwfAIXVsjeYJ8opu1G4mZocNTcgtuFkoNcTnvku7sOYKSEaKs2QAgQeZmCBbaFlsQ-U-N1tzbT_nTCSNNui4rd5TGdmzAMhoXMnaOPALoR1uGlq6hTjGYmnADEqUaxFgSeewgOLBSar2cAFW_8lTNEErQiEIHpnsh43IsmA5zNYpdMdHz8kqE4QeBQ9XaqnCZjYwbCId_XwVUYEmLbS490H8QJsHH9nvhpINusY"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+</div>
+<div class="relative z-10 h-full flex flex-col justify-end px-6 md:px-12 pb-12 md:pb-16 max-w-7xl mx-auto w-full">
+<div class="inline-block px-3 py-1 mb-4 border border-[#CCFF00] text-[#CCFF00] font-label-caps text-[10px] md:text-label-caps uppercase tracking-widest bg-[#CCFF00]/10 w-fit">
+                LATEST_RELEASE
+            </div>
+<h1 class="font-display-xl text-display-xl text-white mb-4 md:mb-6 uppercase italic">SHADOW_PROTOCOL: ZERO</h1>
+<div class="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
+<button class="flex items-center gap-2 px-6 md:px-8 py-3 md:py-4 bg-[#CCFF00] text-black font-headline-md text-sm md:text-body-md font-black uppercase tracking-tighter neon-glow active:scale-95 transition-all">
+<span class="material-symbols-outlined" data-icon="play_arrow">play_arrow</span>
+                    WATCH TRAILER
+                </button>
+<div class="flex gap-2">
+<div class="w-16 h-10 md:w-20 md:h-12 border border-white/20 glass-panel cursor-pointer hover:border-[#CCFF00] transition-colors">
+<img class="w-full h-full object-cover" data-alt="Tactical helmet close-up" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6tgM2gzjgIzF6cz6oKyIXVtmbctZ20VcmAfQOok8vjyoNnPW9a2HIgjpOMXjfCrJ3sxhxfMglczOe675NvLtuaZWMSVBN819rWM7tHIeBQCkhnfXucJvqLRwE0qAZJ8B-au_WZAd7iZQcXwAePgkpd59jrIrHaV_9zr6VXBHZXZwHJTnKwStphAnYQuuiHu0bmOVDuAUZL_YRqA5FnhPn9kcEFUVpWp5hU6Z-AIewBVVEXxiQlxs0DkVzMTM1FOYuXloN2n6F7JLF"/>
+</div>
+<div class="w-16 h-10 md:w-20 md:h-12 border border-white/20 glass-panel cursor-pointer hover:border-[#CCFF00] transition-colors">
+<img class="w-full h-full object-cover" data-alt="Glowing server room" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBFs2DtmOYESCfTqoR6LI8YPKS6c4rNMcwowrzNxXVVVt9lbdySsduZ2w_iQL6BYHqpmFXl_0-DzUCK3WRIbweQU-Gmgr8bz8nRI082pio4RI0iG8S5Y9lt2NdKWFABLL9QfRqWXLWhR53hiL3Aejc744zYdpvH_PTwUDyO5js_IRAin48UzAIfTR8SSmweDLarkY7IYvuQmyNhXVoUJx-wz0ryO2VgK6vtlvuQlWSG_VmgEmNfAzCO5AUBP-W1svZ9p-andA9DO25"/>
+</div>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-6 md:px-12 py-12 md:py-20 grid grid-cols-12 gap-8 md:gap-12">
+<!-- Left Column: Main Content -->
+<div class="col-span-12 lg:col-span-8 space-y-12 md:space-y-16">
+<!-- Description -->
+<section class="space-y-6">
+<h2 class="font-headline-lg text-headline-lg text-white flex items-center gap-4">
+<span class="w-2 h-8 md:h-10 bg-[#CCFF00]"></span>
+                    THE MISSION
+                </h2>
+<div class="space-y-4 md:space-y-6">
+<p class="font-body-lg text-base md:text-body-lg text-on-surface-variant leading-relaxed">
+                        Step into the digital shadows as a tier-one operative in <span class="text-[#CCFF00] font-bold">SHADOW_PROTOCOL: ZERO</span>. Navigate through hyper-dense urban sprawls, infiltrating high-security data hubs and executing precise tactical strikes. The world is a grid of information, and you are the ultimate ghost in the machine. Experience the evolution of competitive stealth-action with real-time reactive environments and high-fidelity ray-traced visuals.
+                    </p>
+<p class="font-body-lg text-base md:text-body-lg text-on-surface-variant leading-relaxed">
+                        Your every choice ripples through the city's network. Sabotage rival factions, build your custom arsenal of experimental tech, and dominate the global leaderboards in our high-stakes multiplayer arena.
+                    </p>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="glass-panel p-6 md:p-10 border border-white/10 relative overflow-hidden group">
+<div class="absolute -right-20 -top-20 w-64 h-64 bg-[#CCFF00]/10 rounded-full blur-3xl group-hover:bg-[#CCFF00]/20 transition-all duration-700"></div>
+<div class="relative z-10 flex flex-col xl:flex-row justify-between items-center gap-8">
+<div class="text-center xl:text-left">
+<h3 class="font-headline-md text-headline-md text-white mb-2">SYSTEM_ENTRY_PERMIT</h3>
+<p class="text-slate-400 font-label-caps text-xs">FULL ACCESS // SEASON ONE INCLUDED</p>
+</div>
+<div class="flex flex-col sm:flex-row items-center gap-6 md:gap-8">
+<div class="text-center sm:text-right">
+<span class="block text-slate-500 line-through text-sm">$69.99</span>
+<span class="text-white font-headline-lg text-headline-lg">$54.99</span>
+</div>
+<button class="w-full sm:w-auto bg-[#CCFF00] text-black px-8 md:px-10 py-4 md:py-5 font-headline-md text-sm md:text-body-md font-black uppercase tracking-tight neon-glow transition-all active:scale-95 whitespace-nowrap">
+                            PURCHASE_NOW
+                        </button>
+</div>
+</div>
+</section>
+<!-- System Requirements -->
+<section class="space-y-8">
+<h2 class="font-headline-lg text-headline-lg text-white">TECH_SPECS</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+<div class="glass-panel p-6 border-l-2 border-l-[#CCFF00]">
+<h4 class="font-label-caps text-white mb-4">MINIMUM_LINK</h4>
+<ul class="space-y-3 text-slate-400 text-sm">
+<li class="flex justify-between border-b border-white/5 pb-2"><span class="flex-shrink-0 mr-4">OS:</span> <span class="text-white text-right">Windows 10 64-bit</span></li>
+<li class="flex justify-between border-b border-white/5 pb-2"><span class="flex-shrink-0 mr-4">CPU:</span> <span class="text-white text-right">Intel i5-8400 / Ryzen 5 2600</span></li>
+<li class="flex justify-between border-b border-white/5 pb-2"><span class="flex-shrink-0 mr-4">RAM:</span> <span class="text-white text-right">12 GB</span></li>
+<li class="flex justify-between"><span class="flex-shrink-0 mr-4">GPU:</span> <span class="text-white text-right">GTX 1060 / RX 580</span></li>
+</ul>
+</div>
+<div class="glass-panel p-6 border-l-2 border-l-[#CCFF00] shadow-[0_0_20px_rgba(204,255,0,0.1)]">
+<h4 class="font-label-caps text-[#CCFF00] mb-4">RECOMMENDED_LINK</h4>
+<ul class="space-y-3 text-slate-400 text-sm">
+<li class="flex justify-between border-b border-white/5 pb-2"><span class="flex-shrink-0 mr-4">OS:</span> <span class="text-white text-right">Windows 11 64-bit</span></li>
+<li class="flex justify-between border-b border-white/5 pb-2"><span class="flex-shrink-0 mr-4">CPU:</span> <span class="text-white text-right">Intel i7-12700K / Ryzen 7 5800X</span></li>
+<li class="flex justify-between border-b border-white/5 pb-2"><span class="flex-shrink-0 mr-4">RAM:</span> <span class="text-white text-right">32 GB</span></li>
+<li class="flex justify-between"><span class="flex-shrink-0 mr-4">GPU:</span> <span class="text-white text-right">RTX 3080 / RX 6800 XT</span></li>
+</ul>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Sidebar Stats -->
+<aside class="col-span-12 lg:col-span-4 space-y-6 md:space-y-8">
+<div class="glass-panel p-6 md:p-8 border border-white/10 space-y-6 md:space-y-8">
+<div class="space-y-2 md:space-y-4">
+<h3 class="font-label-caps text-slate-500 uppercase text-xs">RELEASE_DATE</h3>
+<p class="text-white font-headline-md text-headline-md">OCT 24, 2024</p>
+</div>
+<div class="space-y-2 md:space-y-4">
+<h3 class="font-label-caps text-slate-500 uppercase text-xs">GENRE_CLASSIFICATION</h3>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 border border-white/20 text-[10px] md:text-xs font-label-caps text-white">STEALTH</span>
+<span class="px-3 py-1 border border-white/20 text-[10px] md:text-xs font-label-caps text-white">TACTICAL</span>
+<span class="px-3 py-1 border border-white/20 text-[10px] md:text-xs font-label-caps text-white">CYBERPUNK</span>
+</div>
+</div>
+<div class="space-y-2 md:space-y-4">
+<h3 class="font-label-caps text-slate-500 uppercase text-xs">RATING_ANALYSIS</h3>
+<div class="flex items-center gap-4">
+<div class="text-3xl md:text-4xl font-black text-[#CCFF00]">9.4</div>
+<div class="flex flex-col">
+<div class="flex text-[#CCFF00]">
+<span class="material-symbols-outlined text-base md:text-xl" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-base md:text-xl" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-base md:text-xl" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-base md:text-xl" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-base md:text-xl" style="font-variation-settings: 'FILL' 0.5;">star_half</span>
+</div>
+<span class="text-[10px] text-slate-500">FROM 12,400 AGENTS</span>
+</div>
+</div>
+</div>
+<div class="space-y-3 md:space-y-4 pt-6 md:pt-8 border-t border-white/5 text-sm">
+<div class="flex justify-between items-center">
+<span class="text-slate-500 font-label-caps text-[10px] md:text-xs">DEVELOPER</span>
+<span class="text-white font-bold">NEON_LABS</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-slate-500 font-label-caps text-[10px] md:text-xs">PUBLISHER</span>
+<span class="text-white font-bold">NEON_PUBLISH</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-slate-500 font-label-caps text-[10px] md:text-xs">PLATFORMS</span>
+<div class="flex gap-3">
+<span class="material-symbols-outlined text-white text-base" data-icon="desktop_windows">desktop_windows</span>
+<span class="material-symbols-outlined text-white text-base" data-icon="videogame_asset">videogame_asset</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Social/Share -->
+<div class="flex gap-4">
+<button class="flex-1 py-4 border border-white/10 glass-panel hover:border-[#CCFF00] hover:text-[#CCFF00] transition-all flex justify-center items-center">
+<span class="material-symbols-outlined" data-icon="share">share</span>
+</button>
+<button class="flex-1 py-4 border border-white/10 glass-panel hover:border-[#CCFF00] hover:text-[#CCFF00] transition-all flex justify-center items-center">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+</button>
+</div>
+</aside>
+</main>
+<!-- High-Engagement Comment Area -->
+<section class="max-w-7xl mx-auto px-6 md:px-12 pb-24 md:pb-32">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8 md:mb-12">
+<h2 class="font-headline-lg text-headline-lg text-white">COMM_LOGS</h2>
+<div class="flex items-center gap-4 text-slate-500 font-label-caps text-[10px] md:text-xs">
+<span>SORT BY:</span>
+<button class="text-[#CCFF00]">TOP_PRIORITY</button>
+<button class="hover:text-white transition-colors">RECENT_UPLOADS</button>
+</div>
+</div>
+<div class="space-y-8">
+<!-- Comment Input -->
+<div class="glass-panel p-6 border-b-2 border-b-[#CCFF00]">
+<div class="flex gap-4 md:gap-6">
+<div class="w-10 h-10 md:w-12 md:h-12 bg-slate-800 rounded-none border border-white/20 flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="User profile avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXcG8XLJEuoPdL7GB31Ba699N96hKvf_rXnL6ACxMkzvTm_4L0rzLQAZ5nPJTeapp-2BHCjk1TpHoYK7wh7ps-zgNp_Cc_-9r0WuQWFprYN9wSDNOoS7M3ATG3ousQo9IKy7COF2aBtKrvwi6jyTtQlCyTwwjsR3h_oc6fHsLzoV0EXtpRPeQ2aPL7MoVxfUouSF98mSzLQtyBFKvX6R2jNbJHHrKBvD4DJ1kWNcMopigQtmGhwiyJZ-npvguLz608kJXpvGvZVRaw"/>
+</div>
+<div class="flex-1 space-y-4">
+<textarea class="w-full bg-slate-900/50 border-none border-b border-white/10 focus:ring-0 focus:border-[#CCFF00] text-on-surface placeholder:text-slate-600 font-body-md min-h-[80px] md:min-h-[100px] text-sm md:text-base" placeholder="INPUT DATA..."></textarea>
+<div class="flex justify-end">
+<button class="bg-[#CCFF00] text-black px-4 md:px-6 py-2 font-label-caps text-[10px] md:text-xs hover:scale-105 transition-transform font-bold">TRANSMIT_COMMENT</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Comment Threads -->
+<div class="space-y-6">
+<!-- Comment 1 -->
+<div class="glass-panel p-4 md:p-6 border border-white/5 space-y-4">
+<div class="flex justify-between items-start">
+<div class="flex gap-3 md:gap-4">
+<div class="w-8 h-8 md:w-10 md:h-10 bg-slate-800 border border-white/10 flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="V0ID_WALKER avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcLdom0deIV0lkeiPYWj5tXKBPkk-ErIUDVmQ6v_alM1EGwyzzrw1KrvTzM39kZb3Dup6tDluHdzRdAIPYK2_Od2kWcKQwsVPl8MkI04oQOZnhNESL_XweabfKFxj4YujoaSN0e-FBglfaXayC3clieJo-fk39tJQEv82BEieXOkmPwLd8L21mM0BYoMYV0XhjydHeBNDcJ74iMcmzNrCji8VPyS6M2FVwgAeoTSVYJXzY3Ng-8TVqS65VarrH47zQgQyNGkiqDQRC"/>
+</div>
+<div>
+<h5 class="text-white font-bold flex items-center gap-2 text-sm md:text-base">
+                                    V0ID_WALKER <span class="text-[#CCFF00] text-[8px] md:text-[10px] px-1 border border-[#CCFF00]/30 font-label-caps">VETERAN</span>
+</h5>
+<p class="text-slate-500 text-[10px] md:text-xs">2 HOURS AGO</p>
+</div>
+</div>
+<div class="flex gap-3 md:gap-4 text-slate-500 text-xs">
+<button class="hover:text-[#CCFF00] flex items-center gap-1 transition-colors"><span class="material-symbols-outlined text-sm" data-icon="thumb_up">thumb_up</span> 1.2k</button>
+<button class="hover:text-error flex items-center gap-1 transition-colors"><span class="material-symbols-outlined text-sm" data-icon="thumb_down">thumb_down</span> 12</button>
+</div>
+</div>
+<p class="text-on-surface-variant text-sm md:text-body-md pl-11 md:pl-14">
+                        The ray-tracing on the rainy neon puddles is absolutely insane. Best stealth implementation since the original infiltration games. Can't wait for the competitive season to drop!
+                    </p>
+<div class="pl-11 md:pl-14">
+<button class="text-[#CCFF00] font-label-caps text-[8px] md:text-[10px] flex items-center gap-2 hover:underline">
+<span class="material-symbols-outlined text-xs" data-icon="reply">reply</span> REPLY_SECURELY
+                        </button>
+</div>
+</div>
+<!-- Comment 2 -->
+<div class="glass-panel p-4 md:p-6 border border-white/5 space-y-4">
+<div class="flex justify-between items-start">
+<div class="flex gap-3 md:gap-4">
+<div class="w-8 h-8 md:w-10 md:h-10 bg-slate-800 border border-white/10 flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="NEON_QUEEN avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLp8IIArbBbfDJZfEkPIP0vjlb4sTY3BNkEDA6_YbnS7HwRxyntFtphJLiX_ul6HUsakJGIf5mFElelYkCoj3fj1IPcLP2ZxdcfK7ROkzX3bP2BWNeFkWBVCvT65jIT17HBEUxz_F4eceNVYRSb_zDoMvUe5ke76a_piz8Ti-5EHoyX_kkws7czPSNKIxQ3ClUZ9puAvADsgyjn5rx1-mLpQGUabec_FBfzuj6k7Odc5FxlVCqUP47jXtSXn3PCJqekmQqAcBXX7h6"/>
+</div>
+<div>
+<h5 class="text-white font-bold flex items-center gap-2 text-sm md:text-base">
+                                    NEON_QUEEN <span class="text-secondary text-[8px] md:text-[10px] px-1 border border-secondary/30 font-label-caps">PRO</span>
+</h5>
+<p class="text-slate-500 text-[10px] md:text-xs">5 HOURS AGO</p>
+</div>
+</div>
+<div class="flex gap-3 md:gap-4 text-slate-500 text-xs">
+<button class="hover:text-[#CCFF00] flex items-center gap-1 transition-colors"><span class="material-symbols-outlined text-sm" data-icon="thumb_up">thumb_up</span> 840</button>
+<button class="hover:text-error flex items-center gap-1 transition-colors"><span class="material-symbols-outlined text-sm" data-icon="thumb_down">thumb_down</span> 3</button>
+</div>
+</div>
+<p class="text-on-surface-variant text-sm md:text-body-md pl-11 md:pl-14">
+                        Are we getting a collectors edition physical release? The art book would be incredible based on the concept art we've seen so far.
+                    </p>
+<div class="pl-11 md:pl-14">
+<button class="text-[#CCFF00] font-label-caps text-[8px] md:text-[10px] flex items-center gap-2 hover:underline">
+<span class="material-symbols-outlined text-xs" data-icon="reply">reply</span> REPLY_SECURELY
+                        </button>
+</div>
+</div>
+</div>
+<div class="flex justify-center pt-8">
+<button class="font-label-caps text-slate-400 hover:text-white transition-colors flex items-center gap-2 border-b border-white/10 pb-1 text-xs md:text-sm">
+                    LOAD_MORE_LOGS <span class="material-symbols-outlined text-xs" data-icon="expand_more">expand_more</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-slate-950 w-full py-8 md:py-12 border-t border-white/5 opacity-80 hover:opacity-100 transition-all">
+<div class="flex flex-col md:flex-row justify-between items-center px-6 md:px-12 max-w-7xl mx-auto space-y-8 md:space-y-0">
+<div class="flex flex-col items-center md:items-start gap-3">
+<span class="text-[#CCFF00] font-bold text-base md:text-lg font-['Space_Grotesk']">NEON_PUBLISH</span>
+<p class="font-['Space_Grotesk'] text-[8px] md:text-[10px] tracking-widest text-slate-500 uppercase text-center md:text-left">© 2024 NEON_PUBLISH. SYSTEM_READY.</p>
+</div>
+<div class="flex flex-wrap justify-center md:justify-end gap-x-6 gap-y-4">
+<a class="font-['Space_Grotesk'] text-[8px] md:text-[10px] tracking-widest text-slate-600 hover:text-[#CCFF00] transition-colors uppercase whitespace-nowrap" href="#">Terms of Service</a>
+<a class="font-['Space_Grotesk'] text-[8px] md:text-[10px] tracking-widest text-slate-600 hover:text-[#CCFF00] transition-colors uppercase whitespace-nowrap" href="#">Privacy Protocol</a>
+<a class="font-['Space_Grotesk'] text-[8px] md:text-[10px] tracking-widest text-slate-600 hover:text-[#CCFF00] transition-colors uppercase whitespace-nowrap" href="#">Developer API</a>
+<a class="font-['Space_Grotesk'] text-[8px] md:text-[10px] tracking-widest text-slate-600 hover:text-[#CCFF00] transition-colors uppercase whitespace-nowrap" href="#">Contact Console</a>
+</div>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NEON_PUBLISH | COMMAND_CENTER Submission</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;900&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-lowest": "#0c0e16",
+                        "on-background": "#e1e1ed",
+                        "on-primary-fixed-variant": "#3c4d00",
+                        "on-tertiary-container": "#606470",
+                        "on-tertiary-fixed": "#181b25",
+                        "tertiary-fixed-dim": "#c3c6d3",
+                        "inverse-primary": "#506600",
+                        "on-primary-fixed": "#161e00",
+                        "tertiary": "#ffffff",
+                        "surface-container-high": "#282a32",
+                        "on-tertiary": "#2c303a",
+                        "surface-dim": "#11131b",
+                        "inverse-surface": "#e1e1ed",
+                        "primary": "#ffffff",
+                        "surface-container": "#1d1f28",
+                        "on-secondary-fixed": "#310048",
+                        "on-secondary-fixed-variant": "#7200a3",
+                        "primary-fixed-dim": "#abd600",
+                        "outline": "#8e9379",
+                        "surface": "#11131b",
+                        "on-tertiary-fixed-variant": "#434751",
+                        "on-error-container": "#ffdad6",
+                        "primary-fixed": "#c3f400",
+                        "secondary": "#e9b3ff",
+                        "on-primary": "#283500",
+                        "primary-container": "#c3f400",
+                        "on-surface": "#e1e1ed",
+                        "surface-container-low": "#191b23",
+                        "on-secondary-container": "#e5a9ff",
+                        "error": "#ffb4ab",
+                        "secondary-fixed-dim": "#e9b3ff",
+                        "error-container": "#93000a",
+                        "background": "#11131b",
+                        "on-primary-container": "#556d00",
+                        "surface-bright": "#373942",
+                        "tertiary-container": "#dfe2ef",
+                        "tertiary-fixed": "#dfe2ef",
+                        "secondary-fixed": "#f6d9ff",
+                        "outline-variant": "#444933",
+                        "secondary-container": "#7d01b1",
+                        "surface-tint": "#abd600",
+                        "surface-container-highest": "#33343d",
+                        "surface-variant": "#33343d",
+                        "inverse-on-surface": "#2e3039",
+                        "on-error": "#690005",
+                        "on-secondary": "#510074",
+                        "on-surface-variant": "#c4c9ac"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "display-xl": ["Space Grotesk"],
+                        "headline-lg": ["Space Grotesk"],
+                        "label-caps": ["Space Grotesk"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Space Grotesk"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-xl": ["72px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "label-caps": ["14px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(17, 19, 27, 0.6);
+            backdrop-filter: blur(40px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-left: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .neon-glow {
+            box-shadow: 0 0 15px rgba(171, 214, 0, 0.3);
+        }
+        .neon-glow-hover:hover {
+            box-shadow: 0 0 25px rgba(171, 214, 0, 0.6);
+        }
+        .input-focus-glow:focus {
+            outline: none;
+            border-color: #abd600;
+            box-shadow: 0 4px 12px -2px rgba(171, 214, 0, 0.4);
+        }
+        .progress-pulse {
+            position: relative;
+        }
+        .progress-pulse::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: #fff;
+            box-shadow: 0 0 8px #fff;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen selection:bg-primary-fixed-dim selection:text-on-primary-fixed">
+<aside class="fixed left-0 top-0 h-full w-64 border-r border-white/10 bg-slate-950/80 backdrop-blur-3xl flex flex-col p-4 space-y-4 z-50">
+<div class="flex items-center gap-3 px-2 mb-8">
+<div class="w-8 h-8 bg-primary-fixed-dim flex items-center justify-center">
+<span class="material-symbols-outlined text-surface-container-lowest" style="font-variation-settings: 'FILL' 1;">terminal</span>
+</div>
+<div>
+<h1 class="text-[#CCFF00] font-black tracking-tighter text-lg leading-none">COMMAND_CENTER</h1>
+<p class="font-['Space_Grotesk'] uppercase text-[10px] font-bold tracking-tight text-slate-500">ADMIN_ACCESS</p>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:bg-white/5 hover:text-[#CCFF00] duration-200 ease-in-out transform font-['Space_Grotesk'] uppercase text-xs font-bold tracking-tight" href="#">
+<span class="material-symbols-outlined">dashboard</span> Dashboard
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 bg-[#CCFF00] text-black shadow-[0_0_20px_rgba(204,255,0,0.4)] rounded-none font-black font-['Space_Grotesk'] uppercase text-xs tracking-tight" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">upload_file</span> Submissions
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:bg-white/5 hover:text-[#CCFF00] duration-200 ease-in-out transform font-['Space_Grotesk'] uppercase text-xs font-bold tracking-tight" href="#">
+<span class="material-symbols-outlined">sports_esports</span> Library
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:bg-white/5 hover:text-[#CCFF00] duration-200 ease-in-out transform font-['Space_Grotesk'] uppercase text-xs font-bold tracking-tight" href="#">
+<span class="material-symbols-outlined">monitoring</span> Analytics
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:bg-white/5 hover:text-[#CCFF00] duration-200 ease-in-out transform font-['Space_Grotesk'] uppercase text-xs font-bold tracking-tight" href="#">
+<span class="material-symbols-outlined">group</span> Users
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:bg-white/5 hover:text-[#CCFF00] duration-200 ease-in-out transform font-['Space_Grotesk'] uppercase text-xs font-bold tracking-tight" href="#">
+<span class="material-symbols-outlined">settings</span> Settings
+            </a>
+</nav>
+<div class="pt-4 border-t border-white/10">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:bg-white/5 hover:text-[#CCFF00] duration-200 ease-in-out transform font-['Space_Grotesk'] uppercase text-xs font-bold tracking-tight" href="#">
+<span class="material-symbols-outlined">logout</span> Logout
+            </a>
+</div>
+</aside>
+<main class="ml-64 min-h-screen flex flex-col">
+<header class="sticky top-0 z-40 bg-slate-950/60 backdrop-blur-2xl border-b border-white/10 flex justify-between items-center w-full px-8 py-4">
+<div class="flex items-center gap-4">
+<span class="font-headline-md text-headline-md text-primary tracking-tight">Game Submission</span>
+<span class="bg-surface-variant text-on-surface-variant px-2 py-1 text-[10px] font-bold tracking-widest font-label-caps border border-outline-variant">STEP_02 / 04</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative">
+<span class="material-symbols-outlined text-slate-400 hover:text-white cursor-pointer">search</span>
+</div>
+<button class="bg-[#CCFF00] text-black font-['Space_Grotesk'] uppercase text-xs font-bold px-4 py-2 hover:drop-shadow-[0_0_8px_#CCFF00] transition-all">Support</button>
+</div>
+</header>
+<div class="flex-1 w-full max-w-5xl mx-auto px-8 py-12">
+<div class="mb-12">
+<div class="flex justify-between items-end mb-4">
+<span class="font-label-caps text-label-caps text-primary-fixed-dim uppercase">Transmission Progress</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">45% Complete</span>
+</div>
+<div class="h-1 w-full bg-surface-container-highest overflow-hidden">
+<div class="h-full bg-gradient-to-r from-secondary-container to-primary-fixed-dim w-[45%] progress-pulse"></div>
+</div>
+<div class="grid grid-cols-4 mt-4 gap-2">
+<div class="flex items-center gap-2 text-primary-fixed-dim">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-[10px] font-bold uppercase tracking-widest font-label-caps">Identity</span>
+</div>
+<div class="flex items-center gap-2 text-primary">
+<span class="w-4 h-4 rounded-full border border-primary-fixed-dim flex items-center justify-center text-[8px]">02</span>
+<span class="text-[10px] font-bold uppercase tracking-widest font-label-caps">Specifications</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="w-4 h-4 rounded-full border border-outline-variant flex items-center justify-center text-[8px]">03</span>
+<span class="text-[10px] font-bold uppercase tracking-widest font-label-caps">Assets</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="w-4 h-4 rounded-full border border-outline-variant flex items-center justify-center text-[8px]">04</span>
+<span class="text-[10px] font-bold uppercase tracking-widest font-label-caps">Verify</span>
+</div>
+</div>
+</div>
+<div class="glass-panel p-10 space-y-12">
+<section class="space-y-8">
+<div class="flex items-center gap-4">
+<div class="w-1 h-8 bg-primary-fixed-dim"></div>
+<h2 class="font-headline-md text-headline-md text-primary">Core Intelligence</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">Game Title</label>
+<input class="w-full bg-surface-container-low border-b border-outline-variant py-4 px-2 text-primary focus:border-primary-fixed-dim input-focus-glow transition-all font-display-xl text-lg uppercase tracking-wider" placeholder="ENTER_PROJECT_NAME" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">Primary Genre</label>
+<select class="w-full bg-surface-container-low border-b border-outline-variant py-4 px-2 text-primary focus:border-primary-fixed-dim input-focus-glow transition-all font-label-caps uppercase appearance-none">
+<option>Cyber-Action</option>
+<option>Tactical RPG</option>
+<option>Neon-Sport</option>
+<option>Rhythm Protocol</option>
+</select>
+</div>
+</div>
+</section>
+<section class="space-y-8">
+<div class="flex items-center gap-4">
+<div class="w-1 h-8 bg-primary-fixed-dim"></div>
+<h2 class="font-headline-md text-headline-md text-primary">Hardware Protocols</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
+<div class="space-y-6">
+<h3 class="font-label-caps text-xs text-primary-fixed-dim border-b border-white/5 pb-2">MINIMUM_SPECS</h3>
+<div class="space-y-4">
+<input class="w-full bg-transparent border-b border-outline-variant py-2 px-0 text-sm focus:border-primary-fixed-dim input-focus-glow transition-all" placeholder="OS: WIN_10_X64" type="text"/>
+<input class="w-full bg-transparent border-b border-outline-variant py-2 px-0 text-sm focus:border-primary-fixed-dim input-focus-glow transition-all" placeholder="CPU: OCTA_CORE_3.5GHZ" type="text"/>
+<input class="w-full bg-transparent border-b border-outline-variant py-2 px-0 text-sm focus:border-primary-fixed-dim input-focus-glow transition-all" placeholder="GPU: RTX_2080_EQUIV" type="text"/>
+</div>
+</div>
+<div class="space-y-6">
+<h3 class="font-label-caps text-xs text-secondary border-b border-white/5 pb-2">RECOMMENDED_SPECS</h3>
+<div class="space-y-4">
+<input class="w-full bg-transparent border-b border-outline-variant py-2 px-0 text-sm focus:border-primary-fixed-dim input-focus-glow transition-all" placeholder="OS: WIN_11_LATEST" type="text"/>
+<input class="w-full bg-transparent border-b border-outline-variant py-2 px-0 text-sm focus:border-primary-fixed-dim input-focus-glow transition-all" placeholder="CPU: MULTI_THREAD_4.8GHZ" type="text"/>
+<input class="w-full bg-transparent border-b border-outline-variant py-2 px-0 text-sm focus:border-primary-fixed-dim input-focus-glow transition-all" placeholder="GPU: RTX_4090_ULTRA" type="text"/>
+</div>
+</div>
+</div>
+</section>
+<section class="space-y-8">
+<div class="flex items-center gap-4">
+<div class="w-1 h-8 bg-primary-fixed-dim"></div>
+<h2 class="font-headline-md text-headline-md text-primary">External Nodes</h2>
+</div>
+<div class="grid grid-cols-1 gap-6">
+<div class="flex items-center gap-4 bg-surface-container-low/50 p-4 border border-white/5">
+<span class="material-symbols-outlined text-on-surface-variant">link</span>
+<input class="flex-1 bg-transparent border-none focus:ring-0 text-sm font-label-caps text-primary tracking-widest" placeholder="GDS_DRIVE_ASSET_REPOSITORY" type="url"/>
+<span class="text-[10px] font-bold text-on-surface-variant">SECURE_LINK</span>
+</div>
+<div class="flex items-center gap-4 bg-surface-container-low/50 p-4 border border-white/5">
+<span class="material-symbols-outlined text-on-surface-variant">play_circle</span>
+<input class="flex-1 bg-transparent border-none focus:ring-0 text-sm font-label-caps text-primary tracking-widest" placeholder="TEASER_TRAILER_URL" type="url"/>
+<span class="text-[10px] font-bold text-on-surface-variant">STREAMING_API</span>
+</div>
+</div>
+</section>
+<div class="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-white/10 gap-6">
+<button class="text-on-surface-variant hover:text-primary font-label-caps text-label-caps flex items-center gap-2 transition-colors uppercase tracking-widest">
+<span class="material-symbols-outlined">arrow_back</span> Return to Step 01
+                    </button>
+<button class="w-full md:w-auto px-12 py-5 bg-[#CCFF00] text-black font-display-xl text-xl font-black uppercase tracking-tighter neon-glow neon-glow-hover active:scale-95 transition-all flex items-center justify-center gap-4">
+                        Transmit Submission
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">send</span>
+</button>
+</div>
+</div>
+<div class="mt-24 grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="glass-panel p-6 border border-white/5 relative group overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-[#CCFF00]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<span class="material-symbols-outlined text-primary-fixed-dim mb-4">description</span>
+<h4 class="font-headline-md text-lg text-primary mb-2">Legal Protocol</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">Ensure all licensing for third-party assets is documented. System verification requires legal clearance.</p>
+</div>
+<div class="glass-panel p-6 border border-white/5 relative group overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-secondary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<span class="material-symbols-outlined text-secondary mb-4">image</span>
+<h4 class="font-headline-md text-lg text-primary mb-2">Asset Quality</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">Visuals must be uploaded in minimum 4K resolution. Use RAW or high-bitrate containers for video submissions.</p>
+</div>
+<div class="glass-panel p-6 border border-white/5 relative group overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-tertiary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<span class="material-symbols-outlined text-tertiary mb-4">support_agent</span>
+<h4 class="font-headline-md text-lg text-primary mb-2">Review Cycle</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">Submissions are analyzed within 48 standard cycles. Real-time updates will appear in your Command Center.</p>
+</div>
+</div>
+</div>
+<footer class="w-full py-12 border-t border-white/5 bg-slate-950">
+<div class="flex flex-col md:flex-row justify-between items-center px-12 max-w-7xl mx-auto opacity-80 hover:opacity-100 transition-all">
+<div class="flex items-center gap-2 mb-4 md:mb-0">
+<span class="text-[#CCFF00] font-bold font-['Space_Grotesk'] text-sm uppercase">NEON_PUBLISH</span>
+<span class="font-['Space_Grotesk'] text-[10px] tracking-widest text-slate-500">© 2024 SYSTEM_READY.</span>
+</div>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="font-['Space_Grotesk'] text-[10px] tracking-widest text-slate-600 hover:text-[#CCFF00] transition-colors uppercase" href="#">Terms of Service</a>
+<a class="font-['Space_Grotesk'] text-[10px] tracking-widest text-slate-600 hover:text-[#CCFF00] transition-colors uppercase" href="#">Privacy Protocol</a>
+<a class="font-['Space_Grotesk'] text-[10px] tracking-widest text-slate-600 hover:text-[#CCFF00] transition-colors uppercase" href="#">Developer API</a>
+<a class="font-['Space_Grotesk'] text-[10px] tracking-widest text-slate-600 hover:text-[#CCFF00] transition-colors uppercase" href="#">Contact Console</a>
+</div>
+</div>
+</footer>
+</main>
+</body></html>

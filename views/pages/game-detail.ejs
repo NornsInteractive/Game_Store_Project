@@ -1,0 +1,114 @@
+<!-- Hero for first game -->
+<section class="relative h-[500px] w-full flex items-center overflow-hidden">
+  <div class="absolute inset-0 z-0">
+    <img src="<%= game.hero_image || game.cover_image || '/uploads/covers/default.png' %>" class="w-full h-full object-cover" alt="<%= game.title %>"/>
+    <div class="absolute inset-0 bg-gradient-to-t from-surface-dim via-surface-dim/40 to-transparent"></div>
+  </div>
+  <div class="container mx-auto px-8 relative z-10">
+    <div class="max-w-2xl">
+      <div class="flex items-center space-x-2 mb-4">
+        <span class="text-xs font-['Space_Grotesk'] uppercase tracking-widest text-slate-400"><%= game.category_name || 'Uncategorized' %></span>
+        <% parsedTags.forEach(function(t) { %><span class="cyber-tag"><%= t %></span><% }) %>
+      </div>
+      <h1 class="font-display-xl text-display-xl text-white uppercase italic"><%= game.title %></h1>
+      <div class="flex items-center space-x-4 mt-4">
+        <div class="flex items-center space-x-1">
+          <span class="material-symbols-outlined text-[#CCFF00]">star</span>
+          <span class="text-white font-['Space_Grotesk'] font-bold"><%= Number(game.rating_avg).toFixed(1) %></span>
+          <span class="text-slate-500 text-sm">(<%= game.rating_count || 0 %>)</span>
+        </div>
+        <% if (game.developer) { %><span class="text-slate-400 text-sm"><%= game.developer %></span><% } %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="max-w-7xl mx-auto px-6 py-12 grid grid-cols-12 gap-12">
+  <div class="col-span-12 lg:col-span-8 space-y-12">
+    <section>
+      <h2 class="font-headline-md text-headline-md text-white mb-4 flex items-center gap-3">
+        <span class="w-2 h-8 bg-[#CCFF00]"></span> Overview
+      </h2>
+      <p class="text-on-surface-variant font-body-md leading-relaxed"><%= game.description %></p>
+    </section>
+
+    <% if (Object.keys(parsedSysReq).length > 0) { %>
+    <section>
+      <h2 class="font-headline-md text-headline-md text-white mb-6">TECH_SPECS</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <% if (parsedSysReq.minimum) { %>
+        <div class="glass-card p-6 border-l-2 border-l-[#CCFF00]">
+          <h4 class="font-['Space_Grotesk'] text-xs uppercase tracking-wider text-white mb-3">Minimum</h4>
+          <ul class="space-y-2 text-sm text-slate-400">
+            <% Object.entries(parsedSysReq.minimum).forEach(function(e) { %>
+              <li class="flex justify-between border-b border-white/5 pb-1"><span><%= e[0] %>:</span> <span class="text-white"><%= e[1] %></span></li>
+            <% }) %>
+          </ul>
+        </div>
+        <% } %>
+        <% if (parsedSysReq.recommended) { %>
+        <div class="glass-card p-6 border-l-2 border-l-[#e9b3ff]">
+          <h4 class="font-['Space_Grotesk'] text-xs uppercase tracking-wider text-white mb-3">Recommended</h4>
+          <ul class="space-y-2 text-sm text-slate-400">
+            <% Object.entries(parsedSysReq.recommended).forEach(function(e) { %>
+              <li class="flex justify-between border-b border-white/5 pb-1"><span><%= e[0] %>:</span> <span class="text-white"><%= e[1] %></span></li>
+            <% }) %>
+          </ul>
+        </div>
+        <% } %>
+      </div>
+    </section>
+    <% } %>
+
+    <% if (parsedScreenshots.length > 0) { %>
+    <section>
+      <h2 class="font-headline-md text-headline-md text-white mb-6">Screenshots</h2>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+        <% parsedScreenshots.forEach(function(s) { %>
+          <div class="glass-card overflow-hidden"><img src="<%= s %>" alt="" class="w-full aspect-video object-cover"/></div>
+        <% }) %>
+      </div>
+    </section>
+    <% } %>
+
+    <section>
+      <h2 class="font-headline-md text-headline-md text-white mb-6">Comments</h2>
+      <% if (currentUser) { %>
+      <form method="POST" action="/games/<%= game.slug %>/comment" class="mb-8">
+        <textarea name="content" rows="3" placeholder="Share your thoughts..." class="w-full bg-surface-container-low border-b border-outline-variant focus:border-[#CCFF00] text-on-surface p-3 transition-all input-glow" required></textarea>
+        <input type="hidden" name="parentId" value=""/>
+        <button type="submit" class="mt-3 bg-[#CCFF00] text-black font-['Space_Grotesk'] uppercase tracking-wider text-sm font-bold px-6 py-2 shadow-[0_0_10px_rgba(204,255,0,0.3)] hover:shadow-[0_0_20px_rgba(204,255,0,0.5)] transition-all">Post Comment</button>
+      </form>
+      <% } else { %>
+      <p class="mb-8 text-slate-500"><a href="/login" class="text-[#CCFF00] no-underline">Login</a> to leave a comment.</p>
+      <% } %>
+      <%- include('../partials/comment-thread', { comments: comments, userVotes: userVotes }) %>
+    </section>
+  </div>
+
+  <aside class="col-span-12 lg:col-span-4 space-y-6">
+    <div class="glass-card p-6 sticky top-24">
+      <div class="text-center">
+        <img src="<%= game.cover_image || '/uploads/covers/default.png' %>" alt="<%= game.title %>" class="w-full aspect-[3/4] object-cover mb-4"/>
+        <div class="space-y-3">
+          <% if (game.discount_price) { %>
+            <p class="text-slate-500 line-through text-lg">$<%= Number(game.price).toFixed(2) %></p>
+            <p class="text-[#CCFF00] font-headline-lg text-headline-lg">$<%= Number(game.discount_price).toFixed(2) %></p>
+          <% } else { %>
+            <p class="text-[#CCFF00] font-headline-lg text-headline-lg"><%= Number(game.price) === 0 ? 'FREE' : '$' + Number(game.price).toFixed(2) %></p>
+          <% } %>
+          <% if (currentUser) { %>
+            <form method="POST" action="/games/<%= game.slug %>/rate" class="flex items-center justify-center space-x-1">
+              <% for (var i = 1; i <= 5; i++) { %>
+                <button type="submit" name="rating" value="<%= i %>" class="text-2xl transition-colors <%= userRating && userRating >= i ? 'text-[#CCFF00]' : 'text-slate-600 hover:text-[#CCFF00]' %>">
+                  <span class="material-symbols-outlined"><%= (userRating && userRating >= i) ? 'star' : 'star' %></span>
+                </button>
+              <% } %>
+              <% if (userRating) { %><span class="text-xs text-slate-500 ml-2">Your rating: <%= userRating %>/5</span><% } %>
+            </form>
+          <% } %>
+        </div>
+      </div>
+    </div>
+  </aside>
+</div>

@@ -1,0 +1,38 @@
+<div class="max-w-7xl mx-auto px-6 py-16">
+  <h1 class="font-headline-lg text-headline-lg text-white uppercase italic mb-8">
+    SEARCH: <span class="text-[#CCFF00]">"<%= query %>"</span>
+  </h1>
+
+  <% if (gameResults.rows.length > 0) { %>
+  <section class="mb-16">
+    <h2 class="font-headline-md text-headline-md text-white mb-6 flex items-center gap-3">
+      <span class="w-2 h-6 bg-[#CCFF00]"></span> Games
+    </h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <% gameResults.rows.forEach(function(g) { %>
+        <%- include('../partials/game-card', { game: g }) %>
+      <% }) %>
+    </div>
+  </section>
+  <% } %>
+
+  <% if (articleResults.rows.length > 0) { %>
+  <section class="mb-16">
+    <h2 class="font-headline-md text-headline-md text-white mb-6 flex items-center gap-3">
+      <span class="w-2 h-6 bg-[#e9b3ff]"></span> Articles
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <% articleResults.rows.forEach(function(a) { %>
+        <%- include('../partials/news-card', { article: a }) %>
+      <% }) %>
+    </div>
+  </section>
+  <% } %>
+
+  <% if (gameResults.rows.length === 0 && articleResults.rows.length === 0) { %>
+  <div class="glass-card p-12 text-center">
+    <span class="material-symbols-outlined text-6xl text-slate-600 mb-4">search_off</span>
+    <p class="text-slate-400 font-body-lg">No results found for "<%= query %>".</p>
+  </div>
+  <% } %>
+</div>

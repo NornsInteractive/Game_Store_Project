@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+  <%- include('../partials/head') %>
+</head>
+<body class="bg-surface-dim text-on-background font-body-md selection:bg-primary-fixed selection:text-on-primary min-h-screen flex flex-col">
+  <%- include('../partials/navbar') %>
+  <%- include('../partials/flash') %>
+  <main class="flex-1">
+    <%- body %>
+  </main>
+  <%- include('../partials/footer') %>
+  <%- include('../partials/scripts') %>
+</body>
+</html>

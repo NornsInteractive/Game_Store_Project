@@ -1,0 +1,155 @@
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title><%= typeof title !== 'undefined' ? title : 'CyberPulse Gaming' %></title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script>
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        "surface-container-lowest": "#0c0e16",
+        "on-background": "#e1e1ed",
+        "on-primary-fixed-variant": "#3c4d00",
+        "on-tertiary-container": "#606470",
+        "on-tertiary-fixed": "#181b25",
+        "tertiary-fixed-dim": "#c3c6d3",
+        "inverse-primary": "#506600",
+        "on-primary-fixed": "#161e00",
+        "tertiary": "#ffffff",
+        "surface-container-high": "#282a32",
+        "on-tertiary": "#2c303a",
+        "surface-dim": "#11131b",
+        "inverse-surface": "#e1e1ed",
+        "primary": "#ffffff",
+        "surface-container": "#1d1f28",
+        "on-secondary-fixed": "#310048",
+        "on-secondary-fixed-variant": "#7200a3",
+        "primary-fixed-dim": "#abd600",
+        "outline": "#8e9379",
+        "surface": "#11131b",
+        "on-tertiary-fixed-variant": "#434751",
+        "on-error-container": "#ffdad6",
+        "primary-fixed": "#c3f400",
+        "secondary": "#e9b3ff",
+        "on-primary": "#283500",
+        "primary-container": "#c3f400",
+        "on-surface": "#e1e1ed",
+        "surface-container-low": "#191b23",
+        "on-secondary-container": "#e5a9ff",
+        "error": "#ffb4ab",
+        "secondary-fixed-dim": "#e9b3ff",
+        "error-container": "#93000a",
+        "background": "#11131b",
+        "on-primary-container": "#556d00",
+        "surface-bright": "#373942",
+        "tertiary-container": "#dfe2ef",
+        "tertiary-fixed": "#dfe2ef",
+        "secondary-fixed": "#f6d9ff",
+        "outline-variant": "#444933",
+        "secondary-container": "#7d01b1",
+        "surface-tint": "#abd600",
+        "surface-container-highest": "#33343d",
+        "surface-variant": "#33343d",
+        "inverse-on-surface": "#2e3039",
+        "on-error": "#690005",
+        "on-secondary": "#510074",
+        "on-surface-variant": "#c4c9ac"
+      },
+      fontFamily: {
+        "display-xl": ["Space Grotesk"],
+        "headline-lg": ["Space Grotesk"],
+        "label-caps": ["Space Grotesk"],
+        "body-md": ["Inter"],
+        "headline-md": ["Space Grotesk"],
+        "body-lg": ["Inter"]
+      },
+      fontSize: {
+        "display-xl": ["72px", { lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "700" }],
+        "headline-lg": ["48px", { lineHeight: "1.2", letterSpacing: "-0.01em", fontWeight: "700" }],
+        "label-caps": ["14px", { lineHeight: "1.0", letterSpacing: "0.1em", fontWeight: "700" }],
+        "body-md": ["16px", { lineHeight: "1.6", fontWeight: "400" }],
+        "headline-md": ["32px", { lineHeight: "1.3", fontWeight: "600" }],
+        "body-lg": ["18px", { lineHeight: "1.6", fontWeight: "400" }]
+      }
+    }
+  }
+}
+</script>
+<style>
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+.glass-card {
+  background: rgba(29, 31, 40, 0.4);
+  backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+.neon-glow {
+  box-shadow: 0 0 15px rgba(204, 255, 0, 0.3);
+}
+.neon-glow-hover:hover {
+  box-shadow: 0 0 30px rgba(204, 255, 0, 0.6);
+}
+.rim-light {
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+}
+.neon-text { color: #CCFF00; }
+.neon-border { border-color: #CCFF00; }
+.btn-primary {
+  background: #CCFF00;
+  color: #000;
+  font-family: 'Space Grotesk';
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  box-shadow: 0 0 15px rgba(204, 255, 0, 0.3);
+  transition: all 0.3s;
+}
+.btn-primary:hover {
+  box-shadow: 0 0 30px rgba(204, 255, 0, 0.6);
+}
+.btn-secondary {
+  background: transparent;
+  color: #e9b3ff;
+  border: 1px solid #e9b3ff;
+  font-family: 'Space Grotesk';
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: all 0.3s;
+}
+.btn-secondary:hover {
+  background: rgba(233, 179, 255, 0.1);
+  box-shadow: 0 0 15px rgba(233, 179, 255, 0.3);
+}
+input[type="text"], input[type="email"], input[type="password"], input[type="number"], input[type="date"], textarea, select {
+  background: #191b23;
+  border: none;
+  border-bottom: 1px solid #444933;
+  color: #e1e1ed;
+  padding: 10px 14px;
+  font-family: 'Inter';
+  font-size: 16px;
+  transition: all 0.3s;
+}
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-bottom-color: #CCFF00;
+  box-shadow: 0 4px 12px rgba(204, 255, 0, 0.15);
+}
+.cyber-tag {
+  background: rgba(204, 255, 0, 0.1);
+  border: 1px solid rgba(204, 255, 0, 0.3);
+  color: #CCFF00;
+  font-family: 'Space Grotesk';
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 4px 10px;
+}
+</style>

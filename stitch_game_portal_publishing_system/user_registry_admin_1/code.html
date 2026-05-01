@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>User Registry - COMMAND_CENTER</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Space+Grotesk:wght@500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-container": "#dfe2ef",
+                      "secondary": "#e9b3ff",
+                      "outline-variant": "#444933",
+                      "on-secondary-fixed": "#310048",
+                      "inverse-primary": "#506600",
+                      "surface-tint": "#abd600",
+                      "on-primary": "#283500",
+                      "tertiary-fixed": "#dfe2ef",
+                      "surface-variant": "#33343d",
+                      "surface-container-high": "#282a32",
+                      "surface-dim": "#11131b",
+                      "on-secondary-fixed-variant": "#7200a3",
+                      "primary": "#ffffff",
+                      "secondary-fixed": "#f6d9ff",
+                      "outline": "#8e9379",
+                      "on-tertiary-container": "#606470",
+                      "on-error": "#690005",
+                      "on-tertiary-fixed": "#181b25",
+                      "on-secondary-container": "#e5a9ff",
+                      "on-primary-fixed-variant": "#3c4d00",
+                      "tertiary": "#ffffff",
+                      "inverse-surface": "#e1e1ed",
+                      "surface-container": "#1d1f28",
+                      "on-primary-container": "#556d00",
+                      "error-container": "#93000a",
+                      "surface-bright": "#373942",
+                      "tertiary-fixed-dim": "#c3c6d3",
+                      "surface": "#11131b",
+                      "primary-fixed-dim": "#abd600",
+                      "on-surface-variant": "#c4c9ac",
+                      "error": "#ffb4ab",
+                      "on-secondary": "#510074",
+                      "background": "#11131b",
+                      "on-tertiary": "#2c303a",
+                      "on-background": "#e1e1ed",
+                      "surface-container-low": "#191b23",
+                      "surface-container-highest": "#33343d",
+                      "surface-container-lowest": "#0c0e16",
+                      "secondary-fixed-dim": "#e9b3ff",
+                      "secondary-container": "#7d01b1",
+                      "primary-fixed": "#c3f400",
+                      "primary-container": "#c3f400",
+                      "on-tertiary-fixed-variant": "#434751",
+                      "on-error-container": "#ffdad6",
+                      "inverse-on-surface": "#2e3039",
+                      "on-primary-fixed": "#161e00",
+                      "on-surface": "#e1e1ed"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin": "32px",
+                      "container-max": "1280px",
+                      "unit": "4px",
+                      "gutter": "24px"
+              },
+              "fontFamily": {
+                      "headline-md": [
+                              "Space Grotesk"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "display-xl": [
+                              "Space Grotesk"
+                      ],
+                      "label-caps": [
+                              "Space Grotesk"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Space Grotesk"
+                      ]
+              },
+              "fontSize": {
+                      "headline-md": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-xl": [
+                              "72px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "label-caps": [
+                              "14px",
+                              {
+                                      "lineHeight": "1.0",
+                                      "letterSpacing": "0.1em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "700"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        .neon-glow {
+            box-shadow: 0 0 10px #CCFF00, inset 0 0 5px rgba(204, 255, 0, 0.2);
+        }
+        .neon-glow:hover {
+            box-shadow: 0 0 20px #CCFF00, inset 0 0 10px rgba(204, 255, 0, 0.4);
+        }
+        .glass-panel {
+            background: rgba(40, 42, 50, 0.6);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-top-color: rgba(255, 255, 255, 0.2);
+            border-left-color: rgba(255, 255, 255, 0.2);
+        }
+      </style>
+</head>
+<body class="bg-background text-on-surface font-body-md font-body-md min-h-screen selection:bg-primary-container selection:text-on-primary-container">
+<!-- SideNavBar -->
+<nav class="bg-slate-950/60 backdrop-blur-2xl h-screen w-64 fixed left-0 top-0 border-r border-white/10 shadow-[inset_-1px_0_0_0_rgba(255,255,255,0.1)] flex flex-col h-full z-50 hidden md:flex">
+<div class="p-6 border-b border-white/10">
+<div class="flex items-center gap-4">
+<img alt="Admin Avatar" class="w-10 h-10 rounded-full border border-[#CCFF00]" data-alt="A futuristic cyborg avatar wearing a neon green glowing visor in a dark, cyberpunk setting. High contrast, sharp edges, digital art style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXs4QW6zs8Rbl377kclq8fbUURFMmSQ2riw1uJEcBafyGgV8AxGMtQ1W9WPT-53G5BRv2q_3kHQDzHV_cw2dQKe3-NMoEGqljrt8wdDvOxd4heaTYv6Fdx-hcJTerDtHM1axep5zBCC14qMojkXbCrcfFG-fxtLUsvQCO-gwiPWTh1XyXyean_GJxY8FpxLKod_hp0_C5SXWiy4VqaxAEhnm_U-L7mEfwX1nkVJCKLeHAjMAvu-DhZNoygygP_L22qGEulOTUT2xAH"/>
+<div>
+<h1 class="text-2xl font-black text-[#CCFF00] drop-shadow-[0_0_8px_rgba(204,255,0,0.8)] font-['Space_Grotesk'] uppercase tracking-wider">NEON_CORE</h1>
+<span class="text-xs text-slate-400 font-label-caps font-label-caps">SYSTEM_ADMIN_V1</span>
+</div>
+</div>
+</div>
+<ul class="flex-1 py-6 space-y-2">
+<li>
+<a class="text-slate-400 hover:text-white flex items-center px-4 py-3 transition-all transition-all duration-200 ease-out active:scale-[0.98] hover:bg-white/5 hover:text-[#CCFF00]" href="#">
+<span class="material-symbols-outlined mr-3">dashboard</span>
+<span class="font-['Space_Grotesk'] uppercase tracking-wider text-sm font-bold">Dashboard</span>
+</a>
+</li>
+<li>
+<a class="bg-[#CCFF00] text-black font-bold shadow-[0_0_20px_#CCFF00] rounded-none border-l-4 border-white flex items-center px-4 py-3 transition-all duration-200 ease-out active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined mr-3">group</span>
+<span class="font-['Space_Grotesk'] uppercase tracking-wider text-sm font-bold">Users</span>
+</a>
+</li>
+<li>
+<a class="text-slate-400 hover:text-white flex items-center px-4 py-3 transition-all transition-all duration-200 ease-out active:scale-[0.98] hover:bg-white/5 hover:text-[#CCFF00]" href="#">
+<span class="material-symbols-outlined mr-3">description</span>
+<span class="font-['Space_Grotesk'] uppercase tracking-wider text-sm font-bold">Content</span>
+</a>
+</li>
+<li>
+<a class="text-slate-400 hover:text-white flex items-center px-4 py-3 transition-all transition-all duration-200 ease-out active:scale-[0.98] hover:bg-white/5 hover:text-[#CCFF00]" href="#">
+<span class="material-symbols-outlined mr-3">settings</span>
+<span class="font-['Space_Grotesk'] uppercase tracking-wider text-sm font-bold">Settings</span>
+</a>
+</li>
+</ul>
+<div class="p-6 border-t border-white/10">
+<button class="w-full py-3 bg-[#CCFF00] text-black font-['Space_Grotesk'] uppercase tracking-wider font-bold neon-glow transition-all duration-200">
+                LAUNCH_LOBBY
+            </button>
+</div>
+</nav>
+<!-- TopAppBar -->
+<header class="bg-slate-950/40 backdrop-blur-md fixed top-0 right-0 w-full md:w-[calc(100%-16rem)] h-16 border-b border-white/5 shadow-[0_4px_30px_rgba(0,0,0,0.5)] flex items-center justify-between px-8 z-40 md:ml-64">
+<!-- Mobile Menu Toggle (Visible only on mobile) -->
+<button class="md:hidden text-[#CCFF00] material-symbols-outlined p-2 cursor-pointer active:opacity-80 hover:bg-white/5 rounded">menu</button>
+<h2 class="text-[#CCFF00] font-['Space_Grotesk'] font-medium text-lg tracking-wider hidden md:block">COMMAND_CENTER</h2>
+<div class="flex-1 max-w-md ml-auto mr-8 hidden md:block relative group">
+<div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+<span class="material-symbols-outlined text-slate-500 group-focus-within:text-[#CCFF00] transition-colors">search</span>
+</div>
+<input class="w-full bg-surface-container-high border-0 border-b border-slate-600 text-on-surface focus:ring-0 focus:border-[#CCFF00] font-body-md py-2 px-4 transition-all focus:bg-surface-bright placeholder-slate-500" placeholder="Search parameters..." type="text"/>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-slate-500 hover:text-slate-200 p-2 cursor-pointer active:opacity-80 hover:bg-white/5 rounded-full transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-1 right-1 w-2 h-2 bg-[#CCFF00] rounded-full shadow-[0_0_8px_#CCFF00]"></span>
+</button>
+<button class="text-slate-500 hover:text-slate-200 p-2 cursor-pointer active:opacity-80 hover:bg-white/5 rounded-full transition-colors">
+<span class="material-symbols-outlined">terminal</span>
+</button>
+<button class="text-slate-500 hover:text-slate-200 p-2 cursor-pointer active:opacity-80 hover:bg-white/5 rounded-full transition-colors">
+<span class="material-symbols-outlined">power_settings_new</span>
+</button>
+</div>
+</header>
+<!-- Main Content -->
+<main class="pt-24 pb-12 px-6 md:ml-64 md:px-12 max-w-container-max mx-auto">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-margin gap-6">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-primary mb-2 flex items-center gap-3">
+<span class="w-1 h-8 bg-primary-container shadow-[0_0_12px_#CCFF00]"></span>
+                    User Registry
+                </h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+                    Manage active operands, modify access privileges, and monitor system engagement across the grid.
+                </p>
+</div>
+<div class="flex gap-4">
+<button class="glass-panel px-6 py-2 flex items-center gap-2 font-label-caps text-label-caps text-on-surface hover:text-primary-container transition-colors border border-outline-variant">
+<span class="material-symbols-outlined text-[18px]">filter_list</span>
+                    FILTER
+                </button>
+<button class="bg-primary-container text-on-primary-container px-6 py-2 font-label-caps text-label-caps neon-glow flex items-center gap-2 transition-all">
+<span class="material-symbols-outlined text-[18px]">person_add</span>
+                    NEW OPERAND
+                </button>
+</div>
+</div>
+<!-- Metrics Row -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter mb-margin">
+<div class="glass-panel p-6 rounded-lg relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary-container/10 rounded-full blur-2xl -mr-10 -mt-10 group-hover:bg-primary-container/20 transition-all"></div>
+<h3 class="font-label-caps text-label-caps text-on-surface-variant mb-1">Total Operands</h3>
+<p class="font-display-xl text-[48px] leading-tight font-bold text-primary">12,408</p>
+<div class="mt-4 h-1 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary-container w-[80%] shadow-[0_0_8px_#CCFF00]"></div>
+</div>
+</div>
+<div class="glass-panel p-6 rounded-lg relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-32 h-32 bg-secondary/10 rounded-full blur-2xl -mr-10 -mt-10 group-hover:bg-secondary/20 transition-all"></div>
+<h3 class="font-label-caps text-label-caps text-on-surface-variant mb-1">Active Now</h3>
+<p class="font-display-xl text-[48px] leading-tight font-bold text-secondary">3,192</p>
+</div>
+<div class="glass-panel p-6 rounded-lg relative overflow-hidden group">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant mb-1">Suspended</h3>
+<p class="font-display-xl text-[48px] leading-tight font-bold text-error">142</p>
+</div>
+<div class="glass-panel p-6 rounded-lg flex flex-col justify-center border-l-2 border-l-primary-container">
+<h3 class="font-label-caps text-label-caps text-primary-container mb-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">warning</span>
+                    System Alerts
+                </h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                    3 nodes reporting high latency. 12 brute-force attempts neutralized.
+                </p>
+</div>
+</div>
+<!-- Table Card -->
+<div class="glass-panel rounded-xl border border-outline-variant overflow-hidden">
+<!-- Mobile Card View (Hidden on larger screens) -->
+<div class="md:hidden divide-y divide-surface-container-highest">
+<!-- Card 1 -->
+<div class="p-4 space-y-4">
+<div class="flex items-center gap-4">
+<img alt="Avatar" class="w-12 h-12 rounded-lg border border-primary-container" data-alt="Close up portrait of a cyberpunk hacker in neon lit room. Dark atmospheric lighting, vivid green reflections on face." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbNsfjo9mMZH9-iaJMMFE-57-8wqmZAVOLFPZlfjPwMBjI_jP_lbG3HdPIEGsJ82PSZSfHFqt_ypiq1wjWa7OXWBdffNxAHMbsjO8VMqJkiXJuEObgI4tTIgMDzVnXdWk3HcUwEW1tGoWugWGKCibbQmK8Fex3c58Q__e3QVOj8C2KRs7q5G4wQ5y1VpXATsSE7ftv186cd0U6cxZ6657hsvikvQ0vNWraXvN9apF5DKbUSfcSlMyPbdU2TU71hE5gA77ZwH-Oyvlx"/>
+<div>
+<h4 class="font-headline-md text-[20px] font-bold text-primary">Ghost_Protocol</h4>
+<span class="inline-block px-2 py-1 mt-1 text-[10px] font-label-caps border border-primary-container text-primary-container rounded uppercase tracking-widest">Admin</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-2 text-sm">
+<div>
+<span class="text-on-surface-variant text-xs uppercase block mb-1">Status</span>
+<span class="text-primary-container flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-primary-container shadow-[0_0_5px_#CCFF00]"></span>Active</span>
+</div>
+<div>
+<span class="text-on-surface-variant text-xs uppercase block mb-1">Joined</span>
+<span class="text-on-surface">2023.10.14</span>
+</div>
+</div>
+<div class="flex gap-2 pt-2">
+<button class="flex-1 py-2 bg-surface-container-high border border-outline-variant hover:border-primary-container text-primary text-sm font-label-caps transition-colors">EDIT</button>
+<button class="flex-1 py-2 bg-error-container/20 text-error border border-error/50 hover:bg-error-container/40 text-sm font-label-caps transition-colors">SUSPEND</button>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="p-4 space-y-4">
+<div class="flex items-center gap-4">
+<img alt="Avatar" class="w-12 h-12 rounded-lg border border-secondary" data-alt="A futuristic soldier portrait with a tactical helmet and purple glowing eye slits. Dark synthwave aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpoGtVwEH8RJtuKCODgVQwrRV-WdpA_ySaoIGA0lEbHdctKA6niV2w8FkIVt1Hx0CGCtwhWDowAI4bqWf2GGpTL5Ym4FifSURGRdhRJkvNona8lQ5e7ZFcvCeZOh4lZqm_S1aXBYxfpnnyE4kp8l8BFyvxEBtxjbasPIWdO6WA4MNfJSYmkWm4v0aSUlQTjL_gjPndUlUuI0rIX2biqsGTspOhQ8oy7UcNn22jy8lZ3ia3t-PUtKDn-IwT2iWIzzY9Sn58QESQpjmd"/>
+<div>
+<h4 class="font-headline-md text-[20px] font-bold text-primary">Neon_Ronin</h4>
+<span class="inline-block px-2 py-1 mt-1 text-[10px] font-label-caps border border-secondary text-secondary rounded uppercase tracking-widest">Elite</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-2 text-sm">
+<div>
+<span class="text-on-surface-variant text-xs uppercase block mb-1">Status</span>
+<span class="text-primary-container flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-primary-container shadow-[0_0_5px_#CCFF00]"></span>Active</span>
+</div>
+<div>
+<span class="text-on-surface-variant text-xs uppercase block mb-1">Joined</span>
+<span class="text-on-surface">2024.01.02</span>
+</div>
+</div>
+<div class="flex gap-2 pt-2">
+<button class="flex-1 py-2 bg-surface-container-high border border-outline-variant hover:border-primary-container text-primary text-sm font-label-caps transition-colors">EDIT</button>
+<button class="flex-1 py-2 bg-error-container/20 text-error border border-error/50 hover:bg-error-container/40 text-sm font-label-caps transition-colors">SUSPEND</button>
+</div>
+</div>
+</div>
+<!-- Desktop Table View -->
+<div class="hidden md:block overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-outline-variant bg-surface-container-highest/50">
+<th class="py-4 px-6 font-label-caps text-label-caps text-on-surface-variant tracking-widest">Operand</th>
+<th class="py-4 px-6 font-label-caps text-label-caps text-on-surface-variant tracking-widest">Class</th>
+<th class="py-4 px-6 font-label-caps text-label-caps text-on-surface-variant tracking-widest">Status</th>
+<th class="py-4 px-6 font-label-caps text-label-caps text-on-surface-variant tracking-widest">Uplink Date</th>
+<th class="py-4 px-6 font-label-caps text-label-caps text-on-surface-variant tracking-widest text-right">Directives</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/50">
+<!-- Row 1 -->
+<tr class="hover:bg-white/5 transition-colors group">
+<td class="py-4 px-6">
+<div class="flex items-center gap-4">
+<img alt="Avatar" class="w-10 h-10 rounded border border-primary-container group-hover:shadow-[0_0_10px_#CCFF00] transition-shadow" data-alt="Close up portrait of a cyberpunk hacker in neon lit room. Dark atmospheric lighting, vivid green reflections on face." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAeYADo-ecW5_BFVmuFOHcfQS3h3tQTlChFeRFC0hvULv_A2-ET7RVyliqijH_pcVO6GFVcrqTSsUNCLqiDrya6wG5bNruXXR9AAIiFms2TUrWQTSnNC1pTrvbxU5RtgEwzv3EQLdVwjyYQ3T9q5rL9aZ9ot8enyYnpadiQW3AIbf28qgjEVNiXhhbQT-5XecPujMbV6tt-T1UDWN2V5JN2CYDHODz1e7hG0rTIgjUjJrHmucshEv4uZQCkahvlzG6A07jNuLAsa-yx"/>
+<span class="font-headline-md text-[18px] text-primary">Ghost_Protocol</span>
+</div>
+</td>
+<td class="py-4 px-6">
+<span class="inline-block px-3 py-1 border border-primary-container text-primary-container font-label-caps text-[12px] bg-primary-container/10">ADMIN</span>
+</td>
+<td class="py-4 px-6">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-primary-container shadow-[0_0_8px_#CCFF00]"></div>
+<span class="text-on-surface font-body-md text-sm">Active</span>
+</div>
+</td>
+<td class="py-4 px-6 text-on-surface-variant font-body-md">2023.10.14</td>
+<td class="py-4 px-6 text-right space-x-2">
+<button class="p-2 text-on-surface-variant hover:text-primary-container transition-colors" title="Edit Operand">
+<span class="material-symbols-outlined text-[20px]">edit_square</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-secondary transition-colors" title="Reset Cipher">
+<span class="material-symbols-outlined text-[20px]">key</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-error transition-colors" title="Suspend">
+<span class="material-symbols-outlined text-[20px]">block</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-white/5 transition-colors group">
+<td class="py-4 px-6">
+<div class="flex items-center gap-4">
+<img alt="Avatar" class="w-10 h-10 rounded border border-secondary group-hover:shadow-[0_0_10px_#e9b3ff] transition-shadow" data-alt="A futuristic soldier portrait with a tactical helmet and purple glowing eye slits. Dark synthwave aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEIbLS-1DvGFaZGFuc3YQNZVEhao22TReuNteKIiBAOisxx23UGC1WIb7Zb55TJqHQ1MtFQ7apOyHd8TPkyfYadC6jJkYJHpz82vv8k_70oZ4XtHTKBj5Luq4VC5jymu59meTzv03y-V-flFWOTJxyPKZ_6jJIINJ8SsQSCRgDSZUTnGRnBvTQRs1vlbRq_gV4obj_mOu0XAbhK6kmfaxXqYCbmZ7a7ogwpnlP3pJHvYLRCoDAf8AuqAbmzpvBaRx9Q1cXrF0f9p2d"/>
+<span class="font-headline-md text-[18px] text-primary">Neon_Ronin</span>
+</div>
+</td>
+<td class="py-4 px-6">
+<span class="inline-block px-3 py-1 border border-secondary text-secondary font-label-caps text-[12px] bg-secondary/10">ELITE</span>
+</td>
+<td class="py-4 px-6">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-primary-container shadow-[0_0_8px_#CCFF00]"></div>
+<span class="text-on-surface font-body-md text-sm">Active</span>
+</div>
+</td>
+<td class="py-4 px-6 text-on-surface-variant font-body-md">2024.01.02</td>
+<td class="py-4 px-6 text-right space-x-2">
+<button class="p-2 text-on-surface-variant hover:text-primary-container transition-colors" title="Edit Operand">
+<span class="material-symbols-outlined text-[20px]">edit_square</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-secondary transition-colors" title="Reset Cipher">
+<span class="material-symbols-outlined text-[20px]">key</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-error transition-colors" title="Suspend">
+<span class="material-symbols-outlined text-[20px]">block</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-white/5 transition-colors group opacity-60">
+<td class="py-4 px-6">
+<div class="flex items-center gap-4">
+<img alt="Avatar" class="w-10 h-10 rounded border border-outline-variant grayscale" data-alt="A shadowed profile of a person in a dark hood, glitch art style, distorted data pixels overlaying the face." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_Pbk53QmWkbPXoSk3msB48mTExMTzodJCEauJntnsw3ZUhsjsYej9kMLtU1IfO1Gt6QtJQ4iyd2PYXSnPFNIhjXDtAcm22V45U7wVWfa_Dakw26GG1CSpI8PT_OcTpITNgaR3D0X-VvM_rZcLl_roRYvYus1RuJ-cZ2AT4kTwpf9TheLx52jQKmBtGaowXu_ciaQNrWudXeJDIlzwYDPvLSwTSYk3tASH8QNfgP4EE2xuKHkOIj77ICfy57s_tBMmNE6Ytl899Sjf"/>
+<span class="font-headline-md text-[18px] text-primary line-through decoration-error">Null_Pointer</span>
+</div>
+</td>
+<td class="py-4 px-6">
+<span class="inline-block px-3 py-1 border border-outline-variant text-on-surface-variant font-label-caps text-[12px] bg-surface-container-highest">USER</span>
+</td>
+<td class="py-4 px-6">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-error shadow-[0_0_8px_#ffb4ab]"></div>
+<span class="text-error font-body-md text-sm">Suspended</span>
+</div>
+</td>
+<td class="py-4 px-6 text-on-surface-variant font-body-md">2023.05.19</td>
+<td class="py-4 px-6 text-right space-x-2">
+<button class="p-2 text-on-surface-variant hover:text-primary-container transition-colors" title="Edit Operand">
+<span class="material-symbols-outlined text-[20px]">edit_square</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-secondary transition-colors" title="Reset Cipher">
+<span class="material-symbols-outlined text-[20px]">key</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-primary-container transition-colors" title="Reactivate">
+<span class="material-symbols-outlined text-[20px]">settings_backup_restore</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination Footer -->
+<div class="p-4 border-t border-outline-variant bg-surface-container-highest/30 flex items-center justify-between">
+<span class="text-sm font-body-md text-on-surface-variant">Showing 1 to 3 of 12,408 entries</span>
+<div class="flex gap-2">
+<button class="px-3 py-1 border border-outline-variant text-on-surface-variant hover:text-primary hover:border-primary transition-colors disabled:opacity-50"><span class="material-symbols-outlined text-[18px]">chevron_left</span></button>
+<button class="px-3 py-1 border border-primary-container text-primary-container bg-primary-container/10 font-label-caps text-xs">1</button>
+<button class="px-3 py-1 border border-outline-variant text-on-surface-variant hover:text-primary hover:border-primary transition-colors font-label-caps text-xs">2</button>
+<button class="px-3 py-1 border border-outline-variant text-on-surface-variant hover:text-primary hover:border-primary transition-colors font-label-caps text-xs">3</button>
+<span class="px-2 text-on-surface-variant">...</span>
+<button class="px-3 py-1 border border-outline-variant text-on-surface-variant hover:text-primary hover:border-primary transition-colors"><span class="material-symbols-outlined text-[18px]">chevron_right</span></button>
+</div>
+</div>
+</div>
+</main>
+</body></html>

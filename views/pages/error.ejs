@@ -1,0 +1,18 @@
+<div class="min-h-screen flex items-center justify-center px-6 py-20">
+  <div class="glass-card p-12 max-w-lg w-full text-center">
+    <div class="text-8xl font-black text-[#CCFF00] font-['Space_Grotesk'] italic mb-4"><%= code %></div>
+    <h1 class="font-headline-md text-headline-md text-white mb-4"><%= message %></h1>
+    <p class="text-slate-400 mb-8 font-body-md">
+      <% if (code === 404) { %>
+      The requested data stream does not exist or has been terminated.
+      <% } else if (code === 403) { %>
+      Insufficient clearance level. This sector is restricted.
+      <% } else { %>
+      A critical system fault occurred. Our engineers have been alerted.
+      <% } %>
+    </p>
+    <a href="/" class="bg-[#CCFF00] text-black px-8 py-3 font-['Space_Grotesk'] uppercase tracking-widest text-sm font-bold shadow-[0_0_15px_rgba(204,255,0,0.3)] hover:shadow-[0_0_30px_rgba(204,255,0,0.6)] transition-all no-underline inline-block">
+      Return to Base
+    </a>
+  </div>
+</div>

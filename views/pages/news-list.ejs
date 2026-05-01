@@ -1,0 +1,26 @@
+<div class="max-w-7xl mx-auto px-6 py-16">
+  <div class="flex justify-between items-end mb-12">
+    <div>
+      <h1 class="font-headline-lg text-headline-lg text-white uppercase italic">News_Feed</h1>
+      <div class="h-1 w-24 bg-[#CCFF00] mt-2"></div>
+    </div>
+    <form method="GET" action="/news" class="flex items-center space-x-2">
+      <input type="text" name="search" value="<%= currentSearch %>" placeholder="Search articles..." class="py-2 px-4 w-48 text-sm"/>
+      <button type="submit" class="bg-[#CCFF00] text-black px-4 py-2 font-['Space_Grotesk'] uppercase tracking-wider text-xs font-bold">Search</button>
+    </form>
+  </div>
+
+  <% if (articles.length > 0) { %>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <% articles.forEach(function(a) { %>
+      <%- include('../partials/news-card', { article: a }) %>
+    <% }) %>
+  </div>
+  <%- include('../partials/pagination', { page: page, pages: pages, query: { category: currentCategory, search: currentSearch } }) %>
+  <% } else { %>
+  <div class="glass-card p-12 text-center">
+    <span class="material-symbols-outlined text-6xl text-slate-600 mb-4">article</span>
+    <p class="text-slate-400 font-body-lg">No articles found.</p>
+  </div>
+  <% } %>
+</div>

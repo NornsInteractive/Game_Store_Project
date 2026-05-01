@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CYBERPULSE - Content Matrix</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-fixed-dim": "#e9b3ff",
+                      "on-tertiary": "#2c303a",
+                      "surface": "#11131b",
+                      "tertiary-container": "#dfe2ef",
+                      "on-surface": "#e1e1ed",
+                      "on-secondary-fixed": "#310048",
+                      "surface-container-lowest": "#0c0e16",
+                      "primary-fixed": "#c3f400",
+                      "secondary": "#e9b3ff",
+                      "inverse-on-surface": "#2e3039",
+                      "tertiary-fixed": "#dfe2ef",
+                      "primary-fixed-dim": "#abd600",
+                      "on-secondary": "#510074",
+                      "on-primary-fixed-variant": "#3c4d00",
+                      "inverse-surface": "#e1e1ed",
+                      "on-error": "#690005",
+                      "surface-dim": "#11131b",
+                      "outline": "#8e9379",
+                      "surface-container-low": "#191b23",
+                      "background": "#11131b",
+                      "outline-variant": "#444933",
+                      "primary-container": "#c3f400",
+                      "inverse-primary": "#506600",
+                      "surface-variant": "#33343d",
+                      "surface-container": "#1d1f28",
+                      "surface-bright": "#373942",
+                      "tertiary-fixed-dim": "#c3c6d3",
+                      "surface-container-high": "#282a32",
+                      "secondary-container": "#7d01b1",
+                      "on-secondary-container": "#e5a9ff",
+                      "surface-tint": "#abd600",
+                      "tertiary": "#ffffff",
+                      "secondary-fixed": "#f6d9ff",
+                      "on-primary-container": "#556d00",
+                      "on-tertiary-fixed-variant": "#434751",
+                      "on-error-container": "#ffdad6",
+                      "error": "#ffb4ab",
+                      "primary": "#ffffff",
+                      "on-tertiary-fixed": "#181b25",
+                      "on-tertiary-container": "#606470",
+                      "on-primary-fixed": "#161e00",
+                      "error-container": "#93000a",
+                      "surface-container-highest": "#33343d",
+                      "on-secondary-fixed-variant": "#7200a3",
+                      "on-background": "#e1e1ed",
+                      "on-surface-variant": "#c4c9ac",
+                      "on-primary": "#283500"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "container-max": "1280px",
+                      "margin": "32px",
+                      "gutter": "24px",
+                      "unit": "4px"
+              },
+              "fontFamily": {
+                      "headline-md": [
+                              "Space Grotesk"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "display-xl": [
+                              "Space Grotesk"
+                      ],
+                      "label-caps": [
+                              "Space Grotesk"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Space Grotesk"
+                      ]
+              },
+              "fontSize": {
+                      "headline-md": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-xl": [
+                              "72px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "label-caps": [
+                              "14px",
+                              {
+                                      "lineHeight": "1.0",
+                                      "letterSpacing": "0.1em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "700"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+        body {
+            background: linear-gradient(180deg, theme('colors.surface-container-lowest') 0%, theme('colors.surface-container') 100%);
+            color: theme('colors.on-surface');
+            min-height: 100vh;
+        }
+        
+        .glass-panel {
+            background: rgba(29, 31, 40, 0.5); /* surface-container approx */
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-left: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .neon-glow-primary {
+            box-shadow: 0 0 15px rgba(195, 244, 0, 0.4);
+        }
+        
+        .neon-glow-primary-hover:hover {
+            box-shadow: 0 0 25px rgba(195, 244, 0, 0.6);
+        }
+
+        .input-cyber {
+            background-color: theme('colors.surface-container-high');
+            border: none;
+            border-bottom: 1px solid theme('colors.surface-variant');
+            color: theme('colors.on-surface');
+            transition: all 0.3s ease;
+        }
+        
+        .input-cyber:focus {
+            outline: none;
+            border-bottom-color: theme('colors.primary-container');
+            box-shadow: 0 2px 10px rgba(195, 244, 0, 0.2);
+            ring: 0;
+        }
+
+        /* Custom Scrollbar for matrix */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: theme('colors.surface-container-lowest'); 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: theme('colors.surface-variant'); 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: theme('colors.primary-container'); 
+        }
+    </style>
+</head>
+<body class="flex bg-surface-container-lowest antialiased text-on-surface">
+<!-- SideNavBar -->
+<nav class="bg-slate-950/40 backdrop-blur-xl h-screen w-64 border-r border-white/10 hidden md:flex flex-col inset-shadow-sm p-4 shrink-0 fixed z-40">
+<!-- Header -->
+<div class="mb-8 flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden border border-primary-container/30">
+<img alt="User Profile Avatar" class="w-full h-full object-cover" data-alt="A futuristic cyberpunk avatar portrait of a male gamer, bathed in neon lime and purple lighting. The avatar wears high-tech headset gear. The background is a dark, gritty digital matrix texture. Professional, high-contrast, sharp details." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBafJAe4MNdqydY6YOzbjMjsnA5RsibYdH6Ot4v4WyOn7c7uqp1zQRFDuLDyqCQBiT6mZJWNAjjCptGqpmkwpm6hYyz1SlKrXWXBJZeTnARea5hjCzAlwQlR-HJsyeN3AbzotQFktxXUTSbrOqMBpdeoEmzVIZBeLh-47ASm9v001oJlkJflkcMvCkE35Cp9b4WG2piJmxPmIwI6P85qKpSvDmqQx0RwW-cvwHob6pSn1cVo8cTKBFhW9pl4P9X3pR2A5zqHmdgnVz"/>
+</div>
+<div>
+<div class="font-headline-md text-headline-md text-[16px] text-primary-container tracking-tight">NeonRider_99</div>
+<div class="font-label-caps text-label-caps text-[10px] text-secondary-container">Elite Rank</div>
+</div>
+</div>
+<!-- Navigation Links -->
+<div class="flex flex-col gap-2 flex-grow">
+<a class="flex items-center gap-3 text-slate-400 hover:text-[#CCFF00] hover:bg-white/5 px-4 py-3 rounded-sm transition-all hover:translate-x-1 hover:glow-lg" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="dashboard">dashboard</span>
+<span class="font-['Space_Grotesk'] font-medium uppercase text-xs">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 text-slate-400 hover:text-[#CCFF00] hover:bg-white/5 px-4 py-3 rounded-sm transition-all hover:translate-x-1 hover:glow-lg" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="group">group</span>
+<span class="font-['Space_Grotesk'] font-medium uppercase text-xs">My Squad</span>
+</a>
+<a class="flex items-center gap-3 bg-[#CCFF00] text-black rounded-sm font-black shadow-[0_0_15px_rgba(204,255,0,0.4)] px-4 py-3 transition-all" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="dashboard">dashboard</span> <!-- Using a generic icon as active wasn't specified in list but it's the dashboard -->
+<span class="font-['Space_Grotesk'] font-medium uppercase text-xs">Matrix</span>
+</a>
+<a class="flex items-center gap-3 text-slate-400 hover:text-[#CCFF00] hover:bg-white/5 px-4 py-3 rounded-sm transition-all hover:translate-x-1 hover:glow-lg" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="emoji_events">emoji_events</span>
+<span class="font-['Space_Grotesk'] font-medium uppercase text-xs">Leaderboards</span>
+</a>
+<a class="flex items-center gap-3 text-slate-400 hover:text-[#CCFF00] hover:bg-white/5 px-4 py-3 rounded-sm transition-all hover:translate-x-1 hover:glow-lg" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="military_tech">military_tech</span>
+<span class="font-['Space_Grotesk'] font-medium uppercase text-xs">Missions</span>
+</a>
+<a class="flex items-center gap-3 text-slate-400 hover:text-[#CCFF00] hover:bg-white/5 px-4 py-3 rounded-sm transition-all hover:translate-x-1 hover:glow-lg" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="settings">settings</span>
+<span class="font-['Space_Grotesk'] font-medium uppercase text-xs">Settings</span>
+</a>
+</div>
+<!-- CTA -->
+<button class="w-full bg-primary-container text-on-primary-container font-label-caps text-label-caps py-3 rounded-sm mt-4 mb-6 neon-glow-primary neon-glow-primary-hover transition-all">
+            UPGRADE GEAR
+        </button>
+<!-- Footer Links -->
+<div class="flex flex-col gap-2 mt-auto border-t border-white/5 pt-4">
+<a class="flex items-center gap-3 text-slate-400 hover:text-[#CCFF00] hover:bg-white/5 px-4 py-2 rounded-sm transition-all text-xs" href="#">
+<span class="material-symbols-outlined text-[18px]" data-icon="help">help</span>
+<span class="font-['Space_Grotesk'] font-medium uppercase text-xs">Support</span>
+</a>
+<a class="flex items-center gap-3 text-slate-400 hover:text-error hover:bg-white/5 px-4 py-2 rounded-sm transition-all text-xs" href="#">
+<span class="material-symbols-outlined text-[18px]" data-icon="logout">logout</span>
+<span class="font-['Space_Grotesk'] font-medium uppercase text-xs">Logout</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 md:ml-64 min-h-screen flex flex-col relative z-0">
+<!-- TopNavBar (Mobile Only / Responsive Header) -->
+<header class="bg-slate-950/80 backdrop-blur-2xl docked full-width top-0 z-50 border-b border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.5)] flex justify-between items-center w-full px-6 py-4 md:hidden sticky">
+<div class="text-2xl font-black italic tracking-tighter text-[#CCFF00] drop-shadow-[0_0_8px_rgba(204,255,0,0.6)]">CYBERPULSE</div>
+<div class="flex gap-4">
+<button class="text-slate-400 hover:text-white transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="text-slate-400 hover:text-white transition-colors">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+</div>
+</header>
+<!-- Matrix Canvas -->
+<div class="p-6 md:p-8 lg:p-12 w-full max-w-container-max mx-auto flex-grow flex flex-col gap-8">
+<!-- Page Header -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-4">
+<div>
+<h1 class="font-display-xl text-display-xl text-primary mb-2">Content Matrix</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">Manage your digital assets, games, and articles. Filter, edit, and deploy content across the CYBERPULSE network.</p>
+</div>
+<div class="flex gap-4 w-full md:w-auto">
+<button class="flex-1 md:flex-none glass-panel px-6 py-3 rounded flex items-center justify-center gap-2 hover:bg-white/5 transition-colors border border-outline-variant">
+<span class="material-symbols-outlined text-on-surface" data-icon="upload">upload</span>
+<span class="font-label-caps text-label-caps text-on-surface">IMPORT</span>
+</button>
+<button class="flex-1 md:flex-none bg-primary-container text-on-primary-container px-6 py-3 rounded font-label-caps text-label-caps flex items-center justify-center gap-2 neon-glow-primary neon-glow-primary-hover transition-all">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+                        NEW ASSET
+                    </button>
+</div>
+</div>
+<!-- Toolbar & Filters -->
+<div class="glass-panel p-4 rounded-lg flex flex-col lg:flex-row gap-4 items-center justify-between z-10">
+<!-- Search -->
+<div class="relative w-full lg:w-96">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="input-cyber w-full pl-10 pr-4 py-3 rounded font-body-md text-body-md" placeholder="Search databanks..." type="text"/>
+</div>
+<!-- Filters -->
+<div class="flex flex-wrap items-center gap-3 w-full lg:w-auto">
+<div class="flex items-center gap-2 bg-surface-container-high px-3 py-2 rounded border border-surface-variant">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant">filter_list</span>
+<span class="font-label-caps text-[12px] text-on-surface-variant tracking-wider">TYPE:</span>
+<select class="bg-transparent border-none text-on-surface font-body-md text-sm focus:ring-0 cursor-pointer p-0 pr-6">
+<option value="all">ALL</option>
+<option value="game">GAMES</option>
+<option value="article">ARTICLES</option>
+</select>
+</div>
+<div class="flex items-center gap-2 bg-surface-container-high px-3 py-2 rounded border border-surface-variant">
+<span class="font-label-caps text-[12px] text-on-surface-variant tracking-wider">STATUS:</span>
+<select class="bg-transparent border-none text-on-surface font-body-md text-sm focus:ring-0 cursor-pointer p-0 pr-6">
+<option value="all">ANY</option>
+<option value="live">LIVE</option>
+<option value="draft">DRAFT</option>
+</select>
+</div>
+<button class="p-2 glass-panel rounded hover:bg-white/5 transition-colors border border-outline-variant ml-auto lg:ml-0" title="Grid View">
+<span class="material-symbols-outlined text-on-surface" data-icon="grid_view">grid_view</span>
+</button>
+</div>
+</div>
+<!-- The Matrix (Table / Cards) -->
+<div class="glass-panel rounded-lg overflow-hidden flex-grow flex flex-col border border-surface-variant">
+<!-- Desktop Table View (Hidden on mobile) -->
+<div class="hidden md:block w-full overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-surface-variant bg-surface-container-high/50">
+<th class="p-4 font-label-caps text-[12px] text-on-surface-variant w-12">
+<input class="rounded bg-surface border-surface-variant text-primary-container focus:ring-primary-container focus:ring-offset-surface" type="checkbox"/>
+</th>
+<th class="p-4 font-label-caps text-[12px] text-on-surface-variant">ASSET NAME</th>
+<th class="p-4 font-label-caps text-[12px] text-on-surface-variant w-32">TYPE</th>
+<th class="p-4 font-label-caps text-[12px] text-on-surface-variant w-32">STATUS</th>
+<th class="p-4 font-label-caps text-[12px] text-on-surface-variant w-48">LAST MODIFIED</th>
+<th class="p-4 font-label-caps text-[12px] text-on-surface-variant w-48">METRICS</th>
+<th class="p-4 font-label-caps text-[12px] text-on-surface-variant w-24 text-right">ACTIONS</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-sm">
+<!-- Row 1 -->
+<tr class="border-b border-surface-variant/50 hover:bg-surface-container-high/30 transition-colors group">
+<td class="p-4">
+<input class="rounded bg-surface border-surface-variant text-primary-container focus:ring-primary-container focus:ring-offset-surface" type="checkbox"/>
+</td>
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded bg-surface-container-lowest border border-outline-variant overflow-hidden shrink-0">
+<img alt="Game Thumbnail" class="w-full h-full object-cover" data-alt="A neon-lit arcade joystick close up, dark cinematic lighting, vibrant magenta and cyan colors reflecting off the plastic. Cyberpunk aesthetic, high contrast." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVw4bRiHIhOkuJNYUcwJlaXccdApdrWREzoaSSLG8y0k24cKRGHDNuckKpG_XmO2ujIqkbq4d2Aehu0VbiHDXL7_BdG60XOk2h7GOiGB3XRT-wdtjKXPPKsx-u4KP_N83C44bMEI9v8a6NwHhHgSTAu6dw0JK6yk83ZV9hleaLTXKO6NMBBdHgQgqTcb_iPuM21uF-jUhfKi9wUcS1ZpOYhCNaNEcSBEllLeQXFD9rk06sRCrIzWmp54DDlX_nhYoDAPxtzJAW4HSu"/>
+</div>
+<div>
+<div class="font-headline-md text-[16px] text-primary">Neon Drift 2084</div>
+<div class="text-on-surface-variant text-[12px]">ID: NND-84X</div>
+</div>
+</div>
+</td>
+<td class="p-4">
+<span class="inline-flex items-center gap-1 text-[11px] font-label-caps text-secondary-container px-2 py-1 rounded border border-secondary-container/30 bg-secondary-container/10">
+<span class="material-symbols-outlined text-[14px]" data-icon="sports_esports">sports_esports</span>
+                                        GAME
+                                    </span>
+</td>
+<td class="p-4">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-primary-container shadow-[0_0_8px_rgba(195,244,0,0.8)]"></div>
+<span class="text-primary-container font-label-caps text-[12px]">LIVE</span>
+</div>
+</td>
+<td class="p-4 text-on-surface-variant">Today, 14:32 PST</td>
+<td class="p-4">
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-1 text-on-surface-variant" title="Views">
+<span class="material-symbols-outlined text-[16px]" data-icon="visibility">visibility</span>
+<span>45.2K</span>
+</div>
+</div>
+</td>
+<td class="p-4 text-right">
+<div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1 hover:text-primary-container transition-colors"><span class="material-symbols-outlined text-[20px]" data-icon="edit">edit</span></button>
+<button class="p-1 hover:text-error transition-colors"><span class="material-symbols-outlined text-[20px]" data-icon="delete">delete</span></button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="border-b border-surface-variant/50 hover:bg-surface-container-high/30 transition-colors group">
+<td class="p-4">
+<input class="rounded bg-surface border-surface-variant text-primary-container focus:ring-primary-container focus:ring-offset-surface" type="checkbox"/>
+</td>
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded bg-surface-container-lowest border border-outline-variant overflow-hidden shrink-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-outline" data-icon="article">article</span>
+</div>
+<div>
+<div class="font-headline-md text-[16px] text-primary">Meta-Strat: HyperCore</div>
+<div class="text-on-surface-variant text-[12px]">Author: Cipher</div>
+</div>
+</div>
+</td>
+<td class="p-4">
+<span class="inline-flex items-center gap-1 text-[11px] font-label-caps text-on-surface px-2 py-1 rounded border border-surface-variant bg-surface-container-highest">
+<span class="material-symbols-outlined text-[14px]" data-icon="article">article</span>
+                                        ARTICLE
+                                    </span>
+</td>
+<td class="p-4">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-outline"></div>
+<span class="text-on-surface-variant font-label-caps text-[12px]">DRAFT</span>
+</div>
+</td>
+<td class="p-4 text-on-surface-variant">Yesterday, 09:15 PST</td>
+<td class="p-4">
+<div class="flex items-center gap-4 text-outline text-[12px] italic">
+                                        Unpublished
+                                    </div>
+</td>
+<td class="p-4 text-right">
+<div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1 hover:text-primary-container transition-colors"><span class="material-symbols-outlined text-[20px]" data-icon="edit">edit</span></button>
+<button class="p-1 hover:text-error transition-colors"><span class="material-symbols-outlined text-[20px]" data-icon="delete">delete</span></button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Mobile Card View (Visible only on small screens) -->
+<div class="md:hidden flex flex-col gap-4 p-4">
+<!-- Card 1 -->
+<div class="bg-surface-container-high rounded border border-surface-variant p-4 relative">
+<div class="absolute top-4 right-4">
+<button class="p-1 text-on-surface-variant hover:text-primary-container"><span class="material-symbols-outlined text-[20px]" data-icon="more_vert">more_vert</span></button>
+</div>
+<div class="flex items-center gap-2 mb-3">
+<div class="w-2 h-2 rounded-full bg-primary-container shadow-[0_0_8px_rgba(195,244,0,0.8)]"></div>
+<span class="text-primary-container font-label-caps text-[10px]">LIVE</span>
+<span class="text-on-surface-variant text-[10px] ml-auto">ID: NND-84X</span>
+</div>
+<div class="flex items-start gap-3 mb-4">
+<div class="w-12 h-12 rounded bg-surface-container-lowest border border-outline-variant overflow-hidden shrink-0">
+<img alt="Game Thumbnail" class="w-full h-full object-cover" data-alt="A neon-lit arcade joystick close up, dark cinematic lighting, vibrant magenta and cyan colors reflecting off the plastic. Cyberpunk aesthetic, high contrast." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSIckoOmFBGkuL3ye8oJkhJhaI63YN4hz46eYAIe8VoUZU9_v5Lb7yoSTa8zJ43goq_SY3ghQEvcLh688ugoh9-SY_fq20UgSkcfFYk1EObeKGGzIyOUp0qBaoNCEn--Pi0yUcijUkIlTbbYKTMz6J3VjNEBkRb6ihVmPYzFxYhD7xAIy-aD7Nl8_onNTatD8fOU5BpWW5rIuyyPITFBCSUdBuuqk3_6g0L5uEMJfmlsMuyYSwmfDiqUOIL-1XbMlKI79oL8XzOt_f"/>
+</div>
+<div>
+<div class="font-headline-md text-[18px] text-primary leading-tight mb-1">Neon Drift 2084</div>
+<span class="inline-flex items-center gap-1 text-[10px] font-label-caps text-secondary-container px-2 py-0.5 rounded border border-secondary-container/30 bg-secondary-container/10">
+                                    GAME
+                                </span>
+</div>
+</div>
+<div class="flex justify-between items-center text-[12px] text-on-surface-variant border-t border-surface-variant/50 pt-3">
+<div>Today, 14:32 PST</div>
+<div class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]" data-icon="visibility">visibility</span> 45.2K</div>
+</div>
+</div>
+</div>
+<!-- Pagination Footer -->
+<div class="border-t border-surface-variant p-4 flex justify-between items-center bg-surface-container-high/30 mt-auto">
+<div class="text-[12px] text-on-surface-variant font-label-caps">SHOWING 1-10 OF 142</div>
+<div class="flex gap-2">
+<button class="p-1 text-on-surface-variant hover:text-primary transition-colors disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined" data-icon="chevron_left">chevron_left</span>
+</button>
+<button class="p-1 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

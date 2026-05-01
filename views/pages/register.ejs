@@ -1,0 +1,43 @@
+<div class="min-h-screen py-12">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="glass-card p-12">
+      <div class="text-center mb-8">
+        <div class="mb-6">
+          <div class="inline-block px-4 py-1 border border-[#e9b3ff] text-[#e9b3ff] font-['Space_Grotesk'] uppercase tracking-widest text-xs mb-4 bg-[#e9b3ff]/10">NEW_RUNNER</div>
+        </div>
+        <h1 class="font-headline-lg text-headline-lg text-white mb-2">CREATE_ACCOUNT</h1>
+        <p class="text-on-surface-variant">Join the CyberPulse network.</p>
+      </div>
+
+      <form method="POST" action="/register" class="max-w-md mx-auto space-y-6">
+        <div class="space-y-2">
+          <label class="font-['Space_Grotesk'] text-xs uppercase tracking-wider text-slate-400">Username</label>
+          <input type="text" name="username" placeholder="runner_id" class="w-full py-3 bg-surface-container-low border-b border-outline-variant focus:border-[#CCFF00] text-on-surface transition-all input-glow" required/>
+        </div>
+        <div class="space-y-2">
+          <label class="font-['Space_Grotesk'] text-xs uppercase tracking-wider text-slate-400">Email</label>
+          <input type="email" name="email" placeholder="user@cyberpulse.sys" class="w-full py-3 bg-surface-container-low border-b border-outline-variant focus:border-[#CCFF00] text-on-surface transition-all input-glow" required/>
+        </div>
+        <div class="space-y-2">
+          <label class="font-['Space_Grotesk'] text-xs uppercase tracking-wider text-slate-400">Password</label>
+          <input type="password" name="password" placeholder="Min 6 characters" class="w-full py-3 bg-surface-container-low border-b border-outline-variant focus:border-[#CCFF00] text-on-surface transition-all input-glow" required minlength="6"/>
+        </div>
+        <div class="space-y-2">
+          <label class="font-['Space_Grotesk'] text-xs uppercase tracking-wider text-slate-400">Confirm Password</label>
+          <input type="password" name="confirmPassword" placeholder="Re-enter password" class="w-full py-3 bg-surface-container-low border-b border-outline-variant focus:border-[#CCFF00] text-on-surface transition-all input-glow" required/>
+        </div>
+        <button type="submit" class="w-full bg-[#e9b3ff] text-[#310048] font-['Space_Grotesk'] uppercase tracking-widest font-black py-4 shadow-[0_0_15px_rgba(233,179,255,0.3)] hover:shadow-[0_0_30px_rgba(233,179,255,0.6)] transition-all active:scale-[0.98]">
+          <span class="material-symbols-outlined align-middle mr-2">person_add</span>
+          REGISTER_NOW
+        </button>
+      </form>
+
+      <div class="text-center mt-8">
+        <p class="text-slate-500 text-sm">
+          <span class="font-['Space_Grotesk'] uppercase tracking-wider text-xs">Already registered?</span>
+          <a href="/login" class="text-[#CCFF00] hover:underline ml-1 font-['Space_Grotesk'] uppercase tracking-wider text-xs no-underline">Login</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
