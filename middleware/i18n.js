@@ -269,7 +269,7 @@ const dictionaries = {
     submitForReview: '提交审核',
     noLibraryGames: '你的游戏库还是空的。',
     returnHome: '返回首页',
-    error404: '请求的内容不存在。',
+    error404: '找不到页面。',
     error403: '权限不足，无法访问该区域。',
     errorGeneric: '发生系统错误，工程团队已收到通知。'
   }
