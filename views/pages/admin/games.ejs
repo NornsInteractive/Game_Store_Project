@@ -11,7 +11,7 @@
 <div class="glass-card p-4 mb-6">
   <form method="GET" action="/admin/games" class="flex items-center space-x-3">
     <input type="text" name="search" value="<%= currentSearch %>" placeholder="Search games..." class="py-2 px-4 w-56 text-sm"/>
-    <select name="status" onchange="this.form.submit()" class="py-2 px-3 text-sm">
+    <select name="status" onchange="this.form.submit()" class="w-full py-2 bg-surface-container-low border-b border-outline-variant focus:border-[#CCFF00] text-on-surface transition-all input-glow">
       <option value="">All Status</option>
       <option value="published" <%= currentStatus === 'published' ? 'selected' : '' %>>Published</option>
       <option value="draft" <%= currentStatus === 'draft' ? 'selected' : '' %>>Draft</option>
@@ -27,7 +27,7 @@
   <table class="w-full text-sm">
     <thead>
       <tr class="border-b border-white/10 text-left">
-        <th class="p-3 w-8"><input type="checkbox" onclick="document.querySelectorAll('input[name=\'ids\']').forEach(c => c.checked = this.checked)"/></th>
+        <th class="p-3 w-8"><input type="checkbox" class="bg-surface-container-low" onclick="document.querySelectorAll('input[name=\'ids\']').forEach(c => c.checked = this.checked)"/></th>
         <th class="p-3 font-['Space_Grotesk'] uppercase tracking-wider text-xs text-slate-400">Title</th>
         <th class="p-3 font-['Space_Grotesk'] uppercase tracking-wider text-xs text-slate-400">Status</th>
         <th class="p-3 font-['Space_Grotesk'] uppercase tracking-wider text-xs text-slate-400">Price</th>
@@ -38,7 +38,7 @@
     <tbody>
       <% games.forEach(function(g) { %>
       <tr class="border-b border-white/5 hover:bg-white/5">
-        <td class="p-3"><input type="checkbox" name="ids" value="<%= g.id %>"/></td>
+        <td class="p-3"><input type="checkbox" class="bg-surface-container-low" name="ids" value="<%= g.id %>"/></td>
         <td class="p-3">
           <div class="flex items-center space-x-3">
             <img src="<%= g.cover_image || '/uploads/covers/default.png' %>" class="w-10 h-10 object-cover" alt=""/>
@@ -68,7 +68,7 @@
   </table>
 </div>
 <div class="mt-4 flex items-center space-x-3">
-  <select name="action" class="py-2 px-3 text-sm">
+  <select name="action" class="w-full py-2 bg-surface-container-low border-b border-outline-variant focus:border-[#CCFF00] text-on-surface transition-all input-glow">
     <option value="">Bulk Action...</option>
     <option value="publish">Publish</option>
     <option value="delist">Delist</option>

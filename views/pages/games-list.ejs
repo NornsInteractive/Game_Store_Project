@@ -7,7 +7,7 @@
     <div class="flex items-center space-x-4">
       <form method="GET" action="/games" class="flex items-center space-x-2">
         <input type="text" name="search" value="<%= currentSearch %>" placeholder="Search games..." class="py-2 px-4 w-48 text-sm"/>
-        <select name="order" onchange="this.form.submit()" class="py-2 px-3 text-sm">
+        <select name="order" onchange="this.form.submit()" class="w-full py-2 bg-surface-container-low border-b border-outline-variant focus:border-[#CCFF00] text-on-surface transition-all input-glow">
           <option value="">Latest</option>
           <option value="rating" <%= currentOrder === 'rating' ? 'selected' : '' %>>Top Rated</option>
           <option value="title" <%= currentOrder === 'title' ? 'selected' : '' %>>A-Z</option>

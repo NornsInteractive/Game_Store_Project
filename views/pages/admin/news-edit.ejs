@@ -18,13 +18,13 @@
     </div>
     <div class="flex items-center space-x-2">
       <label class="font-['Space_Grotesk'] text-xs uppercase tracking-wider text-slate-400">Status</label>
-      <select name="status" class="py-2 px-3 text-sm ml-4">
+      <select name="status" class="w-full py-2 bg-surface-container-low border-b border-outline-variant focus:border-[#CCFF00] text-on-surface transition-all input-glow ml-4">
         <option value="draft" <%= articleData && articleData.status === 'draft' ? 'selected' : '' %>>Draft</option>
         <option value="published" <%= articleData && articleData.status === 'published' ? 'selected' : '' %>>Published</option>
       </select>
     </div>
     <div class="flex items-center space-x-2">
-      <input type="checkbox" name="isFeatured" value="1" id="isFeatured" <%= articleData && articleData.is_featured ? 'checked' : '' %> class="w-4 h-4"/>
+      <input type="checkbox" name="isFeatured" value="1" id="isFeatured" <%= articleData && articleData.is_featured ? 'checked' : '' %> class="w-4 h-4 bg-surface-container-low"/>
       <label for="isFeatured" class="font-['Space_Grotesk'] text-xs uppercase tracking-wider text-slate-400">Featured Article</label>
     </div>
     <div class="space-y-2">
