@@ -1,4 +1,5 @@
 const initSqlJs = require('sql.js');
+const initSqlJsAsm = require('sql.js/dist/sql-asm.js');
 const path = require('path');
 const fs = require('fs');
 const os = require('os');
@@ -10,6 +11,34 @@ const DB_PATH = process.env.DATABASE_PATH || defaultDbPath;
 
 let db = null;
 let initPromise = null;
+const SQLJS_WASM_FILE = 'sql-wasm.wasm';
+
+function resolveSqlJsWasmPath() {
+  const candidates = [
+    process.env.SQLJS_WASM_PATH,
+    path.join(process.cwd(), 'node_modules', 'sql.js', 'dist', SQLJS_WASM_FILE),
+    path.join(__dirname, '..', 'node_modules', 'sql.js', 'dist', SQLJS_WASM_FILE),
+    path.join('/var/task/node_modules/sql.js/dist', SQLJS_WASM_FILE)
+  ].filter(Boolean);
+
+  return candidates.find((candidate) => fs.existsSync(candidate)) || null;
+}
+
+async function loadSqlJs() {
+  const wasmPath = resolveSqlJsWasmPath();
+
+  if (wasmPath) {
+    try {
+      return await initSqlJs({
+        locateFile: (file) => (file === SQLJS_WASM_FILE ? wasmPath : file)
+      });
+    } catch (error) {
+      console.warn(`[db] Failed to load sql.js wasm from ${wasmPath}, falling back to asm.js: ${error.message}`);
+    }
+  }
+
+  return initSqlJsAsm();
+}
 
 // Buffer to hold the database file in memory for saving
 function saveDb() {
@@ -101,7 +130,7 @@ function getDb() {
 async function initDb() {
   if (initPromise) return initPromise;
   initPromise = (async () => {
-    const SQL = await initSqlJs();
+    const SQL = await loadSqlJs();
     // Load existing DB or create new one
     if (fs.existsSync(DB_PATH)) {
       const fileBuffer = fs.readFileSync(DB_PATH);
