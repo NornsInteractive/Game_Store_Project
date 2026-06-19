@@ -258,17 +258,4 @@ router.post('/users/:id/unban', requireAdmin, (req, res) => {
   res.redirect('/admin/users');
 });
 
-router.get('/submissions', requireAdmin, (req, res) => {
-  const result = game.findAll({ status: 'draft', page: parseInt(req.query.page) || 1, limit: 15 });
-  res.render('pages/admin/submissions', {
-    layout: 'layouts/admin',
-    title: 'Game Submissions — Admin',
-    submissions: result.rows,
-    total: result.total,
-    page: result.page,
-    pages: result.pages,
-    path: '/admin/submissions'
-  });
-});
-
 module.exports = router;

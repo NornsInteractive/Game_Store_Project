@@ -2,7 +2,7 @@ function notFound(req, res) {
   res.status(404).render('pages/error', {
     layout: 'layouts/main',
     code: 404,
-    message: 'ROUTE_NOT_FOUND: The requested data stream does not exist.'
+    message: 'Page not found.'
   });
 }
 
