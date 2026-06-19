@@ -4,7 +4,8 @@
       <h1 class="font-headline-lg text-headline-lg text-white uppercase italic">Games_Library</h1>
       <div class="h-1 w-24 bg-[#CCFF00] mt-2"></div>
     </div>
-    <div class="flex items-center space-x-4">
+  </div>
+  <div class="flex items-center space-x-4 mb-6"">
       <form method="GET" action="/games" class="flex items-center space-x-2">
         <input type="text" name="search" value="<%= currentSearch %>" placeholder="Search games..." class="py-2 px-4 w-48 text-sm"/>
         <select name="order" onchange="this.form.submit()" class="w-full py-2 bg-surface-container-low border-b border-outline-variant focus:border-[#CCFF00] text-on-surface transition-all input-glow">
@@ -15,7 +16,6 @@
         <button type="submit" class="bg-[#CCFF00] text-black px-4 py-2 font-['Space_Grotesk'] uppercase tracking-wider text-xs font-bold">Filter</button>
       </form>
     </div>
-  </div>
 
   <% if (categories && categories.length > 0) { %>
   <div class="flex flex-wrap gap-2 mb-10">
