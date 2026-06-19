@@ -4,8 +4,8 @@ const bcrypt = require('bcryptjs');
 const user = require('../models/user');
 
 router.get('/login', (req, res) => {
-  if (req.session.userId) return res.redirect('/');
-  res.render('pages/login', { layout: 'layouts/auth', title: 'Login — CyberPulse' });
+  if (res.locals.isAdmin) return res.redirect('/admin');
+  res.render('pages/login', { layout: 'layouts/auth', title: 'Admin Login — CyberPulse' });
 });
 
 router.post('/login', (req, res) => {
@@ -19,53 +19,18 @@ router.post('/login', (req, res) => {
     req.session.flashError = 'Invalid credentials.';
     return res.redirect('/login');
   }
-  if (u.banned_at) {
-    req.session.flashError = 'Account suspended.';
+  if (u.role !== 'admin' || u.banned_at) {
+    req.session.flashError = 'Access denied.';
     return res.redirect('/login');
   }
   user.updateLogin(u.id);
   req.session.userId = u.id;
-  const returnTo = req.session.returnTo || '/';
-  delete req.session.returnTo;
-  res.redirect(returnTo);
-});
-
-router.get('/register', (req, res) => {
-  if (req.session.userId) return res.redirect('/');
-  res.render('pages/register', { layout: 'layouts/auth', title: 'Register — CyberPulse' });
-});
-
-router.post('/register', (req, res) => {
-  const { username, email, password, confirmPassword } = req.body;
-  if (!username || !email || !password || !confirmPassword) {
-    req.session.flashError = 'All fields required.';
-    return res.redirect('/register');
-  }
-  if (password !== confirmPassword) {
-    req.session.flashError = 'Passwords do not match.';
-    return res.redirect('/register');
-  }
-  if (password.length < 6) {
-    req.session.flashError = 'Password must be at least 6 characters.';
-    return res.redirect('/register');
-  }
-  if (user.findByEmail(email)) {
-    req.session.flashError = 'Email already registered.';
-    return res.redirect('/register');
-  }
-  if (user.findByUsername(username)) {
-    req.session.flashError = 'Username taken.';
-    return res.redirect('/register');
-  }
-  const newUser = user.create({ username, email, password });
-  req.session.userId = newUser.id;
-  req.session.flashSuccess = 'Welcome to CyberPulse, runner.';
-  res.redirect('/');
+  res.redirect('/admin');
 });
 
 router.get('/logout', (req, res) => {
   req.session.destroy(() => {
-    res.redirect('/');
+    res.redirect('/login');
   });
 });
 

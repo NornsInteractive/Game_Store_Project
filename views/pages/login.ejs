@@ -3,10 +3,10 @@
     <div class="glass-card p-12">
       <div class="text-center mb-8">
         <div class="mb-6">
-          <div class="inline-block px-4 py-1 border border-[#CCFF00] text-[#CCFF00] font-['Space_Grotesk'] uppercase tracking-widest text-xs mb-4 bg-[#CCFF00]/10"><%= lang === 'zh' ? '系统访问' : 'SYSTEM_ACCESS' %></div>
+          <div class="inline-block px-4 py-1 border border-[#CCFF00] text-[#CCFF00] font-['Space_Grotesk'] uppercase tracking-widest text-xs mb-4 bg-[#CCFF00]/10"><%= lang === 'zh' ? '管理员访问' : 'ADMIN_ACCESS' %></div>
         </div>
-        <h1 class="font-headline-lg text-headline-lg text-white mb-2"><%= lang === 'zh' ? '欢迎回来' : 'WELCOME_BACK' %></h1>
-        <p class="text-on-surface-variant"><%= lang === 'zh' ? '请输入账号信息以开启安全会话。' : 'Initialize secure session credentials.' %></p>
+        <h1 class="font-headline-lg text-headline-lg text-white mb-2"><%= lang === 'zh' ? '管理员登录' : 'ADMIN_LOGIN' %></h1>
+        <p class="text-on-surface-variant"><%= lang === 'zh' ? '请输入管理员账号以进入后台。' : 'Authenticate to access the admin console.' %></p>
       </div>
 
       <form method="POST" action="/login" class="max-w-md mx-auto space-y-6">
@@ -28,16 +28,9 @@
         </div>
         <button type="submit" class="w-full bg-[#CCFF00] text-black font-['Space_Grotesk'] uppercase tracking-widest font-black py-4 shadow-[0_0_15px_rgba(204,255,0,0.3)] hover:shadow-[0_0_30px_rgba(204,255,0,0.6)] transition-all active:scale-[0.98]">
           <span class="material-symbols-outlined align-middle mr-2">login</span>
-          <%= lang === 'zh' ? '登录' : 'INITIALIZE_ACCESS' %>
+          <%= lang === 'zh' ? '进入后台' : 'ENTER_CONSOLE' %>
         </button>
       </form>
-
-      <div class="text-center mt-8">
-        <p class="text-slate-500 text-sm">
-          <span class="font-['Space_Grotesk'] uppercase tracking-wider text-xs"><%= lang === 'zh' ? '还没有账号？' : 'No account?' %></span>
-          <a href="/register" class="text-[#CCFF00] hover:underline ml-1 font-['Space_Grotesk'] uppercase tracking-wider text-xs no-underline"><%= lang === 'zh' ? '立即注册' : 'Create One' %></a>
-        </p>
-      </div>
     </div>
   </div>
 </div>

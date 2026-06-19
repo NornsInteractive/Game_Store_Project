@@ -31,7 +31,7 @@
         <th class="p-3 font-['Space_Grotesk'] uppercase tracking-wider text-xs text-slate-400"><%= t('title') %></th>
         <th class="p-3 font-['Space_Grotesk'] uppercase tracking-wider text-xs text-slate-400"><%= t('status') %></th>
         <th class="p-3 font-['Space_Grotesk'] uppercase tracking-wider text-xs text-slate-400"><%= t('downloadUrl') %></th>
-        <th class="p-3 font-['Space_Grotesk'] uppercase tracking-wider text-xs text-slate-400"><%= t('rating') %></th>
+        <th class="p-3 font-['Space_Grotesk'] uppercase tracking-wider text-xs text-slate-400"><%= lang === 'zh' ? '浏览量' : 'Views' %></th>
         <th class="p-3 font-['Space_Grotesk'] uppercase tracking-wider text-xs text-slate-400"><%= t('actions') %></th>
       </tr>
     </thead>
@@ -49,7 +49,7 @@
           <span class="text-xs font-['Space_Grotesk'] uppercase tracking-wider px-2 py-0.5 <%= g.status === 'published' ? 'bg-[#CCFF00]/20 text-[#CCFF00]' : g.status === 'draft' ? 'bg-yellow-500/20 text-yellow-400' : 'bg-red-500/20 text-red-400' %>"><%= g.status %></span>
         </td>
         <td class="p-3 text-slate-400 text-xs"><%= g.download_url || '—' %></td>
-        <td class="p-3 text-slate-400"><%= Number(g.rating_avg).toFixed(1) %> (<%= g.rating_count %>)</td>
+        <td class="p-3 text-slate-400"><%= g.views_count || 0 %></td>
         <td class="p-3">
           <div class="flex items-center space-x-2">
             <a href="/admin/games/<%= g.id %>/edit" class="text-[#CCFF00] hover:underline text-xs font-['Space_Grotesk'] uppercase tracking-wider no-underline"><%= t('edit') %></a>

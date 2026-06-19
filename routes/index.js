@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const game = require('../models/game');
 const article = require('../models/article');
-const comment = require('../models/comment');
 const activity = require('../models/activity');
 
 router.get('/', (req, res) => {

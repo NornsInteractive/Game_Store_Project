@@ -4,6 +4,8 @@ function setLocals(req, res, next) {
   res.locals.currentUser = null;
   res.locals.isAdmin = false;
   res.locals.path = req.path;
+  res.locals.currentUrl = `${req.protocol}://${req.get('host')}${req.originalUrl}`;
+  res.locals.disqusShortname = process.env.DISQUS_SHORTNAME || '';
   res.locals.flashSuccess = req.session.flashSuccess || null;
   res.locals.flashError = req.session.flashError || null;
   delete req.session.flashSuccess;
@@ -13,24 +15,15 @@ function setLocals(req, res, next) {
     try {
       const db = getDb();
       const user = db.prepare('SELECT id, username, email, display_name, avatar, role, banned_at FROM users WHERE id = ?').get(req.session.userId);
-      if (user && !user.banned_at) {
+      if (user && user.role === 'admin' && !user.banned_at) {
         res.locals.currentUser = user;
-        res.locals.isAdmin = user.role === 'admin';
-      } else if (user && user.banned_at) {
+        res.locals.isAdmin = true;
+      } else if (user) {
         req.session.destroy(() => {});
       }
     } catch (e) {
       // session user not found, ignore
     }
-  }
-  next();
-}
-
-function requireAuth(req, res, next) {
-  if (!req.session.userId) {
-    req.session.flashError = 'Initialize secure session first.';
-    req.session.returnTo = req.originalUrl;
-    return res.redirect('/login');
   }
   next();
 }
@@ -52,4 +45,4 @@ function requireAdmin(req, res, next) {
   next();
 }
 
-module.exports = { setLocals, requireAuth, requireAdmin };
+module.exports = { setLocals, requireAdmin };

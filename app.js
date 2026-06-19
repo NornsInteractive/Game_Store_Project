@@ -54,10 +54,7 @@ async function createServer() {
     app.use('/', require('./routes/auth'));
     app.use('/', require('./routes/games'));
     app.use('/', require('./routes/news'));
-    app.use('/', require('./routes/comments'));
-    app.use('/dashboard', require('./routes/user'));
     app.use('/admin', require('./routes/admin'));
-    app.use('/api', require('./routes/api'));
 
     app.use(notFound);
     app.use(globalError);

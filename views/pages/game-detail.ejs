@@ -12,11 +12,7 @@
       </div>
       <h1 class="font-display-xl text-display-xl text-white uppercase italic"><%= game.title %></h1>
       <div class="flex items-center space-x-4 mt-4">
-        <div class="flex items-center space-x-1">
-          <span class="material-symbols-outlined text-[#CCFF00]">star</span>
-          <span class="text-white font-['Space_Grotesk'] font-bold"><%= Number(game.rating_avg).toFixed(1) %></span>
-          <span class="text-slate-500 text-sm">(<%= game.rating_count || 0 %>)</span>
-        </div>
+        <span class="text-slate-500 text-sm"><%= lang === 'zh' ? '浏览量' : 'Views' %>: <%= game.views_count || 0 %></span>
         <% if (game.developer) { %><span class="text-slate-400 text-sm"><%= game.developer %></span><% } %>
       </div>
     </div>
@@ -73,19 +69,18 @@
 
     <section>
       <h2 class="font-headline-md text-headline-md text-white mb-6"><%= t('comments') %></h2>
-      <% if (currentUser) { %>
-      <form method="POST" action="/games/<%= game.slug %>/comment" class="mb-8">
-        <textarea name="content" rows="3" placeholder="<%= t('writeComment') %>" class="w-full max-w-3xl bg-surface-container-low border-b border-outline-variant focus:border-[#CCFF00] text-on-surface p-3 transition-all input-glow break-words" required></textarea>
-        <input type="hidden" name="parentId" value=""/>
-        <div class="mt-3">
-          <button type="submit" class="bg-[#CCFF00] text-black font-['Space_Grotesk'] uppercase tracking-wider text-sm font-bold px-6 py-2 shadow-[0_0_10px_rgba(204,255,0,0.3)] hover:shadow-[0_0_20px_rgba(204,255,0,0.5)] transition-all"><%= t('postComment') %></button>
-        </div>
-      </form>
-      <% } else { %>
-      <p class="mb-8 text-slate-500"><a href="/login" class="text-[#CCFF00] no-underline"><%= t('login') %></a> <%= lang === 'zh' ? '后即可发表评论。' : 'to leave a comment.' %></p>
-      <% } %>
       <div class="w-full max-w-3xl">
-        <%- include('../partials/comment-thread', { comments: comments, userVotes: userVotes }) %>
+        <% if (disqusShortname) { %>
+        <%- include('../partials/disqus-thread', {
+          disqusShortname,
+          pageUrl: currentUrl,
+          pageIdentifier: `game:${game.id}`,
+          pageTitle: game.title,
+          lang
+        }) %>
+        <% } else { %>
+        <p class="text-slate-500"><%= lang === 'zh' ? '请先配置 DISQUS_SHORTNAME 以启用评论区。' : 'Set DISQUS_SHORTNAME to enable comments.' %></p>
+        <% } %>
       </div>
     </section>
   </div>
@@ -101,25 +96,6 @@
             </a>
           <% } else { %>
             <p class="text-slate-500 font-['Space_Grotesk'] uppercase tracking-wider"><%= t('downloadUnavailable') %></p>
-          <% } %>
-          <% if (currentUser) { %>
-            <form method="POST" action="/games/<%= game.slug %>/rate" class="flex items-center justify-center space-x-1">
-              <% for (var i = 1; i <= 5; i++) { %>
-                <button type="submit" name="rating" value="<%= i %>" class="text-2xl transition-colors <%= userRating && userRating >= i ? 'text-[#CCFF00]' : 'text-slate-600 hover:text-[#CCFF00]' %>">
-                  <span class="material-symbols-outlined"><%= (userRating && userRating >= i) ? 'star' : 'star' %></span>
-                </button>
-              <% } %>
-              <% if (userRating) { %><span class="text-xs text-slate-500 ml-2"><%= lang === 'zh' ? '你的评分' : 'Your rating' %>: <%= userRating %>/5</span><% } %>
-            </form>
-            <button class="favorite-btn w-full inline-flex items-center justify-center gap-2 border border-[#e9b3ff] text-[#e9b3ff] font-['Space_Grotesk'] uppercase tracking-widest font-bold px-6 py-2 hover:bg-[#e9b3ff]/10 transition-all no-underline" data-game-id="<%= game.id %>">
-              <span class="material-symbols-outlined"><%= userFavorite ? 'favorite' : 'favorite_border' %></span>
-              <span class="favorite-text"><%= userFavorite ? (lang === 'zh' ? '已收藏' : 'Favorited') : (lang === 'zh' ? '收藏' : 'Favorite') %></span>
-            </button>
-          <% } else { %>
-            <a href="/login" class="w-full inline-flex items-center justify-center gap-2 border border-slate-500 text-slate-500 font-['Space_Grotesk'] uppercase tracking-widest font-bold px-6 py-2 hover:border-[#e9b3ff] hover:text-[#e9b3ff] transition-all no-underline">
-              <span class="material-symbols-outlined">favorite_border</span>
-              <span><%= lang === 'zh' ? '收藏' : 'Favorite' %></span>
-            </a>
           <% } %>
         </div>
       </div>

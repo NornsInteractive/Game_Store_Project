@@ -70,7 +70,12 @@ function migrateGamesTable() {
     db.run("ALTER TABLE games ADD COLUMN download_url TEXT DEFAULT ''");
   }
 
-  if (columnExists('games', 'price') || columnExists('games', 'discount_price')) {
+  if (
+    columnExists('games', 'price') ||
+    columnExists('games', 'discount_price') ||
+    columnExists('games', 'rating_avg') ||
+    columnExists('games', 'rating_count')
+  ) {
     db.run('PRAGMA foreign_keys = OFF');
     db.run(`
       CREATE TABLE IF NOT EXISTS games_new (
@@ -90,8 +95,6 @@ function migrateGamesTable() {
         system_requirements TEXT  DEFAULT '{}',
         tags              TEXT    DEFAULT '[]',
         status            TEXT    NOT NULL DEFAULT 'draft',
-        rating_avg        REAL    DEFAULT 0.0,
-        rating_count      INTEGER DEFAULT 0,
         views_count       INTEGER DEFAULT 0,
         is_featured       INTEGER DEFAULT 0,
         created_at        TEXT    NOT NULL DEFAULT (datetime('now')),
@@ -104,12 +107,12 @@ function migrateGamesTable() {
       INSERT INTO games_new (
         id, title, slug, description, short_description, developer, publisher, download_url,
         release_date, category_id, cover_image, hero_image, screenshots, system_requirements,
-        tags, status, rating_avg, rating_count, views_count, is_featured, created_at, updated_at, deleted_at
+        tags, status, views_count, is_featured, created_at, updated_at, deleted_at
       )
       SELECT
         id, title, slug, description, short_description, developer, publisher, COALESCE(download_url, ''),
         release_date, category_id, cover_image, hero_image, screenshots, system_requirements,
-        tags, status, rating_avg, rating_count, views_count, is_featured, created_at, updated_at, deleted_at
+        tags, status, COALESCE(views_count, 0), is_featured, created_at, updated_at, deleted_at
       FROM games
     `);
     db.run('DROP TABLE games');
@@ -120,6 +123,31 @@ function migrateGamesTable() {
     db.run('CREATE INDEX IF NOT EXISTS idx_games_category ON games(category_id)');
     db.run('PRAGMA foreign_keys = ON');
   }
+}
+
+function dropLegacyCommentTables() {
+  db.run('DROP TABLE IF EXISTS comment_votes');
+  db.run('DROP TABLE IF EXISTS comments');
+}
+
+function dropLegacyUserTables() {
+  db.run('DROP TABLE IF EXISTS ratings');
+  db.run('DROP TABLE IF EXISTS user_favorites');
+}
+
+function pruneNonAdminAccounts() {
+  const admin = db.prepare("SELECT id FROM users WHERE role = 'admin' ORDER BY id LIMIT 1").get();
+  if (!admin) return;
+
+  db.run(
+    "UPDATE articles SET author_id = ? WHERE author_id IN (SELECT id FROM users WHERE role != 'admin')",
+    [admin.id]
+  );
+  db.run(
+    "UPDATE activity_log SET user_id = NULL WHERE user_id IN (SELECT id FROM users WHERE role != 'admin')"
+  );
+  db.run("DELETE FROM users WHERE role != 'admin'");
+  db.run('DELETE FROM sessions');
 }
 
 function getDb() {
@@ -144,6 +172,9 @@ async function initDb() {
     const schema = fs.readFileSync(path.join(__dirname, 'schema.sql'), 'utf8');
     db.run(schema);
     migrateGamesTable();
+    dropLegacyCommentTables();
+    dropLegacyUserTables();
+    pruneNonAdminAccounts();
     saveDb();
     return db;
   })();

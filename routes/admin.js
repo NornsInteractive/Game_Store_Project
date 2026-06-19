@@ -2,8 +2,6 @@ const express = require('express');
 const router = express.Router();
 const game = require('../models/game');
 const article = require('../models/article');
-const comment = require('../models/comment');
-const user = require('../models/user');
 const activity = require('../models/activity');
 const { requireAdmin } = require('../middleware/auth');
 const { fileToDataUrl, uploadGameCover, uploadThumbnail } = require('../middleware/upload');
@@ -13,14 +11,13 @@ router.get('/', requireAdmin, (req, res) => {
   const db = getDb();
   const gameCount = db.prepare("SELECT COUNT(*) as c FROM games WHERE deleted_at IS NULL").get().c;
   const articleCount = db.prepare("SELECT COUNT(*) as c FROM articles").get().c;
-  const userCount = db.prepare("SELECT COUNT(*) as c FROM users").get().c;
-  const flaggedCount = db.prepare("SELECT COUNT(*) as c FROM comments WHERE is_flagged = 1").get().c;
+  const adminCount = db.prepare("SELECT COUNT(*) as c FROM users WHERE role = 'admin'").get().c;
   const draftCount = db.prepare("SELECT COUNT(*) as c FROM games WHERE status = 'draft' AND deleted_at IS NULL").get().c;
   const recentActivity = activity.getRecentActivity(15);
   res.render('pages/admin/dashboard', {
     layout: 'layouts/admin',
     title: 'Command Center — CyberPulse Admin',
-    stats: { gameCount, articleCount, userCount, flaggedCount, draftCount },
+    stats: { gameCount, articleCount, adminCount, draftCount },
     recentActivity,
     path: '/admin'
   });
@@ -197,65 +194,6 @@ router.post('/news/:id/delete', requireAdmin, (req, res) => {
   article.remove(req.params.id);
   req.session.flashSuccess = 'Article deleted.';
   res.redirect('/admin/news');
-});
-
-router.get('/comments', requireAdmin, (req, res) => {
-  const { page } = req.query;
-  const result = comment.getFlagged({ page: parseInt(page) || 1, limit: 15 });
-  res.render('pages/admin/comments', {
-    layout: 'layouts/admin',
-    title: 'Comment Moderation — Admin',
-    comments: result.rows,
-    total: result.total,
-    page: result.page,
-    pages: result.pages,
-    path: '/admin/comments'
-  });
-});
-
-router.post('/comments/:id/hide', requireAdmin, (req, res) => {
-  comment.hide(req.params.id);
-  req.session.flashSuccess = 'Comment hidden.';
-  res.redirect('/admin/comments');
-});
-
-router.post('/comments/:id/unflag', requireAdmin, (req, res) => {
-  comment.unflag(req.params.id);
-  req.session.flashSuccess = 'Flag cleared.';
-  res.redirect('/admin/comments');
-});
-
-router.post('/comments/:id/remove', requireAdmin, (req, res) => {
-  comment.remove(req.params.id);
-  req.session.flashSuccess = 'Comment removed.';
-  res.redirect('/admin/comments');
-});
-
-router.get('/users', requireAdmin, (req, res) => {
-  const { search, page } = req.query;
-  const result = user.list({ search: search || null, page: parseInt(page) || 1, limit: 15 });
-  res.render('pages/admin/users', {
-    layout: 'layouts/admin',
-    title: 'User Management — Admin',
-    users: result.rows,
-    total: result.total,
-    page: result.page,
-    pages: result.pages,
-    currentSearch: search || '',
-    path: '/admin/users'
-  });
-});
-
-router.post('/users/:id/ban', requireAdmin, (req, res) => {
-  user.setBanned(req.params.id, true);
-  req.session.flashSuccess = 'User banned.';
-  res.redirect('/admin/users');
-});
-
-router.post('/users/:id/unban', requireAdmin, (req, res) => {
-  user.setBanned(req.params.id, false);
-  req.session.flashSuccess = 'User unbanned.';
-  res.redirect('/admin/users');
 });
 
 module.exports = router;

@@ -2,8 +2,6 @@ const bcrypt = require('bcryptjs');
 const { getDb } = require('./connection');
 const game = require('../models/game');
 const article = require('../models/article');
-const comment = require('../models/comment');
-const rating = require('../models/rating');
 const activity = require('../models/activity');
 
 function createCategoryMap(db, categories) {
@@ -34,6 +32,17 @@ function ensureUser(db, data) {
   ).run(data.username, data.email, passwordHash, data.displayName, data.role || 'user', data.bio || '');
 
   return result.lastInsertRowid;
+}
+
+function pruneToAdminOnly(db, adminId) {
+  db.prepare(
+    "UPDATE articles SET author_id = ? WHERE author_id IN (SELECT id FROM users WHERE id != ?)"
+  ).run(adminId, adminId);
+  db.prepare(
+    "UPDATE activity_log SET user_id = NULL WHERE user_id IN (SELECT id FROM users WHERE id != ?)"
+  ).run(adminId);
+  db.prepare('DELETE FROM users WHERE id != ?').run(adminId);
+  db.prepare('DELETE FROM sessions').run();
 }
 
 function createDemoGames(categoryMap) {
@@ -163,10 +172,6 @@ function createDemoArticles(categoryMap, adminId) {
 function clearData(db) {
   [
     'activity_log',
-    'comment_votes',
-    'ratings',
-    'user_favorites',
-    'comments',
     'articles',
     'games',
     'categories',
@@ -215,61 +220,12 @@ async function ensureSeedData({ reset = false } = {}) {
     bio: 'Maintains platform operations and content curation.'
   });
 
-  const runnerId = ensureUser(db, {
-    username: 'neon_runner',
-    email: 'runner@cyberpulse.sys',
-    password: 'password123',
-    displayName: 'Kenta Sato',
-    bio: 'Competitive action player and forum regular.'
-  });
+  pruneToAdminOnly(db, adminId);
 
-  const walkerId = ensureUser(db, {
-    username: 'void_walker',
-    email: 'void@cyberpulse.sys',
-    password: 'password123',
-    displayName: 'Elara Vance',
-    bio: 'Sci-fi explorer with a soft spot for atmospheric games.'
-  });
-
-  const witchId = ensureUser(db, {
-    username: 'pixel_witch',
-    email: 'pixel@cyberpulse.sys',
-    password: 'password123',
-    displayName: 'Mira Chen',
-    bio: 'Builds indie prototypes and writes long comment threads.'
-  });
-
-  const games = createDemoGames(categoryMap);
-  const articles = createDemoArticles(categoryMap, adminId);
-
-  comment.create({
-    userId: runnerId,
-    gameId: games[0].id,
-    content: 'Combat feels sharp and the storefront presentation nails the vibe.'
-  });
-  comment.create({
-    userId: walkerId,
-    gameId: games[1].id,
-    content: 'Void Walker is carrying the entire atmospheric sci-fi genre on its back.'
-  });
-  comment.create({
-    userId: witchId,
-    articleId: articles[0].id,
-    content: 'The moderation tooling note is great news for smaller publishing teams.'
-  });
-
-  rating.set(runnerId, games[0].id, 5);
-  rating.set(walkerId, games[0].id, 4);
-  rating.set(witchId, games[1].id, 5);
-  rating.set(runnerId, games[2].id, 4);
-  rating.set(walkerId, games[3].id, 5);
-  rating.set(witchId, games[4].id, 4);
-  games.forEach((entry) => game.updateRating(entry.id));
+  createDemoGames(categoryMap);
+  createDemoArticles(categoryMap, adminId);
 
   activity.log(adminId, 'system_init', 'system', null, { version: '1.0.0' });
-  activity.log(runnerId, 'register', 'user', runnerId, {});
-  activity.log(walkerId, 'register', 'user', walkerId, {});
-  activity.log(witchId, 'register', 'user', witchId, {});
 
   return {
     users: db.prepare('SELECT COUNT(*) AS count FROM users').get().count,

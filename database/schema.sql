@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS users (
     display_name    TEXT,
     avatar          TEXT    DEFAULT '/uploads/avatars/default.png',
     bio             TEXT,
-    role            TEXT    NOT NULL DEFAULT 'user',
+    role            TEXT    NOT NULL DEFAULT 'admin',
     banned_at       TEXT,
     last_login_at   TEXT,
     created_at      TEXT    NOT NULL DEFAULT (datetime('now')),
@@ -38,8 +38,6 @@ CREATE TABLE IF NOT EXISTS games (
     system_requirements TEXT  DEFAULT '{}',
     tags              TEXT    DEFAULT '[]',
     status            TEXT    NOT NULL DEFAULT 'draft',
-    rating_avg        REAL    DEFAULT 0.0,
-    rating_count      INTEGER DEFAULT 0,
     views_count       INTEGER DEFAULT 0,
     is_featured       INTEGER DEFAULT 0,
     created_at        TEXT    NOT NULL DEFAULT (datetime('now')),
@@ -74,66 +72,6 @@ CREATE TABLE IF NOT EXISTS articles (
 
 CREATE INDEX IF NOT EXISTS idx_articles_status ON articles(status);
 CREATE INDEX IF NOT EXISTS idx_articles_slug ON articles(slug);
-
-CREATE TABLE IF NOT EXISTS comments (
-    id            INTEGER PRIMARY KEY,
-    user_id       INTEGER NOT NULL,
-    game_id       INTEGER,
-    article_id    INTEGER,
-    parent_id     INTEGER DEFAULT NULL,
-    content       TEXT    NOT NULL,
-    upvotes       INTEGER DEFAULT 0,
-    downvotes     INTEGER DEFAULT 0,
-    is_flagged    INTEGER DEFAULT 0,
-    flag_reason   TEXT,
-    flag_severity TEXT    DEFAULT 'low',
-    is_hidden     INTEGER DEFAULT 0,
-    created_at    TEXT    NOT NULL DEFAULT (datetime('now')),
-    updated_at    TEXT    NOT NULL DEFAULT (datetime('now')),
-    FOREIGN KEY (user_id)    REFERENCES users(id),
-    FOREIGN KEY (game_id)    REFERENCES games(id) ON DELETE CASCADE,
-    FOREIGN KEY (article_id) REFERENCES articles(id) ON DELETE CASCADE,
-    FOREIGN KEY (parent_id)  REFERENCES comments(id) ON DELETE CASCADE
-);
-
-CREATE INDEX IF NOT EXISTS idx_comments_game ON comments(game_id);
-CREATE INDEX IF NOT EXISTS idx_comments_article ON comments(article_id);
-CREATE INDEX IF NOT EXISTS idx_comments_flagged ON comments(is_flagged);
-
-CREATE TABLE IF NOT EXISTS user_favorites (
-    id            INTEGER PRIMARY KEY,
-    user_id       INTEGER NOT NULL,
-    game_id       INTEGER NOT NULL,
-    created_at    TEXT    NOT NULL DEFAULT (datetime('now')),
-    UNIQUE(user_id, game_id),
-    FOREIGN KEY (user_id) REFERENCES users(id),
-    FOREIGN KEY (game_id) REFERENCES games(id) ON DELETE CASCADE
-);
-
-CREATE INDEX IF NOT EXISTS idx_user_favorites_user ON user_favorites(user_id);
-CREATE INDEX IF NOT EXISTS idx_user_favorites_game ON user_favorites(game_id);
-
-CREATE TABLE IF NOT EXISTS ratings (
-    id            INTEGER PRIMARY KEY,
-    user_id       INTEGER NOT NULL,
-    game_id       INTEGER NOT NULL,
-    rating        INTEGER NOT NULL CHECK(rating >= 1 AND rating <= 5),
-    created_at    TEXT    NOT NULL DEFAULT (datetime('now')),
-    UNIQUE(user_id, game_id),
-    FOREIGN KEY (user_id) REFERENCES users(id),
-    FOREIGN KEY (game_id) REFERENCES games(id) ON DELETE CASCADE
-);
-
-CREATE TABLE IF NOT EXISTS comment_votes (
-    id            INTEGER PRIMARY KEY,
-    user_id       INTEGER NOT NULL,
-    comment_id    INTEGER NOT NULL,
-    vote          INTEGER NOT NULL CHECK(vote IN (-1, 1)),
-    created_at    TEXT    NOT NULL DEFAULT (datetime('now')),
-    UNIQUE(user_id, comment_id),
-    FOREIGN KEY (user_id)    REFERENCES users(id),
-    FOREIGN KEY (comment_id) REFERENCES comments(id) ON DELETE CASCADE
-);
 
 CREATE TABLE IF NOT EXISTS activity_log (
     id            INTEGER PRIMARY KEY,

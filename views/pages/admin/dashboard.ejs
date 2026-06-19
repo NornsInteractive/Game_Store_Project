@@ -3,7 +3,7 @@
   <p class="text-slate-400 mt-2 font-body-md"><%= lang === 'zh' ? '系统概览和关键指标。' : 'System overview and metrics.' %></p>
 </div>
 
-<div class="grid grid-cols-2 lg:grid-cols-5 gap-4 mb-8">
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
   <div class="glass-card p-5 text-center">
     <span class="material-symbols-outlined text-2xl text-[#CCFF00] mb-2">sports_esports</span>
     <p class="text-3xl font-['Space_Grotesk'] font-bold text-white"><%= stats.gameCount %></p>
@@ -16,13 +16,8 @@
   </div>
   <div class="glass-card p-5 text-center">
     <span class="material-symbols-outlined text-2xl text-[#CCFF00] mb-2">group</span>
-    <p class="text-3xl font-['Space_Grotesk'] font-bold text-white"><%= stats.userCount %></p>
-    <p class="text-slate-500 text-xs font-['Space_Grotesk'] uppercase tracking-wider mt-1"><%= t('users') %></p>
-  </div>
-  <div class="glass-card p-5 text-center">
-    <span class="material-symbols-outlined text-2xl text-[#ffb4ab] mb-2">flag</span>
-    <p class="text-3xl font-['Space_Grotesk'] font-bold text-white"><%= stats.flaggedCount %></p>
-    <p class="text-slate-500 text-xs font-['Space_Grotesk'] uppercase tracking-wider mt-1"><%= lang === 'zh' ? '已标记' : 'Flagged' %></p>
+    <p class="text-3xl font-['Space_Grotesk'] font-bold text-white"><%= stats.adminCount %></p>
+    <p class="text-slate-500 text-xs font-['Space_Grotesk'] uppercase tracking-wider mt-1"><%= lang === 'zh' ? '管理员' : 'Admins' %></p>
   </div>
   <div class="glass-card p-5 text-center">
     <span class="material-symbols-outlined text-2xl text-amber-400 mb-2">inbox</span>
@@ -42,10 +37,6 @@
       <a href="/admin/news/create" class="glass-card p-4 text-center no-underline hover:border-[#CCFF00]/30 transition-all">
         <span class="material-symbols-outlined text-[#CCFF00] text-2xl mb-1">post_add</span>
         <p class="text-white text-xs font-['Space_Grotesk'] uppercase tracking-wider"><%= t('newArticle') %></p>
-      </a>
-      <a href="/admin/comments" class="glass-card p-4 text-center no-underline hover:border-[#e9b3ff]/30 transition-all">
-        <span class="material-symbols-outlined text-[#e9b3ff] text-2xl mb-1">flag</span>
-        <p class="text-white text-xs font-['Space_Grotesk'] uppercase tracking-wider"><%= t('moderation') %></p>
       </a>
     </div>
   </div>

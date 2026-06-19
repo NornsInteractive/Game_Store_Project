@@ -45,9 +45,7 @@ Game_Store_Project/
 │  └─ js/
 ├─ routes/                           # 路由层
 │  ├─ admin.js
-│  ├─ api.js
 │  ├─ auth.js
-│  ├─ comments.js
 │  ├─ games.js
 │  ├─ index.js
 │  ├─ news.js
@@ -252,4 +250,3 @@ pm2 save
 
 - `stitch_game_portal_publishing_system` 用于页面风格和结构参考
 - 其中的模板资源请按你的实际授权情况使用
-

@@ -17,7 +17,6 @@ function findAll({ status, categoryId, search, page, limit, featured, orderBy } 
   const l = limit || 12;
   const offset = (p - 1) * l;
   let order = 'ORDER BY g.created_at DESC';
-  if (orderBy === 'rating') order = 'ORDER BY g.rating_avg DESC';
   if (orderBy === 'title') order = 'ORDER BY g.title ASC';
   const rows = db.prepare(`SELECT g.*, c.name as category_name FROM games g LEFT JOIN categories c ON g.category_id = c.id ${where} ${order} LIMIT ? OFFSET ?`).all(...vals, l, offset);
   const total = db.prepare(`SELECT COUNT(*) as count FROM games g ${where}`).get(...vals).count;
@@ -87,20 +86,14 @@ function bulkAction(ids, action) {
   db.prepare(stmts[action].replace('...', placeholders)).run(...ids);
 }
 
-function updateRating(gameId) {
-  const db = getDb();
-  const row = db.prepare('SELECT COALESCE(AVG(rating), 0) as avg, COUNT(*) as count FROM ratings WHERE game_id = ?').get(gameId);
-  db.prepare('UPDATE games SET rating_avg = ?, rating_count = ? WHERE id = ?').run(row.avg, row.count, gameId);
-}
-
 function getFeatured(count = 6) {
   const db = getDb();
-  return db.prepare('SELECT g.*, c.name as category_name FROM games g LEFT JOIN categories c ON g.category_id = c.id WHERE g.status = ? AND g.is_featured = 1 AND g.deleted_at IS NULL ORDER BY g.rating_avg DESC LIMIT ?').all('published', count);
+  return db.prepare('SELECT g.*, c.name as category_name FROM games g LEFT JOIN categories c ON g.category_id = c.id WHERE g.status = ? AND g.is_featured = 1 AND g.deleted_at IS NULL ORDER BY g.created_at DESC LIMIT ?').all('published', count);
 }
 
 function getTrending(count = 5) {
   const db = getDb();
-  return db.prepare('SELECT g.*, c.name as category_name FROM games g LEFT JOIN categories c ON g.category_id = c.id WHERE g.status = ? AND g.deleted_at IS NULL ORDER BY g.rating_count DESC, g.rating_avg DESC LIMIT ?').all('published', count);
+  return db.prepare('SELECT g.*, c.name as category_name FROM games g LEFT JOIN categories c ON g.category_id = c.id WHERE g.status = ? AND g.deleted_at IS NULL ORDER BY g.views_count DESC, g.created_at DESC LIMIT ?').all('published', count);
 }
 
 function getCategories(type) {
@@ -123,4 +116,4 @@ function incrementViews(id) {
   db.prepare('UPDATE games SET views_count = views_count + 1 WHERE id = ?').run(id);
 }
 
-module.exports = { findAll, findBySlug, findById, create, update, setStatus, softDelete, bulkAction, updateRating, getFeatured, getTrending, getCategories, getCategoryCounts, incrementViews };
+module.exports = { findAll, findBySlug, findById, create, update, setStatus, softDelete, bulkAction, getFeatured, getTrending, getCategories, getCategoryCounts, incrementViews };
