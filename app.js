@@ -65,4 +65,10 @@ async function createServer() {
   return appPromise;
 }
 
-module.exports = { createServer };
+async function handler(req, res) {
+  const { app } = await createServer();
+  return app(req, res);
+}
+
+module.exports = handler;
+module.exports.createServer = createServer;

@@ -20,6 +20,13 @@ function createCategoryMap(db, categories) {
   }, {});
 }
 
+function requireCategoryIds(categoryMap, slugs) {
+  const missing = slugs.filter((slug) => categoryMap[slug] === undefined || categoryMap[slug] === null);
+  if (missing.length > 0) {
+    throw new Error(`Missing seeded categories: ${missing.join(', ')}`);
+  }
+}
+
 function ensureUser(db, data) {
   const existing = db.prepare('SELECT id FROM users WHERE email = ?').get(data.email);
   if (existing) {
@@ -46,6 +53,8 @@ function pruneToAdminOnly(db, adminId) {
 }
 
 function createDemoGames(categoryMap) {
+  requireCategoryIds(categoryMap, ['action', 'adventure', 'racing', 'rpg', 'strategy']);
+
   return [
     {
       title: 'Cyber Pulse: Revenant',
@@ -55,7 +64,7 @@ function createDemoGames(categoryMap) {
       publisher: 'CyberPulse Interactive',
       downloadUrl: 'https://example.com/downloads/cyber-pulse-revenant',
       releaseDate: '2026-03-15',
-      categoryId: categoryMap.action,
+      categoryId: categoryMap.action ?? null,
       status: 'published',
       isFeatured: true,
       tags: ['Cyberpunk', 'Action', 'FPS']
@@ -68,7 +77,7 @@ function createDemoGames(categoryMap) {
       publisher: 'Nexus Games',
       downloadUrl: 'https://example.com/downloads/void-walker',
       releaseDate: '2025-12-10',
-      categoryId: categoryMap.adventure,
+      categoryId: categoryMap.adventure ?? null,
       status: 'published',
       isFeatured: true,
       tags: ['Sci-Fi', 'Exploration', 'Puzzle']
@@ -81,7 +90,7 @@ function createDemoGames(categoryMap) {
       publisher: 'CyberPulse Interactive',
       downloadUrl: 'https://example.com/downloads/neon-drift',
       releaseDate: '2026-02-28',
-      categoryId: categoryMap.racing,
+      categoryId: categoryMap.racing ?? null,
       status: 'published',
       isFeatured: true,
       tags: ['Racing', 'Arcade', 'Open World']
@@ -94,7 +103,7 @@ function createDemoGames(categoryMap) {
       publisher: 'CyberPulse Interactive',
       downloadUrl: 'https://example.com/downloads/aether-blade',
       releaseDate: '2025-11-05',
-      categoryId: categoryMap.rpg,
+      categoryId: categoryMap.rpg ?? null,
       status: 'published',
       isFeatured: true,
       tags: ['Fantasy', 'RPG', 'Magic']
@@ -107,7 +116,7 @@ function createDemoGames(categoryMap) {
       publisher: 'Nexus Games',
       downloadUrl: 'https://example.com/downloads/command-grid',
       releaseDate: '2025-10-18',
-      categoryId: categoryMap.strategy,
+      categoryId: categoryMap.strategy ?? null,
       status: 'published',
       isFeatured: false,
       tags: ['RTS', 'Strategy', 'Multiplayer']
@@ -120,7 +129,7 @@ function createDemoGames(categoryMap) {
       publisher: 'Indie Forge',
       downloadUrl: 'https://example.com/downloads/echoes-of-the-deep',
       releaseDate: '2026-03-01',
-      categoryId: categoryMap.adventure,
+      categoryId: categoryMap.adventure ?? null,
       status: 'published',
       isFeatured: false,
       tags: ['Horror', 'Survival', 'Atmospheric']
@@ -129,12 +138,17 @@ function createDemoGames(categoryMap) {
 }
 
 function createDemoArticles(categoryMap, adminId) {
+  requireCategoryIds(categoryMap, ['patch-notes', 'events', 'reviews', 'hardware']);
+  if (adminId === undefined || adminId === null) {
+    throw new Error('Missing admin user for seeded articles.');
+  }
+
   return [
     {
       title: 'System Update 2.0: Neural Link Stability',
       excerpt: 'Platform-wide latency and matchmaking improvements are now live.',
       content: 'System Update 2.0 lowers server latency, improves matchmaking consistency, and introduces better moderation tooling for creators.',
-      categoryId: categoryMap['patch-notes'],
+      categoryId: categoryMap['patch-notes'] ?? null,
       authorId: adminId,
       isFeatured: true,
       status: 'published'
@@ -143,7 +157,7 @@ function createDemoArticles(categoryMap, adminId) {
       title: 'Neon Fest 2026 Tickets Are Live',
       excerpt: 'Our annual showcase returns with exclusive reveals and creator spotlights.',
       content: 'Neon Fest 2026 is back with hands-on demos, publishing talks, and a much bigger indie showcase than last year.',
-      categoryId: categoryMap.events,
+      categoryId: categoryMap.events ?? null,
       authorId: adminId,
       isFeatured: true,
       status: 'published'
@@ -152,7 +166,7 @@ function createDemoArticles(categoryMap, adminId) {
       title: 'The Rise of Boutique Game Publishing',
       excerpt: 'Smaller teams are shipping sharper, stranger, more memorable games.',
       content: 'The storefront is shifting toward curated, high-identity titles from smaller studios that know exactly who they are building for.',
-      categoryId: categoryMap.reviews,
+      categoryId: categoryMap.reviews ?? null,
       authorId: adminId,
       isFeatured: false,
       status: 'published'
@@ -161,7 +175,7 @@ function createDemoArticles(categoryMap, adminId) {
       title: 'Hardware Watch: Controllers Without Drift',
       excerpt: 'Hall-effect sticks are finally becoming the standard they always should have been.',
       content: 'Modern hall-effect components are becoming affordable enough for mainstream controllers, and competitive players should care.',
-      categoryId: categoryMap.hardware,
+      categoryId: categoryMap.hardware ?? null,
       authorId: adminId,
       isFeatured: false,
       status: 'published'
@@ -219,6 +233,10 @@ async function ensureSeedData({ reset = false } = {}) {
     role: 'admin',
     bio: 'Maintains platform operations and content curation.'
   });
+
+  if (adminId === undefined || adminId === null) {
+    throw new Error('Failed to create or load admin user.');
+  }
 
   pruneToAdminOnly(db, adminId);
 

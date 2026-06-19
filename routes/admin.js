@@ -160,6 +160,11 @@ router.get('/news/:id/edit', requireAdmin, (req, res) => {
 });
 
 router.post('/news/create', requireAdmin, uploadThumbnail.single('thumbnail'), (req, res) => {
+  if (!req.session.userId) {
+    req.session.flashError = 'Please log in again.';
+    return res.redirect('/login');
+  }
+
   const data = {
     title: req.body.title,
     excerpt: req.body.excerpt,

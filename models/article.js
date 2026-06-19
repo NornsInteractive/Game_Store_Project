@@ -47,6 +47,9 @@ function findById(id) {
 
 function create(data) {
   const db = getDb();
+  if (data.authorId === undefined || data.authorId === null) {
+    throw new Error('Article author is required.');
+  }
   let slug = slugify(data.title);
   const existing = db.prepare('SELECT id FROM articles WHERE slug = ?').get(slug);
   if (existing) slug = slug + '-' + Date.now().toString(36);

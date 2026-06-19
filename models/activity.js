@@ -4,7 +4,7 @@ function log(userId, action, targetType, targetId, metadata) {
   const db = getDb();
   db.prepare(
     'INSERT INTO activity_log (user_id, action, target_type, target_id, metadata) VALUES (?, ?, ?, ?, ?)'
-  ).run(userId, action, targetType || null, targetId || null, JSON.stringify(metadata || {}));
+  ).run(userId ?? null, action, targetType || null, targetId || null, JSON.stringify(metadata || {}));
 }
 
 function getUserActivity(userId, limit = 20) {

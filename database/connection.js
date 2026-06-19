@@ -136,8 +136,13 @@ function dropLegacyUserTables() {
 }
 
 function pruneNonAdminAccounts() {
-  const admin = db.prepare("SELECT id FROM users WHERE role = 'admin' ORDER BY id LIMIT 1").get();
-  if (!admin) return;
+  const stmt = db.prepare("SELECT id FROM users WHERE role = 'admin' ORDER BY id LIMIT 1");
+  let admin = null;
+  if (stmt.step()) {
+    admin = stmt.getAsObject();
+  }
+  stmt.free();
+  if (!admin || admin.id === undefined || admin.id === null) return;
 
   db.run(
     "UPDATE articles SET author_id = ? WHERE author_id IN (SELECT id FROM users WHERE role != 'admin')",
@@ -191,6 +196,10 @@ function run(sql, params = []) {
 // For queries - wraps sql.js to provide a better-sqlite3-like API
 // sql.js doesn't have prepare().all(), so we wrap it
 
+function normalizeParams(params) {
+  return params.map((value) => (value === undefined ? null : value));
+}
+
 class Statement {
   constructor(d, sql) {
     this.d = d;
@@ -198,7 +207,7 @@ class Statement {
   }
 
   run(...params) {
-    const flatParams = params.length ? (Array.isArray(params[0]) ? params[0] : params) : [];
+    const flatParams = normalizeParams(params.length ? (Array.isArray(params[0]) ? params[0] : params) : []);
     this.d.run(this.sql, flatParams);
     saveDb();
     const stmt = this.d.prepare('SELECT last_insert_rowid() as id');
@@ -211,7 +220,7 @@ class Statement {
   }
 
   get(...params) {
-    const flatParams = params.length ? (Array.isArray(params[0]) ? params[0] : params) : [];
+    const flatParams = normalizeParams(params.length ? (Array.isArray(params[0]) ? params[0] : params) : []);
     const stmt = this.d.prepare(this.sql);
     stmt.bind(flatParams);
     let row = null;
@@ -227,7 +236,7 @@ class Statement {
   }
 
   all(...params) {
-    const flatParams = params.length ? (Array.isArray(params[0]) ? params[0] : params) : [];
+    const flatParams = normalizeParams(params.length ? (Array.isArray(params[0]) ? params[0] : params) : []);
     const stmt = this.d.prepare(this.sql);
     stmt.bind(flatParams);
     const rows = [];
@@ -249,7 +258,7 @@ function wrapDb(d) {
     prepare: (sql) => new Statement(d, sql),
     exec: (sql) => { d.run(sql); saveDb(); },
     run: (sql, ...params) => {
-      d.run(sql, params.flat());
+      d.run(sql, normalizeParams(params.flat()));
       saveDb();
     }
   };
