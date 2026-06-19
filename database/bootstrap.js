@@ -165,7 +165,7 @@ function clearData(db) {
     'activity_log',
     'comment_votes',
     'ratings',
-    'user_library',
+    'user_favorites',
     'comments',
     'articles',
     'games',
@@ -265,11 +265,6 @@ async function ensureSeedData({ reset = false } = {}) {
   rating.set(walkerId, games[3].id, 5);
   rating.set(witchId, games[4].id, 4);
   games.forEach((entry) => game.updateRating(entry.id));
-
-  db.prepare('INSERT OR IGNORE INTO user_library (user_id, game_id) VALUES (?, ?)').run(runnerId, games[0].id);
-  db.prepare('INSERT OR IGNORE INTO user_library (user_id, game_id) VALUES (?, ?)').run(runnerId, games[2].id);
-  db.prepare('INSERT OR IGNORE INTO user_library (user_id, game_id) VALUES (?, ?)').run(walkerId, games[1].id);
-  db.prepare('INSERT OR IGNORE INTO user_library (user_id, game_id) VALUES (?, ?)').run(witchId, games[3].id);
 
   activity.log(adminId, 'system_init', 'system', null, { version: '1.0.0' });
   activity.log(runnerId, 'register', 'user', runnerId, {});

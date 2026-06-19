@@ -100,16 +100,6 @@ CREATE INDEX IF NOT EXISTS idx_comments_game ON comments(game_id);
 CREATE INDEX IF NOT EXISTS idx_comments_article ON comments(article_id);
 CREATE INDEX IF NOT EXISTS idx_comments_flagged ON comments(is_flagged);
 
-CREATE TABLE IF NOT EXISTS user_library (
-    id            INTEGER PRIMARY KEY,
-    user_id       INTEGER NOT NULL,
-    game_id       INTEGER NOT NULL,
-    purchased_at  TEXT    NOT NULL DEFAULT (datetime('now')),
-    UNIQUE(user_id, game_id),
-    FOREIGN KEY (user_id) REFERENCES users(id),
-    FOREIGN KEY (game_id) REFERENCES games(id) ON DELETE CASCADE
-);
-
 CREATE TABLE IF NOT EXISTS user_favorites (
     id            INTEGER PRIMARY KEY,
     user_id       INTEGER NOT NULL,
