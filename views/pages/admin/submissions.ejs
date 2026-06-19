@@ -1,6 +1,6 @@
 <div class="mb-8">
-  <h1 class="font-headline-lg text-headline-lg text-white uppercase italic">Game_Submissions</h1>
-  <p class="text-slate-400 mt-1"><%= total %> draft titles awaiting review.</p>
+  <h1 class="font-headline-lg text-headline-lg text-white uppercase italic"><%= t('gameSubmissions') %></h1>
+  <p class="text-slate-400 mt-1"><%= total %> <%= lang === 'zh' ? '个草稿等待审核。' : 'draft titles awaiting review.' %></p>
 </div>
 
 <% if (submissions.length > 0) { %>
@@ -8,12 +8,12 @@
   <table class="w-full text-sm">
     <thead>
       <tr class="border-b border-white/10 text-left">
-        <th class="p-3 font-['Space_Grotesk'] uppercase tracking-wider text-xs text-slate-400">Title</th>
-        <th class="p-3 font-['Space_Grotesk'] uppercase tracking-wider text-xs text-slate-400">Developer</th>
-        <th class="p-3 font-['Space_Grotesk'] uppercase tracking-wider text-xs text-slate-400">Price</th>
-        <th class="p-3 font-['Space_Grotesk'] uppercase tracking-wider text-xs text-slate-400">Category</th>
-        <th class="p-3 font-['Space_Grotesk'] uppercase tracking-wider text-xs text-slate-400">Date</th>
-        <th class="p-3 font-['Space_Grotesk'] uppercase tracking-wider text-xs text-slate-400">Actions</th>
+        <th class="p-3 font-['Space_Grotesk'] uppercase tracking-wider text-xs text-slate-400"><%= t('title') %></th>
+        <th class="p-3 font-['Space_Grotesk'] uppercase tracking-wider text-xs text-slate-400"><%= t('developer') %></th>
+        <th class="p-3 font-['Space_Grotesk'] uppercase tracking-wider text-xs text-slate-400"><%= t('downloadUrl') %></th>
+        <th class="p-3 font-['Space_Grotesk'] uppercase tracking-wider text-xs text-slate-400"><%= t('category') %></th>
+        <th class="p-3 font-['Space_Grotesk'] uppercase tracking-wider text-xs text-slate-400"><%= t('date') %></th>
+        <th class="p-3 font-['Space_Grotesk'] uppercase tracking-wider text-xs text-slate-400"><%= t('actions') %></th>
       </tr>
     </thead>
     <tbody>
@@ -21,18 +21,18 @@
       <tr class="border-b border-white/5 hover:bg-white/5">
         <td class="p-3 text-white font-['Space_Grotesk'] font-bold"><%= s.title %></td>
         <td class="p-3 text-slate-400 text-xs"><%= s.developer || '—' %></td>
-        <td class="p-3 text-white">$<%= Number(s.price).toFixed(2) %></td>
+        <td class="p-3 text-slate-400 text-xs"><%= s.download_url || '—' %></td>
         <td class="p-3 text-slate-400 text-xs"><%= s.category_name || '—' %></td>
-        <td class="p-3 text-slate-400 text-xs"><%= new Date(s.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) %></td>
+        <td class="p-3 text-slate-400 text-xs"><%= formatDate(s.created_at) %></td>
         <td class="p-3">
           <div class="flex items-center space-x-2">
-            <a href="/admin/games/<%= s.id %>/edit" class="text-[#CCFF00] hover:underline text-xs font-['Space_Grotesk'] uppercase tracking-wider no-underline">Review</a>
+            <a href="/admin/games/<%= s.id %>/edit" class="text-[#CCFF00] hover:underline text-xs font-['Space_Grotesk'] uppercase tracking-wider no-underline"><%= t('review') %></a>
             <form method="POST" action="/admin/games/<%= s.id %>/status" class="inline">
               <input type="hidden" name="status" value="published"/>
-              <button type="submit" class="text-[#CCFF00] hover:text-white text-xs font-['Space_Grotesk'] uppercase tracking-wider">Publish</button>
+              <button type="submit" class="text-[#CCFF00] hover:text-white text-xs font-['Space_Grotesk'] uppercase tracking-wider"><%= t('publish') %></button>
             </form>
             <form method="POST" action="/admin/games/<%= s.id %>/delete" class="inline" onsubmit="return confirm('Delete this submission?')">
-              <button type="submit" class="text-red-400 hover:text-red-300 text-xs font-['Space_Grotesk'] uppercase tracking-wider">Delete</button>
+              <button type="submit" class="text-red-400 hover:text-red-300 text-xs font-['Space_Grotesk'] uppercase tracking-wider"><%= t('delete') %></button>
             </form>
           </div>
         </td>
@@ -45,6 +45,6 @@
 <% } else { %>
 <div class="glass-card p-12 text-center">
   <span class="material-symbols-outlined text-6xl text-slate-600 mb-4">inbox</span>
-  <p class="text-slate-400 font-body-lg">No pending submissions.</p>
+  <p class="text-slate-400 font-body-lg"><%= t('noPendingSubmissions') %></p>
 </div>
 <% } %>

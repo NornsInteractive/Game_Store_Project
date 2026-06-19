@@ -2,7 +2,7 @@
 <div class="max-w-7xl mx-auto px-6 pt-4">
   <div class="glass-card border-l-2 border-[#CCFF00] p-4 flex items-center space-x-3">
     <span class="material-symbols-outlined text-[#CCFF00]">check_circle</span>
-    <span class="text-on-surface font-body-md"><%= flashSuccess %></span>
+    <span class="text-on-surface font-body-md"><%= tFlash(flashSuccess) %></span>
   </div>
 </div>
 <% } %>
@@ -10,7 +10,7 @@
 <div class="max-w-7xl mx-auto px-6 pt-4">
   <div class="glass-card border-l-2 border-[#ffb4ab] p-4 flex items-center space-x-3">
     <span class="material-symbols-outlined text-[#ffb4ab]">error</span>
-    <span class="text-on-surface font-body-md"><%= flashError %></span>
+    <span class="text-on-surface font-body-md"><%= tFlash(flashError) %></span>
   </div>
 </div>
 <% } %>

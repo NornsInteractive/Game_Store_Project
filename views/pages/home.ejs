@@ -7,16 +7,14 @@
   <div class="container mx-auto px-8 relative z-10">
     <div class="max-w-2xl space-y-6">
       <div class="flex items-center space-x-2">
-        <span class="bg-[#CCFF00] text-black text-[10px] font-black px-2 py-1 tracking-[0.2em] uppercase">Featured</span>
-        <span class="border border-white/20 text-white text-[10px] font-bold px-2 py-1 tracking-[0.2em] uppercase backdrop-blur-md">New Release</span>
+        <span class="bg-[#CCFF00] text-black text-[10px] font-black px-2 py-1 tracking-[0.2em] uppercase"><%= lang === 'zh' ? '精选' : 'Featured' %></span>
+        <span class="border border-white/20 text-white text-[10px] font-bold px-2 py-1 tracking-[0.2em] uppercase backdrop-blur-md"><%= lang === 'zh' ? '新发布' : 'New Release' %></span>
       </div>
       <h1 class="font-display-xl text-display-xl text-white uppercase italic">CYBERPULSE GAMING</h1>
-      <p class="font-body-lg text-body-lg text-on-surface-variant max-w-lg">
-        The definitive digital storefront for next-gen titles. Master the grid, hack the mainframe, and survive the digital onslaught.
-      </p>
+      <p class="font-body-lg text-body-lg text-on-surface-variant max-w-lg"><%= t('homeSubtitle') %></p>
       <div class="flex items-center space-x-6 pt-4">
-        <a href="/games" class="bg-[#CCFF00] text-black px-10 py-4 font-['Space_Grotesk'] uppercase tracking-widest text-lg font-black shadow-[0_0_20px_#CCFF00] transition-all duration-300 hover:scale-105 active:scale-95 no-underline inline-block">Browse Games</a>
-        <a href="/news" class="glass-card text-white px-10 py-4 font-['Space_Grotesk'] uppercase tracking-widest text-lg font-bold border border-white/10 hover:bg-white/10 transition-all duration-300 active:scale-95 no-underline">Latest News</a>
+        <a href="/games" class="bg-[#CCFF00] text-black px-10 py-4 font-['Space_Grotesk'] uppercase tracking-widest text-lg font-black shadow-[0_0_20px_#CCFF00] transition-all duration-300 hover:scale-105 active:scale-95 no-underline inline-block"><%= lang === 'zh' ? '浏览游戏' : 'Browse Games' %></a>
+        <a href="/news" class="glass-card text-white px-10 py-4 font-['Space_Grotesk'] uppercase tracking-widest text-lg font-bold border border-white/10 hover:bg-white/10 transition-all duration-300 active:scale-95 no-underline"><%= t('latestNews') %></a>
       </div>
     </div>
   </div>
@@ -25,11 +23,11 @@
 <section class="py-20 container mx-auto px-8">
   <div class="flex justify-between items-end mb-12">
     <div>
-      <h2 class="font-headline-lg text-headline-lg text-white uppercase italic">Trending_Now</h2>
+      <h2 class="font-headline-lg text-headline-lg text-white uppercase italic"><%= t('trendingGames') %></h2>
       <div class="h-1 w-24 bg-[#CCFF00] mt-2"></div>
     </div>
     <a href="/games?order=rating" class="font-label-caps text-label-caps text-slate-400 hover:text-[#CCFF00] flex items-center space-x-2 transition-colors no-underline">
-      <span>View All</span>
+      <span><%= t('browseAll') %></span>
       <span class="material-symbols-outlined text-sm">arrow_forward</span>
     </a>
   </div>
@@ -44,7 +42,7 @@
   <div class="container mx-auto px-8">
     <div class="flex justify-between items-end mb-12">
       <div>
-        <h2 class="font-headline-lg text-headline-lg text-white uppercase italic">Featured_Games</h2>
+        <h2 class="font-headline-lg text-headline-lg text-white uppercase italic"><%= t('featuredGames') %></h2>
         <div class="h-1 w-24 bg-[#CCFF00] mt-2"></div>
       </div>
     </div>
@@ -59,11 +57,11 @@
 <section class="py-20 container mx-auto px-8">
   <div class="flex justify-between items-end mb-12">
     <div>
-      <h2 class="font-headline-lg text-headline-lg text-white uppercase italic">Latest_Updates</h2>
+      <h2 class="font-headline-lg text-headline-lg text-white uppercase italic"><%= t('latestNews') %></h2>
       <div class="h-1 w-24 bg-[#CCFF00] mt-2"></div>
     </div>
     <a href="/news" class="font-label-caps text-label-caps text-slate-400 hover:text-[#CCFF00] flex items-center space-x-2 transition-colors no-underline">
-      <span>All News</span>
+      <span><%= t('browseAll') %></span>
       <span class="material-symbols-outlined text-sm">arrow_forward</span>
     </a>
   </div>
@@ -79,7 +77,7 @@
   <div class="container mx-auto px-8">
     <div class="flex justify-between items-end mb-12">
       <div>
-        <h2 class="font-headline-lg text-headline-lg text-white uppercase italic">Genres</h2>
+        <h2 class="font-headline-lg text-headline-lg text-white uppercase italic"><%= lang === 'zh' ? '类型' : 'Genres' %></h2>
         <div class="h-1 w-24 bg-[#CCFF00] mt-2"></div>
       </div>
     </div>
@@ -96,13 +94,13 @@
 
 <% if (recentActivity && recentActivity.length > 0) { %>
 <section class="py-20 container mx-auto px-8">
-  <h2 class="font-headline-md text-headline-md text-white mb-8 uppercase">Community_Feed</h2>
+  <h2 class="font-headline-md text-headline-md text-white mb-8 uppercase"><%= lang === 'zh' ? '社区动态' : 'Community Feed' %></h2>
   <div class="space-y-3 max-w-3xl">
     <% recentActivity.forEach(function(a) { %>
       <div class="glass-card p-4 flex items-center space-x-3">
         <span class="text-[#CCFF00] text-xs font-['Space_Grotesk'] uppercase tracking-wider w-24 flex-shrink-0"><%= a.username || 'System' %></span>
         <span class="text-slate-400 text-sm font-['Inter']"><%= a.action %></span>
-        <span class="text-slate-600 text-xs ml-auto"><%= new Date(a.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) %></span>
+        <span class="text-slate-600 text-xs ml-auto"><%= formatDate(a.created_at) %></span>
       </div>
     <% }) %>
   </div>

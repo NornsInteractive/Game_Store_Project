@@ -2,13 +2,13 @@
 <div class="flex justify-center items-center space-x-2 mt-8">
   <% if (page > 1) { %>
   <a href="?<%= new URLSearchParams({ ...query, page: page - 1 }).toString() %>" class="px-4 py-2 glass-card text-slate-400 hover:text-white font-['Space_Grotesk'] uppercase tracking-wider text-xs font-bold no-underline transition-all">
-    <span class="material-symbols-outlined text-sm">arrow_back</span> Prev
+    <span class="material-symbols-outlined text-sm">arrow_back</span> <%= lang === 'zh' ? '上一页' : 'Prev' %>
   </a>
   <% } %>
-  <span class="text-slate-500 text-xs font-['Space_Grotesk'] uppercase tracking-wider">Page <%= page %> / <%= pages %></span>
+  <span class="text-slate-500 text-xs font-['Space_Grotesk'] uppercase tracking-wider"><%= lang === 'zh' ? '第' : 'Page' %> <%= page %> / <%= pages %> <%= lang === 'zh' ? '页' : '' %></span>
   <% if (page < pages) { %>
   <a href="?<%= new URLSearchParams({ ...query, page: page + 1 }).toString() %>" class="px-4 py-2 glass-card text-slate-400 hover:text-white font-['Space_Grotesk'] uppercase tracking-wider text-xs font-bold no-underline transition-all">
-    Next <span class="material-symbols-outlined text-sm">arrow_forward</span>
+    <%= lang === 'zh' ? '下一页' : 'Next' %> <span class="material-symbols-outlined text-sm">arrow_forward</span>
   </a>
   <% } %>
 </div>

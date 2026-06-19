@@ -1,25 +1,36 @@
 <div class="mb-8">
-  <h1 class="font-headline-lg text-headline-lg text-white uppercase italic">My Library</h1>
+  <h1 class="font-headline-lg text-headline-lg text-white uppercase italic"><%= t('myLibrary') %></h1>
 </div>
 
 <% if (library && library.length > 0) { %>
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
   <% library.forEach(function(g) { %>
-    <a href="/games/<%= g.slug %>" class="glass-card block no-underline overflow-hidden hover:border-[#CCFF00]/30 transition-all">
+    <div class="glass-card overflow-hidden hover:border-[#CCFF00]/30 transition-all">
+      <a href="/games/<%= g.slug %>" class="block no-underline">
       <div class="aspect-[16/10] overflow-hidden">
         <img src="<%= g.cover_image || '/uploads/covers/default.png' %>" alt="<%= g.title %>" class="w-full h-full object-cover"/>
       </div>
       <div class="p-4">
         <h3 class="text-white font-['Space_Grotesk'] font-bold text-sm line-clamp-1"><%= g.title %></h3>
-        <p class="text-slate-500 text-xs mt-1">Acquired <%= new Date(g.purchased_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) %></p>
+        <p class="text-slate-500 text-xs mt-1"><%= t('acquired') %> <%= formatDate(g.purchased_at) %></p>
       </div>
-    </a>
+      </a>
+      <div class="px-4 pb-4">
+        <% if (g.download_url) { %>
+          <a href="<%= g.download_url %>" target="_blank" rel="noopener" class="inline-flex items-center gap-1 bg-[#CCFF00] text-black px-3 py-1.5 font-['Space_Grotesk'] uppercase tracking-wider text-xs font-bold no-underline">
+            <span class="material-symbols-outlined text-sm">download</span><%= t('download') %>
+          </a>
+        <% } else { %>
+          <span class="text-slate-500 font-['Space_Grotesk'] uppercase tracking-wider text-xs"><%= t('downloadUnavailable') %></span>
+        <% } %>
+      </div>
+    </div>
   <% }) %>
 </div>
 <% } else { %>
 <div class="glass-card p-12 text-center">
   <span class="material-symbols-outlined text-6xl text-slate-600 mb-4">videogame_asset_off</span>
-  <p class="text-slate-400 font-body-lg mb-4">Your library is empty.</p>
-  <a href="/games" class="bg-[#CCFF00] text-black px-6 py-2 font-['Space_Grotesk'] uppercase tracking-wider text-sm font-bold no-underline shadow-[0_0_10px_rgba(204,255,0,0.3)] hover:shadow-[0_0_20px_rgba(204,255,0,0.5)] transition-all">Browse Games</a>
+  <p class="text-slate-400 font-body-lg mb-4"><%= t('noLibraryGames') %></p>
+  <a href="/games" class="bg-[#CCFF00] text-black px-6 py-2 font-['Space_Grotesk'] uppercase tracking-wider text-sm font-bold no-underline shadow-[0_0_10px_rgba(204,255,0,0.3)] hover:shadow-[0_0_20px_rgba(204,255,0,0.5)] transition-all"><%= lang === 'zh' ? '浏览游戏' : 'Browse Games' %></a>
 </div>
 <% } %>

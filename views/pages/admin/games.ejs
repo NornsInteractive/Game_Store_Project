@@ -1,23 +1,23 @@
 <div class="mb-8 flex justify-between items-center">
   <div>
-    <h1 class="font-headline-lg text-headline-lg text-white uppercase italic">Manage_Games</h1>
-    <p class="text-slate-400 mt-1"><%= total %> titles in registry.</p>
+    <h1 class="font-headline-lg text-headline-lg text-white uppercase italic"><%= t('manageGames') %></h1>
+    <p class="text-slate-400 mt-1"><%= total %> <%= t('titlesAvailable') %></p>
   </div>
   <a href="/admin/games/create" class="bg-[#CCFF00] text-black px-6 py-2.5 font-['Space_Grotesk'] uppercase tracking-wider text-sm font-bold no-underline shadow-[0_0_10px_rgba(204,255,0,0.3)] hover:shadow-[0_0_20px_rgba(204,255,0,0.5)] transition-all">
-    <span class="material-symbols-outlined align-middle text-sm">add</span> New Game
+    <span class="material-symbols-outlined align-middle text-sm">add</span> <%= t('newGame') %>
   </a>
 </div>
 
 <div class="glass-card p-4 mb-6">
   <form method="GET" action="/admin/games" class="flex items-center space-x-3">
-    <input type="text" name="search" value="<%= currentSearch %>" placeholder="Search games..." class="py-2 px-4 w-56 text-sm"/>
+    <input type="text" name="search" value="<%= currentSearch %>" placeholder="<%= t('searchGames') %>" class="py-2 px-4 w-56 text-sm"/>
     <select name="status" onchange="this.form.submit()" class="w-full py-2 bg-surface-container-low border-b border-outline-variant focus:border-[#CCFF00] text-on-surface transition-all input-glow">
-      <option value="">All Status</option>
-      <option value="published" <%= currentStatus === 'published' ? 'selected' : '' %>>Published</option>
-      <option value="draft" <%= currentStatus === 'draft' ? 'selected' : '' %>>Draft</option>
-      <option value="delisted" <%= currentStatus === 'delisted' ? 'selected' : '' %>>Delisted</option>
+      <option value=""><%= t('allStatus') %></option>
+      <option value="published" <%= currentStatus === 'published' ? 'selected' : '' %>><%= t('published') %></option>
+      <option value="draft" <%= currentStatus === 'draft' ? 'selected' : '' %>><%= t('draft') %></option>
+      <option value="delisted" <%= currentStatus === 'delisted' ? 'selected' : '' %>><%= t('delisted') %></option>
     </select>
-    <button type="submit" class="bg-[#CCFF00] text-black px-4 py-2 font-['Space_Grotesk'] uppercase tracking-wider text-xs font-bold">Filter</button>
+    <button type="submit" class="bg-[#CCFF00] text-black px-4 py-2 font-['Space_Grotesk'] uppercase tracking-wider text-xs font-bold"><%= t('filter') %></button>
   </form>
 </div>
 
@@ -28,11 +28,11 @@
     <thead>
       <tr class="border-b border-white/10 text-left">
         <th class="p-3 w-8"><input type="checkbox" class="bg-surface-container-low" onclick="document.querySelectorAll('input[name=\'ids\']').forEach(c => c.checked = this.checked)"/></th>
-        <th class="p-3 font-['Space_Grotesk'] uppercase tracking-wider text-xs text-slate-400">Title</th>
-        <th class="p-3 font-['Space_Grotesk'] uppercase tracking-wider text-xs text-slate-400">Status</th>
-        <th class="p-3 font-['Space_Grotesk'] uppercase tracking-wider text-xs text-slate-400">Price</th>
-        <th class="p-3 font-['Space_Grotesk'] uppercase tracking-wider text-xs text-slate-400">Rating</th>
-        <th class="p-3 font-['Space_Grotesk'] uppercase tracking-wider text-xs text-slate-400">Actions</th>
+        <th class="p-3 font-['Space_Grotesk'] uppercase tracking-wider text-xs text-slate-400"><%= t('title') %></th>
+        <th class="p-3 font-['Space_Grotesk'] uppercase tracking-wider text-xs text-slate-400"><%= t('status') %></th>
+        <th class="p-3 font-['Space_Grotesk'] uppercase tracking-wider text-xs text-slate-400"><%= t('downloadUrl') %></th>
+        <th class="p-3 font-['Space_Grotesk'] uppercase tracking-wider text-xs text-slate-400"><%= t('rating') %></th>
+        <th class="p-3 font-['Space_Grotesk'] uppercase tracking-wider text-xs text-slate-400"><%= t('actions') %></th>
       </tr>
     </thead>
     <tbody>
@@ -48,17 +48,17 @@
         <td class="p-3">
           <span class="text-xs font-['Space_Grotesk'] uppercase tracking-wider px-2 py-0.5 <%= g.status === 'published' ? 'bg-[#CCFF00]/20 text-[#CCFF00]' : g.status === 'draft' ? 'bg-yellow-500/20 text-yellow-400' : 'bg-red-500/20 text-red-400' %>"><%= g.status %></span>
         </td>
-        <td class="p-3 text-white">$<%= Number(g.price).toFixed(2) %></td>
+        <td class="p-3 text-slate-400 text-xs"><%= g.download_url || '—' %></td>
         <td class="p-3 text-slate-400"><%= Number(g.rating_avg).toFixed(1) %> (<%= g.rating_count %>)</td>
         <td class="p-3">
           <div class="flex items-center space-x-2">
-            <a href="/admin/games/<%= g.id %>/edit" class="text-[#CCFF00] hover:underline text-xs font-['Space_Grotesk'] uppercase tracking-wider no-underline">Edit</a>
+            <a href="/admin/games/<%= g.id %>/edit" class="text-[#CCFF00] hover:underline text-xs font-['Space_Grotesk'] uppercase tracking-wider no-underline"><%= t('edit') %></a>
             <form method="POST" action="/admin/games/<%= g.id %>/status" class="inline">
               <input type="hidden" name="status" value="<%= g.status === 'published' ? 'delisted' : 'published' %>"/>
-              <button type="submit" class="text-slate-400 hover:text-white text-xs font-['Space_Grotesk'] uppercase tracking-wider"><%= g.status === 'published' ? 'Delist' : 'Publish' %></button>
+              <button type="submit" class="text-slate-400 hover:text-white text-xs font-['Space_Grotesk'] uppercase tracking-wider"><%= g.status === 'published' ? t('delist') : t('publish') %></button>
             </form>
             <form method="POST" action="/admin/games/<%= g.id %>/delete" class="inline" onsubmit="return confirm('Delete this game?')">
-              <button type="submit" class="text-red-400 hover:text-red-300 text-xs font-['Space_Grotesk'] uppercase tracking-wider">Delete</button>
+              <button type="submit" class="text-red-400 hover:text-red-300 text-xs font-['Space_Grotesk'] uppercase tracking-wider"><%= t('delete') %></button>
             </form>
           </div>
         </td>
@@ -69,17 +69,17 @@
 </div>
 <div class="mt-4 flex items-center space-x-3">
   <select name="action" class="w-full py-2 bg-surface-container-low border-b border-outline-variant focus:border-[#CCFF00] text-on-surface transition-all input-glow">
-    <option value="">Bulk Action...</option>
-    <option value="publish">Publish</option>
-    <option value="delist">Delist</option>
-    <option value="delete">Delete</option>
+    <option value=""><%= t('bulkAction') %></option>
+    <option value="publish"><%= t('publish') %></option>
+    <option value="delist"><%= t('delist') %></option>
+    <option value="delete"><%= t('delete') %></option>
   </select>
-  <button type="submit" class="bg-surface-container-high text-white px-4 py-2 font-['Space_Grotesk'] uppercase tracking-wider text-xs font-bold hover:bg-surface-bright transition-all">Apply</button>
+  <button type="submit" class="bg-surface-container-high text-white px-4 py-2 font-['Space_Grotesk'] uppercase tracking-wider text-xs font-bold hover:bg-surface-bright transition-all"><%= t('apply') %></button>
 </div>
 </form>
 <%- include('../../partials/pagination', { page: page, pages: pages, query: { status: currentStatus, search: currentSearch } }) %>
 <% } else { %>
 <div class="glass-card p-12 text-center">
-  <p class="text-slate-400">No games found.</p>
+  <p class="text-slate-400"><%= t('noGamesFound') %></p>
 </div>
 <% } %>

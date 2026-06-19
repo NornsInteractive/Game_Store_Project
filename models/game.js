@@ -44,9 +44,9 @@ function create(data) {
   const screenshots = JSON.stringify(data.screenshots || []);
   const sysReq = JSON.stringify(data.systemRequirements || {});
   const tags = JSON.stringify(data.tags || []);
-  db.prepare(`INSERT INTO games (title, slug, description, short_description, developer, publisher, price, discount_price, release_date, category_id, cover_image, hero_image, screenshots, system_requirements, tags, status, is_featured)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
-  ).run(data.title, slug, data.description || '', data.shortDescription || '', data.developer || '', data.publisher || '', data.price || 0, data.discountPrice || null, data.releaseDate || '', data.categoryId || null, data.coverImage || '/uploads/covers/default.png', data.heroImage || null, screenshots, sysReq, tags, data.status || 'draft', data.isFeatured ? 1 : 0);
+  db.prepare(`INSERT INTO games (title, slug, description, short_description, developer, publisher, download_url, release_date, category_id, cover_image, hero_image, screenshots, system_requirements, tags, status, is_featured)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+  ).run(data.title, slug, data.description || '', data.shortDescription || '', data.developer || '', data.publisher || '', data.downloadUrl || '', data.releaseDate || '', data.categoryId || null, data.coverImage || '/uploads/covers/default.png', data.heroImage || null, screenshots, sysReq, tags, data.status || 'draft', data.isFeatured ? 1 : 0);
   return db.prepare('SELECT * FROM games WHERE slug = ?').get(slug);
 }
 
@@ -54,7 +54,7 @@ function update(id, data) {
   const db = getDb();
   const sets = [];
   const vals = [];
-  const fields = ['title', 'slug', 'description', 'short_description', 'developer', 'publisher', 'price', 'discount_price', 'release_date', 'category_id', 'cover_image', 'hero_image', 'status', 'is_featured'];
+  const fields = ['title', 'slug', 'description', 'short_description', 'developer', 'publisher', 'download_url', 'release_date', 'category_id', 'cover_image', 'hero_image', 'status', 'is_featured'];
   for (const f of fields) {
     const camel = f.replace(/_([a-z])/g, (_, c) => c.toUpperCase());
     if (data[camel] !== undefined) { sets.push(`${f} = ?`); vals.push(data[camel]); }

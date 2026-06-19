@@ -7,6 +7,7 @@ const { initDb, getDb } = require('./database/connection');
 const { ensureSeedData } = require('./database/bootstrap');
 const SqliteSessionStore = require('./database/session-store');
 const { setLocals } = require('./middleware/auth');
+const i18n = require('./middleware/i18n');
 const { notFound, globalError } = require('./middleware/error-handler');
 
 let appPromise = null;
@@ -46,6 +47,7 @@ async function createServer() {
         }
       })
     );
+    app.use(i18n);
     app.use(setLocals);
 
     app.use('/', require('./routes/index'));

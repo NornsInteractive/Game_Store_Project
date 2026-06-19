@@ -1,25 +1,25 @@
 <div class="max-w-7xl mx-auto px-6 py-16">
   <div class="flex justify-between items-end mb-12">
     <div>
-      <h1 class="font-headline-lg text-headline-lg text-white uppercase italic">Games_Library</h1>
+      <h1 class="font-headline-lg text-headline-lg text-white uppercase italic"><%= t('gamesLibrary') %></h1>
       <div class="h-1 w-24 bg-[#CCFF00] mt-2"></div>
     </div>
   </div>
   <div class="flex items-center space-x-4 mb-6"">
       <form method="GET" action="/games" class="flex items-center space-x-2">
-        <input type="text" name="search" value="<%= currentSearch %>" placeholder="Search games..." class="py-2 px-4 w-48 text-sm"/>
+        <input type="text" name="search" value="<%= currentSearch %>" placeholder="<%= t('searchGames') %>" class="py-2 px-4 w-48 text-sm"/>
         <select name="order" onchange="this.form.submit()" class="w-full py-2 bg-surface-container-low border-b border-outline-variant focus:border-[#CCFF00] text-on-surface transition-all input-glow">
-          <option value="">Latest</option>
-          <option value="rating" <%= currentOrder === 'rating' ? 'selected' : '' %>>Top Rated</option>
-          <option value="title" <%= currentOrder === 'title' ? 'selected' : '' %>>A-Z</option>
+          <option value=""><%= t('sortNewest') %></option>
+          <option value="rating" <%= currentOrder === 'rating' ? 'selected' : '' %>><%= t('sortRating') %></option>
+          <option value="title" <%= currentOrder === 'title' ? 'selected' : '' %>><%= t('sortTitle') %></option>
         </select>
-        <button type="submit" class="bg-[#CCFF00] text-black px-4 py-2 font-['Space_Grotesk'] uppercase tracking-wider text-xs font-bold">Filter</button>
+        <button type="submit" class="bg-[#CCFF00] text-black px-4 py-2 font-['Space_Grotesk'] uppercase tracking-wider text-xs font-bold"><%= t('filter') %></button>
       </form>
     </div>
 
   <% if (categories && categories.length > 0) { %>
   <div class="flex flex-wrap gap-2 mb-10">
-    <a href="/games" class="px-3 py-1.5 text-xs font-['Space_Grotesk'] uppercase tracking-wider no-underline transition-all <%= !currentCategory ? 'bg-[#CCFF00] text-black' : 'glass-card text-slate-400 hover:text-white' %>">All</a>
+    <a href="/games" class="px-3 py-1.5 text-xs font-['Space_Grotesk'] uppercase tracking-wider no-underline transition-all <%= !currentCategory ? 'bg-[#CCFF00] text-black' : 'glass-card text-slate-400 hover:text-white' %>"><%= t('allCategories') %></a>
     <% categories.forEach(function(c) { %>
       <a href="/games?category=<%= c.id %>" class="px-3 py-1.5 text-xs font-['Space_Grotesk'] uppercase tracking-wider no-underline transition-all <%= currentCategory == c.id ? 'bg-[#CCFF00] text-black' : 'glass-card text-slate-400 hover:text-white' %>">
         <%= c.name %> (<%= c.game_count %>)
@@ -38,7 +38,7 @@
   <% } else { %>
   <div class="glass-card p-12 text-center">
     <span class="material-symbols-outlined text-6xl text-slate-600 mb-4">sports_esports</span>
-    <p class="text-slate-400 font-body-lg">No games found matching your criteria.</p>
+    <p class="text-slate-400 font-body-lg"><%= t('noGamesFound') %></p>
   </div>
   <% } %>
 </div>

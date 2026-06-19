@@ -1,73 +1,73 @@
 <div class="mb-8">
-  <h1 class="font-headline-lg text-headline-lg text-white uppercase italic">Command_Center</h1>
-  <p class="text-slate-400 mt-2 font-body-md">System overview and metrics.</p>
+  <h1 class="font-headline-lg text-headline-lg text-white uppercase italic"><%= t('adminCommand') %></h1>
+  <p class="text-slate-400 mt-2 font-body-md"><%= lang === 'zh' ? '系统概览和关键指标。' : 'System overview and metrics.' %></p>
 </div>
 
 <div class="grid grid-cols-2 lg:grid-cols-5 gap-4 mb-8">
   <div class="glass-card p-5 text-center">
     <span class="material-symbols-outlined text-2xl text-[#CCFF00] mb-2">sports_esports</span>
     <p class="text-3xl font-['Space_Grotesk'] font-bold text-white"><%= stats.gameCount %></p>
-    <p class="text-slate-500 text-xs font-['Space_Grotesk'] uppercase tracking-wider mt-1">Games</p>
+    <p class="text-slate-500 text-xs font-['Space_Grotesk'] uppercase tracking-wider mt-1"><%= t('games') %></p>
   </div>
   <div class="glass-card p-5 text-center">
     <span class="material-symbols-outlined text-2xl text-[#e9b3ff] mb-2">article</span>
     <p class="text-3xl font-['Space_Grotesk'] font-bold text-white"><%= stats.articleCount %></p>
-    <p class="text-slate-500 text-xs font-['Space_Grotesk'] uppercase tracking-wider mt-1">Articles</p>
+    <p class="text-slate-500 text-xs font-['Space_Grotesk'] uppercase tracking-wider mt-1"><%= t('news') %></p>
   </div>
   <div class="glass-card p-5 text-center">
     <span class="material-symbols-outlined text-2xl text-[#CCFF00] mb-2">group</span>
     <p class="text-3xl font-['Space_Grotesk'] font-bold text-white"><%= stats.userCount %></p>
-    <p class="text-slate-500 text-xs font-['Space_Grotesk'] uppercase tracking-wider mt-1">Users</p>
+    <p class="text-slate-500 text-xs font-['Space_Grotesk'] uppercase tracking-wider mt-1"><%= t('users') %></p>
   </div>
   <div class="glass-card p-5 text-center">
     <span class="material-symbols-outlined text-2xl text-[#ffb4ab] mb-2">flag</span>
     <p class="text-3xl font-['Space_Grotesk'] font-bold text-white"><%= stats.flaggedCount %></p>
-    <p class="text-slate-500 text-xs font-['Space_Grotesk'] uppercase tracking-wider mt-1">Flagged</p>
+    <p class="text-slate-500 text-xs font-['Space_Grotesk'] uppercase tracking-wider mt-1"><%= lang === 'zh' ? '已标记' : 'Flagged' %></p>
   </div>
   <div class="glass-card p-5 text-center">
     <span class="material-symbols-outlined text-2xl text-amber-400 mb-2">inbox</span>
     <p class="text-3xl font-['Space_Grotesk'] font-bold text-white"><%= stats.draftCount %></p>
-    <p class="text-slate-500 text-xs font-['Space_Grotesk'] uppercase tracking-wider mt-1">Drafts</p>
+    <p class="text-slate-500 text-xs font-['Space_Grotesk'] uppercase tracking-wider mt-1"><%= t('draft') %></p>
   </div>
 </div>
 
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
   <div class="glass-card p-6">
-    <h2 class="font-['Space_Grotesk'] uppercase tracking-wider text-sm font-bold text-white mb-4">Quick Actions</h2>
+    <h2 class="font-['Space_Grotesk'] uppercase tracking-wider text-sm font-bold text-white mb-4"><%= lang === 'zh' ? '快捷操作' : 'Quick Actions' %></h2>
     <div class="grid grid-cols-2 gap-3">
       <a href="/admin/games/create" class="glass-card p-4 text-center no-underline hover:border-[#CCFF00]/30 transition-all">
         <span class="material-symbols-outlined text-[#CCFF00] text-2xl mb-1">add_circle</span>
-        <p class="text-white text-xs font-['Space_Grotesk'] uppercase tracking-wider">New Game</p>
+        <p class="text-white text-xs font-['Space_Grotesk'] uppercase tracking-wider"><%= t('newGame') %></p>
       </a>
       <a href="/admin/news/create" class="glass-card p-4 text-center no-underline hover:border-[#CCFF00]/30 transition-all">
         <span class="material-symbols-outlined text-[#CCFF00] text-2xl mb-1">post_add</span>
-        <p class="text-white text-xs font-['Space_Grotesk'] uppercase tracking-wider">New Article</p>
+        <p class="text-white text-xs font-['Space_Grotesk'] uppercase tracking-wider"><%= t('newArticle') %></p>
       </a>
       <a href="/admin/comments" class="glass-card p-4 text-center no-underline hover:border-[#e9b3ff]/30 transition-all">
         <span class="material-symbols-outlined text-[#e9b3ff] text-2xl mb-1">flag</span>
-        <p class="text-white text-xs font-['Space_Grotesk'] uppercase tracking-wider">Moderate</p>
+        <p class="text-white text-xs font-['Space_Grotesk'] uppercase tracking-wider"><%= t('moderation') %></p>
       </a>
       <a href="/admin/submissions" class="glass-card p-4 text-center no-underline hover:border-[#CCFF00]/30 transition-all">
         <span class="material-symbols-outlined text-[#CCFF00] text-2xl mb-1">inbox</span>
-        <p class="text-white text-xs font-['Space_Grotesk'] uppercase tracking-wider">Submissions</p>
+        <p class="text-white text-xs font-['Space_Grotesk'] uppercase tracking-wider"><%= t('submissions') %></p>
       </a>
     </div>
   </div>
 
   <div class="glass-card p-6">
-    <h2 class="font-['Space_Grotesk'] uppercase tracking-wider text-sm font-bold text-white mb-4">Recent Activity</h2>
+    <h2 class="font-['Space_Grotesk'] uppercase tracking-wider text-sm font-bold text-white mb-4"><%= t('recentActivity') %></h2>
     <% if (recentActivity && recentActivity.length > 0) { %>
     <div class="space-y-2 max-h-64 overflow-y-auto">
       <% recentActivity.forEach(function(a) { %>
       <div class="flex items-center space-x-2 text-xs py-1.5 border-b border-white/5 last:border-0">
         <span class="text-[#CCFF00] font-['Space_Grotesk'] uppercase w-20 flex-shrink-0"><%= (a.username || 'System').substring(0, 10) %></span>
         <span class="text-slate-400 flex-1 truncate"><%= a.action %></span>
-        <span class="text-slate-600 flex-shrink-0"><%= new Date(a.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) %></span>
+        <span class="text-slate-600 flex-shrink-0"><%= formatDate(a.created_at) %></span>
       </div>
       <% }) %>
     </div>
     <% } else { %>
-    <p class="text-slate-500 text-sm italic">No activity recorded.</p>
+    <p class="text-slate-500 text-sm italic"><%= t('noActivity') %></p>
     <% } %>
   </div>
 </div>

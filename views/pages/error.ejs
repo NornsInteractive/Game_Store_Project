@@ -4,15 +4,15 @@
     <h1 class="font-headline-md text-headline-md text-white mb-4"><%= message %></h1>
     <p class="text-slate-400 mb-8 font-body-md">
       <% if (code === 404) { %>
-      The requested data stream does not exist or has been terminated.
+      <%= t('error404') %>
       <% } else if (code === 403) { %>
-      Insufficient clearance level. This sector is restricted.
+      <%= t('error403') %>
       <% } else { %>
-      A critical system fault occurred. Our engineers have been alerted.
+      <%= t('errorGeneric') %>
       <% } %>
     </p>
     <a href="/" class="bg-[#CCFF00] text-black px-8 py-3 font-['Space_Grotesk'] uppercase tracking-widest text-sm font-bold shadow-[0_0_15px_rgba(204,255,0,0.3)] hover:shadow-[0_0_30px_rgba(204,255,0,0.6)] transition-all no-underline inline-block">
-      Return to Base
+      <%= t('returnHome') %>
     </a>
   </div>
 </div>

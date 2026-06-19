@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="dark" lang="en">
+<html class="dark" lang="<%= lang %>">
 <head>
   <%- include('../partials/head') %>
 </head>
@@ -8,6 +8,9 @@
   <div class="w-full max-w-md">
     <div class="text-center mb-8">
       <a href="/" class="text-3xl font-black text-[#CCFF00] italic tracking-tighter no-underline">CYBERPULSE</a>
+      <div class="mt-4">
+        <a href="<%= languageSwitchUrl %>" class="text-xs text-slate-400 hover:text-[#CCFF00] font-['Space_Grotesk'] uppercase tracking-widest no-underline"><%= t('language') %>: <%= t('switchLanguage') %></a>
+      </div>
     </div>
     <%- body %>
   </div>

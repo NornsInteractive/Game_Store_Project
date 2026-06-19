@@ -20,6 +20,79 @@ function saveDb() {
   fs.writeFileSync(DB_PATH, buffer);
 }
 
+function columnExists(table, column) {
+  const stmt = db.prepare(`PRAGMA table_info(${table})`);
+  let exists = false;
+  while (stmt.step()) {
+    const row = stmt.getAsObject();
+    if (row.name === column) exists = true;
+  }
+  stmt.free();
+  return exists;
+}
+
+function migrateGamesTable() {
+  const tableStmt = db.prepare("SELECT name FROM sqlite_master WHERE type = 'table' AND name = 'games'");
+  const hasGames = tableStmt.step();
+  tableStmt.free();
+  if (!hasGames) return;
+
+  if (!columnExists('games', 'download_url')) {
+    db.run("ALTER TABLE games ADD COLUMN download_url TEXT DEFAULT ''");
+  }
+
+  if (columnExists('games', 'price') || columnExists('games', 'discount_price')) {
+    db.run('PRAGMA foreign_keys = OFF');
+    db.run(`
+      CREATE TABLE IF NOT EXISTS games_new (
+        id                INTEGER PRIMARY KEY,
+        title             TEXT    NOT NULL,
+        slug              TEXT    NOT NULL UNIQUE,
+        description       TEXT    NOT NULL DEFAULT '',
+        short_description TEXT,
+        developer         TEXT    DEFAULT '',
+        publisher         TEXT    DEFAULT '',
+        download_url      TEXT    DEFAULT '',
+        release_date      TEXT,
+        category_id       INTEGER,
+        cover_image       TEXT    DEFAULT '/uploads/covers/default.png',
+        hero_image        TEXT,
+        screenshots       TEXT    DEFAULT '[]',
+        system_requirements TEXT  DEFAULT '{}',
+        tags              TEXT    DEFAULT '[]',
+        status            TEXT    NOT NULL DEFAULT 'draft',
+        rating_avg        REAL    DEFAULT 0.0,
+        rating_count      INTEGER DEFAULT 0,
+        views_count       INTEGER DEFAULT 0,
+        is_featured       INTEGER DEFAULT 0,
+        created_at        TEXT    NOT NULL DEFAULT (datetime('now')),
+        updated_at        TEXT    NOT NULL DEFAULT (datetime('now')),
+        deleted_at        TEXT,
+        FOREIGN KEY (category_id) REFERENCES categories(id)
+      )
+    `);
+    db.run(`
+      INSERT INTO games_new (
+        id, title, slug, description, short_description, developer, publisher, download_url,
+        release_date, category_id, cover_image, hero_image, screenshots, system_requirements,
+        tags, status, rating_avg, rating_count, views_count, is_featured, created_at, updated_at, deleted_at
+      )
+      SELECT
+        id, title, slug, description, short_description, developer, publisher, COALESCE(download_url, ''),
+        release_date, category_id, cover_image, hero_image, screenshots, system_requirements,
+        tags, status, rating_avg, rating_count, views_count, is_featured, created_at, updated_at, deleted_at
+      FROM games
+    `);
+    db.run('DROP TABLE games');
+    db.run('ALTER TABLE games_new RENAME TO games');
+    db.run('CREATE INDEX IF NOT EXISTS idx_games_status ON games(status)');
+    db.run('CREATE INDEX IF NOT EXISTS idx_games_featured ON games(is_featured)');
+    db.run('CREATE INDEX IF NOT EXISTS idx_games_slug ON games(slug)');
+    db.run('CREATE INDEX IF NOT EXISTS idx_games_category ON games(category_id)');
+    db.run('PRAGMA foreign_keys = ON');
+  }
+}
+
 function getDb() {
   if (db) return db;
   throw new Error('Database not initialized. Call initDb() first.');
@@ -41,6 +114,7 @@ async function initDb() {
     // Run schema
     const schema = fs.readFileSync(path.join(__dirname, 'schema.sql'), 'utf8');
     db.run(schema);
+    migrateGamesTable();
     saveDb();
     return db;
   })();

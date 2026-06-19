@@ -2,19 +2,19 @@
   <nav class="flex-1 p-4 space-y-1">
     <a href="/dashboard" class="flex items-center space-x-3 px-3 py-2.5 rounded text-sm font-['Space_Grotesk'] uppercase tracking-wider font-bold no-underline transition-all <%= path === '/dashboard' ? 'bg-[#CCFF00]/10 text-[#CCFF00]' : 'text-slate-400 hover:text-white' %>">
       <span class="material-symbols-outlined text-lg">space_dashboard</span>
-      <span>Dashboard</span>
+      <span><%= t('dashboard') %></span>
     </a>
     <a href="/dashboard/library" class="flex items-center space-x-3 px-3 py-2.5 rounded text-sm font-['Space_Grotesk'] uppercase tracking-wider font-bold no-underline transition-all <%= path === '/dashboard/library' ? 'bg-[#CCFF00]/10 text-[#CCFF00]' : 'text-slate-400 hover:text-white' %>">
       <span class="material-symbols-outlined text-lg">videogame_asset</span>
-      <span>My Library</span>
+      <span><%= t('myLibrary') %></span>
     </a>
     <a href="/dashboard/profile" class="flex items-center space-x-3 px-3 py-2.5 rounded text-sm font-['Space_Grotesk'] uppercase tracking-wider font-bold no-underline transition-all <%= path === '/dashboard/profile' ? 'bg-[#CCFF00]/10 text-[#CCFF00]' : 'text-slate-400 hover:text-white' %>">
       <span class="material-symbols-outlined text-lg">person</span>
-      <span>Profile</span>
+      <span><%= t('profile') %></span>
     </a>
     <a href="/dashboard/submit" class="flex items-center space-x-3 px-3 py-2.5 rounded text-sm font-['Space_Grotesk'] uppercase tracking-wider font-bold no-underline transition-all <%= path === '/dashboard/submit' ? 'bg-[#CCFF00]/10 text-[#CCFF00]' : 'text-slate-400 hover:text-white' %>">
       <span class="material-symbols-outlined text-lg">upload</span>
-      <span>Submit Game</span>
+      <span><%= t('submitGame') %></span>
     </a>
   </nav>
 </aside>

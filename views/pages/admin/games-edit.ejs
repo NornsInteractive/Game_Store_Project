@@ -1,36 +1,32 @@
 <div class="mb-8">
-  <h1 class="font-headline-lg text-headline-lg text-white uppercase italic"><%= gameData ? 'Edit: ' + gameData.title : 'Create_Game' %></h1>
+  <h1 class="font-headline-lg text-headline-lg text-white uppercase italic"><%= gameData ? t('edit') + ': ' + gameData.title : t('createGame') %></h1>
 </div>
 
 <div class="max-w-3xl">
   <form method="POST" action="<%= gameData ? '/admin/games/' + gameData.id + '/edit' : '/admin/games/create' %>" enctype="multipart/form-data" class="glass-card p-8 space-y-6">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       <div class="space-y-2 md:col-span-2">
-        <label class="font-['Space_Grotesk'] text-xs uppercase tracking-wider text-slate-400">Title *</label>
+        <label class="font-['Space_Grotesk'] text-xs uppercase tracking-wider text-slate-400"><%= t('title') %> *</label>
         <input type="text" name="title" value="<%= gameData ? gameData.title : '' %>" class="w-full py-3 bg-surface-container-low border-b border-outline-variant focus:border-[#CCFF00] text-on-surface transition-all input-glow" required/>
       </div>
       <div class="space-y-2">
-        <label class="font-['Space_Grotesk'] text-xs uppercase tracking-wider text-slate-400">Developer</label>
+        <label class="font-['Space_Grotesk'] text-xs uppercase tracking-wider text-slate-400"><%= t('developer') %></label>
         <input type="text" name="developer" value="<%= gameData ? gameData.developer : '' %>" class="w-full py-3 bg-surface-container-low border-b border-outline-variant focus:border-[#CCFF00] text-on-surface transition-all input-glow"/>
       </div>
       <div class="space-y-2">
-        <label class="font-['Space_Grotesk'] text-xs uppercase tracking-wider text-slate-400">Publisher</label>
+        <label class="font-['Space_Grotesk'] text-xs uppercase tracking-wider text-slate-400"><%= t('publisher') %></label>
         <input type="text" name="publisher" value="<%= gameData ? gameData.publisher : '' %>" class="w-full py-3 bg-surface-container-low border-b border-outline-variant focus:border-[#CCFF00] text-on-surface transition-all input-glow"/>
       </div>
       <div class="space-y-2">
-        <label class="font-['Space_Grotesk'] text-xs uppercase tracking-wider text-slate-400">Price (USD)</label>
-        <input type="number" name="price" step="0.01" value="<%= gameData ? gameData.price : '0' %>" class="w-full py-3 bg-surface-container-low border-b border-outline-variant focus:border-[#CCFF00] text-on-surface transition-all input-glow"/>
+        <label class="font-['Space_Grotesk'] text-xs uppercase tracking-wider text-slate-400"><%= t('downloadUrl') %></label>
+        <input type="url" name="downloadUrl" value="<%= gameData ? gameData.download_url : '' %>" class="w-full py-3 bg-surface-container-low border-b border-outline-variant focus:border-[#CCFF00] text-on-surface transition-all input-glow"/>
       </div>
       <div class="space-y-2">
-        <label class="font-['Space_Grotesk'] text-xs uppercase tracking-wider text-slate-400">Discount Price</label>
-        <input type="number" name="discountPrice" step="0.01" value="<%= gameData && gameData.discount_price ? gameData.discount_price : '' %>" class="w-full py-3 bg-surface-container-low border-b border-outline-variant focus:border-[#CCFF00] text-on-surface transition-all input-glow"/>
-      </div>
-      <div class="space-y-2">
-        <label class="font-['Space_Grotesk'] text-xs uppercase tracking-wider text-slate-400">Release Date</label>
+        <label class="font-['Space_Grotesk'] text-xs uppercase tracking-wider text-slate-400"><%= t('releaseDate') %></label>
         <input type="date" name="releaseDate" value="<%= gameData ? gameData.release_date : '' %>" class="w-full py-3 bg-surface-container-low border-b border-outline-variant focus:border-[#CCFF00] text-on-surface transition-all input-glow"/>
       </div>
       <div class="space-y-2">
-        <label class="font-['Space_Grotesk'] text-xs uppercase tracking-wider text-slate-400">Category</label>
+        <label class="font-['Space_Grotesk'] text-xs uppercase tracking-wider text-slate-400"><%= t('category') %></label>
         <select name="categoryId" class="w-full py-3 bg-surface-container-low border-b border-outline-variant focus:border-[#CCFF00] text-on-surface transition-all input-glow">
           <option value="">-- Select --</option>
           <% categories.forEach(function(c) { %>
@@ -39,40 +35,40 @@
         </select>
       </div>
       <div class="space-y-2">
-        <label class="font-['Space_Grotesk'] text-xs uppercase tracking-wider text-slate-400">Status</label>
+        <label class="font-['Space_Grotesk'] text-xs uppercase tracking-wider text-slate-400"><%= t('status') %></label>
         <select name="status" class="w-full py-3 bg-surface-container-low border-b border-outline-variant focus:border-[#CCFF00] text-on-surface transition-all input-glow">
-          <option value="draft" <%= gameData && gameData.status === 'draft' ? 'selected' : '' %>>Draft</option>
-          <option value="published" <%= gameData && gameData.status === 'published' ? 'selected' : '' %>>Published</option>
-          <option value="delisted" <%= gameData && gameData.status === 'delisted' ? 'selected' : '' %>>Delisted</option>
+          <option value="draft" <%= gameData && gameData.status === 'draft' ? 'selected' : '' %>><%= t('draft') %></option>
+          <option value="published" <%= gameData && gameData.status === 'published' ? 'selected' : '' %>><%= t('published') %></option>
+          <option value="delisted" <%= gameData && gameData.status === 'delisted' ? 'selected' : '' %>><%= t('delisted') %></option>
         </select>
       </div>
     </div>
     <div class="flex items-center space-x-2">
       <input type="checkbox" name="isFeatured" value="1" id="isFeatured" <%= gameData && gameData.is_featured ? 'checked' : '' %> class="w-4 h-4"/>
-      <label for="isFeatured" class="font-['Space_Grotesk'] text-xs uppercase tracking-wider text-slate-400">Featured Game</label>
+      <label for="isFeatured" class="font-['Space_Grotesk'] text-xs uppercase tracking-wider text-slate-400"><%= t('featuredGame') %></label>
     </div>
     <div class="space-y-2">
-      <label class="font-['Space_Grotesk'] text-xs uppercase tracking-wider text-slate-400">Tags (comma separated)</label>
+      <label class="font-['Space_Grotesk'] text-xs uppercase tracking-wider text-slate-400"><%= t('tags') %></label>
       <input type="text" name="tags" value="<%= gameData ? (typeof gameData.tags === 'string' ? JSON.parse(gameData.tags).join(', ') : '') : '' %>" class="w-full py-3 bg-surface-container-low border-b border-outline-variant focus:border-[#CCFF00] text-on-surface transition-all input-glow"/>
     </div>
     <div class="space-y-2">
-      <label class="font-['Space_Grotesk'] text-xs uppercase tracking-wider text-slate-400">Short Description</label>
+      <label class="font-['Space_Grotesk'] text-xs uppercase tracking-wider text-slate-400"><%= t('shortDescription') %></label>
       <input type="text" name="shortDescription" maxlength="200" value="<%= gameData ? gameData.short_description : '' %>" class="w-full py-3 bg-surface-container-low border-b border-outline-variant focus:border-[#CCFF00] text-on-surface transition-all input-glow"/>
     </div>
     <div class="space-y-2">
-      <label class="font-['Space_Grotesk'] text-xs uppercase tracking-wider text-slate-400">Description</label>
+      <label class="font-['Space_Grotesk'] text-xs uppercase tracking-wider text-slate-400"><%= t('description') %></label>
       <textarea name="description" rows="6" class="w-full py-3 bg-surface-container-low border-b border-outline-variant focus:border-[#CCFF00] text-on-surface transition-all input-glow"><%= gameData ? gameData.description : '' %></textarea>
     </div>
     <div class="space-y-2">
-      <label class="font-['Space_Grotesk'] text-xs uppercase tracking-wider text-slate-400">Cover Image</label>
-      <% if (gameData && gameData.cover_image) { %><p class="text-slate-500 text-xs mb-1">Current: <%= gameData.cover_image %></p><% } %>
+      <label class="font-['Space_Grotesk'] text-xs uppercase tracking-wider text-slate-400"><%= t('coverImage') %></label>
+      <% if (gameData && gameData.cover_image) { %><p class="text-slate-500 text-xs mb-1"><%= t('current') %>: <%= gameData.cover_image %></p><% } %>
       <input type="file" name="coverImage" accept="image/*" class="w-full text-slate-400 file:bg-surface-container-high file:text-white file:border-0 file:px-4 file:py-2 file:font-['Space_Grotesk'] file:uppercase file:tracking-wider file:text-xs file:cursor-pointer"/>
     </div>
     <div class="flex space-x-3">
       <button type="submit" class="bg-[#CCFF00] text-black font-['Space_Grotesk'] uppercase tracking-widest font-bold px-8 py-3 shadow-[0_0_10px_rgba(204,255,0,0.3)] hover:shadow-[0_0_20px_rgba(204,255,0,0.5)] transition-all">
-        <%= gameData ? 'Update Game' : 'Create Game' %>
+        <%= gameData ? t('updateGame') : t('createGame') %>
       </button>
-      <a href="/admin/games" class="glass-card px-6 py-3 text-slate-400 hover:text-white font-['Space_Grotesk'] uppercase tracking-wider text-sm font-bold no-underline transition-all">Cancel</a>
+      <a href="/admin/games" class="glass-card px-6 py-3 text-slate-400 hover:text-white font-['Space_Grotesk'] uppercase tracking-wider text-sm font-bold no-underline transition-all"><%= t('cancel') %></a>
     </div>
   </form>
 </div>

@@ -1,5 +1,5 @@
 <div class="mb-8">
-  <h1 class="font-headline-lg text-headline-lg text-white uppercase italic">Profile</h1>
+  <h1 class="font-headline-lg text-headline-lg text-white uppercase italic"><%= t('profile') %></h1>
 </div>
 
 <div class="max-w-2xl">
@@ -17,19 +17,19 @@
     </div>
 
     <div class="space-y-2">
-      <label class="font-['Space_Grotesk'] text-xs uppercase tracking-wider text-slate-400">Display Name</label>
+      <label class="font-['Space_Grotesk'] text-xs uppercase tracking-wider text-slate-400"><%= t('displayName') %></label>
       <input type="text" name="displayName" value="<%= profile.display_name || '' %>" class="w-full py-3 bg-surface-container-low border-b border-outline-variant focus:border-[#CCFF00] text-on-surface transition-all input-glow"/>
     </div>
     <div class="space-y-2">
-      <label class="font-['Space_Grotesk'] text-xs uppercase tracking-wider text-slate-400">Bio</label>
+      <label class="font-['Space_Grotesk'] text-xs uppercase tracking-wider text-slate-400"><%= t('bio') %></label>
       <textarea name="bio" rows="3" class="w-full py-3 bg-surface-container-low border-b border-outline-variant focus:border-[#CCFF00] text-on-surface transition-all input-glow"><%= profile.bio || '' %></textarea>
     </div>
     <div class="space-y-2">
-      <label class="font-['Space_Grotesk'] text-xs uppercase tracking-wider text-slate-400">Avatar</label>
+      <label class="font-['Space_Grotesk'] text-xs uppercase tracking-wider text-slate-400"><%= lang === 'zh' ? '头像' : 'Avatar' %></label>
       <input type="file" name="avatar" accept="image/*" class="w-full text-slate-400 file:bg-surface-container-high file:text-white file:border-0 file:px-4 file:py-2 file:font-['Space_Grotesk'] file:uppercase file:tracking-wider file:text-xs file:cursor-pointer"/>
     </div>
     <button type="submit" class="bg-[#CCFF00] text-black font-['Space_Grotesk'] uppercase tracking-widest font-bold px-8 py-3 shadow-[0_0_10px_rgba(204,255,0,0.3)] hover:shadow-[0_0_20px_rgba(204,255,0,0.5)] transition-all">
-      Save Changes
+      <%= t('saveProfile') %>
     </button>
   </form>
 </div>

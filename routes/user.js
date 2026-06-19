@@ -67,7 +67,7 @@ router.post('/submit', requireAuth, (req, res) => {
     shortDescription: req.body.shortDescription,
     developer: req.body.developer,
     publisher: req.body.publisher,
-    price: parseFloat(req.body.price) || 0,
+    downloadUrl: req.body.downloadUrl || '',
     releaseDate: req.body.releaseDate || '',
     categoryId: req.body.categoryId || null,
     tags: (req.body.tags || '').split(',').map(t => t.trim()).filter(Boolean),

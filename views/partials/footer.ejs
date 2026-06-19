@@ -3,26 +3,26 @@
     <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
       <div>
         <div class="text-xl font-black text-[#CCFF00] italic tracking-tighter mb-4">CYBERPULSE</div>
-        <p class="text-slate-500 text-sm font-['Inter']">The nexus of next-gen gaming. Discover, acquire, and dominate.</p>
+        <p class="text-slate-500 text-sm font-['Inter']"><%= t('footerTagline') %></p>
       </div>
       <div>
-        <h4 class="font-['Space_Grotesk'] uppercase tracking-widest text-xs font-bold text-white mb-4">Platform</h4>
+        <h4 class="font-['Space_Grotesk'] uppercase tracking-widest text-xs font-bold text-white mb-4"><%= t('platform') %></h4>
         <div class="space-y-2">
-          <a href="/games" class="block text-slate-400 hover:text-[#CCFF00] text-sm no-underline transition-colors">Store</a>
-          <a href="/news" class="block text-slate-400 hover:text-[#CCFF00] text-sm no-underline transition-colors">News</a>
-          <a href="/dashboard/submit" class="block text-slate-400 hover:text-[#CCFF00] text-sm no-underline transition-colors">Submit Game</a>
+          <a href="/games" class="block text-slate-400 hover:text-[#CCFF00] text-sm no-underline transition-colors"><%= t('navStore') %></a>
+          <a href="/news" class="block text-slate-400 hover:text-[#CCFF00] text-sm no-underline transition-colors"><%= t('navNews') %></a>
+          <a href="/dashboard/submit" class="block text-slate-400 hover:text-[#CCFF00] text-sm no-underline transition-colors"><%= t('submitGame') %></a>
         </div>
       </div>
       <div>
-        <h4 class="font-['Space_Grotesk'] uppercase tracking-widest text-xs font-bold text-white mb-4">Support</h4>
+        <h4 class="font-['Space_Grotesk'] uppercase tracking-widest text-xs font-bold text-white mb-4"><%= t('support') %></h4>
         <div class="space-y-2">
-          <a href="#" class="block text-slate-400 hover:text-[#CCFF00] text-sm no-underline transition-colors">FAQ</a>
-          <a href="#" class="block text-slate-400 hover:text-[#CCFF00] text-sm no-underline transition-colors">Contact</a>
-          <a href="#" class="block text-slate-400 hover:text-[#CCFF00] text-sm no-underline transition-colors">Privacy</a>
+          <a href="#" class="block text-slate-400 hover:text-[#CCFF00] text-sm no-underline transition-colors"><%= t('faq') %></a>
+          <a href="#" class="block text-slate-400 hover:text-[#CCFF00] text-sm no-underline transition-colors"><%= t('contact') %></a>
+          <a href="#" class="block text-slate-400 hover:text-[#CCFF00] text-sm no-underline transition-colors"><%= t('privacy') %></a>
         </div>
       </div>
       <div>
-        <h4 class="font-['Space_Grotesk'] uppercase tracking-widest text-xs font-bold text-white mb-4">Connect</h4>
+        <h4 class="font-['Space_Grotesk'] uppercase tracking-widest text-xs font-bold text-white mb-4"><%= t('connect') %></h4>
         <div class="space-y-2">
           <span class="block text-slate-400 text-sm">Discord</span>
           <span class="block text-slate-400 text-sm">Twitter</span>
@@ -31,7 +31,7 @@
       </div>
     </div>
     <div class="border-t border-white/5 mt-8 pt-6 text-center text-slate-600 text-xs font-['Inter']">
-      © <%= new Date().getFullYear() %> CyberPulse Gaming Platform. All rights reserved.
+      © <%= new Date().getFullYear() %> CyberPulse Gaming Platform. <%= t('copyright') %>
     </div>
   </div>
 </footer>
