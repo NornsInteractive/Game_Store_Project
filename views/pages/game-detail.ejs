@@ -23,13 +23,13 @@
   </div>
 </section>
 
-<div class="max-w-7xl mx-auto px-6 py-12 grid grid-cols-12 gap-12">
-  <div class="col-span-10 lg:col-span-8 space-y-12">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 py-12 flex flex-col-reverse sm:grid sm:grid-cols-12 gap-4 sm:gap-6 md:gap-8 lg:gap-12 overflow-x-hidden">
+  <div class="col-span-1 sm:col-span-12 md:col-span-8 lg:col-span-8 space-y-12">
     <section>
       <h2 class="font-headline-md text-headline-md text-white mb-4 flex items-center gap-3">
         <span class="w-2 h-8 bg-[#CCFF00]"></span> <%= t('overview') %>
       </h2>
-      <p style="width: 80%;" class="text-on-surface-variant font-body-md leading-relaxed"><%= game.description %></p>
+      <p class="text-on-surface-variant font-body-md leading-relaxed w-full max-w-3xl break-words"><%= game.description %></p>
     </section>
 
     <% if (Object.keys(parsedSysReq).length > 0) { %>
@@ -75,18 +75,22 @@
       <h2 class="font-headline-md text-headline-md text-white mb-6"><%= t('comments') %></h2>
       <% if (currentUser) { %>
       <form method="POST" action="/games/<%= game.slug %>/comment" class="mb-8">
-        <textarea name="content" rows="3" placeholder="<%= t('writeComment') %>" class="w-4/5 bg-surface-container-low border-b border-outline-variant focus:border-[#CCFF00] text-on-surface p-3 transition-all input-glow" required></textarea>
+        <textarea name="content" rows="3" placeholder="<%= t('writeComment') %>" class="w-full max-w-3xl bg-surface-container-low border-b border-outline-variant focus:border-[#CCFF00] text-on-surface p-3 transition-all input-glow break-words" required></textarea>
         <input type="hidden" name="parentId" value=""/>
-        <button type="submit" class="mt-3 bg-[#CCFF00] text-black font-['Space_Grotesk'] uppercase tracking-wider text-sm font-bold px-6 py-2 shadow-[0_0_10px_rgba(204,255,0,0.3)] hover:shadow-[0_0_20px_rgba(204,255,0,0.5)] transition-all"><%= t('postComment') %></button>
+        <div class="mt-3">
+          <button type="submit" class="bg-[#CCFF00] text-black font-['Space_Grotesk'] uppercase tracking-wider text-sm font-bold px-6 py-2 shadow-[0_0_10px_rgba(204,255,0,0.3)] hover:shadow-[0_0_20px_rgba(204,255,0,0.5)] transition-all"><%= t('postComment') %></button>
+        </div>
       </form>
       <% } else { %>
       <p class="mb-8 text-slate-500"><a href="/login" class="text-[#CCFF00] no-underline"><%= t('login') %></a> <%= lang === 'zh' ? '后即可发表评论。' : 'to leave a comment.' %></p>
       <% } %>
-      <%- include('../partials/comment-thread', { comments: comments, userVotes: userVotes }) %>
+      <div class="w-full max-w-3xl">
+        <%- include('../partials/comment-thread', { comments: comments, userVotes: userVotes }) %>
+      </div>
     </section>
   </div>
 
-  <aside class="col-span-8 lg:col-span-4 space-y-6">
+  <aside class="sm:col-span-12 md:col-span-4 lg:col-span-4 space-y-6">
     <div class="glass-card p-6 sticky top-24">
       <div class="text-center">
         <img src="<%= game.cover_image || '/uploads/covers/default.png' %>" alt="<%= game.title %>" class="w-full aspect-[3/4] object-cover mb-4"/>
