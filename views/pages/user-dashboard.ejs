@@ -3,7 +3,7 @@
   <p class="text-slate-400 mt-2"><%= lang === 'zh' ? '欢迎回来，' : 'Welcome back, ' %><span class="text-[#CCFF00]"><%= currentUser.username %></span>.</p>
 </div>
 
-<div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
   <a href="/dashboard/library" class="glass-card p-6 no-underline block hover:border-[#CCFF00]/30 transition-all">
     <span class="material-symbols-outlined text-3xl text-[#CCFF00] mb-3">videogame_asset</span>
     <p class="text-2xl font-['Space_Grotesk'] font-bold text-white"><%= (typeof libraryCount !== 'undefined') ? libraryCount : 0 %></p>
@@ -13,11 +13,6 @@
     <span class="material-symbols-outlined text-3xl text-[#e9b3ff] mb-3">person</span>
     <p class="text-2xl font-['Space_Grotesk'] font-bold text-white"><%= t('edit') %></p>
     <p class="text-slate-500 text-xs font-['Space_Grotesk'] uppercase tracking-wider mt-1"><%= t('profile') %></p>
-  </a>
-  <a href="/dashboard/submit" class="glass-card p-6 no-underline block hover:border-[#CCFF00]/30 transition-all">
-    <span class="material-symbols-outlined text-3xl text-[#CCFF00] mb-3">upload</span>
-    <p class="text-2xl font-['Space_Grotesk'] font-bold text-white"><%= t('submitGame') %></p>
-    <p class="text-slate-500 text-xs font-['Space_Grotesk'] uppercase tracking-wider mt-1"><%= t('newGame') %></p>
   </a>
 </div>
 

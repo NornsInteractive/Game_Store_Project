@@ -110,6 +110,19 @@ CREATE TABLE IF NOT EXISTS user_library (
     FOREIGN KEY (game_id) REFERENCES games(id) ON DELETE CASCADE
 );
 
+CREATE TABLE IF NOT EXISTS user_favorites (
+    id            INTEGER PRIMARY KEY,
+    user_id       INTEGER NOT NULL,
+    game_id       INTEGER NOT NULL,
+    created_at    TEXT    NOT NULL DEFAULT (datetime('now')),
+    UNIQUE(user_id, game_id),
+    FOREIGN KEY (user_id) REFERENCES users(id),
+    FOREIGN KEY (game_id) REFERENCES games(id) ON DELETE CASCADE
+);
+
+CREATE INDEX IF NOT EXISTS idx_user_favorites_user ON user_favorites(user_id);
+CREATE INDEX IF NOT EXISTS idx_user_favorites_game ON user_favorites(game_id);
+
 CREATE TABLE IF NOT EXISTS ratings (
     id            INTEGER PRIMARY KEY,
     user_id       INTEGER NOT NULL,

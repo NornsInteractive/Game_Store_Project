@@ -3,6 +3,7 @@ const router = express.Router();
 const game = require('../models/game');
 const comment = require('../models/comment');
 const rating = require('../models/rating');
+const favorite = require('../models/favorite');
 const activity = require('../models/activity');
 const { requireAuth } = require('../middleware/auth');
 
@@ -37,9 +38,11 @@ router.get('/games/:slug', (req, res) => {
   game.incrementViews(g.id);
   const comments = comment.getByGameId(g.id);
   let userRating = null;
+  let userFavorite = null;
   let userVotes = {};
   if (req.session.userId) {
     userRating = rating.getUserRating(req.session.userId, g.id);
+    userFavorite = favorite.isFavorite(req.session.userId, g.id);
     const commentIds = [];
     const collectIds = (list) => { list.forEach(c => { commentIds.push(c.id); if (c.replies) collectIds(c.replies); }); };
     collectIds(comments);
@@ -51,6 +54,7 @@ router.get('/games/:slug', (req, res) => {
     game: g,
     comments,
     userRating,
+    userFavorite,
     userVotes,
     parsedScreenshots: JSON.parse(g.screenshots || '[]'),
     parsedSysReq: JSON.parse(g.system_requirements || '{}'),
@@ -85,6 +89,22 @@ router.post('/games/:slug/rate', requireAuth, (req, res) => {
   activity.log(req.session.userId, 'rate_game', 'game', g.id, { rating: val });
   req.session.flashSuccess = 'Rating submitted.';
   res.redirect(`/games/${req.params.slug}`);
+});
+
+router.post('/games/:slug/favorite', requireAuth, (req, res) => {
+  const g = game.findBySlug(req.params.slug);
+  if (!g) return res.status(404).json({ error: 'Game not found' });
+  
+  const isFav = favorite.isFavorite(req.session.userId, g.id);
+  if (isFav) {
+    favorite.remove(req.session.userId, g.id);
+    activity.log(req.session.userId, 'unfavorite_game', 'game', g.id);
+  } else {
+    favorite.add(req.session.userId, g.id);
+    activity.log(req.session.userId, 'favorite_game', 'game', g.id);
+  }
+  
+  res.json({ success: true, isFavorite: !isFav });
 });
 
 module.exports = router;

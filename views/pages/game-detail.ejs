@@ -111,6 +111,15 @@
               <% } %>
               <% if (userRating) { %><span class="text-xs text-slate-500 ml-2"><%= lang === 'zh' ? '你的评分' : 'Your rating' %>: <%= userRating %>/5</span><% } %>
             </form>
+            <button class="favorite-btn w-full inline-flex items-center justify-center gap-2 border border-[#e9b3ff] text-[#e9b3ff] font-['Space_Grotesk'] uppercase tracking-widest font-bold px-6 py-2 hover:bg-[#e9b3ff]/10 transition-all no-underline" data-game-id="<%= game.id %>">
+              <span class="material-symbols-outlined"><%= userFavorite ? 'favorite' : 'favorite_border' %></span>
+              <span class="favorite-text"><%= userFavorite ? (lang === 'zh' ? '已收藏' : 'Favorited') : (lang === 'zh' ? '收藏' : 'Favorite') %></span>
+            </button>
+          <% } else { %>
+            <a href="/login" class="w-full inline-flex items-center justify-center gap-2 border border-slate-500 text-slate-500 font-['Space_Grotesk'] uppercase tracking-widest font-bold px-6 py-2 hover:border-[#e9b3ff] hover:text-[#e9b3ff] transition-all no-underline">
+              <span class="material-symbols-outlined">favorite_border</span>
+              <span><%= lang === 'zh' ? '收藏' : 'Favorite' %></span>
+            </a>
           <% } %>
         </div>
       </div>
