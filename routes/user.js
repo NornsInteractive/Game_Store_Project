@@ -20,30 +20,18 @@ router.get('/', requireAuth, (req, res) => {
 router.get('/library', requireAuth, (req, res) => {
   const { getDb } = require('../database/connection');
   const db = getDb();
-  const tab = req.query.tab || 'library';
-  
-  let library = [];
+  const tab = req.query.tab || 'favorites';
+
   let favorites = [];
   
-  if (tab === 'library' || !tab) {
-    library = db.prepare(
-      `SELECT g.*, ul.purchased_at FROM user_library ul
-       JOIN games g ON ul.game_id = g.id
-       WHERE ul.user_id = ? ORDER BY ul.purchased_at DESC`
-    ).all(req.session.userId);
-  }
-  
-  if (tab === 'favorites' || !tab) {
-    favorites = favorite.getUserFavorites(req.session.userId);
-  }
+  favorites = favorite.getUserFavorites(req.session.userId);
   
   res.render('pages/user-library', {
     layout: 'layouts/user',
     title: 'My Library — CyberPulse',
-    library,
     favorites,
     currentTab: tab,
-    path: '/dashboard/library'
+    path: '/dashboard/library?tab=favorites'
   });
 });
 

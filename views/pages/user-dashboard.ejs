@@ -4,7 +4,7 @@
 </div>
 
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-  <a href="/dashboard/library" class="glass-card p-6 no-underline block hover:border-[#CCFF00]/30 transition-all">
+  <a href="/dashboard/library?tab=favorites" class="glass-card p-6 no-underline block hover:border-[#CCFF00]/30 transition-all">
     <span class="material-symbols-outlined text-3xl text-[#CCFF00] mb-3">videogame_asset</span>
     <p class="text-2xl font-['Space_Grotesk'] font-bold text-white"><%= (typeof libraryCount !== 'undefined') ? libraryCount : 0 %></p>
     <p class="text-slate-500 text-xs font-['Space_Grotesk'] uppercase tracking-wider mt-1"><%= t('myLibrary') %></p>
