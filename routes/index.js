@@ -2,13 +2,11 @@ const express = require('express');
 const router = express.Router();
 const game = require('../models/game');
 const article = require('../models/article');
-const activity = require('../models/activity');
 
 router.get('/', (req, res) => {
   const featuredGames = game.getFeatured(6);
   const trendingGames = game.getTrending(5);
   const featuredArticles = article.getFeatured(3);
-  const recentActivity = activity.getRecentActivity(10);
   const categories = game.getCategoryCounts('game');
   res.render('pages/home', {
     layout: 'layouts/main',
@@ -16,7 +14,6 @@ router.get('/', (req, res) => {
     featuredGames,
     trendingGames,
     featuredArticles,
-    recentActivity,
     categories
   });
 });

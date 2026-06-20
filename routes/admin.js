@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const game = require('../models/game');
 const article = require('../models/article');
-const activity = require('../models/activity');
 const { requireAdmin } = require('../middleware/auth');
 const { fileToDataUrl, uploadGameCover, uploadThumbnail } = require('../middleware/upload');
 
@@ -13,12 +12,10 @@ router.get('/', requireAdmin, (req, res) => {
   const articleCount = db.prepare("SELECT COUNT(*) as c FROM articles").get().c;
   const adminCount = db.prepare("SELECT COUNT(*) as c FROM users WHERE role = 'admin'").get().c;
   const draftCount = db.prepare("SELECT COUNT(*) as c FROM games WHERE status = 'draft' AND deleted_at IS NULL").get().c;
-  const recentActivity = activity.getRecentActivity(15);
   res.render('pages/admin/dashboard', {
     layout: 'layouts/admin',
     title: 'Command Center — CyberPulse Admin',
     stats: { gameCount, articleCount, adminCount, draftCount },
-    recentActivity,
     path: '/admin'
   });
 });

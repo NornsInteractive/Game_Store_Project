@@ -73,17 +73,6 @@ CREATE TABLE IF NOT EXISTS articles (
 CREATE INDEX IF NOT EXISTS idx_articles_status ON articles(status);
 CREATE INDEX IF NOT EXISTS idx_articles_slug ON articles(slug);
 
-CREATE TABLE IF NOT EXISTS activity_log (
-    id            INTEGER PRIMARY KEY,
-    user_id       INTEGER,
-    action        TEXT    NOT NULL,
-    target_type   TEXT,
-    target_id     INTEGER,
-    metadata      TEXT    DEFAULT '{}',
-    created_at    TEXT    NOT NULL DEFAULT (datetime('now')),
-    FOREIGN KEY (user_id) REFERENCES users(id)
-);
-
 CREATE TABLE IF NOT EXISTS sessions (
     sid           TEXT PRIMARY KEY,
     expires       TEXT,

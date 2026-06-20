@@ -148,9 +148,6 @@ function pruneNonAdminAccounts() {
     "UPDATE articles SET author_id = ? WHERE author_id IN (SELECT id FROM users WHERE role != 'admin')",
     [admin.id]
   );
-  db.run(
-    "UPDATE activity_log SET user_id = NULL WHERE user_id IN (SELECT id FROM users WHERE role != 'admin')"
-  );
   db.run("DELETE FROM users WHERE role != 'admin'");
   db.run('DELETE FROM sessions');
 }

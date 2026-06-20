@@ -2,7 +2,6 @@ const bcrypt = require('bcryptjs');
 const { getDb } = require('./connection');
 const game = require('../models/game');
 const article = require('../models/article');
-const activity = require('../models/activity');
 
 function createCategoryMap(db, categories) {
   categories.forEach((category) => {
@@ -45,9 +44,6 @@ function pruneToAdminOnly(db, adminId) {
   db.prepare(
     "UPDATE articles SET author_id = ? WHERE author_id IN (SELECT id FROM users WHERE id != ?)"
   ).run(adminId, adminId);
-  db.prepare(
-    "UPDATE activity_log SET user_id = NULL WHERE user_id IN (SELECT id FROM users WHERE id != ?)"
-  ).run(adminId);
   db.prepare('DELETE FROM users WHERE id != ?').run(adminId);
   db.prepare('DELETE FROM sessions').run();
 }
@@ -185,7 +181,6 @@ function createDemoArticles(categoryMap, adminId) {
 
 function clearData(db) {
   [
-    'activity_log',
     'articles',
     'games',
     'categories',
@@ -242,8 +237,6 @@ async function ensureSeedData({ reset = false } = {}) {
 
   createDemoGames(categoryMap);
   createDemoArticles(categoryMap, adminId);
-
-  activity.log(adminId, 'system_init', 'system', null, { version: '1.0.0' });
 
   return {
     users: db.prepare('SELECT COUNT(*) AS count FROM users').get().count,
