@@ -4,7 +4,7 @@
   "@context": "https://schema.org",
   "@type": "VideoGame",
   "name": game.title,
-  "description": game.short_description || game.description.slice(0, 200),
+  "description": game.short_description || (game.description ? game.description.slice(0, 200) : game.title),
   "genre": game.category_name || undefined,
   "author": game.developer ? { "@type": "Organization", "name": game.developer } : undefined,
   "publisher": game.publisher ? { "@type": "Organization", "name": game.publisher } : undefined,

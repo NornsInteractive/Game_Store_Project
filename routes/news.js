@@ -27,10 +27,11 @@ router.get('/news/:slug', (req, res) => {
   if (!a) return res.status(404).render('pages/error', { layout: 'layouts/main', code: 404, message: 'ARTICLE_NOT_FOUND: Transmission not in archive.' });
   article.incrementViews(a.id);
   const baseUrl = `${req.protocol}://${req.get('host')}`;
+  const content = a.content || '';
   res.render('pages/news-detail', {
     layout: 'layouts/main',
     title: `${a.title} — CyberPulse News`,
-    metaDescription: a.excerpt || a.content.slice(0, 160),
+    metaDescription: a.excerpt || (content ? content.slice(0, 160) : a.title),
     canonicalUrl: `${baseUrl}/news/${a.slug}`,
     ogType: 'article',
     ogImage: a.thumbnail && !a.thumbnail.startsWith('data:') ? `${baseUrl}${a.thumbnail}` : undefined,
