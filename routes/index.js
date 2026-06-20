@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
   const categories = game.getCategoryCounts('game');
   res.render('pages/home', {
     layout: 'layouts/main',
-    title: 'CyberPulse Gaming — Deep Sea Noir',
+    title: 'CyberPulse Gaming',
     featuredGames,
     trendingGames,
     featuredArticles,
