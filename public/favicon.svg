@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a1a2e"/>
+      <stop offset="100%" stop-color="#0f0f1a"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="12" fill="url(#bg)"/>
+  <!-- Controller body -->
+  <path d="M12 34 C12 28, 18 24, 24 24 L40 24 C46 24, 52 28, 52 34 C52 40, 48 46, 44 48 C42 49, 40 48, 39 46 L37 42 C36 40, 35 39, 33 39 L31 39 C29 39, 28 40, 27 42 L25 46 C24 48, 22 49, 20 48 C16 46, 12 40, 12 34Z" fill="#2d2d44" stroke="#CCFF00" stroke-width="1.5"/>
+  <!-- D-pad -->
+  <rect x="19" y="31" width="3" height="9" rx="1" fill="#CCFF00"/>
+  <rect x="16" y="34" width="9" height="3" rx="1" fill="#CCFF00"/>
+  <!-- Buttons -->
+  <circle cx="43" cy="32" r="2" fill="#CCFF00"/>
+  <circle cx="47" cy="35" r="2" fill="#CCFF00"/>
+  <circle cx="39" cy="35" r="2" fill="#CCFF00"/>
+  <circle cx="43" cy="38" r="2" fill="#CCFF00"/>
+  <!-- Analog sticks -->
+  <circle cx="26" cy="40" r="2.5" fill="none" stroke="#CCFF00" stroke-width="1"/>
+  <circle cx="38" cy="40" r="2.5" fill="none" stroke="#CCFF00" stroke-width="1"/>
+</svg>
