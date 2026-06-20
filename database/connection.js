@@ -161,6 +161,12 @@ async function initDb() {
   if (initPromise) return initPromise;
   initPromise = (async () => {
     const SQL = await loadSqlJs();
+    // On serverless platforms, copy bundled db to tmp if not already there
+    const bundledDbPath = path.join(__dirname, 'store.db');
+    if (!fs.existsSync(DB_PATH) && DB_PATH !== bundledDbPath && fs.existsSync(bundledDbPath)) {
+      fs.mkdirSync(path.dirname(DB_PATH), { recursive: true });
+      fs.copyFileSync(bundledDbPath, DB_PATH);
+    }
     // Load existing DB or create new one
     if (fs.existsSync(DB_PATH)) {
       const fileBuffer = fs.readFileSync(DB_PATH);
