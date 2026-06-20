@@ -8,6 +8,7 @@ function setLocals(req, res, next) {
   res.locals.disqusShortname = process.env.DISQUS_SHORTNAME || '';
   res.locals.flashSuccess = req.session.flashSuccess || null;
   res.locals.flashError = req.session.flashError || null;
+  res.locals.authEnabled = !process.env.VERCEL;
   delete req.session.flashSuccess;
   delete req.session.flashError;
 

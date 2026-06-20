@@ -3,6 +3,14 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const user = require('../models/user');
 
+// Block all auth routes on Vercel
+router.use(['/login', '/logout'], (req, res, next) => {
+  if (process.env.VERCEL) {
+    return res.status(404).render('pages/error', { layout: 'layouts/main', code: 404, message: 'Page not found.' });
+  }
+  next();
+});
+
 router.get('/login', (req, res) => {
   if (res.locals.isAdmin) return res.redirect('/admin');
   res.render('pages/login', { layout: 'layouts/auth', title: 'Admin Login — CyberPulse' });

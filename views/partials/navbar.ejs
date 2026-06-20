@@ -9,7 +9,7 @@
       <% if (currentUser) { %>
         <a href="/admin" class="text-[#e9b3ff] hover:drop-shadow-[0_0_8px_#e9b3ff] transition-all duration-300 font-['Space_Grotesk'] uppercase tracking-widest text-sm font-bold no-underline"><%= t('navAdmin') %></a>
         <a href="/logout" class="text-slate-400 hover:text-white transition-all duration-300 font-['Space_Grotesk'] uppercase tracking-widest text-sm font-bold no-underline"><%= t('navLogout') %></a>
-      <% } else { %>
+      <% } else if (authEnabled) { %>
         <a href="/login" class="bg-[#CCFF00] text-black px-6 py-2 font-['Space_Grotesk'] uppercase tracking-widest text-sm font-black shadow-[0_0_15px_rgba(204,255,0,0.4)] hover:shadow-[0_0_25px_#CCFF00] transition-all duration-300 no-underline"><%= lang === 'zh' ? '登录' : 'Login' %></a>
       <% } %>
       <a href="<%= languageSwitchUrl %>" class="text-slate-400 hover:text-[#CCFF00] transition-all duration-300 font-['Space_Grotesk'] uppercase tracking-widest text-xs font-bold no-underline"><%= t('switchLanguage') %></a>
