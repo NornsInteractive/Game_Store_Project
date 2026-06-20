@@ -191,34 +191,68 @@ pm2 save
 - 本地数据库和会话更稳定
 - 更适合继续开发后台功能
 
-## 方案三：Cloudflare Pages
+## 方案三：Cloudflare Workers
 
-当前项目**不能原样直接部署到 Cloudflare Pages 并完整运行**，原因是：
+当前项目已适配 Cloudflare Workers 部署（利用 `nodejs_compat` 兼容层）。
 
-- Cloudflare Pages 主要面向静态站点和 Functions
-- 当前项目是标准 Express 服务器
-- 使用了 `express-session`
-- 使用了 `sql.js` 文件写入与 Node 文件系统
+### 前置条件
 
-这些都和 Pages/Workers 的运行模型不完全一致。
+- 安装 [Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/install-and-update/)
+- 已登录 Cloudflare 账号：`npx wrangler login`
 
-### 如果一定要部署到 Cloudflare
+### 部署步骤
 
-需要做二次改造，通常包括：
+1. 确保本地数据库 `database/store.db` 包含你需要的数据
+2. 执行部署：
 
-- 将 Express 迁移到 `Cloudflare Workers` 兼容方案
-- 将 session 改为 `JWT` 或 KV / D1 方案
-- 将数据库迁移到 `Cloudflare D1`
-- 将上传改成 `R2` 或第三方对象存储
+```bash
+npm run deploy:cf
+```
 
-结论：
+或手动：
 
-- `Vercel`：当前项目可以直接部署演示版
-- `Cloudflare Pages`：需要改造后再部署
+```bash
+npx wrangler deploy
+```
+
+### 配置说明
+
+项目根目录的 `wrangler.toml` 已配置：
+
+- `nodejs_compat` 兼容标志（支持 Express 运行）
+- `public/` 目录作为静态资源
+- Worker 入口为 `worker.js`
+
+### 环境变量
+
+在 Cloudflare Dashboard 或通过 Wrangler 设置：
+
+```bash
+npx wrangler secret put SESSION_SECRET
+```
+
+### 注意事项
+
+- 与 Vercel 相同，SQLite 数据在 Worker 实例回收后会丢失
+- 每次冷启动会从部署包中的 `store.db` 恢复数据
+- 登录和管理后台功能在 Cloudflare 上自动屏蔽
+- 适合作为只读展示站点使用
+- 如需持久化数据，建议迁移到 Cloudflare D1
 
 ## 上传与存储说明
 
 当前上传逻辑在 `middleware/upload.js` 中使用内存方式处理文件，并将图片以 Data URL 形式写入数据库字段。
+
+## SEO 优化
+
+项目已内置以下 SEO 功能：
+
+- **Meta 标签**：每个页面自动输出 `description`、`canonical`、`robots` 标签
+- **Open Graph**：游戏详情和新闻详情页输出 `og:title`、`og:description`、`og:image`、`og:type`
+- **Twitter Card**：支持 `summary_large_image` 格式
+- **JSON-LD 结构化数据**：游戏详情页输出 `VideoGame` schema，便于搜索引擎理解内容
+- **Sitemap**：自动生成 `/sitemap.xml`，包含所有已发布的游戏和文章
+- **Robots.txt**：`/robots.txt` 引导爬虫访问公开页面、屏蔽管理后台
 
 这样做的目的：
 

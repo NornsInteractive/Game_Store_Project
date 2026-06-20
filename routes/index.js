@@ -37,4 +37,38 @@ router.get('/search', (req, res) => {
   });
 });
 
+router.get('/robots.txt', (req, res) => {
+  const baseUrl = `${req.protocol}://${req.get('host')}`;
+  res.type('text/plain').send(
+`User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /login
+Disallow: /logout
+
+Sitemap: ${baseUrl}/sitemap.xml`
+  );
+});
+
+router.get('/sitemap.xml', (req, res) => {
+  const baseUrl = `${req.protocol}://${req.get('host')}`;
+  const games = game.findAll({ status: 'published', limit: 1000 });
+  const articles = article.findAll({ limit: 1000 });
+
+  let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';
+  xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';
+  xml += `  <url><loc>${baseUrl}/</loc><priority>1.0</priority></url>\n`;
+  xml += `  <url><loc>${baseUrl}/games</loc><priority>0.9</priority></url>\n`;
+  xml += `  <url><loc>${baseUrl}/news</loc><priority>0.8</priority></url>\n`;
+  games.rows.forEach(g => {
+    xml += `  <url><loc>${baseUrl}/games/${g.slug}</loc><lastmod>${g.updated_at || g.created_at}</lastmod><priority>0.7</priority></url>\n`;
+  });
+  articles.rows.forEach(a => {
+    xml += `  <url><loc>${baseUrl}/news/${a.slug}</loc><lastmod>${a.updated_at || a.created_at}</lastmod><priority>0.6</priority></url>\n`;
+  });
+  xml += '</urlset>';
+
+  res.type('application/xml').send(xml);
+});
+
 module.exports = router;

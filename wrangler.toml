@@ -1,0 +1,8 @@
+name = "cyberpulse-game-store"
+main = "worker.js"
+compatibility_date = "2026-06-19"
+compatibility_flags = ["nodejs_compat"]
+
+[assets]
+directory = "./public"
+binding = "ASSETS"

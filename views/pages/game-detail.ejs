@@ -1,3 +1,18 @@
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json">
+<%- JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "VideoGame",
+  "name": game.title,
+  "description": game.short_description || game.description.slice(0, 200),
+  "genre": game.category_name || undefined,
+  "author": game.developer ? { "@type": "Organization", "name": game.developer } : undefined,
+  "publisher": game.publisher ? { "@type": "Organization", "name": game.publisher } : undefined,
+  "datePublished": game.release_date || game.created_at,
+  "keywords": parsedTags.join(', ') || undefined
+}) %>
+</script>
+
 <!-- Hero for first game -->
 <section class="relative h-[500px] w-full flex items-center overflow-hidden">
   <div class="absolute inset-0 z-0">

@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "node server.js",
     "start": "node server.js",
-    "seed": "node database/seed.js"
+    "seed": "node database/seed.js",
+    "deploy:cf": "npx wrangler deploy"
   },
   "engines": {
     "node": ">=20"

@@ -31,9 +31,14 @@ router.get('/games/:slug', (req, res) => {
   const g = game.findBySlug(req.params.slug);
   if (!g) return res.status(404).render('pages/error', { layout: 'layouts/main', code: 404, message: 'GAME_NOT_FOUND: That title isn\'t in our registry.' });
   game.incrementViews(g.id);
+  const baseUrl = `${req.protocol}://${req.get('host')}`;
   res.render('pages/game-detail', {
     layout: 'layouts/main',
     title: `${g.title} — CyberPulse`,
+    metaDescription: g.short_description || g.description.slice(0, 160),
+    canonicalUrl: `${baseUrl}/games/${g.slug}`,
+    ogType: 'article',
+    ogImage: g.cover_image && !g.cover_image.startsWith('data:') ? `${baseUrl}${g.cover_image}` : undefined,
     game: g,
     parsedScreenshots: JSON.parse(g.screenshots || '[]'),
     parsedSysReq: JSON.parse(g.system_requirements || '{}'),

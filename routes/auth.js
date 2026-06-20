@@ -3,9 +3,9 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const user = require('../models/user');
 
-// Block all auth routes on Vercel
+// Block all auth routes on serverless platforms
 router.use(['/login', '/logout'], (req, res, next) => {
-  if (process.env.VERCEL) {
+  if (process.env.VERCEL || process.env.CF_PAGES) {
     return res.status(404).render('pages/error', { layout: 'layouts/main', code: 404, message: 'Page not found.' });
   }
   next();

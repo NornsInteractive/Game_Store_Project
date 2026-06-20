@@ -2,10 +2,10 @@
   "version": 2,
   "functions": {
     "app.js": {
-      "includeFiles": "{views/**,public/**,database/schema.sql,node_modules/sql.js/dist/sql-wasm.wasm}"
+      "includeFiles": "{views/**,public/**,database/schema.sql,database/store.db,node_modules/sql.js/dist/sql-wasm.wasm}"
     },
     "api/index.js": {
-      "includeFiles": "{views/**,public/**,database/schema.sql,node_modules/sql.js/dist/sql-wasm.wasm}"
+      "includeFiles": "{views/**,public/**,database/schema.sql,database/store.db,node_modules/sql.js/dist/sql-wasm.wasm}"
     }
   }
 }

@@ -2,6 +2,17 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
 <title><%= typeof title !== 'undefined' ? title : 'CyberPulse Gaming' %></title>
+<meta name="description" content="<%= typeof metaDescription !== 'undefined' ? metaDescription : 'CyberPulse — Discover, explore, and download the best indie and AAA games. News, reviews, and community.' %>"/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="<%= typeof canonicalUrl !== 'undefined' ? canonicalUrl : currentUrl %>"/>
+<meta property="og:title" content="<%= typeof title !== 'undefined' ? title : 'CyberPulse Gaming' %>"/>
+<meta property="og:description" content="<%= typeof metaDescription !== 'undefined' ? metaDescription : 'Discover, explore, and download the best indie and AAA games.' %>"/>
+<meta property="og:type" content="<%= typeof ogType !== 'undefined' ? ogType : 'website' %>"/>
+<meta property="og:url" content="<%= typeof canonicalUrl !== 'undefined' ? canonicalUrl : currentUrl %>"/>
+<% if (typeof ogImage !== 'undefined' && ogImage) { %><meta property="og:image" content="<%= ogImage %>"/><% } %>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="<%= typeof title !== 'undefined' ? title : 'CyberPulse Gaming' %>"/>
+<meta name="twitter:description" content="<%= typeof metaDescription !== 'undefined' ? metaDescription : 'Discover, explore, and download the best indie and AAA games.' %>"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>

@@ -5,9 +5,9 @@ const article = require('../models/article');
 const { requireAdmin } = require('../middleware/auth');
 const { fileToDataUrl, uploadGameCover, uploadThumbnail } = require('../middleware/upload');
 
-// Block all admin routes on Vercel
+// Block all admin routes on serverless platforms
 router.use((req, res, next) => {
-  if (process.env.VERCEL) {
+  if (process.env.VERCEL || process.env.CF_PAGES) {
     return res.status(404).render('pages/error', { layout: 'layouts/main', code: 404, message: 'Page not found.' });
   }
   next();
