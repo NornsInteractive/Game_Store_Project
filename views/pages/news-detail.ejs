@@ -4,7 +4,7 @@
     <h1 class="font-headline-lg text-headline-lg text-white mt-2"><%= article.title %></h1>
     <div class="flex items-center space-x-4 mt-4 border-b border-white/10 pb-6">
       <div class="w-10 h-10 rounded-full bg-surface-container-high overflow-hidden">
-        <% if (article.author_avatar) { %><img src="<%= article.author_avatar %>" alt="" class="w-full h-full object-cover"/><% } %>
+        <% if (article.author_avatar) { %><img src="<%= article.author_avatar  || '/uploads/avatars/default.png' %>" alt="" class="w-full h-full object-cover"/><% } %>
       </div>
       <div>
         <span class="text-white font-['Space_Grotesk'] font-bold text-sm"><%= article.author_name %></span>

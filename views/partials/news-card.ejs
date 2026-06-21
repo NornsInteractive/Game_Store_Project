@@ -10,9 +10,7 @@
     <div class="flex items-center justify-between">
       <div class="flex items-center space-x-2">
         <div class="w-6 h-6 rounded-full bg-surface-container-high overflow-hidden flex-shrink-0">
-          <% if (article.author_avatar) { %>
-            <img src="<%= article.author_avatar %>" alt="" class="w-full h-full object-cover"/>
-          <% } %>
+            <img src="<%= article.author_avatar || '/uploads/avatars/default.png' %>" alt="" class="w-full h-full object-cover"/>
         </div>
         <span class="text-slate-500 text-xs font-['Inter']"><%= article.author_name %></span>
       </div>
